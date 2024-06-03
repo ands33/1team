@@ -37,6 +37,7 @@ public class BoardServiceClient {
 		//오늘의 점심은 서브웨이 입니다.
 		// 바보 멍충이
 		// 강하늘 멍청이
+		// 강하늘 바보
 	}
 
 }
