@@ -7,6 +7,18 @@
 <meta charset="EUC-KR">
 <title>회원 가입</title>
 <link rel="stylesheet" href="resources/user_style.css">
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script>
+    function kakaopost() {
+      new daum.Postcode({
+        oncomplete: function (data) {
+          document.querySelector("#zipcode").value = data.zonecode;
+          document.querySelector("#address").value = data.address
+        }
+      }).open();
+    }
+  </script>
+
 </head>
 
 <body>
@@ -42,11 +54,19 @@
 					<td><input type="password" name="u_pwc" size="10" max="20"></td>
 				</tr>
 				<tr>
-					<td align="center">주소</td>
-					<td><input type="text" name="u_addr" size="50" max="100">
-						<input type="button" name="addrSearch" value="주소찾기" onclick="">
+					<td align="center">우편번호</td>
+					<td><input type="text" id="zipcode" name="u_zipcode" size="5" readonly>
+						<input type="button" value="우편번호찾기" onclick="kakaopost()">
 					</td>
 				</tr>
+				
+				<tr>
+					<td align="center">주 소</td>
+					<td>
+					<input type="text" id="address" name="u_addr" size="50" max="100">
+					</td>
+				</tr>
+				
 				<tr>
 					<td align="center">이메일</td>
 					<td><input type="text" name="u_email" size="10" max="20">@
