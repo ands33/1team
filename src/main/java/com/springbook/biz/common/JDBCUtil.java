@@ -92,8 +92,11 @@ import java.sql.ResultSet;
 public class JDBCUtil {
    public static Connection getConnection() {
       try {
-         Class.forName("org.h2.Driver");
-         return DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
+    	  // 오라클 JDBC 드라이버 로드
+          Class.forName("oracle.jdbc.driver.OracleDriver");
+          // 오라클 데이터베이스 연결 URL, 사용자 이름, 비밀번호
+          return DriverManager.getConnection("jdbc:oracle:thin:@43.203.221.85:1521:xe", "kd", "1234");
+          
       } catch (Exception e) {
          e.printStackTrace();
       }
