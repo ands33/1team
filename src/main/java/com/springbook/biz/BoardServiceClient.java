@@ -40,6 +40,7 @@ public class BoardServiceClient {
 		// 강하늘 바보
 		// 멍충이들 ㅎ
 		///sdfsdfasdfasdfasdfsagit ad
+		// 야이야이야이야이
 	}
 
 }
