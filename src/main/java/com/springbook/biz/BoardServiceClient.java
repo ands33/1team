@@ -39,6 +39,7 @@ public class BoardServiceClient {
 		// 강하늘 멍청이
 		// 강하늘 바보
 		// 멍충이들 ㅎ
+		// 0611 오늘도 git 오류가 나오네
 	}
 
 }
