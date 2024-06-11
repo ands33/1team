@@ -41,7 +41,7 @@ public class BoardServiceClient {
 		// 멍충이들 ㅎ
 		///sdfsdfasdfasdfasdfsagit ad
 		// 야이야이야이야이
-		// sfsadf
+		// sfsadfasdfasdfsdf
 	}
 
 }
