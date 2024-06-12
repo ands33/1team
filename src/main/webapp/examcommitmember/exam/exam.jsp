@@ -74,6 +74,8 @@ th {
 						<td><button>반려</button>
 							<button>출제</button></td>
 					</tr>
+					
+					
 			</tbody>
 		</table>
 	</div>
