@@ -31,17 +31,6 @@ public class BoardServiceClient {
 		}
 		// 5. Spring 컨테이너 종료
 		container.close();
-		// 깃 테스트  깃 테스트  깃 테스트  깃 테스트  깃 테스트  깃 테스트  깃 테스트 
-		// 아아아앙아ㅏㅇ
-		// 바보 멍충이
-		// 강하늘 바보
-		// 멍충이들 ㅎ
-<<<<<<< HEAD
-		// 댐성혁
-		// 0611 오늘도 git 오류가 나오네
-		// 이샛기 merge
-=======
 
->>>>>>> 1859ac879f33acb4873c4db0bc6459bb9952dbeb
 	}
 }
