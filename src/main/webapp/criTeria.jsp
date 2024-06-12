@@ -6,7 +6,9 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<br>
 <title>출제기준</title>
+
 <style>
 .search-container {
 	display: flex;
@@ -73,7 +75,7 @@ margin-right: 요소의 오른쪽 여백 지정 */
 }
 
 body {
-	font-family: 'Gulim', sans-serif;
+	font-family: 'Malgun gothic', sans-serif;
 }
 
 table {
@@ -118,25 +120,47 @@ div.cell.selected {
 .navbar span {
 	margin-left: 5px;
 }
+
+.header-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header-left {
+	display: flex;
+	align-items: center;
+}
+
+.header-left img {
+	margin-right: 5px;
+}
 </style>
 </head>
 <body>
-	<img src="C:/KCA문제은행 자동화 시스템 구축/KCA문제은행 자동화 시스템 구축/img/내정보관리_01.png"
-		width="15" height="15"> 출제기준
-	<div class="navbar">
-		<a href="#">Home</a> <span>></span> <a href="#">알림마당</a> <span>></span>
-		<a href="#">출제기준</a>
+	<div class="header-container">
+		<div class="header-left">
+			<img src="C:/KCA문제은행 자동화 시스템 구축/KCA문제은행 자동화 시스템 구축/img/blue_01.png" width="15" height="15" alt="출제기준 아이콘">
+			출제기준
+		</div>
+		<div class="navbar">
+			<a href="#">Home</a> 
+			<span>></span> 
+			<a href="#">알림마당</a> 
+			<span>></span>
+			<a href="#">출제기준</a>
+		</div>
 	</div>
 	<hr>
 	<br>
 	<table>
-		<th bgcolor="#D3D3D3">과목명</th>
+		<th bgcolor="#EEEEF3">과목명</th>
 		<th colspan="2">
-			<div class="search-container"">
+			<div class="search-container">
 				<select id="courseName" name="courseName">
 					<option value="건강교육론">건강교육론</option>
 					<option value="1. 상담철학과 상담윤리">1. 상담철학과 상담윤리</option>
-					<option value="1-1. 상담윤리">1-1. 상담윤리</option>▼
+					<option value="1-1. 상담윤리">1-1. 상담윤리</option>
 					<option value="2. 고급상담이론과 실제">2. 고급상담이론과 실제</option>
 					<option value="2-1. 상담이론과 실제">2-1. 상담이론과 실제</option>
 					<option value="3. 집단상담 프로그램개발">3. 집단상담 프로그램개발</option>
@@ -152,12 +176,10 @@ div.cell.selected {
 					<i class="fas fa-search"></i> 조회
 				</button>
 			</div>
-			
-			<div id="excelData"></div>
-			
+			<div id="excelData"></div> 
 			<script>
 				$(document).ready(function() {
-					var electedCourse = $('#coursName').val();
+					var selectedCourse = $('#courseName').val();
 					$.ajax({
 						type: 'GET',
 						url: 'get_excel_data',
@@ -170,27 +192,26 @@ div.cell.selected {
 						}
 					});
 				});
-			});
 			</script>
 		</th>
 	</table>
 	<br>
 	<button class="custom-button" style="float: right;">엑셀저장</button>
 	<br>
-		<tr>
-			<table>
-				<th class="bold" align="center" bgcolor="#D3D3D3" width="70">출제기준</th>
-				<th class="bold" align="center" bgcolor="#D3D3D3">대분류명</th>
-				<th class="bold" align="center" bgcolor="#D3D3D3">중분류명</th>
-				<th class="bold" align="center" bgcolor="#D3D3D3">소분류명</th>
-				</tr>
-				</table>
-				<script>
+	<tr>
+		<table>
+			<th class="bold" align="center" bgcolor="#EEEEF3" width="70">출제기준</th>
+			<th class="bold" align="center" bgcolor="#EEEEF3">대분류명</th>
+			<th class="bold" align="center" bgcolor="#EEEEF3">중분류명</th>
+			<th class="bold" align="center" bgcolor="#EEEEF3">소분류명</th>
+			</tr>
+		</table>
+		<script>
 				// 엑셀 파일 로드 함수
 				function loadExcel(file){
 					var reader = new FileReader();
 					reader.onload = function(e) {
-						var date = new Uinit8Array(e.target.result);
+						var data = new Uint8Array(e.target.result);
 						var workbook = XLSX.read(data, {type: 'array'});
 						var sheet = workbook.Sheets[workbook.SheetNames[0]];
 						var htmlTable = XLSX.utils.sheet_to_html(sheet);
@@ -205,7 +226,7 @@ div.cell.selected {
 						loadExcel(file);
 					}
 				}); 
-				</script>
-				<input type="file" id="excelfile" accept=".xlsx, .xls">
+		</script>
+		<input type="file" id="excelFile" accept=".xlsx, .xls">
 </body>
 </html>
