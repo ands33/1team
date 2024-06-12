@@ -44,11 +44,11 @@
 <h2>QnA 상세보기</h2>
 
 <div class="form-container">
-    <form method="post" action="submitQuestion.jsp" enctype="multipart/form-data">
+    <form method="post" action="insertQna.do" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <th>작성자</th>
-                <td><input type="text" id="author" name="author" required></td>
+                <td><input type="text" id="getMember_id" name="getMember_id" required></td>
             </tr>
             <tr>
                 <th>제목</th>
@@ -56,11 +56,11 @@
             </tr>
             <tr>
                 <th>질문</th>
-                <td><textarea id="question" name="question" required></textarea></td>
+                <td><textarea  name="q" required></textarea></td>
             </tr>
             <tr>
                 <th>첨부</th>
-                <td><input type="file" id="attachment" name="attachment"></td>
+                <td><input type="file" id="file_data" name="file_data"></td>
             </tr>
         </table>
         <button type="submit">제출</button>
