@@ -31,17 +31,6 @@ public class BoardServiceClient {
 		}
 		// 5. Spring 컨테이너 종료
 		container.close();
-		// 깃 테스트  깃 테스트  깃 테스트  깃 테스트  깃 테스트  깃 테스트  깃 테스트 
-		// 아아아앙아ㅏㅇ
-		// 기모찌 기모찌 기모지 기모찌 기모찌 기모찌찌찌 앙아앙아아아ㅏㅇㅇ
-		//오늘의 점심은 서브웨이 입니다.
-		// 바보 멍충이
-		// 강하늘 멍청이
-		// 강하늘 바보
-		// 멍충이들 ㅎ
-		///sdfsdfasdfasdfasdfsagit ad
-		// 야이야이야이야이
-		// sfsadfasdfasdfsdf
-	}
 
+	}
 }
