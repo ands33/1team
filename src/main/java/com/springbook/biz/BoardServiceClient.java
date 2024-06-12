@@ -39,6 +39,8 @@ public class BoardServiceClient {
 		// 강하늘 멍청이
 		// 강하늘 바보
 		// 멍충이들 ㅎ
+		// 바보들 
+		// 댐성혁
 	}
 
 }
