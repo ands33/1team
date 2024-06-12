@@ -8,7 +8,6 @@
 <title>회원 가입</title>
 <link rel="stylesheet" href="resources/user_style.css">
 </head>
-
 <body>
 	<center>
 		<form method="post" action="updateUser.do" target="_self">
