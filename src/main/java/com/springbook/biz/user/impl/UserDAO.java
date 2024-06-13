@@ -62,11 +62,6 @@ public class UserDAO {
 		return user;
 	}
 	
-	
-	
-	
-	
-	
 	// 회원 등록
 	public UserVO getUser(UserVO vo) {
 		UserVO user = null;
@@ -212,5 +207,4 @@ public class UserDAO {
 			}
 			return UserList;
 		}
-
 }

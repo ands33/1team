@@ -28,7 +28,7 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link" href="../#">마이페이지</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="../exam/exam.jsp">출제</a>
+				<li class="nav-item"><a class="nav-link" href="getTestList.do">출제</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="../#">감수</a>
 				</li>

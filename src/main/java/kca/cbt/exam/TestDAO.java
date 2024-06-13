@@ -1,4 +1,4 @@
-package kca.cbt.exam.impl;
+package kca.cbt.exam;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,8 +9,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.springbook.biz.common.JDBCUtil;
-
-import kca.cbt.exam.TestVO;
 
 //DAO(Data Access Object)
 @Repository("testDAO")
