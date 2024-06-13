@@ -14,6 +14,7 @@ public class QnaVO {
 	private MultipartFile file_data;
 	private String member_id;	
 	private Date create_day;
+	private String answer_id;
 	
 	public MultipartFile getFile_data() {
 		return file_data;
@@ -83,7 +84,7 @@ public class QnaVO {
 				+ ", a_content=" + a_content + ", a_file=" + a_file + ", file_data=" + file_data + ", create_day="
 				+ create_day + ", member_id=" + member_id + ", answer_id=" + answer_id + "]";
 	}
-	private String answer_id;
+	
 	
 	
 	
