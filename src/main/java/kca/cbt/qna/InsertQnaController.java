@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
+
 public class InsertQnaController {
-	@Autowired
-    private QnaService qnaService;
 	
 	@RequestMapping("/insertQna.do")
 	public String insertQna(QnaVO vo, QnaDAO qnaDAO) throws IOException{
