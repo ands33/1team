@@ -36,12 +36,9 @@ public class BoardServiceClient {
 		// 바보 멍충이
 		// 강하늘 바보
 		// 멍충이들 ㅎ
-<<<<<<< HEAD
 		// 댐성혁
 		// 0611 오늘도 git 오류가 나오네
 		// 이샛기 merge
-=======
 
->>>>>>> 1859ac879f33acb4873c4db0bc6459bb9952dbeb
 	}
 }
