@@ -74,7 +74,8 @@
                     pstmt = conn.prepareStatement(query);
                     rs = pstmt.executeQuery();
 
-                    while(rs.next()) {
+                    while(rs.next
+                    		()) {
                         int no = rs.getInt("no");
                         String title = rs.getString("title");
                         String writer = rs.getString("writer");
