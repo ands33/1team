@@ -62,7 +62,7 @@ th {
 			</thead>
 			<tbody>
 					<tr>
-						<td>기능해부학</td>
+						<td>${test.subject}</td>
 						<td>객관-4지선다</td>
 						<td>미개봉</td>
 						<td>2015-01-27</td>
