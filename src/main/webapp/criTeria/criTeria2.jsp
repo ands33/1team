@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <br>
-<title>출제기준</title>
+<title>출제기준_문제표</title>
 <style>
 /*  position: 옵션을 열었을 때 창의 크기가 변경되지 않도록 함 
 	background-color: 옵션의 배경색을 지정함 */
