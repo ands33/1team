@@ -48,7 +48,7 @@
         <table>
             <tr>
                 <th>작성자</th>
-                <td><input type="text" id="getMember_id" name="getMember_id" required></td>
+                <td><input type="text" id="Member_id" name="Member_id" required></td>
             </tr>
             <tr>
                 <th>제목</th>

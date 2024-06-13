@@ -18,7 +18,7 @@ public class QnaDAO {
 
 	// SQL 명령어들
 	// nvl은 null일경우 뒤의값, 아닐경우 앞의값을 return
-	private final String QNA_INSERT = "insert into qna (seq_number, title, q, member_id) values ((SELECT NVL(MAX(seq_number), 0) + 1 from qna), ?, ?, ?)";
+	private final String QNA_INSERT = "insert into qna (seq_number, title, q, member_id, file_data) values ((SELECT NVL(MAX(seq_number), 0) + 1 from qna), ?, ?, ?, ?)";
 	private final String QNA_UPDATE = "update board set title=?, content=? where seq=?";
 	private final String QNA_DELETE = "delete board where seq=?";
 	private final String QNA_GET = "select * from board where seq=?";

@@ -8,6 +8,8 @@ public class QnaServiceImpl implements QnaService {
 
 	@Autowired
 	private QnaDAO qnaDAO;
+	
+	@Override
 	public void insertQna(QnaVO vo) {
 		qnaDAO.insertQna(vo);
 
