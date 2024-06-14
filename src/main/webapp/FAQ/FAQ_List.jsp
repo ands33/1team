@@ -23,7 +23,7 @@
 	</h5>
 	<hr>
 	<br>
-	<img src="C:/KCA문제은행 자동화 시스템 구축/KCA문제은행 자동화 시스템 구축/img/blue_02.png"
+	<img src="C:/1kosmosc/sts/workspace3/1team/src/main/FAQ_criTeria_img/blue_02.png"
 		alt="FAQ 아이콘"> FAQ 목록
 	<br><br>
 	<div class="search-container">
