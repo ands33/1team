@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -40,7 +39,7 @@
 <h2>QnA 목록</h2>
 
 <div class="button-container">
-    <button class="top-right-button" onclick="location.href='qnadetail.jsp'">새 질문 작성</button>
+    <button class="top-right-button" onclick="location.href='${pageContext.request.contextPath}/qna/qnadetail.jsp'">새 질문 작성</button>
 </div>
 
 <form method="get" action="search.jsp" class="search-container">
@@ -69,15 +68,15 @@
     <tbody>
         <c:forEach var="qna" items="${qnaList}">
             <tr>
-                <td>${qna.no}</td>
-                <td><a href="detail.jsp?id=${qna.id}">${qna.question}</a></td>
+                <td>${qna.seq_number}</td>
+                <td><a href="getQna.do?seq_number=${qna.seq_number}">${qna.title}</a></td>
                 <td>
-                    <c:if test="${qna.attachment}">
+                    <c:if test="${qna.file_data}">
                         <img src="attachment_icon.png" alt="첨부">
                     </c:if>
                 </td>
-                <td>${qna.author}</td>
-                <td>${qna.date}</td>
+                <td>${qna.member_id}</td>
+                <td>${qna.create_day}</td>
                 <td>${qna.views}</td>
             </tr>
         </c:forEach>
