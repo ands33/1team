@@ -43,19 +43,19 @@
 <h2>QnA 작성</h2>
 
 <div class="form-container">
-    <form method="post" action="${pageContext.request.contextPath}/getQnaList.do" enctype="multipart/form-data">
+    <form method="post" action="${pageContext.request.contextPath}/insertQna.do" enctype="multipart/form-data">
         <table>
             <tr>
                 <th>작성자</th>
-                <td><input type="text" id="member_id" name="member_id" required></td>
+                <td><input type="text" id="member_id" name="member_id" value="${qna.member_id }" required></td>
             </tr>
             <tr>
                 <th>제목</th>
-                <td><input type="text" id="title" name="title" required></td>
+                <td><input type="text" id="title" name="title" value="${qna.title }" required></td>
             </tr>
             <tr>
                 <th>질문</th>
-                <td><textarea name="q" required></textarea></td>
+                <td><textarea name="q" required >${qna.q }</textarea></td>
             </tr>
             <tr>
                 <th>첨부</th>
