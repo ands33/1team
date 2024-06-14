@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kca.cbt.JDBCUtil;
 
+@Repository("qnaDAO")
 public class QnaDAO {
 	
     // JDBC 관련 변수
@@ -22,9 +23,10 @@ public class QnaDAO {
     // nvl은 null일경우 뒤의값, 아닐경우 앞의값을 return
     private final String QNA_INSERT = "insert into qna (seq_number, title, q, member_id, file_data) values ((SELECT NVL(MAX(seq_number), 0) + 1 from qna), ?, ?, ?, ?)";
     private final String QNA_LIST = "select * from qna order by seq_number asc";
+    private final String QNA_GET = "select * from qna where seq_number=?";
     private final String QNA_UPDATE = "update qna set title=?, q=?, file_data=? where seq_number=?";
     private final String QNA_DELETE = "delete from qna where seq_number=?";
-    private final String QNA_GET = "select * from qna where seq_number=?";
+
     
 
     // QnA 삽입 메소드
@@ -44,6 +46,38 @@ public class QnaDAO {
         } finally {
             JDBCUtil.close(stmt, conn);
         }
+    }
+    
+    // 글 조회
+    public QnaVO getQna(QnaVO vo) {
+    	System.out.println("==> JDBC getQna() 기능 처리");
+    	QnaVO qna = null;
+    	try {
+    		conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(QNA_GET);
+			stmt.setInt(1, vo.getSeq_number()); //select * from board where seq = vo.getSeq()
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				qna = new QnaVO();
+				qna.setSeq_number(rs.getInt("SEQ_NUMBER"));
+				qna.setQ(rs.getString("Q"));
+//				qna.setFile_data(rs.getString("FILE_DATA"));
+				qna.setTitle(rs.getString("TITLE"));
+				qna.setAtitle(rs.getString("ATITLE"));
+				qna.setA_content(rs.getString("A_CONTENT"));
+//				qna.setA_file(rs.getString("A_FILE"));
+				qna.setCreate_day(rs.getDate("CREATE_DAY"));
+				qna.setMember_id(rs.getString("MEMBER_ID"));
+				qna.setAnswer_id(rs.getString("ANSWER_ID"));
+				qna.setViews(rs.getInt("VIEWS"));
+			}
+    		
+    	} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return qna;
     }
     
  // 글 목록 조회

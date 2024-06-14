@@ -69,8 +69,7 @@
         <c:forEach var="qna" items="${qnaList}">
             <tr>
                 <td>${qna.seq_number}</td>
-                <td>${qna.title}</td>
-<%--                 <td><a href="detail.jsp?id=${qna.id}">${qna.question}</a></td> --%>
+                <td><a href="getQna.do?seq_number=${qna.seq_number}">${qna.title}</a></td>
                 <td>
                     <c:if test="${qna.file_data}">
                         <img src="attachment_icon.png" alt="Ã·ºÎ">

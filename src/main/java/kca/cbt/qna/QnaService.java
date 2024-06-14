@@ -10,4 +10,7 @@ public interface QnaService {
 	
 	// 글 목록 조회
 	List<QnaVO> getQnaList(QnaVO vo);
+	
+	// 글 상세 조회
+	QnaVO getQna(QnaVO vo);
 }
