@@ -134,6 +134,37 @@
 //		            	System.out.println("@@@@cList@@@@@");
 //		                stmt = conn.prepareStatement(NOTICE_cLIST);
 //		                stmt.setString(1, vo.getSearchKeyword());
+<<<<<<< HEAD
+		            } else if ("CONTENT".equals(vo.getSearchCondition())) {
+		            	System.out.println("@@@@cList@@@@@");
+		                stmt = conn.prepareStatement(NOTICE_cLIST);
+		                stmt.setString(1, vo.getSearchKeyword());
+		            } else {
+		                stmt = conn.prepareStatement(NOTICE_LIST);
+		            }
+		        }
+
+		        rs = stmt.executeQuery();
+		        while (rs.next()) {
+		            BoardVO board = new BoardVO();
+		            board.setSeq(rs.getInt("SEQ"));
+		            board.setTitle(rs.getString("TITLE"));
+		            board.setWriter(rs.getString("WRITER"));
+		            board.setContent(rs.getString("CONTENT"));
+		            board.setRegDate(rs.getDate("REGDATE"));
+		            board.setCnt(rs.getInt("CNT"));
+		            boardList.add(board);
+		        }
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    } finally {
+		        JDBCUtil.close(rs, stmt, conn);
+		    }
+		    return boardList;
+		}
+		
+	}
+=======
 //		            } else {
 //		                stmt = conn.prepareStatement(NOTICE_LIST);
 //		            }
@@ -160,3 +191,4 @@
 //		
 //	}
 //
+>>>>>>> 6d886831d209b43023b0faa7f7abb6b329a13e11
