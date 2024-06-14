@@ -26,11 +26,11 @@
 	</bean>
 	<bean id="userDAO" class="com.springbook.biz.user.impl.UserDAO" />
 
-	<!-- QnaService와 QnaDAO 빈 설정
+	<!-- QnaService와 QnaDAO 빈 설정 -->
 	<bean id="qnaService" class="kca.cbt.qna.QnaServiceImpl">
 		<property name="qnaDAO" ref="qnaDAO" />
 	</bean>
-	<bean id="qnaDAO" class="kca.cbt.qna.QnaDAO" /> -->
+	<bean id="qnaDAO" class="kca.cbt.qna.QnaDAO" />
 
 	<bean id="testService" class="kca.cbt.exam.TestServiceImpl">
 		<property name="testDAO" ref="testDAO" />

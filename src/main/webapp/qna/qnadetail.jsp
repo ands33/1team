@@ -43,7 +43,7 @@
 <h2>QnA 작성</h2>
 
 <div class="form-container">
-    <form method="post" action="${pageContext.request.contextPath}/insertQna.do" enctype="multipart/form-data">
+    <form method="post" action="${pageContext.request.contextPath}/getQnaList.do" enctype="multipart/form-data">
         <table>
             <tr>
                 <th>작성자</th>

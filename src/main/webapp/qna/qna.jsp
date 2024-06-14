@@ -68,15 +68,16 @@
     <tbody>
         <c:forEach var="qna" items="${qnaList}">
             <tr>
-                <td>${qna.no}</td>
-                <td><a href="detail.jsp?id=${qna.id}">${qna.question}</a></td>
+                <td>${qna.seq_number}</td>
+                <td>${qna.title}</td>
+<%--                 <td><a href="detail.jsp?id=${qna.id}">${qna.question}</a></td> --%>
                 <td>
-                    <c:if test="${qna.attachment}">
+                    <c:if test="${qna.file_data}">
                         <img src="attachment_icon.png" alt="Ã·ºÎ">
                     </c:if>
                 </td>
-                <td>${qna.author}</td>
-                <td>${qna.date}</td>
+                <td>${qna.member_id}</td>
+                <td>${qna.create_day}</td>
                 <td>${qna.views}</td>
             </tr>
         </c:forEach>

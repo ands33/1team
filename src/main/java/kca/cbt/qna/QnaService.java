@@ -9,5 +9,5 @@ public interface QnaService {
 	void insertQna(QnaVO vo);
 	
 	// 글 목록 조회
-//	List<QnaVO> getQnaList(QnaVO vo);
+	List<QnaVO> getQnaList(QnaVO vo);
 }

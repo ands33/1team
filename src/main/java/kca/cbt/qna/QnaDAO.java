@@ -11,8 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kca.cbt.JDBCUtil;
 
-
-@Repository("qnaDAO")
 public class QnaDAO {
 	
     // JDBC 관련 변수
@@ -23,7 +21,7 @@ public class QnaDAO {
     // SQL 명령어들
     // nvl은 null일경우 뒤의값, 아닐경우 앞의값을 return
     private final String QNA_INSERT = "insert into qna (seq_number, title, q, member_id, file_data) values ((SELECT NVL(MAX(seq_number), 0) + 1 from qna), ?, ?, ?, ?)";
-    private final String QNA_LIST = "select * from qna order by seq_number desc";
+    private final String QNA_LIST = "select * from qna order by seq_number asc";
     private final String QNA_UPDATE = "update qna set title=?, q=?, file_data=? where seq_number=?";
     private final String QNA_DELETE = "delete from qna where seq_number=?";
     private final String QNA_GET = "select * from qna where seq_number=?";
@@ -49,29 +47,29 @@ public class QnaDAO {
     }
     
  // 글 목록 조회
-// 	public List<QnaVO> getQnaList(QnaVO vo) {
-// 	    System.out.println("===> JDBC로 getQnaList() 기능 처리");
-// 	    List<QnaVO> qnaList = new ArrayList<QnaVO>();
-// 	   try {
-//			conn = JDBCUtil.getConnection();
-//			stmt = conn.prepareStatement(QNA_LIST);
-//			rs = stmt.executeQuery();
-//			while (rs.next()) {
-//				QnaVO qna = new QnaVO();
-//				qna = new QnaVO();
-//				qna.setSeq_number(rs.getInt("SEQ_NUMBER"));
-//				qna.setTitle(rs.getString("TITLE"));
-////				qna.setFile_data(rs.getString("FILE_DATA"));  (이 부분은 찾아봐야함 이미지로 링크 시켜서 봐야할듯)
-//				qna.setMember_id(rs.getString("MEMBER_ID"));
-//				qna.setCreate_day(rs.getDate("CREATE_DAY"));
-//				qna.setViews(rs.getInt("VIEWS"));
-//				qnaList.add(qna);
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			JDBCUtil.close(rs, stmt, conn);
-//		}
-//		return qnaList;
-//	}
+ 	public List<QnaVO> getQnaList(QnaVO vo) {
+ 	    System.out.println("===> JDBC로 getQnaList() 기능 처리");
+ 	    List<QnaVO> qnaList = new ArrayList<QnaVO>();
+ 	   try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(QNA_LIST);
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				QnaVO qna = new QnaVO();
+				qna = new QnaVO();
+				qna.setSeq_number(rs.getInt("SEQ_NUMBER"));
+				qna.setTitle(rs.getString("TITLE"));
+//				qna.setFile_data(rs.getString("FILE_DATA"));  (이 부분은 찾아봐야함 이미지로 링크 시켜서 봐야할듯)
+				qna.setMember_id(rs.getString("MEMBER_ID"));
+				qna.setCreate_day(rs.getDate("CREATE_DAY"));
+				qna.setViews(rs.getInt("VIEWS"));
+				qnaList.add(qna);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return qnaList;
+	}
 }
