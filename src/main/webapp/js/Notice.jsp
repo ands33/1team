@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="../header.jsp"%>  <!--성혁이 헤더-->
     <meta charset="EUC-KR">
     <title>공지사항</title>
     <style>
