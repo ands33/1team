@@ -10,7 +10,7 @@ public class GetTestListController {
 	@RequestMapping("/getTestList.do")
 	public String getTestList(TestVO vo, TestDAO testDAO, Model model) {
 		model.addAttribute("testList", testDAO.getTestList(vo));
-		return "exam.jsp";
+		return "examcommitmember/exam/exam.jsp";
 	}
 
 }
