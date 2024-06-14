@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
 //import com.springbook.biz.NOTICE.NOTICEVO;
-import com.springbook.biz.board.BoardVO;
-import com.springbook.biz.common.JDBCUtil;
+import kca.cbt.notice.NoticeVO;
+import kca.cbt.JDBCUtil;
 
 @Repository("NoticeDAO")
 public class NoticeDAO {
