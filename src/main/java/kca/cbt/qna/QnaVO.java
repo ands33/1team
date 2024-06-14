@@ -15,7 +15,14 @@ public class QnaVO {
 	private String member_id;	
 	private Date create_day;
 	private String answer_id;
+	private int views;
 	
+	public int getViews() {
+		return views;
+	}
+	public void setViews(int views) {
+		this.views = views;
+	}
 	public MultipartFile getFile_data() {
 		return file_data;
 	}
@@ -77,13 +84,14 @@ public class QnaVO {
 	public void setAnswer_id(String answer_id) {
 		this.answer_id = answer_id;
 	}
-	
 	@Override
 	public String toString() {
 		return "QnaVO [q=" + q + ", seq_number=" + seq_number + ", title=" + title + ", atitle=" + atitle
-				+ ", a_content=" + a_content + ", a_file=" + a_file + ", file_data=" + file_data + ", create_day="
-				+ create_day + ", member_id=" + member_id + ", answer_id=" + answer_id + "]";
+				+ ", a_content=" + a_content + ", a_file=" + a_file + ", file_data=" + file_data + ", member_id="
+				+ member_id + ", create_day=" + create_day + ", answer_id=" + answer_id + ", views=" + views + "]";
 	}
+	
+	
 	
 	
 	

@@ -1,18 +1,26 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+=======
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+>>>>>>> 75a0fe3b7960cff35f12d8cfb75ff5cfdd690508
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>indexí™”ë©´ êµ¬í˜„(main)</title>
-</head>
+<title>index ¸ÞÀÎ ÆäÀÌÁö (main)</title>
 <style>
 .center-table td {
+<<<<<<< HEAD
 	text-align: center;
+=======
+    text-align: center;
+>>>>>>> 75a0fe3b7960cff35f12d8cfb75ff5cfdd690508
 }
 
 .squareTop {
+<<<<<<< HEAD
 	width: 100%;
 	height: 40px;
 	background-color: #5BA3E6;
@@ -38,23 +46,55 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+=======
+    width : 100%;
+    height : 40px;
+    background-color : #0066ff;
+}
+.square1 {
+    width: 300px;
+    height: 300px;
+    background-color: #00ff83;
+    border-radius: 15%;
+}
+.square2 {
+    width: 300px;
+    height: 300px;
+    background-color: #3297ff;
+    border-radius: 15%;
+>>>>>>> 75a0fe3b7960cff35f12d8cfb75ff5cfdd690508
 }
 
 .squareNotice1 {
+<<<<<<< HEAD
 	width: 300px;
 	height: 150px;
 	border-radius: 10%;
 	border: 2px solid black;
+=======
+    width: 300px;
+    height: 150px;
+    border-radius: 10%;
+    border: 2px solid black;
+>>>>>>> 75a0fe3b7960cff35f12d8cfb75ff5cfdd690508
 }
 
 .squareNotice2 {
+<<<<<<< HEAD
 	width: 300px;
 	height: 150px;
 	border-radius: 10%;
 	border: 2px solid black;
+=======
+    width: 300px;
+    height: 150px;
+    border-radius: 10%;
+    border: 2px solid black;
+>>>>>>> 75a0fe3b7960cff35f12d8cfb75ff5cfdd690508
 }
 
 .moved-table {
+<<<<<<< HEAD
 	margin-left: 25px;
 }
 
@@ -68,9 +108,24 @@
 	align-items: center;
 	text-align: center;
 	border: 1px solid #000;
+=======
+    margin-left: 25px;
+}
+.QnA, .FAQ {
+    width: 100px;
+    height: 50px;
+    font-family: 'Song Myung', serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #000;
+>>>>>>> 75a0fe3b7960cff35f12d8cfb75ff5cfdd690508
 }
 
 .noticeGreen {
+<<<<<<< HEAD
 	width: 100%;
 	height: 100%;
 	background-image:
@@ -79,9 +134,21 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+=======
+    position: relative;
+    width: 300px;
+    height: 100px;
+    background-image: url("C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/°øÁö»çÇ× ÀÌ¹ÌÁö.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+>>>>>>> 75a0fe3b7960cff35f12d8cfb75ff5cfdd690508
 }
 
 .noticeBlue {
+<<<<<<< HEAD
 	width: 100%;
 	height: 100%;
 	background-image:
@@ -90,16 +157,36 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+=======
+    position: relative;
+    width: 300px;
+    height: 100px;
+    background-image: url("C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/°øÁö»çÇ× ÀÌ¹ÌÁö.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+>>>>>>> 75a0fe3b7960cff35f12d8cfb75ff5cfdd690508
 }
 
 .bottom {
+<<<<<<< HEAD
 	width: 300px;
 	height: 300px;
 	background-color: #3297ff;
 	border-radius: 15%;
+=======
+    width: 300px;
+    height: 300px;
+    background-color: #3297ff;
+    border-radius: 15%;
+>>>>>>> 75a0fe3b7960cff35f12d8cfb75ff5cfdd690508
 }
 </style>
+</head>
 <body>
+<<<<<<< HEAD
 	<div style="display: flex; align-items: center; width: 100%;">
 		<img
 			src="C:/1kosmosc/sts/work_space3/1team/src/main/indexPage/logo_none.png"
@@ -349,3 +436,180 @@
 	</center>
 </body>
 </html>
+=======
+<div style="display: flex; align-items: center; width: 100%;">
+    <img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/·Î°í ÀÌ¹ÌÁö.png" width="180" height="60" border="0" alt=""> 
+    <span>À¯Àú ´Ô</span>
+    <div style="margin-left: auto;">
+        <span style="margin-left: auto;">${userName}´Ô ¹Ý°©½À´Ï´Ù!</span>
+        <input type="button" value="Logout" onclick="">
+    </div>
+</div>
+<hr>
+<div class="squareTop"></div>
+<br><br>
+<center>
+<table border="1">
+    <tr>
+        <td rowspan="2">
+            <div class="square1">
+                <center>
+                    <p><font size="20" color="white"><strong>¾÷µ¥ÀÌÆ®</strong></font></p>
+                    <img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/ÀÌ¹ÌÁö.png" width="150" height="100" border="0" alt="">
+                </center>
+                <br>
+                <table class="moved-table">
+                    <tr>
+                        <td colspan="2">
+                            <font size="2" color="white"><strong>¾÷µ¥ÀÌÆ® Á¤º¸</strong></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <font size="1" color="white"><strong>»ó¼¼ Á¤º¸</strong></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <font size="1" color="white"><strong>0/3</strong></font>
+                        </td>
+                        <td>
+                            <font size="1" color="white"><strong>(7ÀÏ ³²À½)</strong></font>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+        <td rowspan="2">
+            <div class="square2">
+                <center>
+                    <p><font size="20" color="white"><strong>°øÁö»çÇ×</strong></font></p>
+                    <img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/°øÁö»çÇ×.png" width="115" height="115" border="0" alt="">
+                </center>
+                <table class="moved-table">
+                    <tr>
+                        <td colspan="2">
+                            <font size="2" color="white"><strong>°øÁö»çÇ× Á¤º¸</strong></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <font size="1" color="white"><strong>»ó¼¼ Á¤º¸</strong></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <font size="1" color="white"><strong>0/3</strong></font>
+                        </td>
+                        <td>
+                            <font size="1" color="white"><strong>(7ÀÏ ³²À½)</strong></font>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+        <td>
+            <div class="noticeGreen">
+                <table align="center">
+                    <tr>
+                        <td>°øÁö»çÇ×</td>
+                        <td><input type="button" value="º¸±â" onclick=""></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="noticeBlue">
+                <table align="center">
+                    <tr>
+                        <td>FAQ</td>
+                        <td><input type="button" value="º¸±â" onclick=""></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
+<br><br>
+<table border="1">
+    <tr>
+        <td>
+            <img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/¿ÞÂÊ È­»ìÇ¥.png" width="40" height="80" border="0" alt="">
+        </td>
+        <td>
+            <table class="center-table">
+                <tr>
+                    <td><font size="" color=""><strong>QnA</strong></font></td>
+                </tr>
+                <tr>
+                    <td><hr></td>
+                </tr>
+                <tr>
+                    <td>ÀÚÁÖ ¹¯´Â Áú¹®<br>¿©±â¿¡ ÀÛ¼ºÇÕ´Ï´Ù</td>
+                </tr>
+                <tr>
+                    <td><font size="" color="#3297ff"><strong>ÀÚÁÖ ¹¯´Â Q&A</strong></font></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table class="center-table">
+                <tr>
+                    <td><font size="" color=""><strong>FAQ</strong></font></td>
+                </tr>
+                <tr>
+                    <td><hr></td>
+                </tr>
+                <tr>
+                    <td>ÀÚÁÖ ¹¯´Â Áú¹®<br>¿©±â¿¡ ÀÛ¼ºÇÕ´Ï´Ù</td>
+                </tr>
+                <tr>
+                    <td><font size="" color="#3297ff"><strong>ÀÚÁÖ ¹¯´Â FAQ</strong></font></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table class="center-table">
+                <tr>
+                    <th><img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/¾ÆÀÌÄÜ.png" width="60" height="50" border="0" alt=""></th>
+                </tr>
+                <tr>
+                    <td><hr></td>
+                </tr>
+                <tr>
+                    <td>¾ÆÀÌÄÜ ¼³¸í</td>
+                </tr>
+                <tr>
+                    <td><font size="" color="#3297ff"><strong>¾ÆÀÌÄÜ ¼³¸í</strong></font></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table class="center-table">
+                <tr>
+                    <th><img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/certiManual.png" width="80" height="80" border="0" alt=""></th>
+                </tr>
+                <tr>
+                    <td><hr></td>
+                </tr>
+                <tr>
+                    <td>¸Å´º¾ó ¼³¸í</td>
+                </tr>
+                <tr>
+                    <td><font size="" color="#3297ff"><strong>¸Å´º¾ó ¼³¸í</strong></font></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table class="center-table">
+                <tr>
+                    <th><img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/butterfly.png" width="80" height="60" border="0" alt=""></th>
+                </tr>
+                <tr>
+                    <td><hr></td>
+                </tr>
+                <tr>
+                    <td>ÀÚÁÖ ¹¯´Â Áú¹®<br>¿©±â¿¡ ÀÛ¼º
+>>>>>>> 75a0fe3b7960cff35f12d8cfb75ff5cfdd690508

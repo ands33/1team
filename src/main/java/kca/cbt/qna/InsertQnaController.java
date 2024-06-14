@@ -21,6 +21,6 @@ public class InsertQnaController {
             vo.setFile_data(uploadFile); // 파일 이름을 VO에 설정
         }
         qnaDAO.insertQna(vo);
-        return "qna/qna.jsp"; // 적절한 리다이렉트 URL 설정
+        return "getQnaList.do"; // 적절한 리다이렉트 URL 설정
     }
 }

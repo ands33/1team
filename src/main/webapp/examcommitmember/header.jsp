@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+	
 
 <!DOCTYPE html>
 <html>
@@ -28,7 +29,7 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link" href="../#">마이페이지</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="getTestList.do">출제</a>
+				<li class="nav-item"><a class="nav-link" href="../../../biz/getTestList.do">출제</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="../#">감수</a>
 				</li>
