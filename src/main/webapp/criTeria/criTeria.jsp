@@ -2,16 +2,18 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="criTeria.css">
-    <meta charset="euc-kr">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="criTeria.css">
+<meta charset="euc-kr">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>출제기준</title>
 </head>
 <body>
 	<div class="header-container">
 		<div class="header-left">
-			<img src="C:/1kosmosc/sts/workspace3/1team/src/main/FAQ_criTeria_img/blue_01.png"
+			<img
+				src="C:/1kosmosc/sts/workspace3/1team/src/main/FAQ_criTeria_img/blue_01.png"
 				width="15" height="15" alt="출제기준 아이콘"> 출제기준
 		</div>
 		<div class="navbar">
@@ -52,13 +54,14 @@
 	<br>
 	<tr>
 		<table>
-		<tr>
-			<th class="bold" align="center" bgcolor="#EEEEF3" width="70">출제기준</th>
-			<th class="bold" align="center" bgcolor="#EEEEF3">대분류명</th>
-			<th class="bold" align="center" bgcolor="#EEEEF3">중분류명</th>
-			<th class="bold" align="center" bgcolor="#EEEEF3">소분류명</th>
+			<tr>
+				<th class="bold" align="center" bgcolor="#EEEEF3" width="70">출제기준</th>
+				<th class="bold" align="center" bgcolor="#EEEEF3">대분류명</th>
+				<th class="bold" align="center" bgcolor="#EEEEF3">중분류명</th>
+				<th class="bold" align="center" bgcolor="#EEEEF3">소분류명</th>
 			</tr>
-			</table>
-			<img src="C:/1kosmosc/sts/workspace3/1team/src/main/FAQ_criTeria_img/상담철학과 상담윤리.jpg">
+		</table>
+		<img
+			src="C:/1kosmosc/sts/workspace3/1team/src/main/FAQ_criTeria_img/상담철학과 상담윤리.jpg">
 </body>
 </html>

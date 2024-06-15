@@ -30,6 +30,8 @@
 	<bean id="qnaService" class="kca.cbt.qna.QnaServiceImpl">
 		<property name="qnaDAO" ref="qnaDAO" />
 	</bean>
+	<bean id="FAQDAO" class="kca.cbt.FAQ.FAQDAO" />
+	
 	<bean id="qnaDAO" class="kca.cbt.qna.QnaDAO" />
 
 	<bean id="testService" class="kca.cbt.exam.TestServiceImpl">
