@@ -1,6 +1,7 @@
 package kca.cbt.notice;
 
 import java.sql.Date;
+import java.io.File;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -57,7 +58,7 @@ public class NoticeVO {
 		this.content = content;
 	}
 
-	public Date getcCeatedate() {
+	public Date getCeatedate() {
 		return createdate;
 	}
 
@@ -65,13 +66,6 @@ public class NoticeVO {
 		this.createdate = createdate;
 	}
 
-	public int getviews() {
-		return views;
-	}
-
-	public void setviews(int views) {
-		this.views = views;
-	}
 
 	public Date getCreatedate() {
 		return createdate;
