@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,21 +62,40 @@ th {
 				</tr>
 			</thead>
 			<tbody>
+				<c:forEach var="test" items="${testList}">
 					<tr>
 						<td>${test.subject}</td>
-						<td>객관-4지선다</td>
-						<td>미개봉</td>
-						<td>2015-01-27</td>
-						<td>2015-02-03</td>
-						<td>7</td>
-						<td>0/3</td>
-						<td><button>보기</button></td>
-						<td><button>보기</button></td>
+						<td>${test.test_type}</td>
+						<td>${test.status}</td>
+						<td>${test.requestDate}</td>
+						<td>${test.comRequestDate}</td>
+						<td>${test.dateDifference}</td>
+						<td>${test.curSituation}/3</td>
+						<td><c:choose>
+								<c:when test="${test.pledge == 1}">
+									<button>보기</button>
+								</c:when>
+								<c:when test="${test.pledge == 0}">
+								</c:when>
+								<c:otherwise>
+                                    잘못된 값
+                                </c:otherwise>
+							</c:choose></td>
+						<td><c:choose>
+								<c:when test="${test.reqLetter == 1}">
+									<button>보기</button>
+								</c:when>
+								<c:when test="${test.reqLetter == 0}">
+								</c:when>
+								<c:otherwise>
+                                    잘못된 값
+                                </c:otherwise>
+							</c:choose></td>
 						<td><button>반려</button>
 							<button>출제</button></td>
 					</tr>
-					
-					
+				</c:forEach>
+
 			</tbody>
 		</table>
 	</div>

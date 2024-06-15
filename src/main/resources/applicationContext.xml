@@ -27,4 +27,5 @@
         <property name="testDAO" ref="testDAO" />
     </bean>
     <bean id="testDAO" class="kca.cbt.exam.TestDAO" />
+
 </beans>
