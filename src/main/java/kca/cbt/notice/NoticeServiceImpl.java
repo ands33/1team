@@ -9,8 +9,8 @@ import kca.cbt.notice.NoticeService;
 import kca.cbt.notice.NoticeVO;
 
 @Service("noticeService")
+//??
 public class NoticeServiceImpl implements NoticeService {
-	
 	@Autowired
 	private NoticeDAO noticeDAO;
 
@@ -18,7 +18,7 @@ public class NoticeServiceImpl implements NoticeService {
 		noticeDAO.insertNotice(vo);
 	}
 
-	public void updateBoard(NoticeVO vo) {
+	public void updateNotice(NoticeVO vo) {
 		noticeDAO.updateNotice(vo);
 	}
 
