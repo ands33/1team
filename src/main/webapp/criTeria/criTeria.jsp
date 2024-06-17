@@ -13,7 +13,7 @@
 	<div class="header-container">
 		<div class="header-left">
 			<img
-				src="C:/1kosmosc/sts/workspace3/1team/src/main/FAQ_criTeria_img/blue_01.png"
+				src="C:/1kosmosc/sts/workspace3/1team/src/main/FAQ_criTeria_login_img/blue_01.png"
 				width="15" height="15" alt="출제기준 아이콘"> 출제기준
 		</div>
 		<div class="navbar">
@@ -61,7 +61,5 @@
 				<th class="bold" align="center" bgcolor="#EEEEF3">소분류명</th>
 			</tr>
 		</table>
-		<img
-			src="C:/1kosmosc/sts/workspace3/1team/src/main/FAQ_criTeria_img/상담철학과 상담윤리.jpg">
 </body>
 </html>

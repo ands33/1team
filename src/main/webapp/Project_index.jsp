@@ -4,7 +4,7 @@
 <head>
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>index ¸ŞÀÎ ÆäÀÌÁö (main)</title>
+<title>index ë©”ì¸ í˜ì´ì§€ (main)</title>
 <style>
 .center-table td {
     text-align: center;
@@ -56,7 +56,7 @@
     position: relative;
     width: 300px;
     height: 100px;
-    background-image: url("C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/°øÁö»çÇ× ÀÌ¹ÌÁö.png");
+    background-image: url("C:/Users/user/Desktop/ì¸ì¦ë§ˆìŠ¤í„°/front-end/ê³µì§€ì‚¬í•­ ì´ë¯¸ì§€.png");
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
@@ -67,7 +67,7 @@
     position: relative;
     width: 300px;
     height: 100px;
-    background-image: url("C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/°øÁö»çÇ× ÀÌ¹ÌÁö.png");
+    background-image: url("C:/Users/user/Desktop/ì¸ì¦ë§ˆìŠ¤í„°/front-end/ê³µì§€ì‚¬í•­ ì´ë¯¸ì§€.png");
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
@@ -84,10 +84,10 @@
 </head>
 <body>
 <div style="display: flex; align-items: center; width: 100%;">
-    <img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/·Î°í ÀÌ¹ÌÁö.png" width="180" height="60" border="0" alt=""> 
-    <span>À¯Àú ´Ô</span>
+    <img src="C:/Users/user/Desktop/ì¸ì¦ë§ˆìŠ¤í„°/front-end/ë¡œê³  ì´ë¯¸ì§€.png" width="180" height="60" border="0" alt=""> 
+    <span>ìœ ì € ë‹˜</span>
     <div style="margin-left: auto;">
-        <span style="margin-left: auto;">${userName}´Ô ¹İ°©½À´Ï´Ù!</span>
+        <span style="margin-left: auto;">${userName}ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤!</span>
         <input type="button" value="Logout" onclick="">
     </div>
 </div>
@@ -100,19 +100,19 @@
         <td rowspan="2">
             <div class="square1">
                 <center>
-                    <p><font size="20" color="white"><strong>¾÷µ¥ÀÌÆ®</strong></font></p>
-                    <img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/ÀÌ¹ÌÁö.png" width="150" height="100" border="0" alt="">
+                    <p><font size="20" color="white"><strong>ì—…ë°ì´íŠ¸</strong></font></p>
+                    <img src="C:/Users/user/Desktop/ì¸ì¦ë§ˆìŠ¤í„°/front-end/ì´ë¯¸ì§€.png" width="150" height="100" border="0" alt="">
                 </center>
                 <br>
                 <table class="moved-table">
                     <tr>
                         <td colspan="2">
-                            <font size="2" color="white"><strong>¾÷µ¥ÀÌÆ® Á¤º¸</strong></font>
+                            <font size="2" color="white"><strong>ì—…ë°ì´íŠ¸ ì •ë³´</strong></font>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <font size="1" color="white"><strong>»ó¼¼ Á¤º¸</strong></font>
+                            <font size="1" color="white"><strong>ìƒì„¸ ì •ë³´</strong></font>
                         </td>
                     </tr>
                     <tr>
@@ -120,7 +120,7 @@
                             <font size="1" color="white"><strong>0/3</strong></font>
                         </td>
                         <td>
-                            <font size="1" color="white"><strong>(7ÀÏ ³²À½)</strong></font>
+                            <font size="1" color="white"><strong>(7ì¼ ë‚¨ìŒ)</strong></font>
                         </td>
                     </tr>
                 </table>
@@ -129,18 +129,18 @@
         <td rowspan="2">
             <div class="square2">
                 <center>
-                    <p><font size="20" color="white"><strong>°øÁö»çÇ×</strong></font></p>
-                    <img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/°øÁö»çÇ×.png" width="115" height="115" border="0" alt="">
+                    <p><font size="20" color="white"><strong>ê³µì§€ì‚¬í•­</strong></font></p>
+                    <img src="C:/Users/user/Desktop/ì¸ì¦ë§ˆìŠ¤í„°/front-end/ê³µì§€ì‚¬í•­.png" width="115" height="115" border="0" alt="">
                 </center>
                 <table class="moved-table">
                     <tr>
                         <td colspan="2">
-                            <font size="2" color="white"><strong>°øÁö»çÇ× Á¤º¸</strong></font>
+                            <font size="2" color="white"><strong>ê³µì§€ì‚¬í•­ ì •ë³´</strong></font>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <font size="1" color="white"><strong>»ó¼¼ Á¤º¸</strong></font>
+                            <font size="1" color="white"><strong>ìƒì„¸ ì •ë³´</strong></font>
                         </td>
                     </tr>
                     <tr>
@@ -148,7 +148,7 @@
                             <font size="1" color="white"><strong>0/3</strong></font>
                         </td>
                         <td>
-                            <font size="1" color="white"><strong>(7ÀÏ ³²À½)</strong></font>
+                            <font size="1" color="white"><strong>(7ì¼ ë‚¨ìŒ)</strong></font>
                         </td>
                     </tr>
                 </table>
@@ -158,8 +158,8 @@
             <div class="noticeGreen">
                 <table align="center">
                     <tr>
-                        <td>°øÁö»çÇ×</td>
-                        <td><input type="button" value="º¸±â" onclick=""></td>
+                        <td>ê³µì§€ì‚¬í•­</td>
+                        <td><input type="button" value="ë³´ê¸°" onclick=""></td>
                     </tr>
                 </table>
             </div>
@@ -171,7 +171,7 @@
                 <table align="center">
                     <tr>
                         <td>FAQ</td>
-                        <td><input type="button" value="º¸±â" onclick=""></td>
+                        <td><input type="button" value="ë³´ê¸°" onclick=""></td>
                     </tr>
                 </table>
             </div>
@@ -182,7 +182,7 @@
 <table border="1">
     <tr>
         <td>
-            <img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/¿ŞÂÊ È­»ìÇ¥.png" width="40" height="80" border="0" alt="">
+            <img src="C:/Users/user/Desktop/ì¸ì¦ë§ˆìŠ¤í„°/front-end/ì™¼ìª½ í™”ì‚´í‘œ.png" width="40" height="80" border="0" alt="">
         </td>
         <td>
             <table class="center-table">
@@ -193,10 +193,10 @@
                     <td><hr></td>
                 </tr>
                 <tr>
-                    <td>ÀÚÁÖ ¹¯´Â Áú¹®<br>¿©±â¿¡ ÀÛ¼ºÇÕ´Ï´Ù</td>
+                    <td>ìì£¼ ë¬»ëŠ” ì§ˆë¬¸<br>ì—¬ê¸°ì— ì‘ì„±í•©ë‹ˆë‹¤</td>
                 </tr>
                 <tr>
-                    <td><font size="" color="#3297ff"><strong>ÀÚÁÖ ¹¯´Â Q&A</strong></font></td>
+                    <td><font size="" color="#3297ff"><strong>ìì£¼ ë¬»ëŠ” Q&A</strong></font></td>
                 </tr>
             </table>
         </td>
@@ -209,52 +209,52 @@
                     <td><hr></td>
                 </tr>
                 <tr>
-                    <td>ÀÚÁÖ ¹¯´Â Áú¹®<br>¿©±â¿¡ ÀÛ¼ºÇÕ´Ï´Ù</td>
+                    <td>ìì£¼ ë¬»ëŠ” ì§ˆë¬¸<br>ì—¬ê¸°ì— ì‘ì„±í•©ë‹ˆë‹¤</td>
                 </tr>
                 <tr>
-                    <td><font size="" color="#3297ff"><strong>ÀÚÁÖ ¹¯´Â FAQ</strong></font></td>
-                </tr>
-            </table>
-        </td>
-        <td>
-            <table class="center-table">
-                <tr>
-                    <th><img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/¾ÆÀÌÄÜ.png" width="60" height="50" border="0" alt=""></th>
-                </tr>
-                <tr>
-                    <td><hr></td>
-                </tr>
-                <tr>
-                    <td>¾ÆÀÌÄÜ ¼³¸í</td>
-                </tr>
-                <tr>
-                    <td><font size="" color="#3297ff"><strong>¾ÆÀÌÄÜ ¼³¸í</strong></font></td>
+                    <td><font size="" color="#3297ff"><strong>ìì£¼ ë¬»ëŠ” FAQ</strong></font></td>
                 </tr>
             </table>
         </td>
         <td>
             <table class="center-table">
                 <tr>
-                    <th><img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/certiManual.png" width="80" height="80" border="0" alt=""></th>
+                    <th><img src="C:/Users/user/Desktop/ì¸ì¦ë§ˆìŠ¤í„°/front-end/ì•„ì´ì½˜.png" width="60" height="50" border="0" alt=""></th>
                 </tr>
                 <tr>
                     <td><hr></td>
                 </tr>
                 <tr>
-                    <td>¸Å´º¾ó ¼³¸í</td>
+                    <td>ì•„ì´ì½˜ ì„¤ëª…</td>
                 </tr>
                 <tr>
-                    <td><font size="" color="#3297ff"><strong>¸Å´º¾ó ¼³¸í</strong></font></td>
+                    <td><font size="" color="#3297ff"><strong>ì•„ì´ì½˜ ì„¤ëª…</strong></font></td>
                 </tr>
             </table>
         </td>
         <td>
             <table class="center-table">
                 <tr>
-                    <th><img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/butterfly.png" width="80" height="60" border="0" alt=""></th>
+                    <th><img src="C:/Users/user/Desktop/ì¸ì¦ë§ˆìŠ¤í„°/front-end/certiManual.png" width="80" height="80" border="0" alt=""></th>
                 </tr>
                 <tr>
                     <td><hr></td>
                 </tr>
                 <tr>
-                    <td>ÀÚÁÖ ¹¯´Â Áú¹®<br>¿©±â¿¡ ÀÛ¼º
+                    <td>ë§¤ë‰´ì–¼ ì„¤ëª…</td>
+                </tr>
+                <tr>
+                    <td><font size="" color="#3297ff"><strong>ë§¤ë‰´ì–¼ ì„¤ëª…</strong></font></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table class="center-table">
+                <tr>
+                    <th><img src="C:/Users/user/Desktop/ì¸ì¦ë§ˆìŠ¤í„°/front-end/butterfly.png" width="80" height="60" border="0" alt=""></th>
+                </tr>
+                <tr>
+                    <td><hr></td>
+                </tr>
+                <tr>
+                    <td>ìì£¼ ë¬»ëŠ” ì§ˆë¬¸<br>ì—¬ê¸°ì— ì‘ì„±

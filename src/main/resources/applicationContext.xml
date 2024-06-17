@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-	http://www.springframework.org/schema/beans/spring-beans.xsd
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:p="http://www.springframework.org/schema/p"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+   http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<!-- 패키지 스캔 설정 -->
-	<context:component-scan base-package="kca.cbt"/>
+   <!-- 패키지 스캔 설정 -->
+   <context:component-scan base-package="kca.cbt"/>
 
-	<!-- <context:component-scan base-package="com.springbook.biz"/> -->
+   <!-- <context:component-scan base-package="com.springbook.biz"/> -->
 
-	<!-- 파일 업로드 설정 -->
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="10485760" />
-	</bean>
+   <!-- 파일 업로드 설정 -->
+   <bean id="multipartResolver"
+      class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+      <property name="maxUploadSize" value="10485760" />
+   </bean>
 
-	<!-- 서비스와 DAO 빈 설정 -->
-	<bean id="userService"
-		class="com.springbook.biz.user.impl.UserServiceImpl">
-		<property name="userDAO" ref="userDAO" />
-	</bean>
-	<bean id="userDAO" class="com.springbook.biz.user.impl.UserDAO" />
+   <!-- 서비스와 DAO 빈 설정 -->
+   <bean id="userService"
+      class="com.springbook.biz.user.impl.UserServiceImpl">
+      <property name="userDAO" ref="userDAO" />
+   </bean>
+   <bean id="userDAO" class="com.springbook.biz.user.impl.UserDAO" />
 
+<<<<<<< HEAD
 	<!-- QnaService와 QnaDAO 빈 설정 -->
 	<bean id="qnaService" class="kca.cbt.qna.QnaServiceImpl">
 		<property name="qnaDAO" ref="qnaDAO" />
@@ -33,9 +34,16 @@
 	<bean id="FAQDAO" class="kca.cbt.FAQ.FAQDAO" />
 	
 	<bean id="qnaDAO" class="kca.cbt.qna.QnaDAO" />
+=======
+   <!-- QnaService와 QnaDAO 빈 설정 -->
+   <bean id="qnaService" class="kca.cbt.qna.QnaServiceImpl">
+      <property name="qnaDAO" ref="qnaDAO" />
+   </bean>
+   <bean id="qnaDAO" class="kca.cbt.qna.QnaDAO" />
+>>>>>>> f5c5babfde4e99d65df488dd128d182407f4a289
 
-	<bean id="testService" class="kca.cbt.exam.TestServiceImpl">
-		<property name="testDAO" ref="testDAO" />
-	</bean>
-	<bean id="testDAO" class="kca.cbt.exam.TestDAO" />
+   <bean id="testService" class="kca.cbt.exam.TestServiceImpl">
+      <property name="testDAO" ref="testDAO" />
+   </bean>
+   <bean id="testDAO" class="kca.cbt.exam.TestDAO" />
 </beans>
