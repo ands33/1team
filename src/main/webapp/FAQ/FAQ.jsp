@@ -12,7 +12,7 @@
 <body>
 	<h5 style="display: flex; justify-content: space-between; align-items: center;">
     <div>
-        <img src="C:/1kosmosc/sts/workspace3/1team/src/main/FAQ_criTeria_img/blue_01.png" alt="FAQ 아이콘">
+        <img src="C:/1kosmosc/sts/workspace3/1team/src/main/FAQ_criTeria_login_img/blue_01.png" alt="FAQ 아이콘">
         FAQ
     </div>
     <div class="navbar">
