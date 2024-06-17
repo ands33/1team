@@ -12,11 +12,14 @@
 //		return "qna/qna.jsp";
 //	}
 //}
-package kca.cbt.qna;
+package kca.cbt.view.qna;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import kca.cbt.qna.QnaDAO;
+import kca.cbt.qna.QnaVO;
 
 @Controller
 public class getQnaListController {

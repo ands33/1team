@@ -26,4 +26,12 @@ public class QnaServiceImpl implements QnaService {
     public List<QnaVO> getQnaList(QnaVO vo) {
         return qnaDAO.getQnaList(vo);
     }
+    
+    public void updateQna(QnaVO vo) {
+    	qnaDAO.updateQna(vo);
+    }
+    
+    public void deleteQna(QnaVO vo) {
+    	qnaDAO.deleteQna(vo);
+    }
 }

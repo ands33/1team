@@ -1,4 +1,4 @@
-package kca.cbt.qna;
+package kca.cbt.view.qna;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+
+import kca.cbt.qna.QnaDAO;
+import kca.cbt.qna.QnaVO;
 
 @Controller
 public class InsertQnaController {

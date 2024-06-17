@@ -1,8 +1,11 @@
-package kca.cbt.qna;
+package kca.cbt.view.qna;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import kca.cbt.qna.QnaDAO;
+import kca.cbt.qna.QnaVO;
 
 @Controller
 public class GetQnaController {
