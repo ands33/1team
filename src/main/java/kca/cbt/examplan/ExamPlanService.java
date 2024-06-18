@@ -6,4 +6,6 @@ public interface ExamPlanService {
 
 	List<ExamPlanVO> getExamPlanList(ExamPlanVO vo);
 	
+	void updateStatus(ExamPlanVO vo);
+	
 }

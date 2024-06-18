@@ -19,8 +19,11 @@ public class ExamPlanServiceImpl implements ExamPlanService {
 	}
 
 	public List<ExamPlanVO> getExamPlanList(ExamPlanVO vo) {
-		// TODO Auto-generated method stub
 		return examPlanDAO.getExamPlanList(vo);
+	}
+	
+	public void updateStatus(ExamPlanVO vo) {
+		examPlanDAO.updateStatus(vo);
 	}
 
 }
