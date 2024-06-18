@@ -20,12 +20,13 @@ public class MemberController {
 	        	System.out.println("===> 관리자로그인");
 //	            return "redirect:getUserList.do";
 	        	return "redirect:indexA.jsp";
+//	        	관리자페이지로가도록구현해야함
 	        } else {
 	        	System.out.println("===> 출제위원으로 로그인");
-	            return "redirect:getBoardList.do";
+	            return "redirect:Project_index.jsp";
 	        }
 	    } else {
-	        return "login.jsp";
+	        return "redirect:login/login.jsp?error=true";
 	    }
 	}
 }
