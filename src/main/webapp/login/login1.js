@@ -1,11 +1,13 @@
-$(".user").focusin(function(){
-  $(".inputUserIcon").css("color", "#e74c3c");
-}).focusout(function(){
-  $(".inputUserIcon").css("color", "white");
+document.querySelector(".id").addEventListener("focusin", function(){
+    document.querySelector(".inputUserIcon").style.color = "#e74c3c";
+});
+document.querySelector(".id").addEventListener("focusout", function(){
+    document.querySelector(".inputUserIcon").style.color = "#333";
 });
 
-$(".pass").focusin(function(){
-  $(".inputPassIcon").css("color", "#e74c3c");
-}).focusout(function(){
-  $(".inputPassIcon").css("color", "white");
+document.querySelector(".pass").addEventListener("focusin", function(){
+    document.querySelector(".inputPassIcon").style.color = "#e74c3c";
+});
+document.querySelector(".pass").addEventListener("focusout", function(){
+    document.querySelector(".inputPassIcon").style.color = "#333";
 });
