@@ -85,11 +85,11 @@ button.submit:hover {
 }
 
 .logo-container {
-    text-align: center;
-    margin-bottom: 20px;
+    text-align: left;
+    margin-bottom: 10px;
 }
 
 .logo-container img {
-    width: 100px;
-    height: auto;
+    width: 200px;
+    height: 100px;
 }
