@@ -29,7 +29,7 @@
             <button type="submit" class="login-button">로그인</button>
         </form><br>
         <div class="forgot-password">
-            <a href="#">아이디/비밀호 찾기</a>
+            <a href="#">아이디/비밀번호 찾기</a>
         </div>
     </div>
 </body>
