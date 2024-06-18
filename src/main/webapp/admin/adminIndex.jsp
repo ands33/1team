@@ -51,6 +51,9 @@
 
 <div class="button-container">
     <input type="text" placeholder="출제기간: 년 월 일 ~ 년 월 일">
+    <form action="${pageContext.request.contextPath}/getMemberList.do" method="get">
+                <button type="submit">회원목록</button>
+     </form>
     <button type="button" onclick="location.href='excel_export.jsp'">엑셀파일출력</button>
 </div>
 
@@ -117,6 +120,83 @@
     </tr>
     <tr>
         <td>1급</td>
+        <td>2교시<br>[+과목추가]</td>
+        <td>상담이론과 실제</td>
+        <td>[삭제]</td>
+        <td>21</td>
+        <td>certi21A</td>
+        <td>certi21B</td>
+        <td>○</td>
+        <td>certi21C</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>진단상담 이론과 실제</td>
+        <td>[삭제]</td>
+        <td>22</td>
+        <td>certi22A</td>
+        <td>certi22B</td>
+        <td>○</td>
+        <td>certi22C</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>가족상담</td>
+        <td>[삭제]</td>
+        <td>23</td>
+        <td>certi23A</td>
+        <td>certi23B</td>
+        <td>○</td>
+        <td>certi23C</td>
+    </tr>
+    <tr>
+        <td>2급</td>
+        <td>1교시<br>[+과목추가]</td>
+        <td>상담학개론</td>
+        <td>[삭제]</td>
+        <td>11</td>
+        <td>certi11A</td>
+        <td>certi11B</td>
+        <td>○</td>
+        <td>certi11C</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>고급상담이론과 실제</td>
+        <td>[삭제]</td>
+        <td>12</td>
+        <td>certi12A</td>
+        <td>certi12B</td>
+        <td>○</td>
+        <td>certi12C</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>진단상담 프로그램 개발</td>
+        <td>[삭제]</td>
+        <td>13</td>
+        <td>certi13A</td>
+        <td>certi13B</td>
+        <td>○</td>
+        <td>certi13C</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>심리평가와 진단</td>
+        <td>[삭제]</td>
+        <td>14</td>
+        <td>certi14A</td>
+        <td>certi14B</td>
+        <td>○</td>
+        <td>certi14C</td>
+    </tr>
+    <tr>
+        <td>2급</td>
         <td>2교시<br>[+과목추가]</td>
         <td>상담이론과 실제</td>
         <td>[삭제]</td>
