@@ -11,6 +11,9 @@ import kca.cbt.qna.QnaVO;
 public class GetQnaController {
 	@RequestMapping(value = "/getQna.do")
 	public ModelAndView getQna(QnaVO vo, QnaDAO qnaDAO, ModelAndView mav) {
+		// 조회수 증가
+		qnaDAO.increaseViews(vo);
+		
 		mav.addObject("qna",qnaDAO.getQna(vo)); // Model 정보 저장
 		mav.setViewName("qna/qnadetail.jsp");
 		return mav;

@@ -1,12 +1,11 @@
 package kca.cbt.login;
 
-public class loginMemberVO {
+public class MemberVO {
 	
 	private String member_id;
 	private String pw;
 	private String member_name;
 	private String member_type;
-	
 	public String getMember_id() {
 		return member_id;
 	}
@@ -36,4 +35,6 @@ public class loginMemberVO {
 		return "loginMemberVO [member_id=" + member_id + ", pw=" + pw + ", member_name=" + member_name
 				+ ", member_type=" + member_type + "]";
 	}
+	
+	
 }

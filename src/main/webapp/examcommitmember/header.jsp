@@ -19,7 +19,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="../index.jsp">출제위원 페이지</a>
+		<a class="navbar-brand" href="../../../index.jsp">출제위원 페이지</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -27,11 +27,13 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="../#">마이페이지</a>
+				<li class="nav-item"><a class="nav-link" href="../#">출제 계획서</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="../../../biz/getTestList.do">출제</a>
+				<li class="nav-item"><a class="nav-link" href="../../../biz/getExamPlanList.do">출제</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="../#">감수</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="../#">출제 이원 분류표</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="../#" id="noticeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
