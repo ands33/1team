@@ -77,7 +77,7 @@
     <tr>
         <td>1급</td>
         <td>1교시<br>[+과목추가]</td>
-        <td>상담학개론</td>
+        <td>상담철학과 윤리</td>
         <td>[삭제]</td>
         <td>11</td>
         <td>certi11A</td>
@@ -88,7 +88,7 @@
     <tr>
         <td></td>
         <td></td>
-        <td>고급상담이론과 실제</td>
+        <td>고급상담 이론과 실제</td>
         <td>[삭제]</td>
         <td>12</td>
         <td>certi12A</td>
@@ -99,7 +99,7 @@
     <tr>
         <td></td>
         <td></td>
-        <td>진단상담 프로그램 개발</td>
+        <td>집단상담 프로그램 개발</td>
         <td>[삭제]</td>
         <td>13</td>
         <td>certi13A</td>
@@ -107,21 +107,10 @@
         <td>○</td>
         <td>certi13C</td>
     </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td>심리평가와 진단</td>
-        <td>[삭제]</td>
-        <td>14</td>
-        <td>certi14A</td>
-        <td>certi14B</td>
-        <td>○</td>
-        <td>certi14C</td>
-    </tr>
-    <tr>
+     <tr>
         <td>1급</td>
         <td>2교시<br>[+과목추가]</td>
-        <td>상담이론과 실제</td>
+        <td>심리평가와 진단</td>
         <td>[삭제]</td>
         <td>21</td>
         <td>certi21A</td>
@@ -132,7 +121,19 @@
     <tr>
         <td></td>
         <td></td>
-        <td>진단상담 이론과 실제</td>
+        <td>고급 상담연구방법론</td>
+        <td>[삭제]</td>
+        <td>14</td>
+        <td>certi14A</td>
+        <td>certi14B</td>
+        <td>○</td>
+        <td>certi14C</td>
+    </tr>
+   
+    <tr>
+        <td></td>
+        <td></td>
+        <td>상담슈퍼비전의 이론과 실제</td>
         <td>[삭제]</td>
         <td>22</td>
         <td>certi22A</td>
@@ -140,10 +141,21 @@
         <td>○</td>
         <td>certi22C</td>
     </tr>
+     <tr>
+        <td>2급</td>
+        <td>1교시<br>[+과목추가]</td>
+        <td>상담윤리</td>
+        <td>[삭제]</td>
+        <td>11</td>
+        <td>certi11A</td>
+        <td>certi11B</td>
+        <td>○</td>
+        <td>certi11C</td>
+    </tr>
     <tr>
         <td></td>
         <td></td>
-        <td>가족상담</td>
+        <td>상담이론과 실제</td>
         <td>[삭제]</td>
         <td>23</td>
         <td>certi23A</td>
@@ -151,21 +163,11 @@
         <td>○</td>
         <td>certi23C</td>
     </tr>
-    <tr>
-        <td>2급</td>
-        <td>1교시<br>[+과목추가]</td>
-        <td>상담학개론</td>
-        <td>[삭제]</td>
-        <td>11</td>
-        <td>certi11A</td>
-        <td>certi11B</td>
-        <td>○</td>
-        <td>certi11C</td>
-    </tr>
+   
     <tr>
         <td></td>
         <td></td>
-        <td>고급상담이론과 실제</td>
+        <td>집단상담 이론과 실제</td>
         <td>[삭제]</td>
         <td>12</td>
         <td>certi12A</td>
@@ -173,32 +175,11 @@
         <td>○</td>
         <td>certi12C</td>
     </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td>진단상담 프로그램 개발</td>
-        <td>[삭제]</td>
-        <td>13</td>
-        <td>certi13A</td>
-        <td>certi13B</td>
-        <td>○</td>
-        <td>certi13C</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td>심리평가와 진단</td>
-        <td>[삭제]</td>
-        <td>14</td>
-        <td>certi14A</td>
-        <td>certi14B</td>
-        <td>○</td>
-        <td>certi14C</td>
-    </tr>
+  
     <tr>
         <td>2급</td>
         <td>2교시<br>[+과목추가]</td>
-        <td>상담이론과 실제</td>
+        <td>심리검사와 상담</td>
         <td>[삭제]</td>
         <td>21</td>
         <td>certi21A</td>
@@ -209,7 +190,7 @@
     <tr>
         <td></td>
         <td></td>
-        <td>진단상담 이론과 실제</td>
+        <td>상담연구방법론</td>
         <td>[삭제]</td>
         <td>22</td>
         <td>certi22A</td>
@@ -218,6 +199,17 @@
         <td>certi22C</td>
     </tr>
     <tr>
+        <td></td>
+        <td></td>
+        <td>진로상담</td>
+        <td>[삭제]</td>
+        <td>23</td>
+        <td>certi23A</td>
+        <td>certi23B</td>
+        <td>○</td>
+        <td>certi23C</td>
+    </tr>
+     <tr>
         <td></td>
         <td></td>
         <td>가족상담</td>
