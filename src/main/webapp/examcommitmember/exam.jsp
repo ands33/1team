@@ -20,13 +20,13 @@ table {
 }
 
 th, td {
-	border: 1px solid #ddd;
+	border: 1px solid #F76030;
 	padding: 8px;
 	text-align: center;
 }
 
 th {
-	background-color: #f2f2f2;
+	background-color: #fff;
 }
 
 .container {
