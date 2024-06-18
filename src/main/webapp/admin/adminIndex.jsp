@@ -24,24 +24,22 @@
         .header-table th, .main-table th {
             background-color: #f2f2f2;
         }
-        .input-container {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        .input-container input {
-            width: 48%;
-            padding: 10px;
-            box-sizing: border-box;
-        }
         .button-container {
             display: flex;
-            justify-content: space-between;
+            align-items: center; /* 수직 정렬 */
+            justify-content: flex-end;
             margin-bottom: 20px;
         }
-        .button-container button {
+        .button-container input {
+            width: 300px; /* 원하는 너비로 설정 */
+            margin-right: 950px; /* 오른쪽 마진 설정 */
             padding: 10px;
             box-sizing: border-box;
+        }
+        .button-container button,
+        .button-container form {
+            display: inline-block;
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -52,8 +50,8 @@
 <div class="button-container">
     <input type="text" placeholder="출제기간: 년 월 일 ~ 년 월 일">
     <form action="${pageContext.request.contextPath}/getMemberList.do" method="get">
-                <button type="submit">회원목록</button>
-     </form>
+        <button type="submit">회원목록</button>
+    </form>
     <button type="button" onclick="location.href='excel_export.jsp'">엑셀파일출력</button>
 </div>
 
@@ -74,9 +72,10 @@
         <th>A + B / A</th>
         <th>이름</th>
     </tr>
+    <!-- 1급 데이터 -->
     <tr>
-        <td>1급</td>
-        <td>1교시<br>[+과목추가]</td>
+        <td rowspan="12">1급</td>
+        <td rowspan="6">1교시<br>[+과목추가]</td>
         <td>상담철학과 윤리</td>
         <td>[삭제]</td>
         <td>11</td>
@@ -88,6 +87,13 @@
     <tr>
         <td></td>
         <td></td>
+        <td></td>
+        <td>certi11A</td>
+        <td>certi11B</td>
+        <td>○</td>
+        <td>certi11C</td>
+    </tr>
+    <tr>
         <td>고급상담 이론과 실제</td>
         <td>[삭제]</td>
         <td>12</td>
@@ -99,6 +105,13 @@
     <tr>
         <td></td>
         <td></td>
+        <td></td>
+        <td>certi11A</td>
+        <td>certi11B</td>
+        <td>○</td>
+        <td>certi11C</td>
+    </tr>
+    <tr>
         <td>집단상담 프로그램 개발</td>
         <td>[삭제]</td>
         <td>13</td>
@@ -107,9 +120,17 @@
         <td>○</td>
         <td>certi13C</td>
     </tr>
-     <tr>
-        <td>1급</td>
-        <td>2교시<br>[+과목추가]</td>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>certi11A</td>
+        <td>certi11B</td>
+        <td>○</td>
+        <td>certi11C</td>
+    </tr>
+    <tr>
+        <td rowspan="6">2교시<br>[+과목추가]</td>
         <td>심리평가와 진단</td>
         <td>[삭제]</td>
         <td>21</td>
@@ -121,6 +142,13 @@
     <tr>
         <td></td>
         <td></td>
+        <td></td>
+        <td>certi11A</td>
+        <td>certi11B</td>
+        <td>○</td>
+        <td>certi11C</td>
+    </tr>
+    <tr>
         <td>고급 상담연구방법론</td>
         <td>[삭제]</td>
         <td>14</td>
@@ -129,10 +157,16 @@
         <td>○</td>
         <td>certi14C</td>
     </tr>
-   
     <tr>
         <td></td>
         <td></td>
+        <td></td>
+        <td>certi11A</td>
+        <td>certi11B</td>
+        <td>○</td>
+        <td>certi11C</td>
+    </tr>
+    <tr>
         <td>상담슈퍼비전의 이론과 실제</td>
         <td>[삭제]</td>
         <td>22</td>
@@ -141,9 +175,20 @@
         <td>○</td>
         <td>certi22C</td>
     </tr>
-     <tr>
-        <td>2급</td>
-        <td>1교시<br>[+과목추가]</td>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>certi11A</td>
+        <td>certi11B</td>
+        <td>○</td>
+        <td>certi11C</td>
+    </tr>
+
+    <!-- 2급 데이터 -->
+    <tr>
+        <td rowspan="14">2급</td>
+        <td rowspan="6">1교시<br>[+과목추가]</td>
         <td>상담윤리</td>
         <td>[삭제]</td>
         <td>11</td>
@@ -155,6 +200,13 @@
     <tr>
         <td></td>
         <td></td>
+        <td></td>
+        <td>certi11A</td>
+        <td>certi11B</td>
+        <td>○</td>
+        <td>certi11C</td>
+    </tr>
+    <tr>
         <td>상담이론과 실제</td>
         <td>[삭제]</td>
         <td>23</td>
@@ -163,10 +215,16 @@
         <td>○</td>
         <td>certi23C</td>
     </tr>
-   
     <tr>
         <td></td>
         <td></td>
+        <td></td>
+        <td>certi11A</td>
+        <td>certi11B</td>
+        <td>○</td>
+        <td>certi11C</td>
+    </tr>
+    <tr>
         <td>집단상담 이론과 실제</td>
         <td>[삭제]</td>
         <td>12</td>
@@ -175,10 +233,17 @@
         <td>○</td>
         <td>certi12C</td>
     </tr>
-  
     <tr>
-        <td>2급</td>
-        <td>2교시<br>[+과목추가]</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>certi11A</td>
+        <td>certi11B</td>
+        <td>○</td>
+        <td>certi11C</td>
+    </tr>
+    <tr>
+        <td rowspan="8">2교시<br>[+과목추가]</td>
         <td>심리검사와 상담</td>
         <td>[삭제]</td>
         <td>21</td>
@@ -190,6 +255,13 @@
     <tr>
         <td></td>
         <td></td>
+        <td></td>
+        <td>certi11A</td>
+        <td>certi11B</td>
+        <td>○</td>
+        <td>certi11C</td>
+    </tr>
+    <tr>
         <td>상담연구방법론</td>
         <td>[삭제]</td>
         <td>22</td>
@@ -201,6 +273,13 @@
     <tr>
         <td></td>
         <td></td>
+        <td></td>
+        <td>certi11A</td>
+        <td>certi11B</td>
+        <td>○</td>
+        <td>certi11C</td>
+    </tr>
+    <tr>
         <td>진로상담</td>
         <td>[삭제]</td>
         <td>23</td>
@@ -209,9 +288,16 @@
         <td>○</td>
         <td>certi23C</td>
     </tr>
-     <tr>
+    <tr>
         <td></td>
         <td></td>
+        <td></td>
+        <td>certi11A</td>
+        <td>certi11B</td>
+        <td>○</td>
+        <td>certi11C</td>
+    </tr>
+    <tr>
         <td>가족상담</td>
         <td>[삭제]</td>
         <td>23</td>
@@ -219,6 +305,15 @@
         <td>certi23B</td>
         <td>○</td>
         <td>certi23C</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>certi11A</td>
+        <td>certi11B</td>
+        <td>○</td>
+        <td>certi11C</td>
     </tr>
 </table>
 
