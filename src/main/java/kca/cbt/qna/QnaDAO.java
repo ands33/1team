@@ -26,6 +26,7 @@ public class QnaDAO {
     private final String QNA_GET = "select * from qna where seq_number=?";
     private final String QNA_UPDATE = "update qna set title=?, q=?, file_data=? where seq_number=?";
     private final String QNA_DELETE = "delete from qna where seq_number=?";
+    private final String QNA_CNT = "update qna set views = views + 1 where seq_number = ?";
 
     
 
@@ -106,4 +107,57 @@ public class QnaDAO {
 		}
 		return qnaList;
 	}
+ 	
+ 	// 글 수정
+ 	public void updateQna(QnaVO vo) {
+ 		System.out.println("===> JDBC로 updateBoard() 기능 처리");
+ 		try {
+ 			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(QNA_UPDATE);
+			
+			MultipartFile uploadFile = vo.getFile_data();
+            String fileName = (uploadFile != null && !uploadFile.isEmpty()) ? uploadFile.getOriginalFilename() : null;
+
+            
+			stmt.setString(1, vo.getTitle());
+			stmt.setString(2, vo.getQ());
+			stmt.setString(3, fileName);
+			stmt.setInt(4, vo.getSeq_number());
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+ 	}
+ 	
+ 	// 글 삭제 
+ 	public void deleteQna(QnaVO vo) {
+ 		System.out.println("===> JDBC로 deleteQna() 기능 처리");
+ 		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(QNA_DELETE);
+			stmt.setInt(1, vo.getSeq_number());
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+ 	}
+ 	
+ 	// 조회수 증가
+ 	public void increaseViews(QnaVO vo) {
+ 		System.out.println("===> JDBC로 increaseViews() 기능 처리");
+ 		try {
+            conn = JDBCUtil.getConnection();
+            stmt = conn.prepareStatement(QNA_CNT);
+            stmt.setInt(1, vo.getSeq_number());
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.close(stmt, conn);
+        }
+ 	}
 }
