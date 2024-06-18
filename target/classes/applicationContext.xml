@@ -27,28 +27,12 @@
         <property name="testDAO" ref="testDAO" />
     </bean>
     <bean id="testDAO" class="kca.cbt.exam.TestDAO" />
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-	<!-- QnaService와 QnaDAO 빈 설정 -->
-	<bean id="qnaService" class="kca.cbt.qna.QnaServiceImpl">
-		<property name="qnaDAO" ref="qnaDAO" />
+    
+    <bean id="memberService"
+		class="kca.cbt.login.MemberServiceImpl">
+		<property name="memberDAO" ref="memberDAO" />
 	</bean>
-	<bean id="FAQDAO" class="kca.cbt.FAQ.FAQDAO" />
 	
-	<bean id="qnaDAO" class="kca.cbt.qna.QnaDAO" />
-=======
-   <!-- QnaService와 QnaDAO 빈 설정 -->
-   <bean id="qnaService" class="kca.cbt.qna.QnaServiceImpl">
-      <property name="qnaDAO" ref="qnaDAO" />
-   </bean>
-   <bean id="qnaDAO" class="kca.cbt.qna.QnaDAO" />
->>>>>>> f5c5babfde4e99d65df488dd128d182407f4a289
+	<bean id="memberDAO" class="kca.cbt.login.MemberDAO" />
 
-   <bean id="testService" class="kca.cbt.exam.TestServiceImpl">
-      <property name="testDAO" ref="testDAO" />
-   </bean>
-   <bean id="testDAO" class="kca.cbt.exam.TestDAO" />
-=======
->>>>>>> cca423c0555c3100e0c2da771e5f321a7e3e2b1d
 </beans>
