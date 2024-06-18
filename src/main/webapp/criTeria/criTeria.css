@@ -1,7 +1,7 @@
 .search-container {
 	display: flex;
 	align-items: center;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 }
 
 .search-container label {
@@ -9,46 +9,39 @@
 }
 
 .search-container select {
-	margin-right: 10px;
+	margin-right: 1px;
 }
 
 .search-container button {
-	margin-left: 10px;
+	margin-left: 4px;
 }
 
-/* cursor: pointer은 버튼에 마우스를 올렸을 때 커서 모양이 손가락 모양으로 변경되게 함 */
 .custom-button {
 	background-color: #F6F6F6;
-	padding: 3px 20px;
+	padding: 4px 17x
 	cursor: pointer;
 }
 
 .custon-button:hover {
 	background-color: #E0E0E0;
 }
-/* 
-dropdown: 클래스가 적용된 요소의 스타일 정의
-display: inline-block: 인라인 블록으로 표시
-margin-right: 요소의 오른쪽 여백 지정 */
+
 .dropdown {
 	position: relative;
 	display: inline-block;
 	margin-right: 10px; /* 조회 버튼과의 간격 조정 */
 }
 
-/*  position: 옵션을 열었을 때 창의 크기가 변경되지 않도록 함 
-	background-color: 옵션의 배경색을 지정함 */
+/*  position: 옵션을 열었을 때 창의 크기가 변경되지 않도록 함 */
 .dropdown-content {
 	display: none;
 	position: absolute;
 	background-color: #f9f9f9;
 	min-width: 160px;
-	z-index: 1;
 }
 
 .dropdown-content a {
 	color: black;
-	font-weight: bold;
 	padding: 10px 10px;
 	text-decoration: none;
 	display: block;
@@ -82,11 +75,7 @@ th, td {
 
 /* solid는 선 스타일을 의미, blue는 선 색상 */
 th {
-	border-top: 1.5px solid;
-}
-
-input[type="text"], input[type="password"] {
-	width: 70%;
+	border-top: 1.5px solid #95A4CE;
 }
 
 div.cell.selected {

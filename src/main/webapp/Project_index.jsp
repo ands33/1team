@@ -1,260 +1,362 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>index ¸ŞÀÎ ÆäÀÌÁö (main)</title>
+<title>indexí™”ë©´ êµ¬í˜„(main)</title>
+</head>
 <style>
 .center-table td {
-    text-align: center;
+	text-align: center;
 }
+
 .squareTop {
-    width : 100%;
-    height : 40px;
-    background-color : #0066ff;
+	width: 100%;
+	height: 40px;
+	background-color: #5BA3E6;
 }
-.square1 {
-    width: 300px;
-    height: 300px;
-    background-color: #00ff83;
-    border-radius: 15%;
+
+.exam:hover {
+	color: yellow;
 }
-.square2 {
-    width: 300px;
-    height: 300px;
-    background-color: #3297ff;
-    border-radius: 15%;
+
+.exam {
+	width: 100%;
+	height: 100%;
+	background-image:
+		url("C:/1kosmosc/sts/work_space3/1team/src/main/indexPage/exam.png");
+	background-repeat: no-repeat;
+	justify-content: center;
+	align-items: center;
 }
+
+.substrahend {
+	width: 100%;
+	height: 100%;
+	background-image:
+		url("C:/1kosmosc/sts/work_space3/1team/src/main/indexPage/subtrahend.png");
+	background-repeat: no-repeat;
+	justify-content: center;
+	align-items: center;
+}
+
 .squareNotice1 {
-    width: 300px;
-    height: 150px;
-    border-radius: 10%;
-    border: 2px solid black;
+	width: 300px;
+	height: 150px;
+	border-radius: 10%;
+	border: 2px solid black;
 }
+
 .squareNotice2 {
-    width: 300px;
-    height: 150px;
-    border-radius: 10%;
-    border: 2px solid black;
+	width: 300px;
+	height: 150px;
+	border-radius: 10%;
+	border: 2px solid black;
 }
+
 .moved-table {
-    margin-left: 25px;
+	margin-left: 25px;
 }
+
 .QnA, .FAQ {
-    width: 100px;
-    height: 50px;
-    font-family: 'Song Myung', serif;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border: 1px solid #000;
+	width: 100px;
+	height: 50px;
+	font-family: 'Song Myung', serif;
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	border: 1px solid #000;
 }
+
 .noticeGreen {
-    position: relative;
-    width: 300px;
-    height: 100px;
-    background-image: url("C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/°øÁö»çÇ× ÀÌ¹ÌÁö.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	width: 100%;
+	height: 100%;
+	background-image:
+		url("C:/1kosmosc/sts/work_space3/1team/src/main/indexPage/notice_green.png");
+	background-repeat: no-repeat;
+	justify-content: center;
+	align-items: center;
 }
+
 .noticeBlue {
-    position: relative;
-    width: 300px;
-    height: 100px;
-    background-image: url("C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/°øÁö»çÇ× ÀÌ¹ÌÁö.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	width: 100%;
+	height: 100%;
+	background-image:
+		url("C:/1kosmosc/sts/work_space3/1team/src/main/indexPage/notice_blue.png");
+	background-repeat: no-repeat;
+	justify-content: center;
+	align-items: center;
 }
-.bottom {
-    width: 300px;
-    height: 300px;
-    background-color: #3297ff;
-    border-radius: 15%;
+
+.menu {
+	width: 100%;
+	height: 100%;
+	background-image:
+		url("C:/1kosmosc/sts/work_space3/1team/src/main/indexPage/menu_box.png");
+	background-repeat: no-repeat;
+	justify-content: center;
+	align-items: center;
+}
+
+.img {
+	display: block;
+	margin: 0 auto;
+}
+
+.highlight {
+	color: #A1C2C7;
+	font-family: Impact, sans-serif;
+	font-size: 40px;
 }
 </style>
-</head>
 <body>
-<div style="display: flex; align-items: center; width: 100%;">
-    <img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/·Î°í ÀÌ¹ÌÁö.png" width="180" height="60" border="0" alt=""> 
-    <span>À¯Àú ´Ô</span>
-    <div style="margin-left: auto;">
-        <span style="margin-left: auto;">${userName}´Ô ¹İ°©½À´Ï´Ù!</span>
-        <input type="button" value="Logout" onclick="">
-    </div>
-</div>
-<hr>
-<div class="squareTop"></div>
-<br><br>
-<center>
-<table border="1">
-    <tr>
-        <td rowspan="2">
-            <div class="square1">
-                <center>
-                    <p><font size="20" color="white"><strong>¾÷µ¥ÀÌÆ®</strong></font></p>
-                    <img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/ÀÌ¹ÌÁö.png" width="150" height="100" border="0" alt="">
-                </center>
-                <br>
-                <table class="moved-table">
-                    <tr>
-                        <td colspan="2">
-                            <font size="2" color="white"><strong>¾÷µ¥ÀÌÆ® Á¤º¸</strong></font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <font size="1" color="white"><strong>»ó¼¼ Á¤º¸</strong></font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <font size="1" color="white"><strong>0/3</strong></font>
-                        </td>
-                        <td>
-                            <font size="1" color="white"><strong>(7ÀÏ ³²À½)</strong></font>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </td>
-        <td rowspan="2">
-            <div class="square2">
-                <center>
-                    <p><font size="20" color="white"><strong>°øÁö»çÇ×</strong></font></p>
-                    <img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/°øÁö»çÇ×.png" width="115" height="115" border="0" alt="">
-                </center>
-                <table class="moved-table">
-                    <tr>
-                        <td colspan="2">
-                            <font size="2" color="white"><strong>°øÁö»çÇ× Á¤º¸</strong></font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <font size="1" color="white"><strong>»ó¼¼ Á¤º¸</strong></font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <font size="1" color="white"><strong>0/3</strong></font>
-                        </td>
-                        <td>
-                            <font size="1" color="white"><strong>(7ÀÏ ³²À½)</strong></font>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </td>
-        <td>
-            <div class="noticeGreen">
-                <table align="center">
-                    <tr>
-                        <td>°øÁö»çÇ×</td>
-                        <td><input type="button" value="º¸±â" onclick=""></td>
-                    </tr>
-                </table>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div class="noticeBlue">
-                <table align="center">
-                    <tr>
-                        <td>FAQ</td>
-                        <td><input type="button" value="º¸±â" onclick=""></td>
-                    </tr>
-                </table>
-            </div>
-        </td>
-    </tr>
-</table>
-<br><br>
-<table border="1">
-    <tr>
-        <td>
-            <img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/¿ŞÂÊ È­»ìÇ¥.png" width="40" height="80" border="0" alt="">
-        </td>
-        <td>
-            <table class="center-table">
-                <tr>
-                    <td><font size="" color=""><strong>QnA</strong></font></td>
-                </tr>
-                <tr>
-                    <td><hr></td>
-                </tr>
-                <tr>
-                    <td>ÀÚÁÖ ¹¯´Â Áú¹®<br>¿©±â¿¡ ÀÛ¼ºÇÕ´Ï´Ù</td>
-                </tr>
-                <tr>
-                    <td><font size="" color="#3297ff"><strong>ÀÚÁÖ ¹¯´Â Q&A</strong></font></td>
-                </tr>
-            </table>
-        </td>
-        <td>
-            <table class="center-table">
-                <tr>
-                    <td><font size="" color=""><strong>FAQ</strong></font></td>
-                </tr>
-                <tr>
-                    <td><hr></td>
-                </tr>
-                <tr>
-                    <td>ÀÚÁÖ ¹¯´Â Áú¹®<br>¿©±â¿¡ ÀÛ¼ºÇÕ´Ï´Ù</td>
-                </tr>
-                <tr>
-                    <td><font size="" color="#3297ff"><strong>ÀÚÁÖ ¹¯´Â FAQ</strong></font></td>
-                </tr>
-            </table>
-        </td>
-        <td>
-            <table class="center-table">
-                <tr>
-                    <th><img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/¾ÆÀÌÄÜ.png" width="60" height="50" border="0" alt=""></th>
-                </tr>
-                <tr>
-                    <td><hr></td>
-                </tr>
-                <tr>
-                    <td>¾ÆÀÌÄÜ ¼³¸í</td>
-                </tr>
-                <tr>
-                    <td><font size="" color="#3297ff"><strong>¾ÆÀÌÄÜ ¼³¸í</strong></font></td>
-                </tr>
-            </table>
-        </td>
-        <td>
-            <table class="center-table">
-                <tr>
-                    <th><img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/certiManual.png" width="80" height="80" border="0" alt=""></th>
-                </tr>
-                <tr>
-                    <td><hr></td>
-                </tr>
-                <tr>
-                    <td>¸Å´º¾ó ¼³¸í</td>
-                </tr>
-                <tr>
-                    <td><font size="" color="#3297ff"><strong>¸Å´º¾ó ¼³¸í</strong></font></td>
-                </tr>
-            </table>
-        </td>
-        <td>
-            <table class="center-table">
-                <tr>
-                    <th><img src="C:/Users/user/Desktop/ÀÎÁõ¸¶½ºÅÍ/front-end/butterfly.png" width="80" height="60" border="0" alt=""></th>
-                </tr>
-                <tr>
-                    <td><hr></td>
-                </tr>
-                <tr>
-                    <td>ÀÚÁÖ ¹¯´Â Áú¹®<br>¿©±â¿¡ ÀÛ¼º
+	<div style="display: flex; align-items: center; width: 100%;">
+		<img
+			src="C:/1kosmosc/sts/work_space3/1team/src/main/indexPage/logo_none.png"
+			width="180" height="60" border="0" alt="">&nbsp;&nbsp;<span>ë§ˆì´í˜ì´ì§€</span>
+		<div style="margin-left: auto;">
+			<font size="3">${userName}ìœ„ì›ë‹˜ ì•ˆë…•í•˜ì‹­ë‹ˆê¹Œ?</font> &nbsp;&nbsp; <span><a
+				href="">ë¡œê·¸ì•„ì›ƒ</a></span>
+		</div>
+	</div>
+	<hr>
+	<div class="squareTop"></div>
+	<br>
+	<br>
+	<center>
+		<table border="0">
+			<tr>
+				<td rowspan="2">
+					<div class="exam">
+						<table width="300" height="300" border="0">
+							<tr>
+								<td align="center"><font size="20" color="white"><strong>ì¶œì œ</strong></font>
+								</td>
+							</tr>
+							<tr>
+								<td align="center"><img
+									src="C:\1kosmosc\sts\work_space3\1team\src\main\indexPage\bookUI.png"
+									width="150" height="100" border="0" alt=""></td>
+							</tr>
+							<tr>
+								<td>
+									<div class="moved-table">
+										<table>
+											<tr>
+												<td><font size="2" color="white"><strong>ì¶œì œì˜ë¢°í˜„í™©</strong></font>
+												</td>
+											</tr>
+											<tr>
+												<td><font size="1" color="white"><strong>ê¸°ëŠ¥í•´ë¶€í•™</strong></font>
+												</td>
+											</tr>
+											<tr>
+												<td><font size="1" color="white"><strong>0/3
+															(7ì¼ë‚¨ìŒ)</strong></font></td>
+											</tr>
+										</table>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+				<td rowspan="2">
+					<div class="substrahend">
+						<table width="300" height="300" border="0">
+							<tr>
+								<td align="center"><font size="20" color="white"><strong>ê°ìˆ˜</strong></font>
+								</td>
+							</tr>
+							<tr>
+								<td align="center"><img
+									src="C:/1kosmosc/sts/work_space3/1team/src/main/indexPage/glasses.png"
+									width="100" height="100" border="0" alt=""></td>
+							</tr>
+							<tr>
+								<td>
+									<div class="moved-table">
+										<table>
+											<tr>
+												<td><font size="2" color="white"><strong>ê°ìˆ˜ì˜ë¢°í˜„í™©</strong></font>
+												</td>
+											</tr>
+											<tr>
+												<td><font size="1" color="white"><strong>ê¸°ëŠ¥í•´ë¶€í•™</strong></font>
+												</td>
+											</tr>
+											<tr>
+												<td><font size="1" color="white"><strong>0/3
+															(7ì¼ë‚¨ìŒ)</strong></font></td>
+											</tr>
+										</table>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+				<td width="300" height="150">
+					<div class="noticeGreen">
+						<table align="center" border="0" height="150" width="260">
+							<tr border="1">
+								<td align="left">ê³µì§€ì‚¬í•­</td>
+								<td align="right"><input type="button" value=" + "
+									onclick=""></td>
+							</tr>
+							<tr border="1">
+								<td align="left"><font size="2" />ë‚´ìš©</td>
+								<td align="right"><font size="2" />2024-06-17</td>
+							</tr>
+							<tr border="1">
+								<td align="left"><font size="2" />ë‚´ìš©2</td>
+								<td align="right"><font size="2" />2024-06-18</td>
+							</tr>
+							<tr border="1">
+								<td align="left"><font size="2" />ë‚´ìš©3</td>
+								<td align="right"><font size="2" />2024-06-19</td>
+							</tr>
+							<tr border="1">
+								<td align="left"><font size="2" />ë‚´ìš©4</td>
+								<td align="right"><font size="2" />2024-06-20</td>
+							</tr>
+						</table>
+			</div>
+			</td>
+			</tr>
+			<tr>
+				<td width="300" height="150">
+					<div class="noticeBlue">
+						<table align="center" border="0" height="150" width="260">
+							<tr>
+								<td align="left">ìœ„ì›ì „ë‹¬ì‚¬í•­</td>
+								<td align="right"><input type="button" value=" + "
+									onclick=""></td>
+							</tr>
+							<tr border="1">
+								<td align="left"><font size="2" />ë‚´ìš©</td>
+								<td align="right"><font size="2" />2024-06-17</td>
+							</tr>
+							<tr border="1">
+								<td align="left"><font size="2" />ë‚´ìš©2</td>
+								<td align="right"><font size="2" />2024-06-18</td>
+							</tr>
+							<tr border="1">
+								<td align="left"><font size="2" />ë‚´ìš©3</td>
+								<td align="right"><font size="2" />2024-06-19</td>
+							</tr>
+							<tr border="1">
+								<td align="left"><font size="2" />ë‚´ìš©4</td>
+								<td align="right"><font size="2" />2024-06-20</td>
+							</tr>
+						</table>
+			</div>
+			</td>
+			</tr>
+		</table>
+		<br> <br>
+		<table border="0">
+			<tr>
+				<td><img
+					src="C:/1kosmosc/sts/work_space3/1team/src/main/indexPage/left_arrow.png"
+					width="40" height="80" border="0" alt=""></td>
+				<td>
+					<div class="menu">
+						<table width="150" height="150" border="0">
+							<tr height="50" border="0">
+								<th class="highlight">QnA</th>
+							</tr>
+							<tr height="50">
+								<td align="center">ê¶ê¸ˆí•˜ì‹  ë¶€ë¶„ì€<br>ì§ì ‘ ì§ˆë¬¸í•´ ì£¼ì„¸ìš”
+								</td>
+							</tr>
+							<tr height="50">
+								<th><font size="" color="#3297ff"><strong>ê³ ê°ì„¼í„°Q&A</strong></font>
+								</th>
+							</tr>
+						</table>
+					</div>
+				</td>
+				<td>
+					<div class="menu">
+						<table width="150" height="150" border="0">
+							<tr height="50">
+								<th class="highlight">FAQ</th>
+							</tr>
+							<tr height="50">
+								<td align="center">ìì£¼ ë¬»ëŠ” ì§ˆë¬¸</td>
+							</tr>
+							<tr height="50">
+								<th><font size="" color="#3297ff"><strong>ê³ ê°ì„¼í„°FAQ</strong></font>
+								</th>
+							</tr>
+						</table>
+					</div>
+				</td>
+				<td>
+					<div class="menu">
+						<table width="150" height="150" border="0">
+							<tr height="50">
+								<th><img
+									src="C:/1kosmosc/sts/work_space3/1team/src/main/indexPage/UserManual.png"
+									width="50" height="40" border="0" alt=""></th>
+							</tr>
+							<tr height="50">
+								<td align="center">ì¼ë°˜ ì‚¬ìš©ì ë©”ë‰´ì–¼</td>
+							</tr>
+							<tr height="50">
+								<th><font size="" color="#3297ff"><strong>ì‚¬ìš©ì
+											ë©”ë‰´ì–¼</strong></font></th>
+							</tr>
+						</table>
+					</div>
+				</td>
+				<td>
+					<div class="menu">
+						<table width="150" height="150" border="0">
+							<tr height="50">
+								<th><img
+									src="C:/1kosmosc/sts/work_space3/1team/src/main/indexPage/certiManual.png"
+									width="40" height="40" border="0" alt=""></th>
+							</tr>
+							<tr height="50">
+								<td align="center">ê³µì¸ ì¸ì¦ì„œ<br>ì‚¬ìš©ì ë©”ë‰´ì–¼
+								</td>
+							</tr>
+							<tr height="50">
+								<th><font size="" color="#3297ff"><strong>ê³µì¸ì¸ì¦ì„œ
+											ë©”ë‰´ì–¼</strong></font></th>
+							</tr>
+						</table>
+				</td>
+				<td>
+					<div class="menu">
+						<table width="150" height="150" border="0">
+							<tr height="50">
+								<th><img
+									src="C:/1kosmosc/sts/work_space3/1team/src/main/indexPage/standard.png"
+									width="56" height="40" border="0" alt=""></th>
+							</tr>
+							<tr height="50">
+								<td align="center">ê³¼ëª©ëª…ì— ë”°ë¥¸<br>ì¶œì œ ìœ í˜•
+								</td>
+							</tr>
+							<tr height="50">
+								<th><font size="" color="#3297ff"><strong>ì¶œì œê¸°ì¤€</strong></font>
+								</th>
+							</tr>
+						</table>
+					</div>
+				</td>
+				<td><img
+					src="C:/1kosmosc/sts/work_space3/1team/src/main/indexPage/right_arrow.png"
+					width="40" height="80" border="0" alt=""></td>
+			</tr>
+		</table>
+	</center>
+</body>
+</html>
