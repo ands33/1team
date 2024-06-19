@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" type="favicon.ico" type="image/x-icon">>
+<link rel="stylesheet" href="exam.css">
 <meta charset="EUC-KR">
 <title>출제의뢰 목록</title>
 <script>
@@ -13,44 +15,11 @@
             "width=1000, height=500");
    }
 </script>
-<style>
-table {
-   width: 100%;
-   border-collapse: collapse;
-   margin-top: 20px;
-}
-
-th, td {
-   border: 1px solid #F76030;
-   padding: 8px;
-   text-align: center;
-}
-
-th {
-   background-color: #fff;
-}
-
-.container {
-   margin: 20px;
-}
-
-.header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-}
-
-.header h3 {
-   margin: 0;
-}
-</style>
 </head>
 <%@ include file="header.jsp"%>
 <body>
    <div class="container">
       <div class="header">
-         <h3>출제</h3>
-         <h4>출제의뢰 목록</h4>
       </div>
       <table>
          <thead>
@@ -80,7 +49,6 @@ th {
                   <td>${examPlan.member_name}</td>
                   <td>${examPlan.status}</td>
                   <td>
-
                      <form action="examcommitmember/examCard.jsp" method="post">
                         <input type="hidden" name="num" value="${examPlan.num}" />
                         <button type="submit" name="action" value="approve"
@@ -96,7 +64,6 @@ th {
                            type="hidden" name="status" value="미개봉" />
                         <button type="submit" name="action" value="test">테스트용</button>
                      </form>
-
                   </td>
                </tr>
             </c:forEach>
