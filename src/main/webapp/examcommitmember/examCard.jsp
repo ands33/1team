@@ -1,176 +1,151 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="EUC-KR">
-<title>출제 문항 카드</title>
-<style>
-body {
-	font-family: Arial, sans-serif;
-}
+    <meta charset="EUC-KR">
+    <title>문항 카드 - 1급 고급상담이론과 실제</title>
+    <style>
+       bn{
+            border: none; /* 테두리 제거 */
+            padding: 8px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 1000px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #000;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .title {
+            text-align: center;
+            font-weight: bold;
+            background-color: #f4f4f4;
+        }
+        .subtitle {
 
-table {
-	width: 100%;
-	border-collapse: collapse;
-	margin-bottom: 10px;
-}
-
-th, td {
-	border: 1px solid black;
-	padding: 8px;
-	text-align: center;
-}
-
-th {
-	background-color: #f2f2f2;
-}
-
-.title {
-	font-size: 24px;
-	font-weight: bold;
-	text-align: center;
-	margin-bottom: 20px;
-}
-
-.spacing {
-	height: 10px;
-}
-
-.input-full-width {
-	height: 95%;
-	width: 95%;
-}
-</style>
+           text-align: left;
+            background-color: #f4f4f4;
+            padding: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: auto;
+            width: 50%; /* 가로 너비를 50%로 설정 */
+          margin-left: auto; /* 가운데 정렬을 위해 추가 */
+          margin-right: auto; /* 가운데 정렬을 위해 추가 */
+        }
+        .answer {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
 </head>
+<%@ include file="header.jsp"%>
 <body>
-	<form action="updateBoard.do" method="post">
-		<div class="title">출제 문항 카드</div>
-		<table>
-			<tr>
-				<th>급수</th>
-				<td>1급</td>
-			</tr>
-			<tr>
-				<th>과목명</th>
-				<td>고급상담이론과 실제</td>
-			</tr>
-		</table>
-		<div class="spacing"></div>
-		<table>
-			<tr>
-				<th>출제년도</th>
-				<td>2024</td>
-				<th>출제자</th>
-				<td>홍길동</td>
-				<th>작성년도</th>
-				<td>2019</td>
-				<th>작성자</th>
-				<td>이민호</td>
-			</tr>
-		</table>
-		<div class="spacing"></div>
-		<table>
-			<tr>
-				<th>대분류</th>
-				<th>중분류</th>
-				<th>세부영역</th>
-			</tr>
-			<tr>
-				<td>1. 일반상담이론</td>
-				<td>0. 분석적상담이론과 실제</td>
-				<td>0. 정신분석과 개인심리학</td>
-			</tr>
-		</table>
-
-
-		<table>
-			<tr>
-				<th rowspan="3">행동영역</th>
-				<td>지식</td>
-				<td></td>
-				<th rowspan="3">난이도</th>
-				<td>상</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>이해</td>
-				<td></td>
-				<td>중</td>
-				<td>ㅇ</td>
-			</tr>
-			<tr>
-				<td>적용</td>
-				<td>ㅇ</td>
-				<td>하</td>
-				<td></td>
-			<tr>
-				<th>문항번호</th>
-				<td colspan="2"><input type="text" name="exampleInput"
-					value="16" class="input-full-width"></td>
-				<th>실제 정답률</th>
-				<td colspan="2">78%</td>
-			</tr>
-
-			<tr>
-				<th>문항 내용 <br>(지시문: 문제)
-				</th>
-				<td style="text-align: left;" colspan="5">가족상담자의 활동으로 옳은 것은?<br>
-					1. 구조를 파악하려고 완성하였다. <br> 2. 가족 내의 두어 메시지가 확인하였다. <br> 3.
-					유지시키고 변화시킬 모색하였다. <br> 4. 가족들이 성장 도왔다. <br> 5. 바로잡기 위해
-					노력했다.
-				</td>
-			</tr>
-
-			<tr>
-				<th>정답</th>
-				<td colspan="5">3</td>
-			</tr>
-			<tr>
-				<th>정답해설</th>
-				<td style="text-align: left;" colspan="5">1. 가족상담<br> 2.
-					가족상담<br> 3. 가족상담<br> 4. 가족상담<br> 5. 가족상담
-				</td>
-			</tr>
-			<tr>
-				<th>출제배경</th>
-				<td style="text-align: left;" colspan="5">가족상담이론을 적절하게 있는지 평가</td>
-			</tr>
-			<tr>
-				<th>참고도서명/출판사</th>
-				<td style="text-align: left;" colspan="5">심리상담과 치료의 이론과 실제/서울:
-					CENGAGE LEARNING, 박영사</td>
-			</tr>
-			<tr>
-				<th>저자명/출판연도</th>
-				<td style="text-align: left;" colspan="5">천성문 외 7인 공역/2017</td>
-			</tr>
-			<tr>
-				<th>PAGE</th>
-				<td style="text-align: left;" colspan="5">69-90</td>
-			</tr>
-		</table>
-
-		<div style="text-align: center;">
-			[저장] &nbsp;[수정]&nbsp;[삭제] <br>[작성완료]
-		</div>
-		<br>
-	</form>
-<!-- 	아랫부분은 검토부분에서 써야할 부분 -->
-<!-- 	<table>
-		<tr>
-			<th>검토자</th>
-			<td colspan="2">김복순</td>
-		</tr>
-		<tr>
-			<th>검토의견</th>
-			<td colspan="3">보기5번 오타 수정</td>
-		</tr>
-	</table>
-
-
-	<div style="text-align: center;">[검토완료]</div>
-	<br>
- -->
+<div class="container">
+    <div class="details">
+        <h2 class="title">한국상담학회 검정 시험문제</h2>
+        <table>
+        <tr>
+           <td style="border: none;"></td>
+           <td style="border: none;"></td>
+            <th colspan="2">관리번호</th>
+            <td colspan="4"><!-- 여기에 관리번호를 입력해 주세요. 비워놨습니다 --></td>
+        </tr>
+        <tr>
+            <th>자격</th>
+            <td>${test.grade}급 전문상담사</td>
+            <th>유형</th>
+            <td>지식</td>
+            <th>난이도</th>
+            <td style="text-align: center;">${test.diff}</td>
+        </tr>
+        <tr>
+            <th>과목명</th>
+            <td colspan="3">${test.name}</td>
+            <th>출제기준</th>
+            <td style="text-align: center;" colspan="5">${test.categoryNumbers}</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+        <td colspan="6">
+            [문 제] 2019-1. &lt;보기&gt;에서 설명하고 있는 방어기제 유형은?<br><br>
+            
+                <div class="subtitle">
+                    <p><strong>&lt;보기&gt;</strong></p>
+                    <p>- 감정을 조절하고 수치적인 충돌을 맞춘다.</p>
+                    <p>- 사회적 문제에 대해 정당한 논리를 주장한다.</p>
+                    <p>- 인생의 의미와 목적에 대해 심층에서 이야기한다.</p>
+                </div>
+                <br>
+                
+                <ol>
+                    <li>승화(sublimation)</li>
+                    <li>치환(displacement)</li>
+                    <li>반동형성(reaction formation)</li>
+                    <li>주지화(intellectualization)</li>
+                    <li>합리화(rationalization)</li>
+                </ol>
+            </td>
+        </tr>
+    </table>
+    
+    <table>
+        <tr>
+            <th colspan="1" class="answer">정답</th>
+            <td style="text-align: center;" colspan="5">③</td>
+        </tr>
+        <tr>
+            <th colspan="1" class="answer">정답해설</th>
+            <td colspan="5">82.52%</td>
+        </tr>
+        <tr>
+            <th colspan="1" class="answer">출제배경</th>
+            <td colspan="5">방어기제 유형의 개념과 특징에 대해 이해하고 있는지를 평가함.<br>
+               분류: ${test.category1} - ${test.category2} - ${test.category3}</td>
+        </tr>
+        <tr>
+            <th rowspan="5" colspan="1" class="answer">참고도서명/출판사</th>
+            <td rowspan="5" colspan="1">-상담학개론/학지사, 상담의 이론과 실제(2판)/학지사, 상담학총서: 상담이론과 실제/학지사, 심리치료와 상담이론: 개념 및 사례(5판)/센게이지러닝</td>
+           <th rowspan="5" colspan="1" class="answer">저자명/출판연도</th>
+           <td rowspan="5" colspan="1">-김계현 외/2011, 김춘경 외/2016, 양명숙 외/2013, 천성문 외 공역/2014</td>
+           <th rowspan="5" colspan="1" class="answer">PAGE</th>
+           <td rowspan="5" colspan="1">-184, 89, 66, 39-40</td>          
+        </tr>
+    </table>
+    
+    <table>
+        <tr>
+            <td class="answer">구분</td>
+            <td class="answer">일자</td>
+            <td class="answer">소속</td>
+            <td class="answer">성명</td>
+            <td class="answer">서명</td>
+         </tr>
+         <tr>
+            <td class="answer">출제자</td>
+            <td>2019-09-06</td>
+            <td style="text-align: center;color: red;">소속</td>
+            <td style="text-align: center;">${test.writtenName}</td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+</div>
 </body>
 </html>
