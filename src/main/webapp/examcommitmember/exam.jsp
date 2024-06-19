@@ -81,7 +81,7 @@ th {
 						<td>${examPlan.status}</td>
 						<td>
 
-							<form action="examcommitmember/examcard.jsp" method="post">
+							<form action="examcommitmember/examCard.jsp" method="post">
 								<input type="hidden" name="num" value="${examPlan.num}" />
 								<button type="submit" name="action" value="approve"
 									<c:if test="${examPlan.status == '반려'}">disabled</c:if>>출제</button>
