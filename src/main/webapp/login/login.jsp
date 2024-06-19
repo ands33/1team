@@ -10,10 +10,9 @@
 <body>
     <div class="login-container">
         <div class="logo-container">
-            <img src="file:///C:/1kosmosc/sts/workspace3/1team/src/main/criTeria_login_img/kca_logo.jpg" alt="KCA Logo">
+            <img src="./img/kca_logo_short.jpg" alt="KCA Logo">
         </div>
         <form action="">
-            <h2><span class="entypo-login"><i class="fa fa-sign-in"></i></span> Login</h2>
             <div class="input-container">
                 <span class="entypo-user inputUserIcon">
                     <i class="fa fa-user"></i>

@@ -12,7 +12,7 @@
 <body>
     <div class="header-container">
         <div class="header-left">
-            <img src="C:/1kosmosc/sts/workspace3/1team/src/main/criTeria_login_img/blue_01.png" width="15" height="15" alt="출제기준 아이콘"> 출제기준
+            <img src="./img/blue_01.png" width="15" height="15" alt="출제기준 아이콘"> 출제기준
         </div>
         <div class="navbar">
             <a href="#">Home</a> 
@@ -85,7 +85,6 @@
             <td><%=rs.getString(2)%></td> <!-- 대분류명 컬럼 -->
             <td><%=rs.getString(3)%></td> <!-- 중분류명 컬럼 -->
             <td><%=rs.getString(4)%></td> <!-- 소분류명 컬럼 -->
-            <td><%=rs.getInt(5)%></td>    <!-- 권한 컬럼 -->
         </tr>
         <% 
                 }
