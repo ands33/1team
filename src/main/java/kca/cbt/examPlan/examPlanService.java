@@ -1,9 +1,11 @@
-package kca.cbt.examPlan;
+package kca.cbt.examplan;
 
 import java.util.List;
 
-public interface examPlanService {
-	
-	List<examPlanVO> getexamPlanList(examPlanVO vo);
+public interface ExamPlanService {
 
+	List<ExamPlanVO> getExamPlanList(ExamPlanVO vo);
+	
+	void updateStatus(ExamPlanVO vo);
+	
 }

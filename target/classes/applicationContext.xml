@@ -29,10 +29,10 @@
     <bean id="testDAO" class="kca.cbt.exam.TestDAO" />
     
     <bean id="memberService"
-      class="kca.cbt.login.MemberServiceImpl">
-      <property name="memberDAO" ref="memberDAO" />
-   </bean>
-   
-   <bean id="memberDAO" class="kca.cbt.login.MemberDAO" />
+		class="kca.cbt.login.MemberServiceImpl">
+		<property name="memberDAO" ref="memberDAO" />
+	</bean>
+	
+	<bean id="memberDAO" class="kca.cbt.login.MemberDAO" />
 
 </beans>
