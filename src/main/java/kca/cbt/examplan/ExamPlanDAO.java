@@ -24,7 +24,8 @@ public class ExamPlanDAO {
 
 	private final String EXAMPLAN_LIST = "select * from examplan order by num";
 	private final String SUBJECT_GET = "select * from subject where idx=?";
-	private final String UPDATE_STATUS = "update examplan set status=? where num=?";
+	private final String UPDATE_STATUS = "update examplan set e_status=? where num=?";
+	
 
 	// 글 목록 조회
 	public List<ExamPlanVO> getExamPlanList(ExamPlanVO vo) {
@@ -43,9 +44,9 @@ public class ExamPlanDAO {
 				examPlan.setNum(rs.getInt("NUM"));
 				examPlan.setDiff(rs.getString("DIFF"));
 				examPlan.setMember_name(rs.getString("MEMBER_NAME"));
-				examPlan.setStatus(rs.getString("MEMBER_ID"));
+				examPlan.setMember_id(rs.getString("MEMBER_ID"));
 				examPlan.setIdx(rs.getInt("IDX"));
-				examPlan.setStatus(rs.getString("STATUS"));
+				examPlan.setE_status(rs.getString("E_STATUS"));
 				if (rs1.next()) {
 					examPlan.setName(rs1.getString("NAME"));
 					examPlan.setCategory1(rs1.getString("CATEGORY1"));
@@ -58,6 +59,7 @@ public class ExamPlanDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			JDBCUtil.close(rs1, stmt1, conn);
 			JDBCUtil.close(rs, stmt, conn);
 		}
 		return examPlanList;
@@ -68,7 +70,7 @@ public class ExamPlanDAO {
 			try {
 				conn = JDBCUtil.getConnection();
 				stmt = conn.prepareStatement(UPDATE_STATUS);
-				stmt.setString(1, vo.getStatus());
+				stmt.setString(1, vo.getE_status());
 				stmt.setInt(2, vo.getNum());
 				stmt.executeUpdate();
 			} catch (Exception e) {
