@@ -85,7 +85,6 @@
             <td><%=rs.getString(2)%></td> <!-- 대분류명 컬럼 -->
             <td><%=rs.getString(3)%></td> <!-- 중분류명 컬럼 -->
             <td><%=rs.getString(4)%></td> <!-- 소분류명 컬럼 -->
-            <td><%=rs.getInt(5)%></td>    <!-- 권한 컬럼 -->
         </tr>
         <% 
                 }

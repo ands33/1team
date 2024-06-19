@@ -7,37 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>헤더</title>
-<style>
-body {
-    background: #F8F9FB;
-    font-family: 'Roboto', sans-serif;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-table {
-	width: 100%;
-	height: 100%;
-	border-collapse: collapse;
-	font-size: 14px;
-}
-
-.logo-container {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.logo-container img {
-    width: 280px;
-    height: auto;
-}
-
-.header-container {
-	display: flex;
-	align-items: center;
-}
-</style>
+<link rel="stylesheet" href="header.css">
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -48,21 +18,17 @@ table {
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<img src="./img/kca_logo_short.jpg" alt="KCA Logo">
 	<div class="header-container">
         <div class="header-left">
+            <img src="./img/kca_logo_short.jpg" alt="KCA Logo">
         </div>
-        <div class="navbar">
-            <a href="#">Home</a> 
-            <span>></span> 
-            <a href="#">알림마당</a> 
-            <span>></span> 
-            <a href="#">출제기준</a>
+        <div>
+            <a href="#">한국상담학회</a>
+            <span> · </span>
+            <a href="#">출제위원 페이지</a>
         </div>
     </div>
-        
-        
-        
+        <br>
 	<nav class="navbar navbar-expand-lg navbar-light bg-white">
 		<a class="navbar-brand" href="../../../index.jsp">출제위원 페이지</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
