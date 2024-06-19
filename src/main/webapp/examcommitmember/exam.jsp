@@ -5,8 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" type="favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="exam.css">
 <meta charset="EUC-KR">
 <title>출제의뢰 목록</title>
+
 <style>
 table {
 	width: 100%;
@@ -76,8 +79,8 @@ th {
 						<td>
 
 							<form action="createTest.do" method="post">
-								<input type="hidden" name="num" value="${examPlan.num}" />
-								<input type="hidden" name="e_status" value="출제중" />
+								<input type="hidden" name="num" value="${examPlan.num}" /> <input
+									type="hidden" name="e_status" value="출제중" />
 								<button type="submit" name="action" value="approve"
 									<c:if test="${examPlan.e_status == '반려'}">disabled</c:if>>출제</button>
 							</form>

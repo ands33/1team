@@ -11,17 +11,14 @@
 .center-table td {
 	text-align: center;
 }
-
 .squareTop {
 	width: 100%;
 	height: 40px;
 	background-color: #5BA3E6;
 }
-
 .exam:hover {
 	color: yellow;
 }
-
 .exam {
 	width: 100%;
 	height: 100%;
@@ -31,7 +28,6 @@
 	justify-content: center;
 	align-items: center;
 }
-
 .substrahend {
 	width: 100%;
 	height: 100%;
@@ -41,25 +37,21 @@
 	justify-content: center;
 	align-items: center;
 }
-
 .squareNotice1 {
 	width: 300px;
 	height: 150px;
 	border-radius: 10%;
 	border: 2px solid black;
 }
-
 .squareNotice2 {
 	width: 300px;
 	height: 150px;
 	border-radius: 10%;
 	border: 2px solid black;
 }
-
 .moved-table {
 	margin-left: 25px;
 }
-
 .QnA, .FAQ {
 	width: 100px;
 	height: 50px;
@@ -71,7 +63,6 @@
 	text-align: center;
 	border: 1px solid #000;
 }
-
 .noticeGreen {
 	width: 100%;
 	height: 100%;
@@ -81,7 +72,6 @@
 	justify-content: center;
 	align-items: center;
 }
-
 .noticeBlue {
 	width: 100%;
 	height: 100%;
@@ -91,7 +81,6 @@
 	justify-content: center;
 	align-items: center;
 }
-
 .menu {
 	width: 100%;
 	height: 100%;
@@ -101,12 +90,10 @@
 	justify-content: center;
 	align-items: center;
 }
-
 .img {
 	display: block;
 	margin: 0 auto;
 }
-
 .highlight {
 	color: #A1C2C7;
 	font-family: Impact, sans-serif;
