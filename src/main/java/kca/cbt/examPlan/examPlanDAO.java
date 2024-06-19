@@ -1,4 +1,4 @@
-package kca.cbt.examPlan;
+package kca.cbt.examplan;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,91 +6,94 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import kca.cbt.JDBCUtil;
+import org.springframework.stereotype.Repository;
 
-public class examPlanDAO {
+import com.springbook.biz.common.JDBCUtil;
+
+//DAO(Data Access Object)
+@Repository("examPlanDAO")
+public class ExamPlanDAO {
+
 	// JDBC 관련 변수
-		private Connection conn = null;
-		private PreparedStatement stmt = null;
-		private ResultSet rs = null;
-		
-		private final String EXAMPLAN_GET = "select * from examplan where num=? and diff=? and member_name=? and memeber_id=? and idx=? and status=?";
-		private final String EXAMPLAN_LIST = "select * from examplan order by num desc";
-	
-	    public examPlanVO getExamplan(examPlanVO vo) {
-	        examPlanVO examplan = null;
-	    	try {
-	    		conn = JDBCUtil.getConnection();
-				stmt = conn.prepareStatement(EXAMPLAN_GET);
-				stmt.setInt(1, vo.getNum());
-				stmt.setString(2, vo.getDiff());
-				stmt.setString(3, vo.getMember_name());
-				stmt.setString(4, vo.getMember_id());
-				stmt.setInt(5, vo.getIdx());
-				stmt.setString(6, vo.getStatus());
-				rs = stmt.executeQuery();
-				
-				if (rs.next()) {
-					// ResultSet에서 회원 정보를 가져와서 examplan 객체에 저장
-					examplan = new examPlanVO();
-					examplan.setNum(rs.getInt("NUM"));
-					examplan.setDiff(rs.getString("DIFF"));
-					examplan.setMember_name(rs.getString("MEMBER_NAME"));
-					examplan.setMember_id(rs.getString("MEMBER_ID"));
-					examplan.setIdx(rs.getInt("IDX"));
-					examplan.setStatus(rs.getString("STATUS"));
-			        }
-	    	}catch(Exception e){
-	    		e.printStackTrace();
-	    	}finally {
-	    		// 리소스 해제 (Connection, PreparedStatement, ResultSet)
-				JDBCUtil.close(rs, stmt, conn);
-				// close 메서드는 연결 해제를 처리하는 유틸리티 메서드
-	    	}
-			return examplan;
-	    }
-		
-		public List<examPlanVO> getexamPlanList(examPlanVO vo) {
-		    System.out.println("===> JDBC로 getexamPlanList() 기능 처리");
-		    List<examPlanVO> examplanList = new ArrayList<examPlanVO>();
-		    try {
-		        conn = JDBCUtil.getConnection();
-		        
-		        // vo가 null인지 체크
-		        if (vo == null) {
-		        	System.out.println("@@@@@@@@@@list실행@@@@@@");
-		            stmt = conn.prepareStatement(EXAMPLAN_LIST);
-		        } else {
-		            // vo가 null이 아니면 검색 조건에 따라 처리
-		            if ("TITLE".equals(vo.getSearchCondition())) {
-		            	System.out.println("@@@@tList@@@@@");
-		                stmt = conn.prepareStatement(EXAMPLAN_LIST);
-//		                stmt.setString(1, vo.getSearchKeyword());
-		            } else if ("CONTENT".equals(vo.getSearchCondition())) {
-		            	System.out.println("@@@@cList@@@@@");
-		                stmt = conn.prepareStatement(BOARD_cLIST);
-		                stmt.setString(1, vo.getSearchKeyword());
-		            } else {
-		                stmt = conn.prepareStatement(EXAMPLAN_LIST);
-		            }
-		        }
+	private Connection conn = null;
+	private PreparedStatement stmt = null;
+	private ResultSet rs = null;
 
-		        rs = stmt.executeQuery();
-		        while (rs.next()) {
-		            examPlanVO examplan = new examPlanVO();
-		            examplan.setNum(rs.getInt("NUM"));
-					examplan.setDiff(rs.getString("DIFF"));
-					examplan.setMember_name(rs.getString("MEMBER_NAME"));
-					examplan.setMember_id(rs.getString("MEMBER_ID"));
-					examplan.setIdx(rs.getInt("IDX"));
-					examplan.setStatus(rs.getString("STATUS"));
-					examplanList.add(examplan);
-		        }
-		    } catch (Exception e) {
-		        e.printStackTrace();
-		    } finally {
-		        JDBCUtil.close(rs, stmt, conn);
-		    }
-		    return examplanList;
+	private PreparedStatement stmt1 = null;
+	private ResultSet rs1 = null;
+
+	private final String EXAMPLAN_LIST = "select * from examplan order by num";
+	private final String SUBJECT_GET = "select * from subject where idx=?";
+	private final String UPDATE_STATUS = "update examplan set status=? where num=?";
+
+	// 글 목록 조회
+	public List<ExamPlanVO> getExamPlanList(ExamPlanVO vo) {
+		List<ExamPlanVO> examPlanList = new ArrayList<ExamPlanVO>();
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(EXAMPLAN_LIST);
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+
+				stmt1 = conn.prepareStatement(SUBJECT_GET);
+				stmt1.setInt(1, rs.getInt("IDX"));
+				rs1 = stmt1.executeQuery();
+
+				ExamPlanVO examPlan = new ExamPlanVO();
+				examPlan.setNum(rs.getInt("NUM"));
+				examPlan.setDiff(rs.getString("DIFF"));
+				examPlan.setMember_name(rs.getString("MEMBER_NAME"));
+				examPlan.setStatus(rs.getString("MEMBER_ID"));
+				examPlan.setIdx(rs.getInt("IDX"));
+				examPlan.setStatus(rs.getString("STATUS"));
+				if (rs1.next()) {
+					examPlan.setName(rs1.getString("NAME"));
+					examPlan.setCategory1(rs1.getString("CATEGORY1"));
+					examPlan.setCategory2(rs1.getString("CATEGORY2"));
+					examPlan.setCategory3(rs1.getString("CATEGORY3"));
+				}
+
+				examPlanList.add(examPlan);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
 		}
+		return examPlanList;
+	}
+	
+	// 상태 수정
+		public void updateStatus(ExamPlanVO vo) {
+			try {
+				conn = JDBCUtil.getConnection();
+				stmt = conn.prepareStatement(UPDATE_STATUS);
+				stmt.setString(1, vo.getStatus());
+				stmt.setInt(2, vo.getNum());
+				stmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(stmt, conn);
+			}
+		}
+
+	/*
+	 * // 의뢰서에서 쓸 한가지 의뢰 가져오기 public TestVO getTest(TestVO vo) {
+	 * System.out.println("===> JDBC로 getBoard() 기능 처리"); TestVO test= null; try {
+	 * conn = JDBCUtil.getConnection(); stmt = conn.prepareStatement(TEST_GET);
+	 * stmt.setInt(1, vo.getTest_num()); rs = stmt.executeQuery(); if (rs.next()) {
+	 * test = new TestVO(); test.setTest_num(rs.getInt("TEST_NUM"));
+	 * test.setSubject(rs.getString("SUBJECT"));
+	 * test.setTest_type(rs.getString("TEST_TYPE"));
+	 * test.setStatus(rs.getString("STATUS"));
+	 * test.setRequestDate(rs.getDate("REQUESTDATE"));
+	 * test.setComRequestDate(rs.getDate("COMREQUESTDATE"));
+	 * test.setCurSituation(rs.getInt("CURSITUATION"));
+	 * test.setE_name(rs.getString("E_NAME"));
+	 * test.setSelMethod(rs.getString("SELMETHOD")); } } catch (Exception e) {
+	 * e.printStackTrace(); } finally { JDBCUtil.close(rs, stmt, conn); } return
+	 * test; }
+	 */
+
 }

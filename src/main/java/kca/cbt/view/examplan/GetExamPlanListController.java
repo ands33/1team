@@ -4,9 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.springbook.biz.board.BoardVO;
-import com.springbook.biz.board.impl.BoardDAO;
-
 import kca.cbt.examplan.ExamPlanDAO;
 import kca.cbt.examplan.ExamPlanVO;
 
