@@ -10,21 +10,21 @@
 <body>
     <div class="login-container">
         <div class="logo-container">
-            <img src="file:///C:/1kosmosc/sts/work_space3/1team/src/main/FAQ_criTeria_login_img/kca_logo.jpg" alt="KCA Logo">
+            <img src="file:///C:/1kosmosc/sts/workspace3/1team/src/main/criTeria_login_img/kca_logo.jpg" alt="KCA Logo">
         </div>
-        <form method="post" action="${pageContext.request.contextPath}/login.do">
+        <form action="">
             <h2><span class="entypo-login"><i class="fa fa-sign-in"></i></span> Login</h2>
             <div class="input-container">
                 <span class="entypo-user inputUserIcon">
                     <i class="fa fa-user"></i>
                 </span>
-                <input type="text" name="member_id" class="id" placeholder="ID"/>
+                <input type="text" class="id" placeholder="ID"/>
             </div>
             <div class="input-container">
                 <span class="entypo-key inputPassIcon">
                     <i class="fa fa-key"></i>
                 </span>
-                <input type="password" name="pw" class="pass" placeholder="Password"/>
+                <input type="password" class="pass" placeholder="Password"/>
             </div>
             <div class="button-container">
                 <button type="submit" class="submit"><span class="entypo-lock"><i class="fa fa-lock"></i></span> Login</button>

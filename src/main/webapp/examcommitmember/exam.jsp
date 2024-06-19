@@ -9,7 +9,8 @@
 <title>출제의뢰 목록</title>
 <script>
 	function open2() {
-		window.open("../../../biz/getTestList.do", "_blank", "width=1000, height=500");
+		window.open("../../../biz/getTestList.do", "_blank",
+				"width=1000, height=500");
 	}
 </script>
 <style>
@@ -20,13 +21,13 @@ table {
 }
 
 th, td {
-	border: 1px solid #ddd;
+	border: 1px solid #F76030;
 	padding: 8px;
 	text-align: center;
 }
 
 th {
-	background-color: #f2f2f2;
+	background-color: #fff;
 }
 
 .container {
@@ -78,14 +79,27 @@ th {
 						<td>${examPlan.diff}</td>
 						<td>${examPlan.member_name}</td>
 						<td>${examPlan.status}</td>
-						<td><button>반려</button>
-							<button>출제</button></td>
+						<td>
+
+							<form action="examcommitmember/examCard.jsp" method="post">
+								<input type="hidden" name="num" value="${examPlan.num}" />
+								<button type="submit" name="action" value="approve"
+									<c:if test="${examPlan.status == '반려'}">disabled</c:if>>출제</button>
+							</form>
+							<form id="rejectForm1" action="updateStatus.do" method="post">
+								<input type="hidden" name="num" value="${examPlan.num}" /> <input
+									type="hidden" name="status" value="반려" />
+								<button type="submit" name="action" value="reject">반려</button>
+							</form>
+							<form action="updateStatus.do" method="post">
+								<input type="hidden" name="num" value="${examPlan.num}" /> <input
+									type="hidden" name="status" value="미개봉" />
+								<button type="submit" name="action" value="test">테스트용</button>
+							</form>
+
+						</td>
 					</tr>
 				</c:forEach>
-
 			</tbody>
 		</table>
 	</div>
-
-</body>
-</html>

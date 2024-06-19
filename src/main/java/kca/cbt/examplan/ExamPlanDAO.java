@@ -10,8 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.springbook.biz.common.JDBCUtil;
 
-import kca.cbt.subject.SubjectVO;
-
 //DAO(Data Access Object)
 @Repository("examPlanDAO")
 public class ExamPlanDAO {
@@ -26,6 +24,7 @@ public class ExamPlanDAO {
 
 	private final String EXAMPLAN_LIST = "select * from examplan order by num";
 	private final String SUBJECT_GET = "select * from subject where idx=?";
+	private final String UPDATE_STATUS = "update examplan set status=? where num=?";
 
 	// 글 목록 조회
 	public List<ExamPlanVO> getExamPlanList(ExamPlanVO vo) {
@@ -63,6 +62,21 @@ public class ExamPlanDAO {
 		}
 		return examPlanList;
 	}
+	
+	// 상태 수정
+		public void updateStatus(ExamPlanVO vo) {
+			try {
+				conn = JDBCUtil.getConnection();
+				stmt = conn.prepareStatement(UPDATE_STATUS);
+				stmt.setString(1, vo.getStatus());
+				stmt.setInt(2, vo.getNum());
+				stmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(stmt, conn);
+			}
+		}
 
 	/*
 	 * // 의뢰서에서 쓸 한가지 의뢰 가져오기 public TestVO getTest(TestVO vo) {

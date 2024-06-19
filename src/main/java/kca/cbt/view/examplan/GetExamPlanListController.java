@@ -16,4 +16,10 @@ public class GetExamPlanListController {
 		return "examcommitmember/exam.jsp";
 	}
 
+	@RequestMapping("/updateStatus.do")
+	public String updateStatus(ExamPlanVO vo, ExamPlanDAO examPlanDAO) {
+		examPlanDAO.updateStatus(vo);
+		return "getExamPlanList.do";
+	}
+
 }
