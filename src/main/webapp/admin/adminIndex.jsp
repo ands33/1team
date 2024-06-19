@@ -50,6 +50,31 @@ h2 {
 	margin-left: 10px;
 }
 </style>
+<script>
+function limitSelection(selectElement) {
+    var selectedOptions = selectElement.selectedOptions;
+    if (selectedOptions.length > 3) {
+        alert("최대 3개의 항목만 선택할 수 있습니다.");
+        selectElement.selectedIndex = -1;
+    }
+}
+
+function addSubject(rowIdx) {
+    var selectElement = document.getElementById("subjectSelect" + rowIdx);
+    var selectedOptions = selectElement.selectedOptions;
+    
+    var subjects = [];
+    var subjectCodes = [];
+
+    for (var i = 0; i < selectedOptions.length; i++) {
+        subjects.push(selectedOptions[i].text);
+        subjectCodes.push(selectedOptions[i].value);
+    }
+
+    document.getElementById("subjectName" + rowIdx).innerText = subjects.join(", ");
+    document.getElementById("subjectCode" + rowIdx).innerText = subjectCodes.join(", ");
+}
+</script>
 </head>
 <body>
 
@@ -86,10 +111,17 @@ h2 {
 				<c:when test="${status.index == 0}">
 					<tr>
 						<td rowspan="12">1급</td>
-						<td rowspan="6">1교시<br>[+과목추가]</td>
-						<td>상담철학과 윤리</td>
+						<td rowspan="6">
+							1교시<br>
+							<select id="subjectSelect${status.index}" multiple size="5" onchange="limitSelection(this); addSubject(${status.index});">
+								<c:forEach var="card" items="${cardList1}">
+									<option value="${card.subject_code}">${card.subject_name}</option>
+								</c:forEach>
+							</select>
+						</td>
+						<td id="subjectName${status.index}">상담철학과 윤리</td>
 						<td>[삭제]</td>
-						<td>11</td>
+						<td id="subjectCode${status.index}">11</td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
 						<td>○</td>
@@ -153,7 +185,14 @@ h2 {
 				</c:when>
 				<c:when test="${status.index == 6}">
 					<tr>
-						<td rowspan="6">2교시<br>[+과목추가]</td>
+						<td rowspan="6">
+							2교시<br>
+							<select id="subjectSelect2${status.index}" multiple size="5" onchange="limitSelection(this); addSubject('2${status.index}');">
+								<c:forEach var="card" items="${cardList1}">
+									<option value="${card.subject_code}">${card.subject_name}</option>
+								</c:forEach>
+							</select>
+						</td>
 						<td>심리평가와 진단</td>
 						<td>[삭제]</td>
 						<td>21</td>
@@ -221,7 +260,14 @@ h2 {
 				<c:when test="${status.index == 12}">
 					<tr>
 						<td rowspan="14">2급</td>
-						<td rowspan="6">1교시<br>[+과목추가]</td>
+						<td rowspan="6">
+							1교시<br>
+							<select id="subjectSelect3${status.index}" multiple size="5" onchange="limitSelection(this); addSubject('3${status.index}');">
+								<c:forEach var="card" items="${cardList2}">
+									<option value="${card.subject_code}">${card.subject_name}</option>
+								</c:forEach>
+							</select>
+						</td>
 						<td>상담윤리</td>
 						<td>[삭제]</td>
 						<td>11</td>
@@ -288,7 +334,14 @@ h2 {
 				</c:when>
 				<c:when test="${status.index == 18}">
 					<tr>
-						<td rowspan="8">2교시<br>[+과목추가]</td>
+						<td rowspan="8">
+							2교시<br>
+							<select id="subjectSelect4${status.index}" multiple size="5" onchange="limitSelection(this); addSubject('4${status.index}');">
+								<c:forEach var="card" items="${cardList2}">
+									<option value="${card.subject_code}">${card.subject_name}</option>
+								</c:forEach>
+							</select>
+						</td>
 						<td>심리검사와 상담</td>
 						<td>[삭제]</td>
 						<td>21</td>
