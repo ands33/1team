@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>ÃâÁ¦ÀÇ·Ú ¸ñ·Ï</title>
+<meta charset="utf-8">
+<title>ì¶œì œì˜ë¢° ëª©ë¡</title>
 <script>
 	function open2() {
 		window.open("../../../biz/getTestList.do", "_blank", "width=1000, height=500");
@@ -20,13 +20,13 @@ table {
 }
 
 th, td {
-	border: 1px solid #F76030;
+	border: 1px solid #ddd;
 	padding: 8px;
 	text-align: center;
 }
 
 th {
-	background-color: #fff;
+	background-color: #f2f2f2;
 }
 
 .container {
@@ -48,22 +48,22 @@ th {
 <body>
 	<div class="container">
 		<div class="header">
-			<h3>ÃâÁ¦</h3>
-			<h4>ÃâÁ¦ÀÇ·Ú ¸ñ·Ï</h4>
+			<h3>ì¶œì œ</h3>
+			<h4>ì¶œì œì˜ë¢° ëª©ë¡</h4>
 		</div>
 		<table>
 			<thead>
 				<tr align="center">
-					<th>ÀÇ·Ú ¹øÈ£</th>
-					<th>ºĞ·ù ÄÚµå</th>
-					<th>ÃâÁ¦ °ú¸ñ</th>
-					<th>´ëºĞ·ù</th>
-					<th>ÁßºĞ·ù</th>
-					<th>¼ÒºĞ·ù</th>
-					<th>³­ÀÌµµ</th>
-					<th>´ã´ç À§¿ø</th>
-					<th>ÇöÈ²</th>
-					<th>¹İ·Á/ÃâÁ¦</th>
+					<th>ì˜ë¢° ë²ˆí˜¸</th>
+					<th>ë¶„ë¥˜ ì½”ë“œ</th>
+					<th>ì¶œì œ ê³¼ëª©</th>
+					<th>ëŒ€ë¶„ë¥˜</th>
+					<th>ì¤‘ë¶„ë¥˜</th>
+					<th>ì†Œë¶„ë¥˜</th>
+					<th>ë‚œì´ë„</th>
+					<th>ë‹´ë‹¹ ìœ„ì›</th>
+					<th>í˜„í™©</th>
+					<th>ë°˜ë ¤/ì¶œì œ</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -78,8 +78,8 @@ th {
 						<td>${examPlan.diff}</td>
 						<td>${examPlan.member_name}</td>
 						<td>${examPlan.status}</td>
-						<td><button>¹İ·Á</button>
-							<button>ÃâÁ¦</button></td>
+						<td><button>ë°˜ë ¤</button>
+							<button>ì¶œì œ</button></td>
 					</tr>
 				</c:forEach>
 

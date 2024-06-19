@@ -1,13 +1,43 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-	
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Çì´õ</title>
+<title>í—¤ë”</title>
+<style>
+body {
+    background: #F8F9FB;
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+table {
+	width: 100%;
+	height: 100%;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.logo-container img {
+    width: 280px;
+    height: auto;
+}
+
+.header-container {
+	display: flex;
+	align-items: center;
+}
+</style>
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -18,8 +48,23 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="../../../index.jsp">ÃâÁ¦À§¿ø ÆäÀÌÁö</a>
+	<img src="./img/kca_logo_short.jpg" alt="KCA Logo">
+	<div class="header-container">
+        <div class="header-left">
+        </div>
+        <div class="navbar">
+            <a href="#">Home</a> 
+            <span>></span> 
+            <a href="#">ì•Œë¦¼ë§ˆë‹¹</a> 
+            <span>></span> 
+            <a href="#">ì¶œì œê¸°ì¤€</a>
+        </div>
+    </div>
+        
+        
+        
+	<nav class="navbar navbar-expand-lg navbar-light bg-white">
+		<a class="navbar-brand" href="../../../index.jsp">ì¶œì œìœ„ì› í˜ì´ì§€</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -27,35 +72,32 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="../#">ÃâÁ¦ °èÈ¹¼­</a>
+				<li class="nav-item"><a class="nav-link" href="../#">ì¶œì œ ê³„íšì„œ</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="../../../biz/getExamPlanList.do">ÃâÁ¦</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="../#">°¨¼ö</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="../#">ÃâÁ¦ ÀÌ¿ø ºĞ·ùÇ¥</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="../#" id="noticeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Àü´Ş»çÇ×
-					</a>
+				<li class="nav-item"><a class="nav-link"
+					href="../../../biz/getExamPlanList.do">ì¶œì œ</a></li>
+				<li class="nav-item"><a class="nav-link" href="../#">ê°ìˆ˜</a></li>
+				<li class="nav-item"><a class="nav-link" href="../#">ì¶œì œ ì´ì›
+						ë¶„ë¥˜í‘œ</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="../#" id="noticeDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> ì „ë‹¬ì‚¬í•­ </a>
 					<div class="dropdown-menu" aria-labelledby="noticeDropdown">
-						<a class="dropdown-item" href="../#">°øÁö»çÇ×</a>
-						<a class="dropdown-item" href="../#">À§¿øÀü´Ş»çÇ×</a>
-					</div>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="../#" id="noticeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						±× ¿Ü ¸Ş´º
-					</a>
+						<a class="dropdown-item" href="../#">ê³µì§€ì‚¬í•­</a> <a
+							class="dropdown-item" href="../#">ìœ„ì›ì „ë‹¬ì‚¬í•­</a>
+					</div></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="../#" id="noticeDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> ê·¸ ì™¸ ë©”ë‰´ </a>
 					<div class="dropdown-menu" aria-labelledby="noticeDropdown">
-						<a class="dropdown-item" href="../#">Q&A</a>
-						<a class="dropdown-item" href="../#">FAQ</a>
-						<a class="dropdown-item" href="../#">»ç¿ëÀÚ ¸Ş´º¾ó</a>
-						<a class="dropdown-item" href="../#">°øÀÎÀÎÁõ¼­ ¸Ş´º¾ó</a>
-						<a class="dropdown-item" href="../#">ÃâÁ¦±âÁØ</a>
-					</div>
-				</li>
+						<a class="dropdown-item" href="../#">Q&A</a> <a
+							class="dropdown-item" href="../#">FAQ</a> <a
+							class="dropdown-item" href="../#">ì‚¬ìš©ì ë©”ë‰´ì–¼</a> <a
+							class="dropdown-item" href="../#">ê³µì¸ì¸ì¦ì„œ ë©”ë‰´ì–¼</a> <a
+							class="dropdown-item" href="../#">ì¶œì œê¸°ì¤€</a>
+					</div></li>
 			</ul>
 		</div>
 	</nav>
