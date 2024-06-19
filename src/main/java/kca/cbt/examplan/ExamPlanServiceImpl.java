@@ -5,11 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.springbook.biz.board.BoardVO;
-
-import kca.cbt.qna.QnaDAO;
-
-@Service("testSerivce")
+@Service("examPlanSerivce")
 public class ExamPlanServiceImpl implements ExamPlanService {
 	@Autowired
 	private ExamPlanDAO examPlanDAO;
@@ -19,8 +15,11 @@ public class ExamPlanServiceImpl implements ExamPlanService {
 	}
 
 	public List<ExamPlanVO> getExamPlanList(ExamPlanVO vo) {
-		// TODO Auto-generated method stub
 		return examPlanDAO.getExamPlanList(vo);
+	}
+	
+	public void updateStatus(ExamPlanVO vo) {
+		examPlanDAO.updateStatus(vo);
 	}
 
 }

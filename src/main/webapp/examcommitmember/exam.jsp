@@ -1,91 +1,105 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+   pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>ì¶œì œì˜ë¢° ëª©ë¡</title>
+<meta charset="EUC-KR">
+<title>ÃâÁ¦ÀÇ·Ú ¸ñ·Ï</title>
 <script>
-	function open2() {
-		window.open("../../../biz/getTestList.do", "_blank", "width=1000, height=500");
-	}
+   function open2() {
+      window.open("../../../biz/getTestList.do", "_blank",
+            "width=1000, height=500");
+   }
 </script>
 <style>
 table {
-	width: 100%;
-	border-collapse: collapse;
-	margin-top: 20px;
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 20px;
 }
 
 th, td {
-	border: 1px solid #ddd;
-	padding: 8px;
-	text-align: center;
+   border: 1px solid #F76030;
+   padding: 8px;
+   text-align: center;
 }
 
 th {
-	background-color: #f2f2f2;
+   background-color: #fff;
 }
 
 .container {
-	margin: 20px;
+   margin: 20px;
 }
 
 .header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
 
 .header h3 {
-	margin: 0;
+   margin: 0;
 }
 </style>
 </head>
 <%@ include file="header.jsp"%>
 <body>
-	<div class="container">
-		<div class="header">
-			<h3>ì¶œì œ</h3>
-			<h4>ì¶œì œì˜ë¢° ëª©ë¡</h4>
-		</div>
-		<table>
-			<thead>
-				<tr align="center">
-					<th>ì˜ë¢° ë²ˆí˜¸</th>
-					<th>ë¶„ë¥˜ ì½”ë“œ</th>
-					<th>ì¶œì œ ê³¼ëª©</th>
-					<th>ëŒ€ë¶„ë¥˜</th>
-					<th>ì¤‘ë¶„ë¥˜</th>
-					<th>ì†Œë¶„ë¥˜</th>
-					<th>ë‚œì´ë„</th>
-					<th>ë‹´ë‹¹ ìœ„ì›</th>
-					<th>í˜„í™©</th>
-					<th>ë°˜ë ¤/ì¶œì œ</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="examPlan" items="${examPlanList}">
-					<tr>
-						<td>${examPlan.num}</td>
-						<td>${examPlan.categoryNumbers}</td>
-						<td>${examPlan.name}</td>
-						<td>${examPlan.category1}</td>
-						<td>${examPlan.category2}</td>
-						<td>${examPlan.category3}</td>
-						<td>${examPlan.diff}</td>
-						<td>${examPlan.member_name}</td>
-						<td>${examPlan.status}</td>
-						<td><button>ë°˜ë ¤</button>
-							<button>ì¶œì œ</button></td>
-					</tr>
-				</c:forEach>
+   <div class="container">
+      <div class="header">
+         <h3>ÃâÁ¦</h3>
+         <h4>ÃâÁ¦ÀÇ·Ú ¸ñ·Ï</h4>
+      </div>
+      <table>
+         <thead>
+            <tr align="center">
+               <th>ÀÇ·Ú ¹øÈ£</th>
+               <th>ºĞ·ù ÄÚµå</th>
+               <th>ÃâÁ¦ °ú¸ñ</th>
+               <th>´ëºĞ·ù</th>
+               <th>ÁßºĞ·ù</th>
+               <th>¼ÒºĞ·ù</th>
+               <th>³­ÀÌµµ</th>
+               <th>´ã´ç À§¿ø</th>
+               <th>ÇöÈ²</th>
+               <th>¹İ·Á/ÃâÁ¦</th>
+            </tr>
+         </thead>
+         <tbody>
+            <c:forEach var="examPlan" items="${examPlanList}">
+               <tr>
+                  <td>${examPlan.num}</td>
+                  <td>${examPlan.categoryNumbers}</td>
+                  <td>${examPlan.name}</td>
+                  <td>${examPlan.category1}</td>
+                  <td>${examPlan.category2}</td>
+                  <td>${examPlan.category3}</td>
+                  <td>${examPlan.diff}</td>
+                  <td>${examPlan.member_name}</td>
+                  <td>${examPlan.status}</td>
+                  <td>
 
-			</tbody>
-		</table>
-	</div>
+                     <form action="examcommitmember/examCard.jsp" method="post">
+                        <input type="hidden" name="num" value="${examPlan.num}" />
+                        <button type="submit" name="action" value="approve"
+                           <c:if test="${examPlan.status == '¹İ·Á'}">disabled</c:if>>ÃâÁ¦</button>
+                     </form>
+                     <form id="rejectForm1" action="updateStatus.do" method="post">
+                        <input type="hidden" name="num" value="${examPlan.num}" /> <input
+                           type="hidden" name="status" value="¹İ·Á" />
+                        <button type="submit" name="action" value="reject">¹İ·Á</button>
+                     </form>
+                     <form action="updateStatus.do" method="post">
+                        <input type="hidden" name="num" value="${examPlan.num}" /> <input
+                           type="hidden" name="status" value="¹Ì°³ºÀ" />
+                        <button type="submit" name="action" value="test">Å×½ºÆ®¿ë</button>
+                     </form>
 
-</body>
-</html>
+                  </td>
+               </tr>
+            </c:forEach>
+         </tbody>
+      </table>
+   </div>
