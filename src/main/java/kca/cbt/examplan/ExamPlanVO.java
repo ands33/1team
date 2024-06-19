@@ -6,7 +6,7 @@ public class ExamPlanVO {
 	private String member_name;
 	private String member_id;
 	private int idx;
-	private String status;
+	private String e_status;
 	private String name;
 	private String category1;
 	private String category2;
@@ -52,12 +52,12 @@ public class ExamPlanVO {
 		this.idx = idx;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getE_status() {
+		return e_status;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setE_status(String e_status) {
+		this.e_status = e_status;
 	}
 
 	public String getName() {
@@ -111,7 +111,7 @@ public class ExamPlanVO {
 	@Override
 	public String toString() {
 		return "ExamPlanVO [num=" + num + ", diff=" + diff + ", member_name=" + member_name + ", member_id=" + member_id
-				+ ", idx=" + idx + ", status=" + status + "]";
+				+ ", idx=" + idx + ", status=" + e_status + "]";
 	}
 
 }
