@@ -35,4 +35,5 @@
 	
 	<bean id="memberDAO" class="kca.cbt.login.MemberDAO" />
 
+	
 </beans>

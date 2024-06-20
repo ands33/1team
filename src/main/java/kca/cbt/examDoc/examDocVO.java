@@ -2,14 +2,15 @@ package kca.cbt.examDoc;
 
 public class examDocVO {
 	private int num;
-	private String diff;
-	private String memeber_name;
-	private int idx;
-	private String status;
+	private String name;
 	private String category1;
 	private String category2;
 	private String category3;
+	private String diff;
+	private String member_name;
+	private String member_id;
 	private String member_type;
+	private int idx;
 
 	public int getNum() {
 		return num;
@@ -19,36 +20,12 @@ public class examDocVO {
 		this.num = num;
 	}
 
-	public String getDiff() {
-		return diff;
+	public String getName() {
+		return name;
 	}
 
-	public void setDiff(String diff) {
-		this.diff = diff;
-	}
-
-	public String getMemeber_name() {
-		return memeber_name;
-	}
-
-	public void setMemeber_name(String memeber_name) {
-		this.memeber_name = memeber_name;
-	}
-
-	public int getIdx() {
-		return idx;
-	}
-
-	public void setIdx(int idx) {
-		this.idx = idx;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getCategory1() {
@@ -74,7 +51,31 @@ public class examDocVO {
 	public void setCategory3(String category3) {
 		this.category3 = category3;
 	}
-	
+
+	public String getDiff() {
+		return diff;
+	}
+
+	public void setDiff(String diff) {
+		this.diff = diff;
+	}
+
+	public String getMember_name() {
+		return member_name;
+	}
+
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
+	}
+
+	public String getMember_id() {
+		return member_id;
+	}
+
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+
 	public String getMember_type() {
 		return member_type;
 	}
@@ -83,11 +84,19 @@ public class examDocVO {
 		this.member_type = member_type;
 	}
 
+	public int getIdx() {
+		return idx;
+	}
+
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
+	
 	@Override
 	public String toString() {
-		return "examDocVO [num=" + num + ", diff=" + diff + ", memeber_name=" + memeber_name + ", idx=" + idx
-				+ ", status=" + status + ", category1=" + category1 + ", category2=" + category2 + ", category3="
-				+ category3 + ", member_type=" + member_type + "]";
+		return "examDocVO [num=" + num + ", name=" + name + ", category1=" + category1 + ", category2=" + category2
+				+ ", category3=" + category3 + ", diff=" + diff + ", member_name=" + member_name + ", member_id="
+				+ member_id + ", member_type=" + member_type + ", idx=" + idx + "]";
 	}
 
 	// . 앞의 숫자만 추출하여 "1-2" 형식의 문자열을 반환하는 메서드
