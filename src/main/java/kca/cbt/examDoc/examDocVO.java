@@ -1,16 +1,15 @@
-package kca.cbt.examplan;
+package kca.cbt.examDoc;
 
-public class ExamPlanVO {
+public class examDocVO {
 	private int num;
 	private String diff;
-	private String member_name;
-	private String member_id;
+	private String memeber_name;
 	private int idx;
-	private String e_status;
-	private String name;
+	private String status;
 	private String category1;
 	private String category2;
 	private String category3;
+	private String member_type;
 
 	public int getNum() {
 		return num;
@@ -28,20 +27,12 @@ public class ExamPlanVO {
 		this.diff = diff;
 	}
 
-	public String getMember_name() {
-		return member_name;
+	public String getMemeber_name() {
+		return memeber_name;
 	}
 
-	public void setMember_name(String member_name) {
-		this.member_name = member_name;
-	}
-
-	public String getMember_id() {
-		return member_id;
-	}
-
-	public void setMember_id(String member_id) {
-		this.member_id = member_id;
+	public void setMemeber_name(String memeber_name) {
+		this.memeber_name = memeber_name;
 	}
 
 	public int getIdx() {
@@ -52,20 +43,12 @@ public class ExamPlanVO {
 		this.idx = idx;
 	}
 
-	public String getE_status() {
-		return e_status;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setE_status(String e_status) {
-		this.e_status = e_status;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getCategory1() {
@@ -92,9 +75,25 @@ public class ExamPlanVO {
 		this.category3 = category3;
 	}
 	
+	public String getMember_type() {
+		return member_type;
+	}
+
+	public void setMember_type(String member_type) {
+		this.member_type = member_type;
+	}
+
+	@Override
+	public String toString() {
+		return "examDocVO [num=" + num + ", diff=" + diff + ", memeber_name=" + memeber_name + ", idx=" + idx
+				+ ", status=" + status + ", category1=" + category1 + ", category2=" + category2 + ", category3="
+				+ category3 + ", member_type=" + member_type + "]";
+	}
+
 	// . 앞의 숫자만 추출하여 "1-2" 형식의 문자열을 반환하는 메서드
 	public String getCategoryNumbers() {
-		return extractNumberBeforeDot(category1) + "-" + extractNumberBeforeDot(category2) + "-" + extractNumberBeforeDot(category3);
+		return extractNumberBeforeDot(category1) + "-" + extractNumberBeforeDot(category2) + "-"
+				+ extractNumberBeforeDot(category3);
 	}
 
 	// 문자열에서 . 앞의 숫자만 추출하는 헬퍼 메서드
@@ -107,11 +106,4 @@ public class ExamPlanVO {
 		}
 		return ""; // .가 없는 경우 빈 문자열 반환
 	}
-
-	@Override
-	public String toString() {
-		return "ExamPlanVO [num=" + num + ", diff=" + diff + ", member_name=" + member_name + ", member_id=" + member_id
-				+ ", idx=" + idx + ", status=" + e_status + "]";
-	}
-
 }
