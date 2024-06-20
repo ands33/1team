@@ -27,7 +27,9 @@ function limitSelection() {
     return true;
 }
 
-function submitSubjects() {
+function submitSubjects(event) {
+    event.preventDefault(); // 폼 제출 기본 동작 방지
+
     if (!limitSelection()) return;
 
     var checkboxes = document.querySelectorAll('input[name="subjects"]:checked');
@@ -50,7 +52,7 @@ function submitSubjects() {
 
 <h2>과목 선택</h2>
 
-<form onsubmit="submitSubjects(event);">
+<form onsubmit="submitSubjects(event); return false;">
     <div>
         <c:forEach var="card" items="${rowIdx < 12 ? cardList1 : cardList2}">
             <label>
