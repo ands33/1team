@@ -1,33 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>í—¤ë”</title>
+<title>Çì´õ</title>
 <link rel="stylesheet" href="header.css">
 <link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-	rel="stylesheet">
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	 <div class="header-container d-flex align-items-center p-3">
+    <div class="header-container d-flex align-items-center p-3">
         <div class="header-left">
             <a href="https://counselors.or.kr/"><img src="./img/kca_logo_short.jpg" alt="KCA Logo"></a>
         </div>
         <div class="header-links ml-3">
-            <a href="https://counselors.or.kr/">í•œêµ­ìƒë‹´í•™íšŒ</a> <span> Â· </span> <a href="https://counselors.or.kr/"><img src="./img/kca_house.png" alt="KCA Logo">ì¸íŠ¸ë¡œ</a>
+            <a href="https://counselors.or.kr/">ÇÑ±¹»ó´ãÇÐÈ¸</a> <span> ¡¤ </span> <a href="https://counselors.or.kr/">
+            <img src="./img/kca_house.png" alt="KCA Logo">ÀÎÆ®·Î</a><span> ¡¤ </span><a href="./index.jsp">index
         </div>
         <div class="header-right ml-auto d-flex align-items-center">
-            <a href="#">ìƒë‹´ì´ë¡ ê³¼ ì‹¤ì œA</a> <span class="mx-2"></span> <a href="#">ë¡œê·¸ì•„ì›ƒ</a> <span class="mx-2"></span> <a href="#">ë§ˆì´íŽ˜ì´ì§€</a>
-            
+            <a href="#">»ó´ãÀÌ·Ð°ú ½ÇÁ¦A</a> <span class="mx-2"></span> <a href="#">·Î±×¾Æ¿ô</a> <span class="mx-2"></span> <a href="#">¸¶ÀÌÆäÀÌÁö</a>
         </div>
     </div>
     <br>
@@ -35,16 +35,13 @@
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 justify-content-around w-50">
-                    <li class="nav-item"><a class="nav-link" href="../#">ì¶œì œ ê³„íšì„œ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../biz/getExamPlanList.do">ì¶œì œ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../#">ê²€í† </a></li>
-                    <li class="nav-item"><a class="nav-link" href="../#">ì¶œì œ ì´ì›ë¶„ë¥˜í‘œ</a></li>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../#">ÃâÁ¦ °èÈ¹¼­</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../biz/getExamPlanList.do">ÃâÁ¦</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../biz/getSubtrahendList.do">°ËÅä</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../#">ÃâÁ¦ ÀÌ¿øºÐ·ùÇ¥</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-</div>
 </body>
-
 </html>
