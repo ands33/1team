@@ -1,6 +1,5 @@
 package kca.cbt.test;
 
-import java.sql.Date;
 
 public class TestVO {
 	private int num;
@@ -26,7 +25,7 @@ public class TestVO {
 	private String authorYear;
 	private String page;
 	private String e_status;
-	private Date createDate;
+	private String createDate;
 	private String aff;
 	private String writtenName;
 	private String examName;
@@ -216,11 +215,11 @@ public class TestVO {
 		this.e_status = e_status;
 	}
 
-	public Date getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
 
