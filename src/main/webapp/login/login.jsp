@@ -10,7 +10,7 @@
 <body>
     <div class="login-container">
         <div class="logo-container">
-           <img src="file:///C:/1kosmosc/sts/work_space3/1team/src/main/criTeria_login_img/kca_logo.jpg" alt="KCA Logo">
+           <img src="file:///C:/1kosmosc/sts/work_space3/1team/src/main/webapp/login/img/kca_logo_short.jpg" alt="KCA Logo">
         </div>
         <form action="${pageContext.request.contextPath}/login.do" method="post">
             <h2><span class="entypo-login"><i class="fa fa-sign-in"></i></span> Login</h2>

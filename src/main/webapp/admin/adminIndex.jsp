@@ -49,30 +49,35 @@ h2 {
 	display: inline-block;
 	margin-left: 10px;
 }
-</style>
-<script>
-function limitSelection(selectElement) {
-    var selectedOptions = selectElement.selectedOptions;
-    if (selectedOptions.length > 3) {
-        alert("최대 3개의 항목만 선택할 수 있습니다.");
-        selectElement.selectedIndex = -1;
-    }
+
+.select-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-function addSubject(rowIdx) {
-    var selectElement = document.getElementById("subjectSelect" + rowIdx);
-    var selectedOptions = selectElement.selectedOptions;
-    
-    var subjects = [];
-    var subjectCodes = [];
+select {
+	width: 190px;
+	height: 100px;
+	margin-bottom: 10px;
+}
 
-    for (var i = 0; i < selectedOptions.length; i++) {
-        subjects.push(selectedOptions[i].text);
-        subjectCodes.push(selectedOptions[i].value);
+button {
+	width: 60px;
+	height: 30px;
+}
+
+</style>
+<script>
+function openSubjectPopup(rowIdx) {
+    var popup = window.open("openSubjectPopup.do?rowIdx=" + rowIdx, "subjectPopup", "width=400,height=400");
+}
+
+function setSubjects(rowIdx, subjects, subjectCodes) {
+    for (var i = 0; i < subjects.length; i++) {
+        document.getElementById("subjectName" + rowIdx + "_" + i).innerText = subjects[i] || '';
+        document.getElementById("subjectCode" + rowIdx + "_" + i).innerText = subjectCodes[i] || '';
     }
-
-    document.getElementById("subjectName" + rowIdx).innerText = subjects.join(", ");
-    document.getElementById("subjectCode" + rowIdx).innerText = subjectCodes.join(", ");
 }
 </script>
 </head>
@@ -112,19 +117,15 @@ function addSubject(rowIdx) {
 					<tr>
 						<td rowspan="12">1급</td>
 						<td rowspan="6">
-							1교시<br>
-							<select id="subjectSelect${status.index}" multiple size="5" onchange="limitSelection(this); addSubject(${status.index});">
-								<c:forEach var="card" items="${cardList1}">
-									<option value="${card.subject_code}">${card.subject_name}</option>
-								</c:forEach>
-							</select>
+							1교시<br> 
+							<button type="button" onclick="openSubjectPopup(${status.index});">과목추가+</button>
 						</td>
-						<td id="subjectName${status.index}">상담철학과 윤리</td>
+						<td id="subjectName${status.index}_0">상담철학과 윤리</td>
 						<td>[삭제]</td>
-						<td id="subjectCode${status.index}">11</td>
+						<td id="subjectCode${status.index}_0">11</td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -135,18 +136,18 @@ function addSubject(rowIdx) {
 						<td></td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
 				<c:when test="${status.index == 2}">
 					<tr>
-						<td>고급상담 이론과 실제</td>
+						<td id="subjectName${status.index}_1">고급상담 이론과 실제</td>
 						<td>[삭제]</td>
-						<td>12</td>
+						<td id="subjectCode${status.index}_1">12</td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -157,7 +158,7 @@ function addSubject(rowIdx) {
 						<td></td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -168,7 +169,7 @@ function addSubject(rowIdx) {
 						<td>13</td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -179,7 +180,7 @@ function addSubject(rowIdx) {
 						<td></td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -187,18 +188,21 @@ function addSubject(rowIdx) {
 					<tr>
 						<td rowspan="6">
 							2교시<br>
-							<select id="subjectSelect2${status.index}" multiple size="5" onchange="limitSelection(this); addSubject('2${status.index}');">
-								<c:forEach var="card" items="${cardList1}">
-									<option value="${card.subject_code}">${card.subject_name}</option>
-								</c:forEach>
-							</select>
+							<div class="select-container">
+								<select id="subjectSelect2${status.index}" multiple size="5" onchange="limitSelection(this);">
+									<c:forEach var="card" items="${cardList1}">
+										<option value="${card.subject_code}">${card.subject_name}</option>
+									</c:forEach>
+								</select>
+								<button type="button" onclick="addSubject('2${status.index}');">확인</button>
+							</div>
 						</td>
 						<td>심리평가와 진단</td>
 						<td>[삭제]</td>
 						<td>21</td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -209,7 +213,7 @@ function addSubject(rowIdx) {
 						<td></td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -220,7 +224,7 @@ function addSubject(rowIdx) {
 						<td>14</td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -231,7 +235,7 @@ function addSubject(rowIdx) {
 						<td></td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -242,7 +246,7 @@ function addSubject(rowIdx) {
 						<td>22</td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -253,7 +257,7 @@ function addSubject(rowIdx) {
 						<td></td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -262,18 +266,21 @@ function addSubject(rowIdx) {
 						<td rowspan="14">2급</td>
 						<td rowspan="6">
 							1교시<br>
-							<select id="subjectSelect3${status.index}" multiple size="5" onchange="limitSelection(this); addSubject('3${status.index}');">
-								<c:forEach var="card" items="${cardList2}">
-									<option value="${card.subject_code}">${card.subject_name}</option>
-								</c:forEach>
-							</select>
+							<div class="select-container">
+								<select id="subjectSelect3${status.index}" multiple size="5" onchange="limitSelection(this);">
+									<c:forEach var="card" items="${cardList2}">
+										<option value="${card.subject_code}">${card.subject_name}</option>
+									</c:forEach>
+								</select>
+								<button type="button" onclick="addSubject('3${status.index}');">확인</button>
+							</div>
 						</td>
 						<td>상담윤리</td>
 						<td>[삭제]</td>
 						<td>11</td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -284,7 +291,7 @@ function addSubject(rowIdx) {
 						<td></td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -295,7 +302,7 @@ function addSubject(rowIdx) {
 						<td>23</td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -306,7 +313,7 @@ function addSubject(rowIdx) {
 						<td></td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -317,7 +324,7 @@ function addSubject(rowIdx) {
 						<td>12</td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -328,7 +335,7 @@ function addSubject(rowIdx) {
 						<td></td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -336,18 +343,21 @@ function addSubject(rowIdx) {
 					<tr>
 						<td rowspan="8">
 							2교시<br>
-							<select id="subjectSelect4${status.index}" multiple size="5" onchange="limitSelection(this); addSubject('4${status.index}');">
-								<c:forEach var="card" items="${cardList2}">
-									<option value="${card.subject_code}">${card.subject_name}</option>
-								</c:forEach>
-							</select>
+							<div class="select-container">
+								<select id="subjectSelect4${status.index}" multiple size="5" onchange="limitSelection(this);">
+									<c:forEach var="card" items="${cardList2}">
+										<option value="${card.subject_code}">${card.subject_name}</option>
+									</c:forEach>
+								</select>
+								<button type="button" onclick="addSubject('4${status.index}');">확인</button>
+							</div>
 						</td>
 						<td>심리검사와 상담</td>
 						<td>[삭제]</td>
 						<td>21</td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -358,7 +368,7 @@ function addSubject(rowIdx) {
 						<td></td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -369,7 +379,7 @@ function addSubject(rowIdx) {
 						<td>22</td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -380,7 +390,7 @@ function addSubject(rowIdx) {
 						<td></td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -391,7 +401,7 @@ function addSubject(rowIdx) {
 						<td>23</td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -402,7 +412,7 @@ function addSubject(rowIdx) {
 						<td></td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -413,7 +423,7 @@ function addSubject(rowIdx) {
 						<td>23</td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
@@ -424,7 +434,7 @@ function addSubject(rowIdx) {
 						<td></td>
 						<td>${member.member_id}</td>
 						<td>${member.pw}</td>
-						<td>○</td>
+						<td>${member.member_type}</td>
 						<td>${member.member_name}</td>
 					</tr>
 				</c:when>
