@@ -5,50 +5,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 <link rel="icon" type="favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="exam.css">
 <meta charset="EUC-KR">
 <title>출제의뢰 목록</title>
-
-<style>
-table {
-	width: 100%;
-	border-collapse: collapse;
-	margin-top: 20px;
-}
-
-th, td {
-	border: 1px solid #F76030;
-	padding: 8px;
-	text-align: center;
-}
-
-th {
-	background-color: #fff;
-}
-
-.container {
-	margin: 20px;
-}
-
-.header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.header h3 {
-	margin: 0;
-}
-</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <%@ include file="header.jsp"%>
 <body>
 	<div class="container">
 		<div class="header">
-			<h3>출제</h3>
-			<h4>출제의뢰 목록</h4>
 		</div>
+		<br>
 		<table>
 			<thead>
 				<tr align="center">
@@ -94,10 +63,12 @@ th {
 									type="hidden" name="e_status" value="미개봉" />
 								<button type="submit" name="action" value="test">테스트용</button>
 							</form>
-
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+	</body>
+	</html>

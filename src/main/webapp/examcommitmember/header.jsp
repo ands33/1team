@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Çì´õ</title>
+<title>í—¤ë”</title>
 <link rel="stylesheet" href="header.css">
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -18,52 +18,33 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="header-container">
+	 <div class="header-container d-flex align-items-center p-3">
         <div class="header-left">
-            <img src="./img/kca_logo_short.jpg" alt="KCA Logo">
+            <a href="https://counselors.or.kr/"><img src="./img/kca_logo_short.jpg" alt="KCA Logo"></a>
         </div>
-        <div>
-            <a href="#">ÇÑ±¹»ó´ãÇÐÈ¸</a>
-            <span> ¡¤ </span>
-            <a href="#">ÃâÁ¦À§¿ø ÆäÀÌÁö</a>
+        <div class="header-links ml-3">
+            <a href="https://counselors.or.kr/">í•œêµ­ìƒë‹´í•™íšŒ</a> <span> Â· </span> <a href="https://counselors.or.kr/"><img src="./img/kca_house.png" alt="KCA Logo">ì¸íŠ¸ë¡œ</a>
+        </div>
+        <div class="header-right ml-auto d-flex align-items-center">
+            <a href="#">ìƒë‹´ì´ë¡ ê³¼ ì‹¤ì œA</a> <span class="mx-2"></span> <a href="#">ë¡œê·¸ì•„ì›ƒ</a> <span class="mx-2"></span> <a href="#">ë§ˆì´íŽ˜ì´ì§€</a>
+            
         </div>
     </div>
-        <br>
-	<nav class="navbar navbar-expand-lg navbar-light bg-white">
-		<a class="navbar-brand" href="../../../index.jsp">ÃâÁ¦À§¿ø ÆäÀÌÁö</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="../#">ÃâÁ¦ °èÈ¹¼­</a>
-				</li>
-				<li class="nav-item"><a class="nav-link"
-					href="../../../biz/getExamPlanList.do">ÃâÁ¦</a></li>
-				<li class="nav-item"><a class="nav-link" href="../#">°¨¼ö</a></li>
-				<li class="nav-item"><a class="nav-link" href="../#">ÃâÁ¦ ÀÌ¿ø
-						ºÐ·ùÇ¥</a></li>
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="../#" id="noticeDropdown"
-					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Àü´Þ»çÇ× </a>
-					<div class="dropdown-menu" aria-labelledby="noticeDropdown">
-						<a class="dropdown-item" href="../#">°øÁö»çÇ×</a> <a
-							class="dropdown-item" href="../#">À§¿øÀü´Þ»çÇ×</a>
-					</div></li>
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="../#" id="noticeDropdown"
-					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> ±× ¿Ü ¸Þ´º </a>
-					<div class="dropdown-menu" aria-labelledby="noticeDropdown">
-						<a class="dropdown-item" href="../#">Q&A</a> <a
-							class="dropdown-item" href="../#">FAQ</a> <a
-							class="dropdown-item" href="../#">»ç¿ëÀÚ ¸Þ´º¾ó</a> <a
-							class="dropdown-item" href="../#">°øÀÎÀÎÁõ¼­ ¸Þ´º¾ó</a> <a
-							class="dropdown-item" href="../#">ÃâÁ¦±âÁØ</a>
-					</div></li>
-			</ul>
-		</div>
-	</nav>
+    <br>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 justify-content-around w-50">
+                    <li class="nav-item"><a class="nav-link" href="../#">ì¶œì œ ê³„íšì„œ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../biz/getExamPlanList.do">ì¶œì œ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../#">ê²€í† </a></li>
+                    <li class="nav-item"><a class="nav-link" href="../#">ì¶œì œ ì´ì›ë¶„ë¥˜í‘œ</a></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+</body>
+
+</html>
