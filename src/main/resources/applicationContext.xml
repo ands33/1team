@@ -34,6 +34,12 @@
 	</bean>
 	
 	<bean id="memberDAO" class="kca.cbt.login.MemberDAO" />
+	
+	 <!-- Exam_subjectService와 Exam_subjectDAO 빈 설정 -->
+    <bean id="exam_subjectService" class="kca.cbt.exam_subjects.Exam_subjectServiceImpl">
+        <property name="exam_subjectDAO" ref="exam_subjectDAO" />
+    </bean>
+    <bean id="exam_subjectDAO" class="kca.cbt.exam_subjects.Exam_subjectDAO" />
 
 	
 </beans>
