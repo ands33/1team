@@ -6,6 +6,7 @@ public class MemberVO {
 	private String pw;
 	private String member_name;
 	private String member_type;
+	
 	public String getMember_id() {
 		return member_id;
 	}
