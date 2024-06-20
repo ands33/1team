@@ -51,12 +51,12 @@
 								<input type="hidden" name="num" value="${examPlan.num}" /> <input
 									type="hidden" name="e_status" value="출제중" />
 								<button type="submit" name="action" value="approve"
-									<c:if test="${examPlan.e_status == '반려'}">disabled</c:if>>출제</button>
+									<c:if test="${examPlan.e_status == '반려' || examPlan.e_status == '제출(감수대기)'}">disabled</c:if>>출제</button>
 							</form>
 							<form id="rejectForm1" action="updateStatus.do" method="post">
 								<input type="hidden" name="num" value="${examPlan.num}" /> <input
 									type="hidden" name="e_status" value="반려" />
-								<button type="submit" name="action" value="reject">반려</button>
+								<button type="submit" name="action" value="reject" <c:if test="${examPlan.e_status == '반려' || examPlan.e_status == '제출(감수대기)'}">disabled</c:if>>반려</button>
 							</form>
 							<form action="updateStatus.do" method="post">
 								<input type="hidden" name="num" value="${examPlan.num}" /> <input
