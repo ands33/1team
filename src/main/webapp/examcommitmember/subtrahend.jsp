@@ -8,7 +8,7 @@
 <link rel="icon" type="favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="exam.css">
 <meta charset="EUC-KR">
-<title>출제의뢰 목록</title>
+<title>검토의뢰 목록</title>
 
 <style>
 table {
@@ -46,8 +46,8 @@ th {
 <body>
 	<div class="container">
 		<div class="header">
-			<h3>출제</h3>
-			<h4>출제의뢰 목록</h4>
+			<h3>검토</h3>
+			<h4>검토의뢰 목록</h4>
 		</div>
 		<table>
 			<thead>
@@ -78,16 +78,9 @@ th {
 						<td>${examPlan.e_status}</td>
 						<td>
 
-							<form action="createTest.do" method="post">
-								<input type="hidden" name="num" value="${examPlan.num}" /> <input
-									type="hidden" name="e_status" value="출제중" />
-								<button type="submit" name="action" value="approve"
-									<c:if test="${examPlan.e_status == '반려' || examPlan.e_status == '제출(검토대기)'}">disabled</c:if>>출제</button>
-							</form>
-							<form id="rejectForm1" action="updateStatus.do" method="post">
-								<input type="hidden" name="num" value="${examPlan.num}" /> <input
-									type="hidden" name="e_status" value="반려" />
-								<button type="submit" name="action" value="reject" <c:if test="${examPlan.e_status == '반려' || examPlan.e_status == '제출(검토대기)'}">disabled</c:if>>반려</button>
+							<form action="subtrahend.do" method="post">
+								<input type="hidden" name="num" value="${examPlan.num}" />
+								<button type="submit" name="action" value="approve">검토</button>
 							</form>
 							<form action="updateStatus.do" method="post">
 								<input type="hidden" name="num" value="${examPlan.num}" /> <input
