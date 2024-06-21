@@ -49,7 +49,7 @@ public class GetTestController {
 	public String sendTest(TestVO vo, TestDAO testDAO, ExamPlanVO evo, ExamPlanDAO examPlanDAO) {
 		testDAO.updateTest(vo);
 		testDAO.sendTest(vo);
-		evo.setE_status("제출(감수대기)");
+		evo.setE_status("제출(검토대기)");
 		examPlanDAO.updateStatus(evo);
 		return "getExamPlanList.do";
 	}

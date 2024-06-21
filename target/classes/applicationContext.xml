@@ -23,10 +23,20 @@
     </bean>
     <bean id="qnaDAO" class="kca.cbt.qna.QnaDAO" />
 
-    <bean id="testService" class="kca.cbt.exam.TestServiceImpl">
+    <bean id="testService" class="kca.cbt.test.TestServiceImpl">
         <property name="testDAO" ref="testDAO" />
     </bean>
-    <bean id="testDAO" class="kca.cbt.exam.TestDAO" />
+    <bean id="testDAO" class="kca.cbt.test.TestDAO" />
+    
+    <bean id="examPlanService" class="kca.cbt.examplan.ExamPlanServiceImpl">
+        <property name="examPlanDAO" ref="examPlanDAO" />
+    </bean>
+    <bean id="examPlanDAO" class="kca.cbt.examplan.ExamPlanDAO" />
+    
+    <bean id="subtrahendService" class="kca.cbt.subtrahend.SubtrahendServiceImpl">
+        <property name="subtrahendDAO" ref="subtrahendDAO" />
+    </bean>
+    <bean id="subtrahendDAO" class="kca.cbt.subtrahend.SubtrahendDAO" />
     
     <bean id="memberService"
 		class="kca.cbt.login.MemberServiceImpl">
