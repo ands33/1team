@@ -69,9 +69,14 @@ button {
 
 </style>
 <script>
-function openSubjectPopup(rowIdx) {
-    var popup = window.open("openSubjectPopup.do?rowIdx=" + rowIdx, "subjectPopup", "width=400,height=400");
+
+function openMemberPopup(memberId) {
+    var url = 'admin/popup.jsp?memberId=' + memberId;
+    var name = 'memberPopup';
+    var specs = 'width=600,height=400,scrollbars=yes';
+    window.open(url, name, specs);
 }
+
 
 function setSubjects(rowIdx, subjects, subjectCodes) {
     for (var i = 0; i < subjects.length; i++) {
@@ -127,7 +132,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                         <td id="subjectCode${status.index}_0">
                             <c:out value="${subjectData[member.member_id].subjectCode}" />
                         </td>
-                        <td>${member.member_id}</td>
+                        <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
                         <td>${member.pw}</td>
                         <td>${member.member_type}</td>
                         <td>${member.member_name}</td>
