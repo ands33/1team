@@ -24,7 +24,7 @@
         </div>
         <div class="header-links ml-3">
             <a href="https://counselors.or.kr/">한국상담학회</a> <span> · </span> <a href="https://counselors.or.kr/">
-            <img src="./img/kca_house.png" alt="KCA Logo">인트로</a><span> · </span><a href="./index.jsp">index
+            <img src="./img/kca_house.png" alt="KCA Logo">인트로</a>
         </div>
         <div class="header-right ml-auto d-flex align-items-center">
             <a href="#">상담이론과 실제A</a> <span class="mx-2"></span> <a href="#">로그아웃</a> <span class="mx-2"></span> <a href="#">마이페이지</a>

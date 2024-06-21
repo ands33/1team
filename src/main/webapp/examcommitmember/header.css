@@ -44,9 +44,6 @@ body, html {
     list-style: none;
 }
 
-.nav-item {
-    position: relative;
-}
 
 .nav-link {
     text-decoration: none;
@@ -56,45 +53,11 @@ body, html {
     position: relative;
 }
 
-.navbar-nav .nav-link:hover {
-    color: #DB402E;
+/* 로고 우측 글씨 호버 : 한국상담학회 */
+.header-links a:hover {
+	color: #D8402A;
 }
 
-/* 드롭다운 메뉴 숨기기 */
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: rgba(248, 249, 250, 0.8);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    z-index: 1000;
-}
-
-/* 드롭다운 메뉴의 아이템 스타일 */
-.dropdown-item {
-    padding: 10px 20px;
-}
-
-.dropdown-item a {
-    text-decoration: none;
-    color: black;
-    display: block;
-}
-
-/* 드롭다운 메뉴의 아이템 호버 효과 */
-.dropdown-item:hover {
-    background-color: #6B6D80;
-    color: white;
-}
-
-/* 마우스를 갖다 댈 때 드롭다운 메뉴 표시 */
-.nav-item:hover .dropdown-menu {
-    display: block;
-}
 
 /* 하단 테두리 초기 상태 */
 .navbar-nav .nav-link::after {
@@ -129,9 +92,6 @@ body, html {
     color: black;
 }
 
-.header-links a:hover {
-    color: #6B6D70;
-}
 
 .logo-container {
     text-align: center;
