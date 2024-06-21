@@ -32,7 +32,7 @@ public class MemberDAO {
 			stmt.setString(1, vo.getMember_id());
 			stmt.setString(2, vo.getPw());
 			
-			rs = stmt.executeQuery();
+			rs = stmt.executeQuery();       
 			if (rs.next()) {
 				member = new MemberVO();
 		    	member.setMember_id(rs.getString("MEMBER_ID"));
