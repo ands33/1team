@@ -1,19 +1,17 @@
 package kca.cbt.criteria;
 
+import javax.servlet.http.HttpServlet;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.springbook.view.user.LoginController;
-
 public class HandlerMapping {
-	private Map<String, Controller> mappings;
+	private Map<String, HttpServlet> mappings;
 
-	public HandlerMapping() {
-		mappings = new HashMap<String, Controller>();
-		mappings.put("/login.do", new LoginController());
-	}
+public HandlerMapping() { mappings = new HashMap<>();
+mappings.put("/getCriteriaList.do", new GetCriTeriaServlet()); // 수정된 부분 }
+}
 
-	public Controller getController(String path) {
+	public HttpServlet getHandler(String path) {
 		return mappings.get(path);
 	}
 }
