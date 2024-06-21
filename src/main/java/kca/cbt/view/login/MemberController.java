@@ -21,12 +21,19 @@ public class MemberController {
 //	            return "redirect:getUserList.do";
 	        	return "redirect:/IndexMemberList.do";
 //	        	관리자페이지로가도록구현해야함
-	        } else {
-	        	System.out.println("===> 출제위원으로 로그인");
-	            return "redirect:examcommitmember/Project_index.jsp";
+	        } 
+	        else if ("A".equals(member.getMember_type())){
+	        	System.out.println("===> 출제위원 A로 로그인");
+	            //return "redirect:/getExamDocList.do";
+	        	return "redirect:indexA.jsp";
+	        }
+	        else if("B".equals(member.getMember_type())){
+	        	System.out.println("===> 출제위원 B로 로그인");
+	        	return "redirect:indexB.jsp";
 	        }
 	    } else {
 	        return "redirect:login/login.jsp?error=true";
 	    }
+		return "redirect:login/login.jsp?error=true";
 	}
 }

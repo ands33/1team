@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="EUC-KR">
 <style>
 .button {
   background-color: #04AA6D; /* Green */
@@ -29,7 +30,7 @@
 
 <p>Change the background color of a button with the background-color property:</p>
 
-<button class="button">출제 계획서</button>
+<a href="getExamDocList.do">출제 계획서</a>
 <button class="button button2">출제</button>
 <button class="button button3">감수</button>
 <button class="button button4">최종검토</button>

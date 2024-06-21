@@ -7,6 +7,7 @@ public class examDocVO {
 	private String category2;
 	private String category3;
 	private String diff;
+	private String e_status;
 	private String member_name;
 	private String member_id;
 	private String member_type;
@@ -55,9 +56,17 @@ public class examDocVO {
 	public String getDiff() {
 		return diff;
 	}
-
+	
 	public void setDiff(String diff) {
 		this.diff = diff;
+	}
+	
+	public String getE_status() {
+		return e_status;
+	}
+
+	public void setE_status(String e_status) {
+		this.e_status = e_status;
 	}
 
 	public String getMember_name() {
