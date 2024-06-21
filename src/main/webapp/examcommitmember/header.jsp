@@ -20,7 +20,7 @@
 <body>
 	<div class="header-container">
         <div class="header-left">
-            <img src="./img/kca_logo_short.jpg" alt="KCA Logo">
+            <a href="../../../index.jsp"><img src="./img/kca_logo_short.jpg" alt="KCA Logo"></a>
         </div>
         <div>
             <a href="#">한국상담학회</a>
@@ -42,7 +42,7 @@
 				</li>
 				<li class="nav-item"><a class="nav-link"
 					href="../../../biz/getExamPlanList.do">출제</a></li>
-				<li class="nav-item"><a class="nav-link" href="../#">감수</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../../biz/getSubtrahendList.do">감수</a></li>
 				<li class="nav-item"><a class="nav-link" href="../#">출제 이원
 						분류표</a></li>
 				<li class="nav-item dropdown"><a

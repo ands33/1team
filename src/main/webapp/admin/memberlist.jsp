@@ -84,6 +84,10 @@ th {
 			<button type="submit">일괄 수정</button>
 		</div>
 	</form>
+		<form action="${pageContext.request.contextPath}/IndexMemberList.do"
+			method="get">
+			<button type="submit">회원목록</button>
+		</form>
 
 </body>
 </html>

@@ -1,7 +1,5 @@
 package kca.cbt.test;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +24,7 @@ public class TestServiceImpl implements TestService {
 
 	// 문제 업데이트
 	public void updateTest(TestVO vo) {
-
+		testDAO.updateTest(vo);
 	}
 
 	// 문제 삭제
