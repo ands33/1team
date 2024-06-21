@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,15 +32,15 @@
 				<th>중</th>
 				<th>하</th>
 				<th>합계</th>
-				<th>조성혁 ${examdoc.member_name}</th>
-				<th>user ${examdoc.member_name}</th>
+				<th>조성혁</th>
+				<th>user</th>
 			</tr>
-			<c:forEach items="${ExamDocList}" var="examdoc">
+			<c:forEach items="${ExamDoc}" var="examdoci">
 				<tr>
 					<th>1-0-0</th>
-					<th>${examdoc.category1}</th>
-					<th>${examdoc.category2}</th>
-					<th>${examdoc.category3}</th>
+					<th>${examdoci.category1}</th>
+					<th>${examdoci.category2}</th>
+					<th>${examdoci.category3}</th>
 					<th>1</th>
 					<th>0</th>
 					<th>1</th>
@@ -47,31 +49,31 @@
 					<th>0</th>
 				</tr>
 			</c:forEach>
-		<tr>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-		<tr>
-			<th colspan="4" rowspan="2">합계</th>
-			<th>2</th>
-			<th>2</th>
-			<th>1</th>
-			<th>5</th>
-			<th rowspan="2">3</th>
-			<th rowspan="2">2</th>
-		</tr>
-		<tr>
-			<th colspan="3">예상정답률</th>
-			<th>40</th>
-		</tr>
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr>
+				<th colspan="4" rowspan="2">합계</th>
+				<th>2</th>
+				<th>2</th>
+				<th>1</th>
+				<th>5</th>
+				<th rowspan="2">3</th>
+				<th rowspan="2">2</th>
+			</tr>
+			<tr>
+				<th colspan="3">예상정답률</th>
+				<th>40</th>
+			</tr>
 		</div>
 	</table>
 </body>

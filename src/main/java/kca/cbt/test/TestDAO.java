@@ -26,14 +26,15 @@ public class TestDAO {
 	private final String EXAMPLAN_GET = "select * from examplan where num=?";
 	private final String TEST_GET = "select * from test where num=?";
 	private final String TEST_CREATE = "insert into test(idx, diff, writtenname, member_id, num) values(?,?,?,?,?)";
-	private final String TEST_UPDATE = "update examplan set status=? where num=?";
-	private final String TEST_SEND = "완료하고 보내는 SQL문";
+	private final String TEST_UPDATE = "update test set behavioral=?, question=?, option1=?, option2=?, option3=?,"
+			+ "option4=?, option5=?, answer=?, answerex=?, questionback=?, reference=?, authoryear=?, page=?, createdate=?,"
+			+ "aff=?, e_status=? where num=?";
+	private final String TEST_SEND = "update test set e_status=? where num=?";
 	private final String TEST_DELETE = "삭제시 들어갈 SQL문";
 	private final String SUBJECT_GET = "select * from subject where idx=?";
 
 	// 문제 생성
 	public void createTest(TestVO vo) {
-		System.out.println("===> JDBC로 createTest() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection(); // test db 가르킴
 			stmt = conn.prepareStatement(TEST_CREATE);
@@ -103,7 +104,15 @@ public class TestDAO {
 				test.setReference(rs.getString("REFERENCE"));
 				test.setAuthorYear(rs.getString("AUTHORYEAR"));
 				test.setPage(rs.getString("PAGE"));
+				String createDate = rs.getString("CREATEDATE");
+	            if (createDate != null && createDate.length() >= 10) {
+	                test.setCreateDate(createDate.substring(0, 10));
+	            } else {
+	                test.setCreateDate(createDate); // Handle if createDate format is unexpected
+	            }
+				test.setAff(rs.getString("AFF"));
 				test.setWrittenName(rs.getString("WRITTENNAME"));
+				test.setNum(rs.getInt("NUM"));
 			}
 
 			stmt1 = conn.prepareStatement(SUBJECT_GET);
@@ -123,6 +132,57 @@ public class TestDAO {
 			JDBCUtil.close(rs, stmt, conn);
 		}
 		return test;
+	}
+
+	public void updateTest(TestVO vo) {
+		System.out.println("updateTest() 처리");
+		try {
+			conn = JDBCUtil.getConnection();
+			// update test set behavioral=?, question=?, option1=?, option2=?, option3=?,"
+			// "option4=?, option5=?, answer=?, answerex=?, questionback=?, reference=?,
+			// authoryear=?, page=?, createdate=?,"
+			// "aff=? where num=?
+			stmt = conn.prepareStatement(TEST_UPDATE);
+			System.out.println(TEST_UPDATE);
+			stmt.setString(1, vo.getBehavioral());
+			stmt.setString(2, vo.getQuestion());
+			stmt.setString(3, vo.getOption1());
+			stmt.setString(4, vo.getOption2());
+			stmt.setString(5, vo.getOption3());
+			stmt.setString(6, vo.getOption4());
+			stmt.setString(7, vo.getOption5());
+			stmt.setInt(8, vo.getAnswer());
+			stmt.setString(9, vo.getAnswerEx());
+			stmt.setString(10, vo.getQuestionBack());
+			stmt.setString(11, vo.getReference());
+			stmt.setString(12, vo.getAuthorYear());
+			stmt.setString(13, vo.getPage());
+			stmt.setString(14, vo.getCreateDate()); // 변환된 sqlDate 사용
+			stmt.setString(15, vo.getAff());
+			stmt.setString(16, "출제중");
+			stmt.setInt(17, vo.getNum());
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+	}
+	
+	public void sendTest(TestVO vo) {
+		System.out.println("sendTest() 처리");
+		try {
+			conn = JDBCUtil.getConnection();
+			// update test set e_status=? where num=?
+			stmt = conn.prepareStatement(TEST_SEND);
+			stmt.setString(1, "제출(감수대기)");
+			stmt.setInt(2, vo.getNum());
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
 	}
 
 }

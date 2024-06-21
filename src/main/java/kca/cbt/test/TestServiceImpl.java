@@ -26,7 +26,7 @@ public class TestServiceImpl implements TestService {
 
 	// 문제 업데이트
 	public void updateTest(TestVO vo) {
-
+		testDAO.updateTest(vo);
 	}
 
 	// 문제 삭제
