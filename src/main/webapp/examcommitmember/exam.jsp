@@ -21,7 +21,10 @@
       <br>
       <table class="table table-bordered">
          <thead class="table-light">
-            <tr align="center">
+         </thead>
+         <tbody>
+               <tr>
+               <tr align="center">
                <th>번호</th>
                <th>분류코드</th>
                <th>출제 과목</th>
@@ -35,10 +38,7 @@
                <th>출제</th>
                <th>정답</th>
             </tr>
-         </thead>
-         <tbody>
             <c:forEach var="examPlan" items="${examPlanList}">
-               <tr>
                   <td>${examPlan.num}</td>
                   <td>${examPlan.categoryNumbers}</td>
                   <td>${examPlan.name}</td>
@@ -55,13 +55,6 @@
 								<button type="submit" name="action" value="approve"
 									<c:if test="${examPlan.e_status == '제출(검토대기)'}">disabled</c:if>>출제</button>
 							</form>
-							<form action="updateStatus.do" method="post">
-								<input type="hidden" name="num" value="${examPlan.num}" /> <input
-									type="hidden" name="e_status" value="미개봉" />
-								<button type="submit" name="action" value="test">테스트용</button>
-							</form>
-                     
-                     
                   </td>
                </tr>
             </c:forEach>

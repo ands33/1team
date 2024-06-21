@@ -34,61 +34,23 @@
 		</div>
 	</div>
 	<br>
-	<nav class="navbar navbar-expand-lg bg-body-tertiary">
-		<div class="container-fluid">
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul
-					class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-around w-100">
-					<!-- <li class="nav-item"><a class="nav-link" href="../#">출제
-							계획서</a></li> -->
-					<li class="nav-item"><a class="nav-link"
-						href="../../../biz/getExamPlanList.do">출제</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="../../../biz/getSubtrahendList.do">검토</a></li>
-					<li class="nav-item"><a class="nav-link" href="../#">출제 이원분류표</a></li>
-					<li class="nav-item"><a class="nav-link" href="../#">선제
-							이원분류표</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
 	<br>
 	<div class="row">
-		<div class="col"></div>
-		<div class="card" style="width: 18rem;">
-			<img src="./img/출제J.jpg" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title">출제</h5>
-				<p class="card-text"></p>
-				<a href="#" class="btn btn-primary">바로가기</a>
-			</div>
+		<div class="col-lg-1"></div>
+		<div class="card" style="width: 15rem;">
+			<a href="exam.jsp"><img src="./img/출제400.png" class="card-img-top"></a>
 		</div>
-		<div class="col"></div>
-		<div class="card" style="width: 18rem;">
-			<img src="./img/메세지.png" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title">검토</h5>
-				<p class="card-text"></p>
-				<a href="#" class="btn btn-primary">바로가기</a>
-			</div>
+		<div class="col-lg-1"></div>
+		<div class="card" style="width: 15rem;">
+			<a href="subject_popup.jsp"><img src="./img/검토400.png" class="card-img-top"></a>
 		</div>
-		<div class="col"></div>
-		<div class="card" style="width: 18rem;">
-			<img src="./img/이원분류표J.jpg" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title">이원분류표</h5>
-				<p class="card-text"></p>
-				<a href="#" class="btn btn-primary">바로가기</a>
-			</div>
+		<div class="col-lg-1"></div>
+		<div class="card" style="width: 15rem;">
+			<a href="binaryClass.jsp"><img src="./img/이원분류표400.png" class="card-img-top"></a>
 		</div>
-		<div class="col"></div>
-		<div class="card" style="width: 18rem;">
-			<img src="./img/이원분류표J.jpg" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title">선제 이원분류표</h5>
-				<p class="card-text"></p>
-				<a href="#" class="btn btn-primary">바로가기</a>
-			</div>
+		<div class="col-lg-1"></div>
+		<div class="card" style="width: 15rem;">
+			<a href="preBinaryClass.jsp"><img src="./img/선제 이원분류표400.png" class="card-img-top"></a>
 		</div>
 	</div>
 </body>
