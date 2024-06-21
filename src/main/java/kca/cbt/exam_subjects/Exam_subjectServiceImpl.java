@@ -16,7 +16,4 @@ public class Exam_subjectServiceImpl implements Exam_subjectService{
 		return exam_subjectDAO.getEList(vo);
 	}
 	
-	public void updateE(Map<String, Exam_subjectVO> es) {
-		exam_subjectDAO.updateE(es);
-	}
 }
