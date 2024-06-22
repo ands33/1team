@@ -12,7 +12,8 @@ public class examDocVO {
 	private String member_id;
 	private String member_type;
 	private int idx;
-
+	private String categoryNumbers;
+    
 	public int getNum() {
 		return num;
 	}
@@ -100,7 +101,7 @@ public class examDocVO {
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "examDocVO [num=" + num + ", name=" + name + ", category1=" + category1 + ", category2=" + category2
@@ -113,7 +114,9 @@ public class examDocVO {
 		return extractNumberBeforeDot(category1) + "-" + extractNumberBeforeDot(category2) + "-"
 				+ extractNumberBeforeDot(category3);
 	}
-
+    public void setCategoryNumbers(String categoryNumbers) {
+        this.categoryNumbers = categoryNumbers;
+    }
 	// 문자열에서 . 앞의 숫자만 추출하는 헬퍼 메서드
 	private String extractNumberBeforeDot(String str) {
 		if (str != null && str.contains(".")) {
@@ -124,4 +127,5 @@ public class examDocVO {
 		}
 		return ""; // .가 없는 경우 빈 문자열 반환
 	}
+	
 }

@@ -35,7 +35,7 @@
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 justify-content-around w-50">
-                    <li class="nav-item"><a class="nav-link" href="../#">출제 계획서</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../biz/getExamDocList.do">출제 계획서</a></li>
                     <li class="nav-item"><a class="nav-link" href="../../../biz/getExamPlanList.do">출제</a></li>
                     <li class="nav-item"><a class="nav-link" href="../../../biz/getSubtrahendList.do">검토</a></li>
                     <li class="nav-item"><a class="nav-link" href="../#">출제 이원분류표</a></li>
