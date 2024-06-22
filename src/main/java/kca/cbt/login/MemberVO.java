@@ -6,6 +6,7 @@ public class MemberVO {
 	private String pw;
 	private String member_name;
 	private String member_type;
+	private int subject_code;
 	
 	public String getMember_id() {
 		return member_id;
@@ -15,6 +16,12 @@ public class MemberVO {
 	}
 	public String getPw() {
 		return pw;
+	}
+	public int getSubject_code() {
+		return subject_code;
+	}
+	public void setSubject_code(int subject_code) {
+		this.subject_code = subject_code;
 	}
 	public void setPw(String pw) {
 		this.pw = pw;
@@ -33,9 +40,10 @@ public class MemberVO {
 	}
 	@Override
 	public String toString() {
-		return "loginMemberVO [member_id=" + member_id + ", pw=" + pw + ", member_name=" + member_name
-				+ ", member_type=" + member_type + "]";
+		return "MemberVO [member_id=" + member_id + ", pw=" + pw + ", member_name=" + member_name + ", member_type="
+				+ member_type + ", subject_code=" + subject_code + "]";
 	}
+	
 	
 	
 }
