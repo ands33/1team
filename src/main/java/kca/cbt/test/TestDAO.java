@@ -175,7 +175,7 @@ public class TestDAO {
 			conn = JDBCUtil.getConnection();
 			// update test set e_status=? where num=?
 			stmt = conn.prepareStatement(TEST_SEND);
-			stmt.setString(1, "제출(감수대기)");
+			stmt.setString(1, "제출(검토대기)");
 			stmt.setInt(2, vo.getNum());
 			stmt.executeUpdate();
 		} catch (Exception e) {
