@@ -1,4 +1,4 @@
-package kca.cbt.criteria;
+package kca.cbt.view.criteria;
 
 public class CriTeriaVO {
     private int id;
