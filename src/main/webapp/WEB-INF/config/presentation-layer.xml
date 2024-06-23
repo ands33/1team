@@ -22,8 +22,5 @@
         <property name="maxUploadSize" value="10485760"/>
     </bean>
 
-    <!-- Configure a view resolver to translate view names to JSP files in WEB-INF/views directory -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="suffix" value=".jsp" />
-    </bean>
+
 </beans>
