@@ -47,7 +47,7 @@ public class MemberDAO {
     
     // 회원 리스트 조회
     public List<MemberVO> getMemberList(MemberVO vo) {
-        System.out.println("=== > JDBC로 getuserList() 기능 처리");
+        System.out.println("=== > JDBC로 getMemberList() 기능 처리");
         List<MemberVO> memberList = new ArrayList<MemberVO>();
         try {
             conn = JDBCUtil.getConnection();

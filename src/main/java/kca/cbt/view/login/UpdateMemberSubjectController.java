@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMethod;
 import kca.cbt.login.MemberDAO;
 import kca.cbt.login.MemberVO;
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class UpdateMemberSubjectController {
@@ -29,6 +28,6 @@ public class UpdateMemberSubjectController {
             }
         }
 
-        return "redirect:IndexMemberList.do";
+        return "redirect:/IndexMemberList.do"; // 메인 화면으로 리디렉션
     }
 }
