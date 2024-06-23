@@ -66,12 +66,16 @@ button {
 	width: 60px;
 	height: 30px;
 }
-
 </style>
 <script>
-function openSubjectPopup(rowIdx) {
-    var popup = window.open("openSubjectPopup.do?rowIdx=" + rowIdx, "subjectPopup", "width=400,height=400");
+
+function openMemberPopup(memberId) {
+    var url = 'admin/popup.jsp?memberId=' + memberId;
+    var name = 'memberPopup';
+    var specs = 'width=600,height=400,scrollbars=yes';
+    window.open(url, name, specs);
 }
+
 
 function setSubjects(rowIdx, subjects, subjectCodes) {
     for (var i = 0; i < subjects.length; i++) {
@@ -111,367 +115,500 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 			<th>A + B / A</th>
 			<th>이름</th>
 		</tr>
-		 <c:forEach var="member" items="${memberList}" varStatus="status">
-            <c:choose>
-                <c:when test="${status.index == 0}">
-                    <tr>
-                        <td rowspan="12">1급</td>            
-                        <td rowspan="6">
-                            1교시<br> 
-                            <button type="button" onclick="openSubjectPopup(${status.index});">과목추가+</button>
-                        </td>
-                        <td id="subjectName${status.index}_0">
-                            <c:out value="${subjectData[member.member_id].subjectName}" />
-                        </td>
-                        <td>[삭제]</td>
-                        <td id="subjectCode${status.index}_0">
-                            <c:out value="${subjectData[member.member_id].subjectCode}" />
-                        </td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 1}">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 2}">
-                    <tr>
-                        <td id="subjectName${status.index}_1">
-                            <c:out value="${subjectData[member.member_id].subjectName}" />
-                        </td>
-                        <td>[삭제]</td>
-                        <td id="subjectCode${status.index}_1">
-                            <c:out value="${subjectData[member.member_id].subjectCode}" />
-                        </td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 3}">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 4}">
-                    <tr>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectName}" />
-                        </td>
-                        <td>[삭제]</td>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectCode}" />
-                        </td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 5}">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 6}">
-                    <tr>         
-                        <td rowspan="6">
-                            2교시<br> 
-                            <button type="button" onclick="openSubjectPopup(${status.index});">과목추가+</button>
-                        </td>
-                        <td id="subjectName${status.index}_0">
-                            <c:out value="${subjectData[member.member_id].subjectName}" />
-                        </td>
-                        <td>[삭제]</td>
-                        <td id="subjectCode${status.index}_0">
-                            <c:out value="${subjectData[member.member_id].subjectCode}" />
-                        </td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 7}">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 8}">
-                    <tr>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectName}" />
-                        </td>
-                        <td>[삭제]</td>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectCode}" />
-                        </td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 9}">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 10}">
-                    <tr>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectName}" />
-                        </td>
-                        <td>[삭제]</td>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectCode}" />
-                        </td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 11}">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 12}">
-                    <tr>
-                         <td rowspan="14">2급</td>            
-                        <td rowspan="6">
-                            1교시<br> 
-                            <button type="button" onclick="openSubjectPopup(${status.index});">과목추가+</button>
-                        </td>
-                        <td id="subjectName${status.index}_0">
-                            <c:out value="${subjectData[member.member_id].subjectName}" />
-                        </td>
-                        <td>[삭제]</td>
-                        <td id="subjectCode${status.index}_0">
-                            <c:out value="${subjectData[member.member_id].subjectCode}" />
-                        </td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 13}">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 14}">
-                    <tr>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectName}" />
-                        </td>
-                        <td>[삭제]</td>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectCode}" />
-                        </td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 15}">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 16}">
-                    <tr>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectName}" />
-                        </td>
-                        <td>[삭제]</td>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectCode}" />
-                        </td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 17}">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 18}">
-                    <tr>          
-                        <td rowspan="8">
-                            2교시<br> 
-                            <button type="button" onclick="openSubjectPopup(${status.index});">과목추가+</button>
-                        </td>
-                        <td id="subjectName${status.index}_0">
-                            <c:out value="${subjectData[member.member_id].subjectName}" />
-                        </td>
-                        <td>[삭제]</td>
-                        <td id="subjectCode${status.index}_0">
-                            <c:out value="${subjectData[member.member_id].subjectCode}" />
-                        </td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 19}">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 20}">
-                    <tr>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectName}" />
-                        </td>
-                        <td>[삭제]</td>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectCode}" />
-                        </td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 21}">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 22}">
-                    <tr>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectName}" />
-                        </td>
-                        <td>[삭제]</td>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectCode}" />
-                        </td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 23}">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 24}">
-                    <tr>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectName}" />
-                        </td>
-                        <td>[삭제]</td>
-                        <td>
-                            <c:out value="${subjectData[member.member_id].subjectCode}" />
-                        </td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-                <c:when test="${status.index == 25}">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>${member.member_id}</td>
-                        <td>${member.pw}</td>
-                        <td>${member.member_type}</td>
-                        <td>${member.member_name}</td>
-                    </tr>
-                </c:when>
-            </c:choose>
-        </c:forEach>
-    </table>
+		<c:forEach var="member" items="${memberList}" varStatus="status">
+			<c:choose>
+				<c:when test="${status.index == 0}">
+					<tr>
+						<td rowspan="12">1급</td>
+						<td rowspan="6">1교시<br>
+							<button type="button"
+								onclick="openSubjectPopup(${status.index});">과목추가+</button></td>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 1}">
+					<tr>
+					
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 2}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 3}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 4}">
+					<tr>
+						
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 5}">
+					<tr>
+						
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 6}">
+					<tr>
+						<td rowspan="6">2교시<br>
+							<button type="button"
+								onclick="openSubjectPopup(${status.index});">과목추가+</button>
+						</td>
+						
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 7}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 8}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 9}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 10}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 11}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 12}">
+					<tr>
+						<td rowspan="14">2급</td>
+						<td rowspan="6">1교시<br>
+							<button type="button"
+								onclick="openSubjectPopup(${status.index});">과목추가+</button>
+						</td>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 13}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 14}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 15}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 16}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 17}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 18}">
+					<tr>
+						<td rowspan="8">2교시<br>
+							<button type="button"
+								onclick="openSubjectPopup(${status.index});">과목추가+</button>
+						</td>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 19}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 20}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 21}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 22}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 23}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 24}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+				<c:when test="${status.index == 25}">
+					<tr>
+						<c:forEach var="subjectCode"
+							items="${subjectData[member.member_id].keySet()}"
+							varStatus="subStatus">
+							<td id="subjectName${status.index}_${subStatus.index}"><c:out
+									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td>[삭제]</td>
+							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
+									value="${subjectCode}" /></td>
+						</c:forEach>
+						<td><a href="javascript:void(0);"
+							onclick="openMemberPopup('${member.member_id}');">${member.member_id}</a></td>
+						<td>${member.pw}</td>
+						<td>${member.member_type}</td>
+						<td>${member.member_name}</td>
+					</tr>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+	</table>
 
 </body>
 </html>

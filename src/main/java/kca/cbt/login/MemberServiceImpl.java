@@ -21,5 +21,9 @@ public class MemberServiceImpl implements MemberService {
 	public void updateMember(Map<String, MemberVO> member) {
 		memberDAO.updateMember(member);
 	}
+	
+	public void updateMemberSubject(MemberVO vo) {
+		memberDAO.updateMemberSubject(vo);
+	}
 
 }

@@ -11,4 +11,6 @@ public interface MemberService {
 	List<MemberVO> getMemberList(MemberVO vo);
 	
 	public void updateMember(Map<String, MemberVO> member);
+	
+	public void updateMemberSubject(MemberVO vo);
 }

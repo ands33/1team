@@ -38,6 +38,7 @@
     </bean>
     <bean id="subtrahendDAO" class="kca.cbt.subtrahend.SubtrahendDAO" />
     
+    
     <bean id="memberService"
 		class="kca.cbt.login.MemberServiceImpl">
 		<property name="memberDAO" ref="memberDAO" />

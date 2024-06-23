@@ -15,8 +15,8 @@
         <form action="${pageContext.request.contextPath}/login.do" method="post">
             <h2><span class="entypo-login"><i class="fa fa-sign-in"></i></span> Login</h2>
             <div class="input-container">
-                <span class="entypo-user inputUserIcon">
-                    <i class="fa fa-user"></i>
+                <span class="entypo-user inputUserIcon">                                                                
+                    <i class="fa fa-user"></i>	
                 </span>
                 <input type="text" class="member_id" name="member_id" placeholder="ID"/>
             </div>
