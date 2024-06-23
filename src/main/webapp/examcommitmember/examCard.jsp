@@ -219,7 +219,14 @@ th {
 </head>
 <%@ include file="header.jsp"%>
 <body>
+    <button onclick="goBack()">뒤로가기</button>
 
+    <script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>
+</body>
 	<div class="container">
 		<div class="details">
 			<form id="testForm" method="post">
