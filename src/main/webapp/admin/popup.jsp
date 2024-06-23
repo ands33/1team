@@ -21,11 +21,18 @@ select {
     height: 150px;
 }
 </style>
+<script>
+function submitFormAndClose() {
+    document.getElementById("memberForm").submit();
+    window.opener.location.reload(); // ¸ÞÀÎ Ã¢ »õ·Î°íÄ§
+    window.close(); // ÆË¾÷ Ã¢ ´Ý±â
+}
+</script>
 </head>
 <body>
 
 <h2>Member Info</h2>
-<form action="${pageContext.request.contextPath}/updateSubjectMember.do" method="post">
+<form id="memberForm" action="${pageContext.request.contextPath}/updateSubjectMember.do" method="post">
     <div class="select-container">
         <select name="subject_code" multiple>
             <option value="11">½É¸®Ã¶ÇÐ°ú À±¸®</option>
@@ -37,7 +44,7 @@ select {
         </select>
     </div>
     <input type="hidden" name="member_id" value="${param.memberId}" />
-    <button type="submit">Submit</button>
+    <button type="button" onclick="submitFormAndClose()">Submit</button>
 </form>
 
 </body>
