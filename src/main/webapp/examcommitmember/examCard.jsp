@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 <meta charset="EUC-KR">
-<title>문항 카드 - 1급 고급상담이론과 실제</title>
+<title>문항카드 - 1급 고급상담이론과 실제</title>
 <style>
 bn {
 	border: none; /* 테두리 제거 */
@@ -219,14 +219,6 @@ th {
 </head>
 <%@ include file="header.jsp"%>
 <body>
-    <button onclick="goBack()">뒤로가기</button>
-
-    <script>
-    function goBack() {
-        window.history.back();
-    }
-    </script>
-</body>
 	<div class="container">
 		<div class="details">
 			<form id="testForm" method="post">
@@ -319,18 +311,17 @@ th {
 						<th rowspan="5" colspan="1" class="answer">참고도서명/출판사</th>
 						<td rowspan="5" colspan="1"><textarea name="reference"
 								style="height: 50px; width: 100%;"
-								oninput="limitByteLength(this, 300">${test.reference}</textarea></td>
+								oninput="limitByteLength(this, 300)">${test.reference}</textarea></td>
 						<th rowspan="5" colspan="1" class="answer">저자명/출판연도</th>
 						<td rowspan="5" colspan="1"><textarea name="authorYear"
 								style="height: 50px; width: 100%;"
-								oninput="limitByteLength(this, 300">${test.authorYear}</textarea></td>
+								oninput="limitByteLength(this, 300)">${test.authorYear}</textarea></td>
 						<th rowspan="5" colspan="1" class="answer">PAGE</th>
 						<td rowspan="5" colspan="1"><textarea name="page"
 								style="height: 50px; width: 100%;"
-								oninput="limitByteLength(this, 50">${test.page}</textarea></td>
+								oninput="limitByteLength(this, 50)">${test.page}</textarea></td>
 					</tr>
 				</table>
-
 				<table>
 					<tr>
 						<td class="answer">구분</td>
@@ -356,6 +347,6 @@ th {
 					value="전송하기 (sendTest.do)" onclick="validateAndSubmitSend()">
 			</form>
 		</div>
-	</div>
+		</div>
 </body>
 </html>

@@ -25,5 +25,10 @@ public class MemberServiceImpl implements MemberService {
 	public void updateMemberSubject(MemberVO vo) {
 		memberDAO.updateMemberSubject(vo);
 	}
+	
+	public void deleteMemberSubject(MemberVO vo) {
+		memberDAO.deleteMemberSubject(vo);
+		
+	}
 
 }

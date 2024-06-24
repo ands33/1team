@@ -19,6 +19,7 @@ public class MemberDAO {
     private final String MEMBER_LIST = "select * from member order by member_id";
     private final String MEMBER_UPDATE = "update member set pw=?, member_name=?, member_type=? where member_id=?";
     private final String MEMBER_SUBJECT_UPDATE = "update member set subject_code = ? where member_id = ? ";
+    private final String MEMBER_SUBJECT_DELETE = "update member set subject_code = NULL where member_id = ?";
     
     // Member 정보 get
     public MemberVO getMember(MemberVO vo) {
@@ -105,6 +106,20 @@ public class MemberDAO {
             stmt = conn.prepareStatement(MEMBER_SUBJECT_UPDATE);
             stmt.setInt(1, vo.getSubject_code());
             stmt.setString(2, vo.getMember_id());
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.close(stmt, conn);
+        }
+    }
+    
+    public void deleteMemberSubject(MemberVO vo) {
+        System.out.println("===> JDBC로 updateMemberSubject() 기능 처리");
+        try {
+            conn = JDBCUtil.getConnection();
+            stmt = conn.prepareStatement(MEMBER_SUBJECT_DELETE);
+            stmt.setString(1, vo.getMember_id());
             stmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

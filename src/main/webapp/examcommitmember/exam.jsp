@@ -13,16 +13,14 @@
     color: black;
 }
 
-body {
-	background: #F8F9FB;
-	font-family: 'Roboto', sans-serif;
-	margin: 0;
-	padding: 20px;
-}
-
-.table {
-	width: 100%;
-	border-collapse: collapse;
+body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
+	i, ul, ol, li, button {
+	font-family: "Montserrat", "Noto Sans KR", sans-serif;
+	font-size: 15px;
+	letter-spacing: -0.05em;
+	line-height: 1.6em;
+	list-style: none;
+	color: #333;
 }
 
 th {
