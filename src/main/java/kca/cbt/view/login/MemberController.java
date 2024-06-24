@@ -23,7 +23,7 @@ public class MemberController {
 //	        	관리자페이지로가도록구현해야함
 	        } else {
 	        	System.out.println("===> 출제위원으로 로그인");
-	            return "redirect:examcommitmember/Project_index.jsp";
+	            return "redirect:examcommitmember/index.jsp";
 	        }
 	    } else {
 	        return "redirect:login/login.jsp?error=true";
