@@ -57,7 +57,7 @@
     <div class="container">
         <div class="header">
             <h1>출제기준 등록 및 수정</h1>
-            <button class="add-button" onclick="location.href='addCriteria.jsp'">추가</button>
+            <button class="add-button" onclick="location.href='addCriTeria.jsp'">추가</button>
         </div>
         <div class="search-bar">
             <form action="criteria/list.do" method="get">

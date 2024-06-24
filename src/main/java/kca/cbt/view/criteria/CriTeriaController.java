@@ -31,6 +31,6 @@ public class CriTeriaController {
             list = criTeriaService.searchCriteria(subject, category);
         }
         model.addAttribute("criteriaList", list);
-        return "/WEB-INF/criteriaListView"; // 반환하는 뷰 이름
+        return "CriTeriaListView"; // 반환하는 뷰 이름 (뷰 리졸버 설정에 따라)
     }
 }

@@ -8,11 +8,10 @@ import java.io.IOException;
 import java.util.List;
 
 public class GetCriTeriaServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;  // serialVersionUID 필드 추가
+    private static final long serialVersionUID = 1L;
 
     private CriTeriaService criTeriaService;
 
-    // Setter method for dependency injection
     public void setCriTeriaService(CriTeriaService criTeriaService) {
         this.criTeriaService = criTeriaService;
     }
@@ -21,6 +20,6 @@ public class GetCriTeriaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<CriTeriaVO> list = criTeriaService.getAllCriteria();
         request.setAttribute("criteriaList", list);
-        request.getRequestDispatcher("criteriaListView.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/CriTeriaListView.jsp").forward(request, response); // JSP 파일 경로 확인
     }
 }
