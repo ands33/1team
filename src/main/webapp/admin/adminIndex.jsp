@@ -109,18 +109,28 @@ body {
 					|| '';
 		}
 	}
+function openMemberPopup(memberId, statusIndex) {
+    var url = 'admin/popup.jsp?memberId=' + memberId + '&statusIndex=' + statusIndex;
+    var name = 'memberPopup';
+    var specs = 'width=600,height=400,scrollbars=yes';
+    window.open(url, name, specs);
+}
+
+
+function setSubjects(rowIdx, subjects, subjectCodes) {
+    for (var i = 0; i < subjects.length; i++) {
+        document.getElementById("subjectName" + rowIdx + "_" + i).innerText = subjects[i] || '';
+        document.getElementById("subjectCode" + rowIdx + "_" + i).innerText = subjectCodes[i] || '';
+    }
+}
 </script>
 </head>
 <body>
 	<h2>출제 문항 카드</h2>
 	<div class="button-container">
-	<table>
-	<tr>
-	<tr>출제기간 : </tr>
 	<input type="text" placeholder="YYYY년 MM월 DD일">
     <button class="custom-button" onclick="fetchData()">
         조회 <i class="fas fa-search"></i></button>
-	</table>
 		<form action="${pageContext.request.contextPath}/getMemberList.do"
 			method="get">
 			<button type="submit">회원목록</button>
@@ -162,6 +172,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -186,6 +197,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -210,6 +222,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -234,6 +247,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -258,6 +272,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -282,6 +297,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -308,6 +324,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -332,6 +349,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -356,6 +374,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -380,6 +399,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -404,6 +424,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -428,6 +449,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -456,6 +478,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -480,6 +503,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -504,6 +528,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -528,6 +553,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -552,6 +578,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -576,6 +603,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -602,6 +630,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -626,6 +655,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -650,6 +680,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -674,6 +705,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -698,6 +730,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -722,6 +755,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -746,6 +780,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>
@@ -770,6 +805,7 @@ body {
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
+							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
 						</c:forEach>

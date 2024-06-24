@@ -23,14 +23,13 @@ public class TestDAO {
 	private PreparedStatement stmt2 = null;
 	private ResultSet rs2 = null;
 
-	private final String EXAMPLAN_GET = "select * from examplan where num=?";
+	private final String EXAMPLAN_GET = "SELECT * FROM examplan WHERE num=?";
 	private final String TEST_GET = "select * from test where num=?";
-	private final String TEST_CREATE = "insert into test(idx, diff, writtenname, member_id, num) values(?,?,?,?,?)";
+	private final String TEST_CREATE = "insert into test(idx, diff, writtenname, member_id, num, reviewer) values(?,?,?,?,?,?)";
 	private final String TEST_UPDATE = "update test set behavioral=?, question=?, option1=?, option2=?, option3=?,"
 			+ "option4=?, option5=?, answer=?, answerex=?, questionback=?, reference=?, authoryear=?, page=?, createdate=?,"
 			+ "aff=?, e_status=? where num=?";
 	private final String TEST_SEND = "update test set e_status=? where num=?";
-	private final String TEST_DELETE = "삭제시 들어갈 SQL문";
 	private final String SUBJECT_GET = "select * from subject where idx=?";
 
 	// 문제 생성
@@ -54,14 +53,16 @@ public class TestDAO {
 					test.setNum(rs1.getInt("NUM"));
 					test.setIdx(rs1.getInt("IDX"));
 					test.setDiff(rs1.getString("DIFF"));
-					test.setExamName(rs1.getString("MEMBER_NAME"));
+					test.setWrittenName(rs1.getString("MEMBER_NAME"));
 					test.setMember_id(rs1.getString("MEMBER_ID"));
+					test.setReviewer(rs1.getString("SUBMEMBER_NAME"));
 				}
 				stmt.setInt(1, test.getIdx()); // 1번 ?
 				stmt.setString(2, test.getDiff()); // 2번 ?
-				stmt.setString(3, test.getExamName()); // 3번 ?
+				stmt.setString(3, test.getWrittenName()); // 3번 ?
 				stmt.setString(4, test.getMember_id()); // 4번 ?
 				stmt.setInt(5, test.getNum()); // 5번 ?
+				stmt.setString(6, test.getReviewer()); // 6번 ?
 				stmt.executeUpdate();
 			} else {
 				System.out.println("num값 존재");
@@ -113,6 +114,9 @@ public class TestDAO {
 				test.setAff(rs.getString("AFF"));
 				test.setWrittenName(rs.getString("WRITTENNAME"));
 				test.setNum(rs.getInt("NUM"));
+				test.setMember_id(rs.getString("MEMBER_ID"));
+				test.setReviewer(rs.getString("REVIEWER"));
+				test.setReview(rs.getString("REVIEW"));
 			}
 
 			stmt1 = conn.prepareStatement(SUBJECT_GET);
@@ -143,7 +147,6 @@ public class TestDAO {
 			// authoryear=?, page=?, createdate=?,"
 			// "aff=? where num=?
 			stmt = conn.prepareStatement(TEST_UPDATE);
-			System.out.println(TEST_UPDATE);
 			stmt.setString(1, vo.getBehavioral());
 			stmt.setString(2, vo.getQuestion());
 			stmt.setString(3, vo.getOption1());

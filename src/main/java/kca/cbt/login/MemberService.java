@@ -13,4 +13,6 @@ public interface MemberService {
 	public void updateMember(Map<String, MemberVO> member);
 	
 	public void updateMemberSubject(MemberVO vo);
+	
+	public void deleteMemberSubject(MemberVO vo);
 }

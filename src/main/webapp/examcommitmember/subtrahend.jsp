@@ -69,33 +69,28 @@ th {
 					<th>중분류</th>
 					<th>소분류</th>
 					<th>난이도</th>
-					<th>담당 위원</th>
+					<th>출제 위원</th>
 					<th>현황</th>
 					<th>반려/출제</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="examPlan" items="${examPlanList}">
+				<c:forEach var="subtrahend" items="${subtrahendList}">
 					<tr>
-						<td>${examPlan.num}</td>
-						<td>${examPlan.categoryNumbers}</td>
-						<td>${examPlan.name}</td>
-						<td>${examPlan.category1}</td>
-						<td>${examPlan.category2}</td>
-						<td>${examPlan.category3}</td>
-						<td>${examPlan.diff}</td>
-						<td>${examPlan.member_name}</td>
-						<td>${examPlan.e_status}</td>
+						<td>${subtrahend.num}</td>
+						<td>${subtrahend.categoryNumbers}</td>
+						<td>${subtrahend.name}</td>
+						<td>${subtrahend.category1}</td>
+						<td>${subtrahend.category2}</td>
+						<td>${subtrahend.category3}</td>
+						<td>${subtrahend.diff}</td>
+						<td>${subtrahend.member_name}</td>
+						<td>${subtrahend.e_status}</td>
 						<td>
 
 							<form action="subtrahend.do" method="post">
-								<input type="hidden" name="num" value="${examPlan.num}" />
+								<input type="hidden" name="num" value="${subtrahend.num}" />
 								<button type="submit" name="action" value="approve">검토</button>
-							</form>
-							<form action="updateStatus.do" method="post">
-								<input type="hidden" name="num" value="${examPlan.num}" /> <input
-									type="hidden" name="e_status" value="미개봉" />
-								<button type="submit" name="action" value="test">테스트용</button>
 							</form>
 
 						</td>
