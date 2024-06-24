@@ -1,15 +1,60 @@
-/* 네비게이션 링크 */
-.navbar-nav .nav-link {
-	text-decoration: none;
-	color: black;
-	position: relative;
-	transition: color 0.1s;
-	font-weight: bold;
-	font-size: 14px;
-	
+#header {
+	width: 100%;
+	padding: 20px 10px;
+	border-bottom: 1px solid #dbdcdd;
+	background: #fff;
+	z-index: 1;
 }
 
-/* 호버 */
+body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
+	i, ul, ol, li, button {
+	font-family: "Montserrat", "Noto Sans KR", sans-serif;
+	font-size: 15px;
+	letter-spacing: -0.05em;
+	line-height: 1.6em;
+	list-style: none;
+	color: #333;
+}
+
+.image-row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px; /* 각 행 사이에 여백 추가 */
+}
+
+.image-row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 30px; /* 각 행 사이에 여백 추가 */
+}
+
+.image-row .col-6 {
+	display: flex;
+	justify-content: center;
+}
+
+.image-row img {
+	max-width: 280px;
+	height: auto;
+}
+
+.card {
+	width: 12px; /* 카드의 너비를 조정 */
+	margin-bottom: 20px;
+}
+
+.card-img-top {
+	max-width: 100%; /* 이미지의 최대 너비를 조정 */
+	height: auto; /* 이미지 높이를 자동으로 조정 */
+}
+
+:root { -
+	-swiper-navigation-size: 44px;
+}
+
+/* header-link의 밑줄 제거 */
 .header-links a {
 	text-decoration: none;
 	color: black;
@@ -20,30 +65,11 @@
 	color: #D8402A;
 }
 
-body {
-	background: #FFF;
-	font-family: 'Roboto', sans-serif;
-	align-items: center;
-	height: 100vh;
-	margin: 0;
-	padding: 10px; /* 선택 사항: 본문 주변에 여백 추가 */
-}
-
-.logo-container {
-	text-align: center;
-	margin-bottom: 10px;
-}
-
 .header-left img {
 	width: 250px;
 	height: auto;
 	padding-top: 20px;
 	margin-left: 100px;
-}
-
-.logo-container img {
-	width: 100px;
-	height: auto;
 }
 
 .nav-item:hover {

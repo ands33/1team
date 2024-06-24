@@ -4,6 +4,14 @@ public class Exam_subjectVO {
 	
 	private String member_id;
 	private int subject_code;
+	private String name;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getMember_id() {
 		return member_id;
 	}
@@ -18,8 +26,11 @@ public class Exam_subjectVO {
 	}
 	@Override
 	public String toString() {
-		return "Exam_subjectVO [member_id=" + member_id + ", subject_code=" + subject_code + "]";
+		return "Exam_subjectVO [member_id=" + member_id + ", subject_code=" + subject_code + ", name=" + name + "]";
 	}
+	
+	
+	
 	
 	
 	
