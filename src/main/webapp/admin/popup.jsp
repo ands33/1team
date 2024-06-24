@@ -8,7 +8,7 @@
 <title>Member Info</title>
 <style>
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Montserrat", "Noto Sans KR", sans-serif;
     padding: 20px;
 }
 
@@ -24,6 +24,7 @@ select {
 <script>
 function submitFormAndClose() {
     document.getElementById("memberForm").submit();
+    
     window.opener.location.reload(); // 메인 창 새로고침
     window.close(); // 팝업 창 닫기
 }

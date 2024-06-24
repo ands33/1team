@@ -6,7 +6,7 @@
 <head>
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>헤더</title>
+<title>관리자 헤더</title>
 <style>
 /* header-link의 밑줄 제거 */
 .header-links a {

@@ -8,7 +8,7 @@
 <title>회원 목록</title>
 <style>
 body {
-	font-family: Arial, sans-serif;
+	font-family: "Montserrat", "Noto Sans KR", sans-serif;
 	padding: 20px;
 }
 
