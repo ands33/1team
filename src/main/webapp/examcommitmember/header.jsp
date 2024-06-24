@@ -14,13 +14,6 @@
     color: black;
 }
 
-/* .header-left img {
-    width: 250px;
-    height: auto;
-    padding-top: 20px;
-    margin-left: 100px;
-}
-
 /* 로고 우측 글씨 호버 : 한국상담학회 */
 .header-links a:hover {
 	color: #D8402A;
@@ -41,6 +34,7 @@ body {
     width: 100%;
     height: 50px;
     justify-content: center;
+    margin-left: 30px;
     position: relative;
     font-weight: bold;
     font-size: 14px;
@@ -52,7 +46,7 @@ body {
 	color: black;
 	position: relative;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 15px;
 }
 
 /* 하단 테두리 초기 상태 - 지우면 ㅈ됨 */
@@ -117,6 +111,19 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
    color: #6B6D70;
 }
 </style>
+<script>
+function getExamPlanList() {
+    const form = document.getElementById('headerForm');
+    form.action = "../../../biz/getExamPlanList.do";
+    form.submit();
+}
+
+function getSubtrahendList() {
+    const form = document.getElementById('headerForm');
+    form.action = "../../../biz/getSubtrahendList.do";
+    form.submit();
+}
+</script>
 <link
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     rel="stylesheet">
@@ -127,6 +134,8 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
     src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+<form id="headerForm" method="post">
+ <input type="hidden" name="member_id" value="${member.member_id}">
     <!-- <div class="header-container d-flex align-items-center p-3">
         <div class="header-left">
             <a href="https://counselors.or.kr/"><img src="./img/kca_logo_short.jpg" alt="KCA Logo"></a>
@@ -148,23 +157,23 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
         <img src="./img/kca_house.png" alt="KCA Logo">인트로</a>
     </div>
     <div class="header-right ml-auto d-flex align-items-center">
+    ${member.member_name} 이름표시
         <a href="#">상담이론과 실제A</a> <span class="mx-2"></span> <a href="#">로그아웃</a> <span class="mx-2"></span> <a href="#">마이페이지</a>
     </div>
 </div>
-    
-    
     <br>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 justify-content-around w-50">
                     <li class="nav-item"><a class="nav-link" href="../#">출제 계획서</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../biz/getExamPlanList.do">출제</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../biz/getSubtrahendList.do">검토</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:getExamPlanList();">출제</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:getSubtrahendList();">검토</a></li>
                     <li class="nav-item"><a class="nav-link" href="../#">출제 이원분류표</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    </form>
 </body>
 </html>

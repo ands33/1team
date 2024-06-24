@@ -1,4 +1,4 @@
-package kca.cbt.criteria;
+package kca.cbt.view.criteria;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;

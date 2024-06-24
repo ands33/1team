@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 <meta charset="EUC-KR">
-<title>문항 카드 - 1급 고급상담이론과 실제</title>
+<title>문항카드 - 1급 고급상담이론과 실제</title>
 <style>
 bn {
 	border: none; /* 테두리 제거 */
@@ -219,14 +219,6 @@ th {
 </head>
 <%@ include file="header.jsp"%>
 <body>
-    <button onclick="goBack()">뒤로가기</button>
-
-    <script>
-    function goBack() {
-        window.history.back();
-    }
-    </script>
-</body>
 	<div class="container">
 		<div class="details">
 			<form id="testForm" method="post">
@@ -330,7 +322,6 @@ th {
 								oninput="limitByteLength(this, 50)">${test.page}</textarea></td>
 					</tr>
 				</table>
-
 				<table>
 					<tr>
 						<td class="answer">구분</td>
@@ -350,12 +341,13 @@ th {
 						<td></td>
 					</tr>
 				</table>
-				<input type="hidden" name="num" value="${test.num}"> <input
+				<input type="hidden" name="num" value="${test.num}">
+				<input type="hidden" name="member_id" value="${member.member_id}"> <input
 					type="button" value="수정하기 (updateTest.do)"
 					onclick="validateAndSubmitUpdate()"> <input type="button"
 					value="전송하기 (sendTest.do)" onclick="validateAndSubmitSend()">
 			</form>
 		</div>
-	</div>
+		</div>
 </body>
 </html>

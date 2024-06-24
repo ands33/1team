@@ -33,6 +33,13 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		
+		<!-- 자이썬 -->
+		<dependency>
+			<groupId>org.python</groupId>
+			<artifactId>jython</artifactId>
+			<version>2.7.3</version>
+		</dependency>
 
 		<!-- AspectJ -->
 		<dependency>

@@ -15,7 +15,7 @@ public class MemberController {
 	public String loginView(MemberVO vo, MemberDAO memberDAO, HttpSession session) {
 		MemberVO member = memberDAO.getMember(vo);
 		if (member != null) {
-	        session.setAttribute("memberName", member.getMember_name());
+	        session.setAttribute("member", member);
 	        if ("admin".equals(member.getMember_id()) && "adminpassword".equals(member.getPw())) {
 	        	System.out.println("===> 관리자로그인");
 //	            return "redirect:getUserList.do";
