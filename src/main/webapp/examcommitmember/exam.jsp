@@ -7,12 +7,107 @@
 <head>
 <meta charset="EUC-KR">
 <title>출제</title>
+<style>
+.header-links a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+	background: #F8F9FB;
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+	padding: 20px;
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th {
+	white-space: nowrap; /* 넘침 처리 방지 */
+	padding: 10px; /* 셀 안 여백 */
+	font-weight: bold; /* 굵은 글씨 */
+	font-size: 14px; /* 글씨 크기 */
+	font-weight: bold;
+}
+
+th, td {
+	border: 1px solid black;
+	padding: 8px;
+	text-align: left;
+}
+
+.wide-column {
+	width: 300px;
+}
+
+.table .btn {
+	margin: 2px;
+}
+
+.navbar {
+	border-top: 1px solid #D8D9DA;
+	border-bottom: 3px solid #F5F5F5;
+	width: 100%;
+	height: 50px;
+	justify-content: center;
+	position: relative;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.navbar-nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.nav-item {
+	position: relative;
+}
+
+.nav-link {
+	text-decoration: none;
+	color: black;
+	padding: 10px 20px;
+	display: block;
+	position: relative;
+}
+
+.navbar-nav .nav-link:hover {
+	color: #DB402E;
+}
+
+/* 하단 테두리 초기 상태 */
+.navbar-nav .nav-link::after {
+	content: ''; /* 콘텐츠 추가 */
+	display: block; /* 블록 레벨 요소로 변경 */
+	width: 0; /* 너비 0으로 설정하여 초기에 숨김 */
+	height: 2px; /* 높이 2px */
+	background: #DB402E; /* 배경 색상 */
+	position: absolute;
+	left: 0; /* 왼쪽 0 */
+	bottom: -9.5px; /* 아래쪽 -9.5px */
+	opacity: 0; /* 초기에 숨김 */
+}
+
+/* 호버 시 테두리 효과 */
+.navbar-nav .nav-link:hover::after {
+	width: 100%; /* 호버 시 너비 100%로 확장 */
+	opacity: 1; /* 호버 시 보이게 함 */
+}
+</style>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="exam.css">
 </head>
 <body>
 	<%@ include file="header.jsp"%>
