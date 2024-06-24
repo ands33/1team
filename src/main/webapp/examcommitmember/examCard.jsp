@@ -341,7 +341,8 @@ th {
 						<td></td>
 					</tr>
 				</table>
-				<input type="hidden" name="num" value="${test.num}"> <input
+				<input type="hidden" name="num" value="${test.num}">
+				<input type="hidden" name="member_id" value="${member.member_id}"> <input
 					type="button" value="수정하기 (updateTest.do)"
 					onclick="validateAndSubmitUpdate()"> <input type="button"
 					value="전송하기 (sendTest.do)" onclick="validateAndSubmitSend()">
