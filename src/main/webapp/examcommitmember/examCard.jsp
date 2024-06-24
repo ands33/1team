@@ -28,14 +28,24 @@ table {
 	margin-bottom: 20px;
 }
 
-th, td {
-	border: 1px solid #000;
-	padding: 8px;
-	text-align: left;
+th {
+	white-space: nowrap; /* 넘침 처리 방지 */
+	padding: 10px; /* 셀 안 여백 */
+	font-size: 15px; /* 글씨 크기 */
+	font-weight: bold;
+	background-color: #f2f2f2;
+	text-align: center;
 }
 
-th {
-	background-color: #f4f4f4;
+.answer {
+	background-color: #f2f2f2;
+}
+
+th, td {
+	border: 1px solid black;
+	text-align: left;
+	padding: 8px;
+	word-wrap: break-word;
 }
 
 .title {
@@ -161,16 +171,16 @@ th {
 		}
 
 		var answerChecked = false;
-	    for (var i = 0; i < answer.length; i++) {
-	        if (answer[i].checked) {
-	            answerChecked = true;
-	            break;
-	        }
-	    }
-	    if (!answerChecked) {
-	        alert("정답을 체크하세요.");
-	        return false;
-	    }
+		for (var i = 0; i < answer.length; i++) {
+			if (answer[i].checked) {
+				answerChecked = true;
+				break;
+			}
+		}
+		if (!answerChecked) {
+			alert("정답을 체크하세요.");
+			return false;
+		}
 
 		if (answerEx === "") {
 			alert("정답 설명을 입력하세요.");
@@ -341,13 +351,13 @@ th {
 						<td></td>
 					</tr>
 				</table>
-				<input type="hidden" name="num" value="${test.num}">
-				<input type="hidden" name="member_id" value="${member.member_id}"> <input
-					type="button" value="수정하기 (updateTest.do)"
+				<input type="hidden" name="num" value="${test.num}"> <input
+					type="hidden" name="member_id" value="${member.member_id}">
+				<input type="button" value="수정하기 (updateTest.do)"
 					onclick="validateAndSubmitUpdate()"> <input type="button"
 					value="전송하기 (sendTest.do)" onclick="validateAndSubmitSend()">
 			</form>
 		</div>
-		</div>
+	</div>
 </body>
 </html>

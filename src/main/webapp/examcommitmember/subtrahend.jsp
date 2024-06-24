@@ -6,7 +6,6 @@
 <html>
 <head>
 <link rel="icon" type="favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="exam.css">
 <meta charset="EUC-KR">
 <title>검토의뢰 목록</title>
 

@@ -136,18 +136,6 @@ function getSubtrahendList() {
 <body>
 <form id="headerForm" method="post">
  <input type="hidden" name="member_id" value="${member.member_id}">
-    <!-- <div class="header-container d-flex align-items-center p-3">
-        <div class="header-left">
-            <a href="https://counselors.or.kr/"><img src="./img/kca_logo_short.jpg" alt="KCA Logo"></a>
-        </div>
-        <div class="header-links ml-3">
-            <a href="https://counselors.or.kr/">한국상담학회</a> <span> · </span> <a href="https://counselors.or.kr/">
-            <img src="./img/kca_house.png" alt="KCA Logo">인트로</a>
-        </div>
-        <div class="header-right ml-auto d-flex align-items-center">
-            <a href="#">상담이론과 실제A</a> <span class="mx-2"></span> <a href="#">로그아웃</a> <span class="mx-2"></span> <a href="#">마이페이지</a>
-        </div>
-    </div> -->
     <div class="header-container d-flex align-items-center p-3">
     <div class="header-left">
         <a href="https://counselors.or.kr/"><img src="./img/kca_logo_short.jpg" alt="KCA Logo"></a>
@@ -157,7 +145,7 @@ function getSubtrahendList() {
         <img src="./img/kca_house.png" alt="KCA Logo">인트로</a>
     </div>
     <div class="header-right ml-auto d-flex align-items-center">
-    ${member.member_name} 이름표시
+    <a>${member.member_name} 이름표시</a>
         <a href="#">상담이론과 실제A</a> <span class="mx-2"></span> <a href="#">로그아웃</a> <span class="mx-2"></span> <a href="#">마이페이지</a>
     </div>
 </div>
