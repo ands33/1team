@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+
 <title>출제 문항 카드</title>
 <style>
 body {
@@ -12,8 +13,19 @@ body {
 	padding: 20px;
 }
 
+body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
+	i, ul, ol, li, button {
+	font-family: "Montserrat", "Noto Sans KR", sans-serif;
+	font-size: 15px;
+	letter-spacing: -0.05em;
+	line-height: 1.6em;
+	list-style: none;
+	color: #333;
+}
+
 h2 {
-	text-align: center;
+	text-align: left;
+	padding: 10px;
 }
 
 .header-table, .main-table {
@@ -39,10 +51,11 @@ h2 {
 }
 
 .button-container input {
-	width: 300px;
+	width: 200px;
 	margin-right: 10px;
 	padding: 10px;
 	box-sizing: border-box;
+	height: 30px;
 }
 
 .button-container button, .button-container form {
@@ -63,12 +76,39 @@ select {
 }
 
 button {
+	width: 120px;
+	height: 30px;
+}
+
+.custom-button {
 	width: 60px;
 	height: 30px;
 }
+
+body {
+	background: #FFF;
+	height: 100vh;
+	font-size: 15px;
+	font-family: 'Roboto', sans-serif;
+}
 </style>
 <script>
+	function openMemberPopup(memberId, statusIndex) {
+		var url = 'admin/popup.jsp?memberId=' + memberId + '&statusIndex='
+				+ statusIndex;
+		var name = 'memberPopup';
+		var specs = 'width=600,height=400,scrollbars=yes';
+		window.open(url, name, specs);
+	}
 
+	function setSubjects(rowIdx, subjects, subjectCodes) {
+		for (var i = 0; i < subjects.length; i++) {
+			document.getElementById("subjectName" + rowIdx + "_" + i).innerText = subjects[i]
+					|| '';
+			document.getElementById("subjectCode" + rowIdx + "_" + i).innerText = subjectCodes[i]
+					|| '';
+		}
+	}
 function openMemberPopup(memberId, statusIndex) {
     var url = 'admin/popup.jsp?memberId=' + memberId + '&statusIndex=' + statusIndex;
     var name = 'memberPopup';
@@ -86,18 +126,17 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 </script>
 </head>
 <body>
-
 	<h2>출제 문항 카드</h2>
-
 	<div class="button-container">
-		<input type="text" placeholder="출제기간: 년 월 일 ~ 년 월 일">
+	<input type="text" placeholder="YYYY년 MM월 DD일">
+    <button class="custom-button" onclick="fetchData()">
+        조회 <i class="fas fa-search"></i></button>
 		<form action="${pageContext.request.contextPath}/getMemberList.do"
 			method="get">
 			<button type="submit">회원목록</button>
 		</form>
 		<button type="button" onclick="location.href='excel_export.jsp'">엑셀파일출력</button>
 	</div>
-
 	<table class="header-table">
 		<tr>
 			<th colspan="5">출제과목</th>
@@ -131,6 +170,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -154,6 +195,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -177,6 +220,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -200,6 +245,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -223,6 +270,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -246,6 +295,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -271,6 +322,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -294,6 +347,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -317,6 +372,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -340,6 +397,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -363,6 +422,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -386,6 +447,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -413,6 +476,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -436,6 +501,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -459,6 +526,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -482,6 +551,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -505,6 +576,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -528,6 +601,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -553,6 +628,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -576,6 +653,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -599,6 +678,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -622,6 +703,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -645,6 +728,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -668,6 +753,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -691,6 +778,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -714,6 +803,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 							varStatus="subStatus">
 							<td id="subjectName${status.index}_${subStatus.index}"><c:out
 									value="${subjectData[member.member_id][subjectCode]}" /></td>
+							<td><a
+								href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[삭제]</a></td>
 							<td id="subjectCode${status.index}_${subStatus.index}"><c:out
 									value="${subjectCode}" /></td>
@@ -728,6 +819,5 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 			</c:choose>
 		</c:forEach>
 	</table>
-
 </body>
 </html>

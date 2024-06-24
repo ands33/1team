@@ -161,8 +161,6 @@ function getSubtrahendList() {
         <a href="#">상담이론과 실제A</a> <span class="mx-2"></span> <a href="#">로그아웃</a> <span class="mx-2"></span> <a href="#">마이페이지</a>
     </div>
 </div>
-    
-    
     <br>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">

@@ -8,22 +8,37 @@
 <title>Member Info</title>
 <style>
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Montserrat", "Noto Sans KR", sans-serif;
     padding: 20px;
 }
 
+option {
+	font-size: 15px;
+}
+
+
 h2 {
     text-align: center;
+    padding: 10px;
+    font-family: "Montserrat", "Noto Sans KR", sans-serif;
 }
 
 select {
-    width: 200px;
+    width: 548px;
     height: 150px;
+}
+
+button {
+	width: 80px;
+	height: 40px;
+	font-size: 15px;
+	bold: auto;
 }
 </style>
 <script>
 function submitFormAndClose() {
     document.getElementById("memberForm").submit();
+    
     window.opener.location.reload(); // 메인 창 새로고침
     window.close(); // 팝업 창 닫기
 }
