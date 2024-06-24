@@ -11,6 +11,16 @@
 <title>검토의뢰 목록</title>
 
 <style>
+body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
+	i, ul, ol, li, button {
+	font-family: "Montserrat", "Noto Sans KR", sans-serif;
+	font-size: 15px;
+	letter-spacing: -0.05em;
+	line-height: 1.6em;
+	list-style: none;
+	color: #333;
+}
+
 table {
 	width: 100%;
 	border-collapse: collapse;
@@ -18,7 +28,7 @@ table {
 }
 
 th, td {
-	border: 1px solid #F76030;
+	border: 1px solid #333;
 	padding: 8px;
 	text-align: center;
 }
@@ -46,8 +56,8 @@ th {
 <body>
 	<div class="container">
 		<div class="header">
-			<h3>검토</h3>
-			<h4>검토의뢰 목록</h4>
+			<!-- <h3>검토</h3>
+			<h4>검토의뢰 목록</h4> -->
 		</div>
 		<table>
 			<thead>

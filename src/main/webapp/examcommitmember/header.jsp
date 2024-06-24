@@ -14,13 +14,6 @@
     color: black;
 }
 
-/* .header-left img {
-    width: 250px;
-    height: auto;
-    padding-top: 20px;
-    margin-left: 100px;
-}
-
 /* 로고 우측 글씨 호버 : 한국상담학회 */
 .header-links a:hover {
 	color: #D8402A;
@@ -41,6 +34,7 @@ body {
     width: 100%;
     height: 50px;
     justify-content: center;
+    margin-left: 30px;
     position: relative;
     font-weight: bold;
     font-size: 14px;
@@ -52,7 +46,7 @@ body {
 	color: black;
 	position: relative;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 15px;
 }
 
 /* 하단 테두리 초기 상태 - 지우면 ㅈ됨 */
