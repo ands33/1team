@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ page import="java.util.List" %>
-<%@ page import="kca.cbt.criteria.CriTeriaVO" %>
+<%@ page import="kca.cbt.view.criteria.CriTeriaVO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,13 +57,13 @@
     <div class="container">
         <div class="header">
             <h1>출제기준 등록 및 수정</h1>
-            <button class="add-button" onclick="location.href='addCriteria.jsp'">추가</button>
+            <button class="add-button" onclick="location.href='addCriTeria.jsp'">추가</button>
         </div>
         <div class="search-bar">
-            <form action="criteria/list.do" method="get">  <!-- URL 패턴에 맞추어 수정 -->
+            <form action="criteria/list.do" method="get">
                 <label for="subject">과목명:</label>
                 <select name="subject" id="subject">
-                    <option value="건강교육론" <%= "건강교육론".equals(request.getParameter("subject")) ? "selected" : "" %>>건강교육론</option>
+                    <option value="상담윤리" <%= "상담윤리".equals(request.getParameter("subject")) ? "selected" : "" %>>상담윤리</option>
                     <!-- 다른 과목명도 추가 가능 -->
                 </select>
                 <label for="category">대분류명:</label>
