@@ -20,6 +20,7 @@ public class MemberDAO {
     private final String MEMBER_UPDATE = "update member set pw=?, member_name=?, member_type=? where member_id=?";
     private final String MEMBER_SUBJECT_UPDATE = "update member set subject_code = ? where member_id = ? ";
     private final String MEMBER_SUBJECT_DELETE = "update member set subject_code = NULL where member_id = ?";
+    private final String MEMBER_QMEMBER = "select * from member where member_type = ? and subject_code = ?";
     
     // Member 정보 get
     public MemberVO getMember(MemberVO vo) {
@@ -126,5 +127,32 @@ public class MemberDAO {
         } finally {
             JDBCUtil.close(stmt, conn);
         }
+    }
+    
+
+    // 주어진 과목 코드와 타입에 해당하는 출제위원 리스트 조회
+    public List<MemberVO> getMembersBySubjectAndType(int subjectCode, String memberType) {
+        List<MemberVO> members = new ArrayList<>();
+        try {
+            System.out.println("===> JDBC로 getMembersBySubjectAndType() 기능 처리");
+            conn = JDBCUtil.getConnection();
+            stmt = conn.prepareStatement(MEMBER_QMEMBER);
+            stmt.setString(1, memberType);
+            stmt.setInt(2, subjectCode);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                MemberVO member = new MemberVO();
+                member.setMember_id(rs.getString("MEMBER_ID"));
+                member.setPw(rs.getString("PW"));
+                member.setMember_name(rs.getString("MEMBER_NAME"));
+                member.setMember_type(rs.getString("MEMBER_TYPE"));
+                members.add(member);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.close(rs, stmt, conn);
+        }
+        return members;
     }
 }
