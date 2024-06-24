@@ -7,13 +7,18 @@
 <meta charset="EUC-KR">
 <title>회원 목록</title>
 <style>
-body {
-	font-family: "Montserrat", "Noto Sans KR", sans-serif;
-	padding: 20px;
+body, table, th, td, {
+   font-family: "Montserrat", "Noto Sans KR", sans-serif;
+   font-size: 15px;
+   letter-spacing: -0.05em;
+   line-height: 1.6em;
+   list-style: none;
+   color: #333;
 }
 
 h2 {
 	text-align: center;
+	padding: 10px;
 }
 
 table {
@@ -39,15 +44,15 @@ th {
 }
 
 .button-container button {
+	margin-left: 10px;
 	padding: 10px;
 	box-sizing: border-box;
 }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
 	<h2>회원 목록</h2>
-
 	<form method="post"
 		action="${pageContext.request.contextPath}/updateMember.do">
 		<table>
@@ -88,6 +93,5 @@ th {
 			method="get">
 			<button type="submit">회원목록</button>
 		</form>
-
 </body>
 </html>

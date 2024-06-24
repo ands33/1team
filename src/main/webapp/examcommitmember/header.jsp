@@ -121,7 +121,7 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
     src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="header-container d-flex align-items-center p-3">
+   <!--  <div class="header-container d-flex align-items-center p-3">
     <div class="header-left">
         <a href="https://counselors.or.kr/"><img src="./img/kca_logo_short.jpg" alt="KCA Logo"></a>
     </div>
@@ -131,7 +131,7 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
     </div>
     <div class="header-right ml-auto d-flex align-items-center">
         <a href="#">상담이론과 실제A</a> <span class="mx-2"></span> <a href="#">로그아웃</a> <span class="mx-2"></span> <a href="#">마이페이지</a>
-    </div>
+    </div> -->
 </div>
     <br>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
