@@ -1,3 +1,9 @@
+/* header-link의 밑줄 제거 */
+.header-links a {
+    text-decoration: none;
+    color: black;
+}
+
 body {
 	background: #F8F9FB;
 	font-family: 'Roboto', sans-serif;
@@ -8,7 +14,6 @@ body {
 .table {
 	width: 100%;
 	border-collapse: collapse;
-	font-size: 13px;
 }
 
 th {
@@ -16,40 +21,21 @@ th {
 	padding: 10px; /* 셀 안 여백 */
 	font-weight: bold; /* 굵은 글씨 */
 	font-size: 14px; /* 글씨 크기 */
-}
-
-/* 각 열 별로 너비 조정 */
-	th:nth-child(1) { width: 50px; } /* 번호 */
-	th:nth-child(2) { width: 100px; } /* 분류코드 */
-	th:nth-child(3) { width: 150px; } /* 출제 과목 */
-	th:nth-child(4) { width: 100px; } /* 대분류 */
-	th:nth-child(5) { width: 100px; } /* 중분류 */
-	th:nth-child(6) { width: 100px; } /* 소분류 */
-	th:nth-child(7) { width: 80px; } /* 난이도 */
-	th:nth-child(8) { width: 100px; } /* 출제위원 */
-	th:nth-child(9) { width: 100px; } /* 상태 */
-	th:nth-child(10) { width: 100px; } /* 기출여부 */
-	th:nth-child(11) { width: 80px; } /* 출제 */
-
-.table th .table td {
-	border: 1px solid #dee2e6;
-	padding: 10px;
-	text-align: center;
-}
-
-.table th {
-	background-color: #f8f9fa;
 	font-weight: bold;
+}
+
+th, td {
+	border: 1px solid black;
+	padding: 8px;
+	text-align: left;
+}
+
+.wide-column {
+	width: 300px;
 }
 
 .table .btn {
 	margin: 2px;
-}
-
-.header-container {
-	display: flex;
-	align-items: center;
-	justify-content: center;
 }
 
 .navbar {
@@ -87,43 +73,6 @@ th {
 
 .navbar-nav .nav-link:hover {
 	color: #DB402E;
-}
-
-/* 드롭다운 메뉴 숨기기 */
-.dropdown-menu {
-	display: none;
-	position: absolute;
-	top: 100%;
-	left: 0;
-	background-color: rgba(248, 249, 250, 0.8);
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	z-index: 1000;
-}
-
-/* 드롭다운 메뉴의 아이템 스타일 */
-.dropdown-item {
-	padding: 10px 20px;
-	transition: background-color 0.1s, color 0.1s;
-}
-
-.dropdown-item a {
-	text-decoration: none;
-	color: black;
-	display: block;
-}
-
-/* 드롭다운 메뉴의 아이템 호버 효과 */
-.dropdown-item:hover {
-	background-color: #6B6D80;
-	color: white;
-}
-
-/* 마우스를 갖다 댈 때 드롭다운 메뉴 표시 */
-.nav-item:hover .dropdown-menu {
-	display: block;
 }
 
 /* 하단 테두리 초기 상태 */
