@@ -30,7 +30,6 @@ public class TestDAO {
 			+ "option4=?, option5=?, answer=?, answerex=?, questionback=?, reference=?, authoryear=?, page=?, createdate=?,"
 			+ "aff=?, e_status=? where num=?";
 	private final String TEST_SEND = "update test set e_status=? where num=?";
-	private final String TEST_DELETE = "삭제시 들어갈 SQL문";
 	private final String SUBJECT_GET = "select * from subject where idx=?";
 
 	// 문제 생성
@@ -113,6 +112,8 @@ public class TestDAO {
 				test.setAff(rs.getString("AFF"));
 				test.setWrittenName(rs.getString("WRITTENNAME"));
 				test.setNum(rs.getInt("NUM"));
+				test.setReviewer(rs.getString("REVIEWER"));
+				test.setReview(rs.getString("REVIEW"));
 			}
 
 			stmt1 = conn.prepareStatement(SUBJECT_GET);
