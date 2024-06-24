@@ -7,7 +7,6 @@
 <head>
 <meta charset="EUC-KR">
 <title>출제</title>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
 <style>
 /* Common Styles */
 body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
@@ -89,7 +88,6 @@ th, td {
     opacity: 1; /* Show underline */
 }
 
-/* Header link styles */
 .header-links a {
     text-decoration: none;
     color: black;
@@ -98,23 +96,11 @@ th, td {
 .header-links a:hover {
     color: #D8402A;
 }
-
-/* Additional specific styles can be added here */
-
 </style>
 </head>
 <body>
-    <a href=""><img src="./img/kca_logo_short.jpg" alt="KCA Logo"></a>
-    <a href="https://counselors.or.kr/">한국상담학회</a> <span> · </span> <a
-        href="https://counselors.or.kr/"> <img src="./img/kca_house.png"
-        alt="KCA Logo">인트로
-    </a>
-    <a href="#">상담이론과 실제A</a>
-    <span class="mx-2"></span>
-    <a href="#">로그아웃</a>
-    <span class="mx-2"></span>
-    <a href="#">마이페이지</a>
-    <%@ include file="header.jsp"%>
+<%@ include file="header.jsp"%>
+    
     <div class="container mt-4">
         <div class="header"></div>
         <br>
@@ -158,7 +144,5 @@ th, td {
             </tbody>
         </table>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://example.com/script.js"></script>
 </body>
 </html>
