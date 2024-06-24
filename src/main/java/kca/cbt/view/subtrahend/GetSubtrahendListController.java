@@ -1,4 +1,4 @@
-package kca.cbt.view.examplan;
+package kca.cbt.view.subtrahend;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,7 @@ public class GetSubtrahendListController {
 
 	@RequestMapping("/getSubtrahendList.do")
 	public String getSubtrahendList(ExamPlanVO vo, ExamPlanDAO examPlanDAO, Model model) {
-		model.addAttribute("examPlanList", examPlanDAO.getSubtrahendList(vo));
+		model.addAttribute("subtrahendList", examPlanDAO.getSubtrahendList(vo));
 		return "examcommitmember/subtrahend.jsp";
 	}
 	
@@ -25,6 +25,5 @@ public class GetSubtrahendListController {
 		mav.setViewName("examcommitmember/subtrahendExamCard.jsp"); // View 정보 저장
 		return mav;
 	}
-
 
 }

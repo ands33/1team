@@ -3,38 +3,37 @@ package kca.cbt.test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("testSerivce")
+@Service("testService")
 public class TestServiceImpl implements TestService {
-	@Autowired
-	private TestDAO testDAO;
+    @Autowired
+    private TestDAO testDAO;
 
-	public void setTestDAO(TestDAO testDAO) {
-		this.testDAO = testDAO;
-	}
+    public void setTestDAO(TestDAO testDAO) {
+        this.testDAO = testDAO;
+    }
 
-	// 문제 등록
-	public void createTest(TestVO vo) {
-		testDAO.createTest(vo);
-	}
+    @Override
+    public void createTest(TestVO vo) {
+        testDAO.createTest(vo);
+    }
 
-	// 문제 정보 가져오기
-	public TestVO getTest(TestVO vo) {
-		return testDAO.getTest(vo);
-	}
+    @Override
+    public TestVO getTest(TestVO vo) {
+        return testDAO.getTest(vo);
+    }
 
-	// 문제 업데이트
-	public void updateTest(TestVO vo) {
-		testDAO.updateTest(vo);
-	}
+    @Override
+    public void updateTest(TestVO vo) {
+        testDAO.updateTest(vo);
+    }
 
-	// 문제 삭제
-	public void deleteTest(TestVO vo) {
+    @Override
+    public void deleteTest(TestVO vo) {
+        //testDAO.deleteTest(vo);
+    }
 
-	}
-
-	// 작성 완료된 문제 감수로 보냄
-	public void sendTest(TestVO vo) {
-
-	}
-
+    @Override
+    public void sendTest(TestVO vo) {
+        // sendTest 메소드 구현 필요
+    }
 }

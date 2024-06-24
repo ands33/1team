@@ -312,15 +312,15 @@ th {
 						<th rowspan="5" colspan="1" class="answer">참고도서명/출판사</th>
 						<td rowspan="5" colspan="1"><textarea name="reference"
 								style="height: 50px; width: 100%;"
-								oninput="limitByteLength(this, 300">${test.reference}</textarea></td>
+								oninput="limitByteLength(this, 300)">${test.reference}</textarea></td>
 						<th rowspan="5" colspan="1" class="answer">저자명/출판연도</th>
 						<td rowspan="5" colspan="1"><textarea name="authorYear"
 								style="height: 50px; width: 100%;"
-								oninput="limitByteLength(this, 300">${test.authorYear}</textarea></td>
+								oninput="limitByteLength(this, 300)">${test.authorYear}</textarea></td>
 						<th rowspan="5" colspan="1" class="answer">PAGE</th>
 						<td rowspan="5" colspan="1"><textarea name="page"
 								style="height: 50px; width: 100%;"
-								oninput="limitByteLength(this, 50">${test.page}</textarea></td>
+								oninput="limitByteLength(this, 50)">${test.page}</textarea></td>
 					</tr>
 				</table>
 
