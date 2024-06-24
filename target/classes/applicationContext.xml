@@ -1,38 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:p="http://www.springframework.org/schema/p"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context 
     http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-    <!-- 패키지 스캔 설정 -->
-    <context:component-scan base-package="kca.cbt.view"/>
+	<!-- 패키지 스캔 설정 -->
+	<context:component-scan
+		base-package="kca.cbt.view" />
 
-    <!-- 파일 업로드 설정 -->
-    <bean id="multipartResolver"
-        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="maxUploadSize" value="10485760" />
-    </bean>
+	<!-- 파일 업로드 설정 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10485760" />
+	</bean>
 
-    <!-- QnaService와 QnaDAO 빈 설정 -->
-    <bean id="qnaService" class="kca.cbt.qna.QnaServiceImpl">
-        <property name="qnaDAO" ref="qnaDAO" />
-    </bean>
-    <bean id="qnaDAO" class="kca.cbt.qna.QnaDAO" />
+	<!-- QnaService와 QnaDAO 빈 설정 -->
+	<bean id="qnaService" class="kca.cbt.qna.QnaServiceImpl">
+		<property name="qnaDAO" ref="qnaDAO" />
+	</bean>
+	<bean id="qnaDAO" class="kca.cbt.qna.QnaDAO" />
 
-    <bean id="testService" class="kca.cbt.exam.TestServiceImpl">
-        <property name="testDAO" ref="testDAO" />
-    </bean>
-    <bean id="testDAO" class="kca.cbt.exam.TestDAO" />
-    
-    <bean id="memberService"
-		class="kca.cbt.login.MemberServiceImpl">
+	<bean id="testService" class="kca.cbt.test.TestServiceImpl">
+		<property name="testDAO" ref="testDAO" />
+	</bean>
+	<bean id="testDAO" class="kca.cbt.test.TestDAO" />
+
+	<bean id="examPlanService"
+		class="kca.cbt.examplan.ExamPlanServiceImpl">
+		<property name="examPlanDAO" ref="examPlanDAO" />
+	</bean>
+	<bean id="examPlanDAO" class="kca.cbt.examplan.ExamPlanDAO" />
+
+	<bean id="subtrahendService"
+		class="kca.cbt.subtrahend.SubtrahendServiceImpl">
+		<property name="subtrahendDAO" ref="subtrahendDAO" />
+	</bean>
+	<bean id="subtrahendDAO" class="kca.cbt.subtrahend.SubtrahendDAO" />
+
+	<bean id="memberService" class="kca.cbt.login.MemberServiceImpl">
 		<property name="memberDAO" ref="memberDAO" />
 	</bean>
-	
+
 	<bean id="memberDAO" class="kca.cbt.login.MemberDAO" />
+	
+	 <!-- Exam_subjectService와 Exam_subjectDAO 빈 설정 -->
+	<bean id="exam_subjectService"
+		class="kca.cbt.exam_subjects.Exam_subjectServiceImpl">
+		<property name="exam_subjectDAO" ref="exam_subjectDAO" />
+	</bean>
+	<bean id="exam_subjectDAO"
+		class="kca.cbt.exam_subjects.Exam_subjectDAO" />
+
+	<!-- CriTeriaService와 CriTeriaDAO 빈 설정 -->
+    <bean id="criTeriaService" class="kca.cbt.view.criteria.CriTeriaServiceImpl">
+        <property name="criTeriaDAO" ref="criTeriaDAO" />
+    </bean>
+    <bean id="criTeriaDAO" class="kca.cbt.view.criteria.CriTeriaDAO" />
+
+	<!-- CriTeriaController 빈 설정 -->
+    <bean id="criTeriaController" class="kca.cbt.view.criteria.CriTeriaController">
+        <property name="criTeriaService" ref="criTeriaService" />
+    </bean>
 
 </beans>

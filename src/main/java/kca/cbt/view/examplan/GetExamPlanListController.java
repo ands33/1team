@@ -13,6 +13,7 @@ public class GetExamPlanListController {
 	@RequestMapping("/getExamPlanList.do")
 	public String getExamPlanList(ExamPlanVO vo, ExamPlanDAO examPlanDAO, Model model) {
 		model.addAttribute("examPlanList", examPlanDAO.getExamPlanList(vo));
+		model.addAttribute("comExamPlanList", examPlanDAO.getComExamPlanList(vo));
 		return "examcommitmember/exam.jsp";
 	}
 

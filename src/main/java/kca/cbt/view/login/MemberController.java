@@ -15,15 +15,15 @@ public class MemberController {
 	public String loginView(MemberVO vo, MemberDAO memberDAO, HttpSession session) {
 		MemberVO member = memberDAO.getMember(vo);
 		if (member != null) {
-	        session.setAttribute("memberName", member.getMember_name());
+	        session.setAttribute("member", member);
 	        if ("admin".equals(member.getMember_id()) && "adminpassword".equals(member.getPw())) {
 	        	System.out.println("===> 관리자로그인");
 //	            return "redirect:getUserList.do";
-	        	return "redirect:admin/adminIndex.jsp";
+	        	return "redirect:/IndexMemberList.do";
 //	        	관리자페이지로가도록구현해야함
 	        } else {
 	        	System.out.println("===> 출제위원으로 로그인");
-	            return "redirect:Project_index.jsp";
+	            return "redirect:examcommitmember/index.jsp";
 	        }
 	    } else {
 	        return "redirect:login/login.jsp?error=true";
