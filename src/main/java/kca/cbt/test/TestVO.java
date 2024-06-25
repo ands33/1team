@@ -31,6 +31,7 @@ public class TestVO {
 	private String member_id;
 	private String reviewer;
 	private String review;
+	private String exam_type;
 
 	public int getNum() {
 		return num;
@@ -270,6 +271,14 @@ public class TestVO {
 
 	public void setReview(String review) {
 		this.review = review;
+	}
+
+	public String getExam_type() {
+		return exam_type;
+	}
+
+	public void setExam_type(String exam_type) {
+		this.exam_type = exam_type;
 	}
 
 	// . 앞의 숫자만 추출하여 "1-2" 형식의 문자열을 반환하는 메서드

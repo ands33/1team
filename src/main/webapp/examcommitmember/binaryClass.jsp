@@ -1,314 +1,218 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>ì¶œì œì´ì›ë¶„ë¥˜í‘œ</title>
+<meta charset="EUC-KR">
+<title>ÃâÁ¦</title>
 <style>
-body {
-   font-family: Arial, sans-serif;
-   margin: 0;
-   padding: 20px;
-   background-color: #f5f5f5;
+.header-links a {
+	text-decoration: none;
+	color: black;
 }
 
-.container {
-   width: 100%;
-   max-width: 1200px;
-   background-color: white;
-   border: 1px solid #000;
-   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-   padding: 20px;
-   overflow-x: auto;
-}
-
-table {
-   width: 100%;
-   border-collapse: collapse;
-   table-layout: fixed;
-}
-
-th, td {
-   border: 1px solid #000;
-   padding: 4px;
-   text-align: center;
-   font-size: 12px;
-   font-weight: bold;
-   word-wrap: break-word;
+body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
+	i, ul, ol, li, button {
+	font-family: "Montserrat", "Noto Sans KR", sans-serif;
+	font-size: 15px;
+	letter-spacing: -0.05em;
+	line-height: 1.6em;
+	list-style: none;
+	color: #333;
 }
 
 th {
-   background-color: #f4f4f4;
+	white-space: nowrap; /* ³ÑÄ§ Ã³¸® ¹æÁö */
+	padding: 10px; /* ¼¿ ¾È ¿©¹é */
+	font-weight: bold; /* ±½Àº ±Û¾¾ */
+	font-size: 14px; /* ±Û¾¾ Å©±â */
+	font-weight: bold;
 }
 
-.vertical-text {
-   text-orientation: upright;
-   writing-mode: vertical-rl;
+th, td {
+	border: 1px solid black;
+	padding: 8px;
+	text-align: left;
 }
 
-.title {
-   text-align: center;
-   font-size: 1.5em;
-   margin-bottom: 20px;
+.wide-column {
+	width: 300px;
 }
 
-.subtitle {
-   text-align: center;
-   font-weight: bold;
-   margin-bottom: 10px;
+.table .btn {
+	margin: 2px;
 }
 
-.notes {
-   font-size: 0.9em;
+.navbar {
+	border-top: 1px solid #D8D9DA;
+	border-bottom: 3px solid #F5F5F5;
+	width: 100%;
+	height: 50px;
+	justify-content: center;
+	position: relative;
+	font-weight: bold;
+	font-size: 14px;
 }
 
-.tb {
-   border-top: 2px solid black;
-   border-left: 2px solid black;
+.navbar-nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	list-style: none;
 }
 
-.tbt {
-   border-top: 2px solid black;
+.nav-item {
+	position: relative;
 }
 
-.tbl {
-   border-left: 2px solid black;
+.nav-link {
+	text-decoration: none;
+	color: black;
+	padding: 10px 20px;
+	display: block;
+	position: relative;
 }
 
-.twh {
-   height: 50px;
-   border-collapse: collapse;
+.navbar-nav .nav-link:hover {
+	color: #DB402E;
 }
-.th {
-   height: 130px;
+
+/* ÇÏ´Ü Å×µÎ¸® ÃÊ±â »óÅÂ */
+.navbar-nav .nav-link::after {
+	content: ''; /* ÄÜÅÙÃ÷ Ãß°¡ */
+	display: block; /* ºí·Ï ·¹º§ ¿ä¼Ò·Î º¯°æ */
+	width: 0; /* ³Êºñ 0À¸·Î ¼³Á¤ÇÏ¿© ÃÊ±â¿¡ ¼û±è */
+	height: 2px; /* ³ôÀÌ 2px */
+	background: #DB402E; /* ¹è°æ »ö»ó */
+	position: absolute;
+	left: 0; /* ¿ŞÂÊ 0 */
+	bottom: -9.5px; /* ¾Æ·¡ÂÊ -9.5px */
+	opacity: 0; /* ÃÊ±â¿¡ ¼û±è */
 }
-.th2 {
-   height: 100px;
+
+/* È£¹ö ½Ã Å×µÎ¸® È¿°ú */
+.navbar-nav .nav-link:hover::after {
+	width: 100%; /* È£¹ö ½Ã ³Êºñ 100%·Î È®Àå */
+	opacity: 1; /* È£¹ö ½Ã º¸ÀÌ°Ô ÇÔ */
+}
+
+/* ÀçÃâÁ¦ ¿äÃ» ¹Ú½º ½ºÅ¸ÀÏ */
+.resubmit-box {
+	width: 100px;
+	height: 50px;
+	border: 1px solid #333;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	cursor: pointer; /* Ä¿¼­¸¦ Æ÷ÀÎÅÍ·Î º¯°æ */
+}
+
+.resubmit-box::after {
+	content: attr(data-review); /* data-review ¼Ó¼ºÀÇ °ªÀ» Ç¥½Ã */
+	display: none; /* ±âº»ÀûÀ¸·Î ¼û±è */
+	position: absolute;
+	top: 60px; /* ¹Ú½º ¾Æ·¡¿¡ Ç¥½Ã */
+	left: 0;
+	background-color: #fff;
+	border: 1px solid #333;
+	padding: 5px;
+	white-space: pre-wrap; /* ÁÙ¹Ù²ŞÀ» À¯Áö */
+}
+
+.resubmit-box:hover::after {
+	display: block; /* ¸¶¿ì½º¸¦ ¿Ã·ÈÀ» ¶§ Ç¥½Ã */
+}
+
+/* Ç¥¸¦ °¡¿îµ¥ Á¤·ÄÇÏ´Â ½ºÅ¸ÀÏ */
+.table-container {
+	display: flex;
+	justify-content: center;
 }
 </style>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
 </head>
 <body>
-   <div class="container">
-      <div class="title">
-         2023ë…„ë„ ì‚¬)í•œêµ­ìƒë‹´í•™íšŒ ì „ë¬¸ìƒë‹´ì‚¬ ìê²©ê²€ì • í•„ê¸°ì‹œí—˜<br>ì¶œì œì´ì›ë¶„ë¥˜í‘œ
-      </div>
-      <div class="subtitle">
-         <div style="text-align: left">
-            ê³¼ëª©ëª… : ìƒë‹´ìœ¤ë¦¬ì™€ ì² í•™<br> ì¶œì œìœ„ì› : (A)í™ê¸¸ë™ (B)ê¹€ë³µìˆœ
-         </div>
-      </div>
-      <table>
-         <thead>
-            <tr class="twh">
-               <td colspan="4">ì¶œì œì˜ì—­</td>
-               <td colspan="4">ë‚œì´ë„ë³„ ë¬¸ì œìˆ˜</td>
-               <td colspan="2">ì¶œì œìœ„ì›</td>
-               <td colspan="2">ì¶œì œë°©ë²•</td>
-               <td colspan="3">í–‰ë™ì˜ì—­</td>
-               <td colspan="5">ì •ë‹µ</td>
-               <td rowspan="2">ì¶œì²˜</td>
-               <td rowspan="2">ë¬¸í•­ì¹´ë“œ</td>
-               <td rowspan="2">ê²€í† ì™„ë£Œ</td>
-            </tr>
-            <tr class="th">
-               <td rowspan="2">ë¶„ë¥˜ë²ˆí˜¸
-               </td>
-               <td rowspan="2">ëŒ€ë¶„ë¥˜</td>
-               <td rowspan="2">ì¤‘ë¶„ë¥˜</td>
-               <td rowspan="2">ì„¸ë¶€</td>
-               <td rowspan="2">ìƒ</td>
-               <td rowspan="2">ì¤‘</td>
-               <td rowspan="2">í•˜</td>
-               <td rowspan="2">í•©ê³„</td>
-               <td rowspan="2">í™ê¸¸ë™</td>
-               <td rowspan="2">ê¹€ë³µìˆœ</td>
-               <td rowspan="2">ë¬¸í•­ì œì‘</td>
-               <td rowspan="2">ê¸°ì¶œë¬¸ì œ</td>
-               <td rowspan="2">ì§€ì‹</td>
-               <td rowspan="2">ì´í•´</td>
-               <td rowspan="2">ì ìš©</td>
-               <td rowspan="2">â‘ </td>
-               <td rowspan="2">â‘¡</td>
-               <td rowspan="2">â‘¢</td>
-               <td rowspan="2">â‘£</td>
-               <td rowspan="2">â‘¤</td>
-            </tr>
-         </thead>
-         <tbody>
-            <tr class="tb">
-               <td>1-0-0</td>
-               <td rowspan="3">---</td>
-               <td rowspan="3">-----</td>
-               <td>----</td>
-               <td>1</td>
-               <td></td>
-               <td></td>
-               <td>1</td>
-               <td>1</td>
-               <td></td>
-               <td>ì œì‘</td>
-               <td></td>
-               <td>1</td>
-               <td></td>
-               <td></td>
-               <td>â‘ </td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td>í•œêµ­ìƒë‹´í•™íšŒ ìœ¤ë¦¬ê°•ë ¹</td>
-               <td>ì‘ì„±ì¤‘</td>
-               <td></td>
-            </tr>
-            <tr class="tbl">
-               <td>1-0-1</td>
-               <td>----</td>
-               <td></td>
-               <td>1</td>
-               <td></td>
-               <td>1</td>
-               <td>1</td>
-               <td></td>
-               <td></td>
-               <td>ê¸°ì¶œ</td>
-               <td></td>
-               <td>1</td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td>â‘¢</td>
-               <td></td>
-               <td></td>
-               <td>ì‹¬ë¦¬ìƒë‹´ê³¼ ì¹˜ë£Œì´ë¡ ê³¼ ì‹¤ì œ(ì œ10íŒ)/í•™ì§€ì‚¬</td>
-               <td>ì‘ì„±ì¤‘</td>
-               <td></td>
-            </tr>
-            <tr class="tbl">
-               <td>1-0-2</td>
-               <td>----</td>
-               <td></td>
-               <td>1</td>
-               <td></td>
-               <td>1</td>
-               <td>1</td>
-               <td></td>
-               <td>ì œì‘</td>
-               <td></td>
-               <td></td>
-               <td>1</td>
-               <td></td>
-               <td>â‘ </td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td>í•œêµ­ìƒë‹´í•™íšŒ ìê²©ê·œì •</td>
-               <td>ì‘ì„±ì™„ë£Œ</td>
-               <td>â—‹</td>
-            </tr>
-            <tr class="tb">
-               <td>1-0-0</td>
-               <td rowspan="3">---</td>
-               <td rowspan="3">-----</td>
-               <td>----</td>
-               <td>1</td>
-               <td></td>
-               <td></td>
-               <td>1</td>
-               <td>1</td>
-               <td></td>
-               <td>ì œì‘</td>
-               <td></td>
-               <td>1</td>
-               <td></td>
-               <td></td>
-               <td>â‘ </td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td>í•œêµ­ìƒë‹´í•™íšŒ ìœ¤ë¦¬ê°•ë ¹</td>
-               <td>ì‘ì„±ì¤‘</td>
-               <td></td>
-            </tr>
-            <tr class="tbl">
-               <td>1-0-1</td>
-               <td>----</td>
-               <td></td>
-               <td>1</td>
-               <td></td>
-               <td>1</td>
-               <td>1</td>
-               <td></td>
-               <td></td>
-               <td>ê¸°ì¶œ</td>
-               <td></td>
-               <td>1</td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td>â‘¢</td>
-               <td></td>
-               <td></td>
-               <td>ì‹¬ë¦¬ìƒë‹´ê³¼ ì¹˜ë£Œì´ë¡ ê³¼ ì‹¤ì œ(ì œ10íŒ)/í•™ì§€ì‚¬</td>
-               <td>ì‘ì„±ì¤‘</td>
-               <td></td>
-            </tr>
-            <tr class="tbl">
-               <td>1-0-2</td>
-               <td>----</td>
-               <td></td>
-               <td>1</td>
-               <td></td>
-               <td>1</td>
-               <td>1</td>
-               <td></td>
-               <td></td>
-               <td>ê¸°ì¶œ</td>
-               <td></td>
-               <td>1</td>
-               <td></td>
-               <td>â‘ </td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td>í•œêµ­ìƒë‹´í•™íšŒ ìê²©ê·œì •</td>
-               <td>ì‘ì„±ì™„ë£Œ</td>
-               <td>â—‹</td>
-            </tr>
-         </tbody>
-         <tfoot>
-            <tr class="tbt">
-               <td rowspan="2" colspan="4">í•©ê³„</td>
-               <td>2</td>
-               <td>2</td>
-               <td>1</td>
-               <td>5</td>
-               <td rowspan="2">3</td>
-               <td rowspan="2">3</td>
-               <td rowspan="2">4</td>
-               <td rowspan="2">3</td>
-               <td rowspan="2">3</td>
-               <td rowspan="2">3</td>
-               <td rowspan="2">2</td>
-               <td rowspan="2">2</td>
-               <td rowspan="2">0</td>
-               <td rowspan="2">1</td>
-               <td rowspan="2">0</td>
-               <td rowspan="2">0</td>
-               <td rowspan="2"></td>
-               <td rowspan="2"></td>
-               <td rowspan="2"></td>
-            </tr>
-            <tr class="tbt">
-               <td colspan="3">ì˜ˆìƒì •ë‹µë¥ </td>
-               <td>70</td>
-            </tr>
-         </tfoot>
-      </table>
-   </div>
-   <br>
-   <div class="subtitle">[ì œì¶œ]</div>
+	<%@ include file="header.jsp"%>
+	<div class="container mt-4">
+		<div class="table-container">
+			<table class="table table-bordered">
+				<thead class="table-light">
+					<tr>
+						<th colspan="23">°ú¸ñ¸í : ${member.subject_name}<br>
+						ÃâÁ¦À§¿ø : (A) ${memberAB.memberA} (B) : ${memberAB.memberB}
+						</th>
+					</tr>
+					<tr align="center">
+						<th>ºĞ·ùÄÚµå</th>
+						<th>´ëºĞ·ù</th>
+						<th>ÁßºĞ·ù</th>
+						<th>¼ÒºĞ·ù</th>
+						<th>»ó</th>
+						<th>Áß</th>
+						<th>ÇÏ</th>
+						<th>ÇÕ°è</th>
+						<th>ÃâÁ¦À§¿ø1</th>
+						<th>ÃâÁ¦À§¿ø2</th>
+						<th>¹®Ç×Á¦ÀÛ</th>
+						<th>±âÃâ¹®Á¦</th>
+						<th>Áö½Ä</th>
+						<th>ÀÌÇØ</th>
+						<th>Àû¿ë</th>
+						<th>¨ç</th>
+						<th>¨è</th>
+						<th>¨é</th>
+						<th>¨ê</th>
+						<th>¨ë</th>
+						<th>ÃâÃ³</th>
+						<th>¹®Ç×Ä«µå</th>
+						<th>°ËÅä¿Ï·á</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="binaryClass" items="${binaryClassList}">
+						<tr>
+							<td>${binaryClass.categoryNumbers}</td>
+							<td>${binaryClass.category1}</td>
+							<td>${binaryClass.category2}</td>
+							<td>${binaryClass.category3}</td>
+							<td>${binaryClass.diff}</td>
+							<td>${binaryClass.diff}</td>
+							<td>${binaryClass.diff}</td>
+							<td>${binaryClass.diff}</td>
+							<td>${binaryClass.member_name}</td>
+							<td>${binaryClass.submember_name}</td>
+							<td>${binaryClass.exam_type}</td>
+							<td>${binaryClass.exam_type}</td>
+							<td>${binaryClass.behavioral}</td>
+							<td>${binaryClass.behavioral}</td>
+							<td>${binaryClass.behavioral}</td>
+							<td>${binaryClass.answer}</td>
+							<td>${binaryClass.answer}</td>
+							<td>${binaryClass.answer}</td>
+							<td>${binaryClass.answer}</td>
+							<td>${binaryClass.answer}</td>
+							<td>${binaryClass.reference}</td>
+							<td>${binaryClass.e_status}</td>
+							<td>${binaryClass.e_status}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
 </body>
 </html>

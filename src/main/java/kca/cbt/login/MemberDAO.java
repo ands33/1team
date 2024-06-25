@@ -14,12 +14,21 @@ public class MemberDAO {
     private PreparedStatement stmt = null;
     private ResultSet rs = null;
     
+    private PreparedStatement stmt1 = null;
+    private ResultSet rs1 = null;
+    
+    private PreparedStatement stmt2 = null;
+    private ResultSet rs2 = null;
     // SQL 명령어들
     private final String MEMBER_GET = "select * from member where member_id=? and pw=?";
     private final String MEMBER_LIST = "select * from member order by member_id";
     private final String MEMBER_UPDATE = "update member set pw=?, member_name=?, member_type=? where member_id=?";
     private final String MEMBER_SUBJECT_UPDATE = "update member set subject_code = ? where member_id = ? ";
     private final String MEMBER_SUBJECT_DELETE = "update member set subject_code = NULL where member_id = ?";
+    private final String SUBJECT_NAME_GET = "select distinct name from subject where subject_code=?";
+    private final String SUBJECT_CODE_GET = "select subject_code from member where member_id=?";
+    private final String MEMBER_A_GET = "select member_name from member where subject_code=? and member_type='A'";
+    private final String MEMBER_B_GET = "select member_name from member where subject_code=? and member_type='B'";
     
     // Member 정보 get
     public MemberVO getMember(MemberVO vo) {
@@ -31,16 +40,26 @@ public class MemberDAO {
             stmt.setString(1, vo.getMember_id());
             stmt.setString(2, vo.getPw());
             rs = stmt.executeQuery();
+            
             if (rs.next()) {
                 member = new MemberVO();
                 member.setMember_id(rs.getString("MEMBER_ID"));
                 member.setPw(rs.getString("PW"));
                 member.setMember_name(rs.getString("MEMBER_NAME"));
                 member.setMember_type(rs.getString("MEMBER_TYPE"));
+                member.setSubject_code(rs.getInt("SUBJECT_CODE"));
+            }
+            stmt1 = conn.prepareStatement(SUBJECT_NAME_GET);
+            stmt1.setInt(1, member.getSubject_code());
+            rs1 = stmt1.executeQuery();
+            
+            if (rs1.next()) {
+            	member.setSubject_name(rs1.getString("NAME"));
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+        	JDBCUtil.close(rs1, stmt1, conn);
             JDBCUtil.close(rs, stmt, conn);
         }
         return member;
@@ -126,5 +145,45 @@ public class MemberDAO {
         } finally {
             JDBCUtil.close(stmt, conn);
         }
+    }
+    
+    public MemberVO getMemberAB(MemberVO vo) {
+        MemberVO member = null;
+        try {
+            System.out.println("===> JDBC로 getMemberAB() 기능 처리");
+            conn = JDBCUtil.getConnection();
+            
+            stmt2 = conn.prepareStatement(SUBJECT_CODE_GET);
+            stmt2.setString(1, vo.getMember_id());
+            rs2 = stmt2.executeQuery();
+            
+            member = new MemberVO();
+            if (rs2.next()) {
+                member.setSubject_code(rs2.getInt("SUBJECT_CODE"));
+            }
+            
+            stmt = conn.prepareStatement(MEMBER_A_GET);
+            stmt.setInt(1, member.getSubject_code());
+            rs = stmt.executeQuery();
+            
+            stmt1 = conn.prepareStatement(MEMBER_B_GET);
+            stmt1.setInt(1, member.getSubject_code());
+            rs1 = stmt1.executeQuery();
+            
+            if (rs.next()) {
+                member.setMemberA(rs.getString("MEMBER_NAME"));
+            }
+            
+            if (rs1.next()) {
+                member.setMemberB(rs1.getString("MEMBER_NAME"));
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        	JDBCUtil.close(rs1, stmt1, conn);
+            JDBCUtil.close(rs, stmt, conn);
+        }
+        return member;
     }
 }
