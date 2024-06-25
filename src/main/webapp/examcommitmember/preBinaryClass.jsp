@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="EUC-KR">
-<link rel="icon" href="./img/favicon-16x16.png">
+<link rel="icon" href="./img/favicon-32x32.png">
 <title>이원분류표(선제)</title>
 <style>
 body {
@@ -107,7 +107,6 @@ th, td {
 				<th colspan="4">문항검토의견<br>(문항 오류의 사유 및 출처)
 				</th>
 			</tr>
-
 
 			<tr>
 				<td>홍길동</td>

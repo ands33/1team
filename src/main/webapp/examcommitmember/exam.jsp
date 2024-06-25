@@ -164,13 +164,12 @@ th, td {
 }
 
 .header-links a:hover {
-	HEAD color: #D8402A;
 	color: #D8402A;
 }
 
 /* 재출제 요청 박스 스타일 */
 .resubmit-box {
-	HEAD width: 100px;
+	width: 100px;
 	height: 50px;
 	border: 1px solid #333;
 	display: flex;
@@ -222,7 +221,7 @@ th, td {
 
 /*중요*/
 .button-approve {
-	HEAD background-color: #4CAF50;
+	background-color: #4CAF50;
 	color: white;
 }
 
@@ -302,25 +301,14 @@ th, td {
 
 /* Label Container */
 .label-container {
-	HEAD display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 10px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 10px;
-	ce01b3a0776909d14179b308fa4d7484a4fc5fe
 }
 
 /* Legend */
 .legend {
-	display: flex;
-	flex-direction: column;
-	font-family: Arial, sans-serif;
-	border: 1px solid #ccc;
-	padding: 10px;
-	width: 300px;
 	display: flex;
 	flex-direction: column;
 	font-family: Arial, sans-serif;
@@ -467,6 +455,7 @@ th, td {
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
 	</style>
+	<head>
 	<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 		rel="stylesheet"

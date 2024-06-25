@@ -61,10 +61,10 @@
    </bean>
    <bean id="criteriaDAO" class="kca.cbt.criteria.CriteriaDAO" />
 
-   <!-- CriteriaController 빈 설정 -->
-   <bean id="criteriaController" class="kca.cbt.view.criteria.CriteriaController">
-      <property name="criteriaService" ref="criteriaService" />
-   </bean>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 34e1252e0d53cfd9522796b24f8e12f8dc5ce2c1
 
 </beans>

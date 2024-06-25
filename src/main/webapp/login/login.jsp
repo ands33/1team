@@ -16,8 +16,8 @@
 *,
 *:before,
 *:after {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+    moz-box-sizing: border-box;
+    webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -104,7 +104,6 @@ button.submit:hover {
     width: 280px;
     height: auto;
 }
-
 </style>
 </head>
 <body>
