@@ -4,10 +4,10 @@ import java.util.List;
 import kca.cbt.criteria.CriteriaService;
 import kca.cbt.criteria.CriteriaVO;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/criteria")
@@ -18,15 +18,13 @@ public class CriteriaController {
         this.criteriaService = criteriaService;
     }
 
-    @GetMapping("/list")
-    public String getCriteriaList(@RequestParam(required = false) String name, Model model) {
-        List<CriteriaVO> list;
-        if (name == null || name.isEmpty()) {
-            list = criteriaService.getAllCriteria();
+    @GetMapping("/getData.do")
+    @ResponseBody
+    public List<CriteriaVO> getCriteriaList(@RequestParam(required = false) String courseName) {
+        if (courseName == null || courseName.isEmpty()) {
+            return criteriaService.getAllCriteria();
         } else {
-            list = criteriaService.searchCriteria(name);
+            return criteriaService.searchCriteria(courseName);
         }
-        model.addAttribute("criteriaList", list);
-        return "/criteria.jsp"; // JSP 파일의 위치를 직접 지정
     }
 }

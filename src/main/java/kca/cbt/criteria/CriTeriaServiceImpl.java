@@ -4,7 +4,7 @@ import java.util.List;
 
 public class CriteriaServiceImpl implements CriteriaService {
     private CriteriaDAO criteriaDAO;
-    
+
     public void setCriteriaDAO(CriteriaDAO criteriaDAO) {
         this.criteriaDAO = criteriaDAO;
     }
@@ -15,7 +15,7 @@ public class CriteriaServiceImpl implements CriteriaService {
     }
 
     @Override
-    public List<CriteriaVO> searchCriteria(String name) {
-        return criteriaDAO.searchCriteria(name);
+    public List<CriteriaVO> searchCriteria(String courseName) {
+        return criteriaDAO.searchCriteria(courseName);
     }
 }
