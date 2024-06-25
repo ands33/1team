@@ -221,6 +221,7 @@ public class ExamPlanDAO {
 						binaryClass.setExam_type(rs2.getString("EXAM_TYPE"));
 						binaryClass.setBehavioral(rs2.getString("BEHAVIORAL"));
 						binaryClass.setAnswer(rs2.getInt("ANSWER"));
+						binaryClass.setReference(rs2.getString("REFERENCE"));
 					}
 					System.out.println(binaryClass);
 					binaryClassList.add(binaryClass);
