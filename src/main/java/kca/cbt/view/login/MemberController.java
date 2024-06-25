@@ -19,7 +19,7 @@ public class MemberController {
 	        if ("admin".equals(member.getMember_id()) && "adminpassword".equals(member.getPw())) {
 	        	System.out.println("===> 관리자로그인");
 //	            return "redirect:getUserList.do";
-	        	return "redirect:/IndexMemberList.do";
+	        	return "redirect:/admin/Newform.jsp";
 //	        	관리자페이지로가도록구현해야함
 	        } else {
 	        	System.out.println("===> 출제위원으로 로그인");
