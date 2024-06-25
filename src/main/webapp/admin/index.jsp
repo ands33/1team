@@ -1,4 +1,4 @@
-<%-- <%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
@@ -108,4 +108,4 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
    <script src="scripts.js"></script>
 </body>
-</html> --%>
+</html>

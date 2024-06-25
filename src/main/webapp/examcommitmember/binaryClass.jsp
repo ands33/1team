@@ -7,7 +7,7 @@
 <head>
 <meta charset="EUC-KR">
 <link rel="icon" href="./img/favicon-16x16.png">
-<title>출제</title>
+<title>이원분류표(출제)</title>
 <style>
 .header-links a {
 	text-decoration: none;
@@ -198,24 +198,88 @@ td:nth-last-child(3) {
 					</tr>
 				</thead>
 				<tbody>
+					<%-- 합계에 쓸 변수 선언하는 부분 --%>
+					<c:set var="sumHigh" value="0" />
+					<c:set var="sumMiddle" value="0" />
+					<c:set var="sumLow" value="0" />
+					<c:set var="sumName1" value="0" />
+					<c:set var="sumName2" value="0" />
+					<c:set var="sumCre" value="0" />
+					<c:set var="sumPas" value="0" />
+					<c:set var="sumBehavioral1" value="0" />
+					<c:set var="sumBehavioral2" value="0" />
+					<c:set var="sumBehavioral3" value="0" />
+					<c:set var="sumAnswer1" value="0" />
+					<c:set var="sumAnswer2" value="0" />
+					<c:set var="sumAnswer3" value="0" />
+					<c:set var="sumAnswer4" value="0" />
+					<c:set var="sumAnswer5" value="0" />
 					<c:forEach var="binaryClass" items="${binaryClassList}"
 						varStatus="loop">
 						<%-- 난이도에 따라 숫자 누적하기 --%>
-						<c:set var="sumHigh" value="0" />
-						<c:set var="sumMiddle" value="0" />
-						<c:set var="sumLow" value="0" />
+						<c:set var="high" value="0" />
+						<c:set var="middle" value="0" />
+						<c:set var="low" value="0" />
 
 						<c:choose>
 							<c:when test="${binaryClass.diff == '상'}">
+								<c:set var="high" value="${high + 1}" />
 								<c:set var="sumHigh" value="${sumHigh + 1}" />
 							</c:when>
 							<c:when test="${binaryClass.diff == '중'}">
+								<c:set var="middle" value="${middle + 1}" />
 								<c:set var="sumMiddle" value="${sumMiddle + 1}" />
 							</c:when>
 							<c:when test="${binaryClass.diff == '하'}">
+								<c:set var="low" value="${low + 1}" />
 								<c:set var="sumLow" value="${sumLow + 1}" />
 							</c:when>
 						</c:choose>
+						<c:choose>
+							<c:when test="${binaryClass.member_name == memberAB.memberA}">
+								<c:set var="sumName1" value="${sumName1 + 1}" />
+							</c:when>
+							<c:when test="${binaryClass.member_name == memberAB.memberB}">
+								<c:set var="sumName2" value="${sumName2 + 1}" />
+							</c:when>
+						</c:choose>
+						<c:choose>
+							<c:when test="${binaryClass.exam_type == '문항제작'}">
+								<c:set var="sumCre" value="${sumCre + 1}" />
+							</c:when>
+							<c:when test="${binaryClass.exam_type == '기출문제'}">
+								<c:set var="sumPas" value="${sumPas + 1}" />
+							</c:when>
+						</c:choose>
+						<c:choose>
+							<c:when test="${binaryClass.behavioral == '지식'}">
+								<c:set var="sumBehavioral1" value="${sumBehavioral1 + 1}" />
+							</c:when>
+							<c:when test="${binaryClass.behavioral == '이해'}">
+								<c:set var="sumBehavioral2" value="${sumBehavioral2 + 1}" />
+							</c:when>
+							<c:when test="${binaryClass.behavioral == '적용'}">
+								<c:set var="sumBehavioral3" value="${sumBehavioral3 + 1}" />
+							</c:when>
+						</c:choose>
+						<c:choose>
+							<c:when test="${binaryClass.answer == 1}">
+								<c:set var="sumAnswer1" value="${sumAnswer1 + 1}" />
+							</c:when>
+							<c:when test="${binaryClass.answer == 2}">
+								<c:set var="sumAnswer2" value="${sumAnswer2 + 1}" />
+							</c:when>
+							<c:when test="${binaryClass.answer == 3}">
+								<c:set var="sumAnswer3" value="${sumAnswer3 + 1}" />
+							</c:when>
+							<c:when test="${binaryClass.answer == 4}">
+								<c:set var="sumAnswer4" value="${sumAnswer4 + 1}" />
+							</c:when>
+							<c:when test="${binaryClass.answer == 5}">
+								<c:set var="sumAnswer5" value="${sumAnswer5 + 1}" />
+							</c:when>
+						</c:choose>
+						
 						<%-- 이전 행과 대분류, 중분류가 같은지 비교하기 --%>
 						<c:if
 							test="${loop.index > 0 && binaryClass.category1 == binaryClassList[loop.index - 1].category1 && binaryClass.category2 == binaryClassList[loop.index - 1].category2}">
@@ -226,7 +290,7 @@ td:nth-last-child(3) {
 								<td>${binaryClass.diff == '상' ? 1 : ''}</td>
 								<td>${binaryClass.diff == '중' ? 1 : ''}</td>
 								<td>${binaryClass.diff == '하' ? 1 : ''}</td>
-								<td>${sumHigh + sumMiddle + sumLow}</td>
+								<td>${high + middle + low}</td>
 								<td>${binaryClass.member_name == memberAB.memberA ? 1 : ''}</td>
 								<td>${binaryClass.member_name == memberAB.memberB ? 1 : ''}</td>
 								<td>${binaryClass.exam_type == '문항제작' ? '제작' : ''}</td>
@@ -270,7 +334,7 @@ td:nth-last-child(3) {
 								<td>${binaryClass.diff == '상' ? 1 : ''}</td>
 								<td>${binaryClass.diff == '중' ? 1 : ''}</td>
 								<td>${binaryClass.diff == '하' ? 1 : ''}</td>
-								<td>${sumHigh + sumMiddle + sumLow}</td>
+								<td>${high + middle + low}</td>
 								<td>${binaryClass.member_name == memberAB.memberA ? 1 : ''}</td>
 								<td>${binaryClass.member_name == memberAB.memberB ? 1 : ''}</td>
 								<td>${binaryClass.exam_type == '문항제작' ? '제작' : ''}</td>
@@ -296,10 +360,31 @@ td:nth-last-child(3) {
 							</tr>
 						</c:if>
 					</c:forEach>
-
-
-
 				</tbody>
+				<tfoot>
+					<tr class="tbt">
+						<td rowspan="2" colspan="4">합계</td>
+						<td>${sumHigh}</td>
+						<td>${sumMiddle}</td>
+						<td>${sumLow}</td>
+						<td>${sumHigh + sumMiddle + sumLow}</td>
+						<td>${sumName1}</td>
+						<td>${sumName2}</td>
+						<td>${sumCre}</td>
+						<td>${sumPas}</td>
+						<td>${sumBehavioral1}</td>
+						<td>${sumBehavioral2}</td>
+						<td>${sumBehavioral3}</td>
+						<td>${sumAnswer1}</td>
+						<td>${sumAnswer2}</td>
+						<td>${sumAnswer3}</td>
+						<td>${sumAnswer4}</td>
+						<td>${sumAnswer5}</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tfoot>
 			</table>
 		</div>
 	</div>

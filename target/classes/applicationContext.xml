@@ -55,6 +55,7 @@
    <bean id="exam_subjectDAO"
       class="kca.cbt.exam_subjects.Exam_subjectDAO" />
       
+<<<<<<< HEAD
       <!-- CriteriaService와 CriteriaDAO 빈 설정 -->
    <bean id="criteriaService" class="kca.cbt.criteria.CriteriaServiceImpl">
       <property name="criteriaDAO" ref="criteriaDAO" />
@@ -67,4 +68,6 @@
 
 >>>>>>> 34e1252e0d53cfd9522796b24f8e12f8dc5ce2c1
 
+=======
+>>>>>>> 40202a3767d4e07d47bd36fec3b5242fd224a517
 </beans>
