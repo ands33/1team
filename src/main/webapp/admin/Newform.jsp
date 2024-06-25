@@ -92,11 +92,11 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
 	<br>
 	<div class="flex-container">
 		<div>
-			<a href="../../../biz/getExamPlanList.do"><img src="./img/설.png"
+			<a href="../../../biz/IndexMemberList.do"><img src="./img/설.png"
 				alt="설정"></a>
 		</div>
 		<div>
-			<a href="../../../biz/getSubtrahendList.do"><img
+			<a href="../../../biz/getMembersBySubjectAndType.do"><img
 				src="./img/문.png" alt="문항입고대기"></a>
 		</div>
 	</div>
