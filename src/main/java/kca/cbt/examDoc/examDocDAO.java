@@ -11,7 +11,104 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 import com.springbook.biz.common.JDBCUtil;
 
-@Repository("examdocDAO")
+@Repository
+public class examDocDAO {
+
+	private Connection conn = null;
+	private PreparedStatement stmt = null;
+	private ResultSet rs = null;
+
+	private final String EXAMDOCSUB_GET = "SELECT * FROM SUBJECT";
+	
+	public List<examDocVO> getExamDocSub(examDocVO vo) {
+		System.out.println("===> JDBC로 getexamDocSub() 기능 처리");
+		List<examDocVO> ExamDocSub = new ArrayList<examDocVO>();
+	    Map<String, Integer> rowspanMapC1 = new HashMap<>();
+        Map<String, Integer> rowspanMapC2 = new HashMap<>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(EXAMDOCSUB_GET);
+			rs = stmt.executeQuery();
+			
+			int prevIdx = -1; // 이전 idx 값을 저장하기 위한 변수
+	        examDocVO prevExamdocsub = null; // 이전 examDocVO 객체 저장하기 위한 변수
+	        
+			while (rs.next()) {
+				examDocVO examdocsub = new examDocVO();
+				examdocsub.setNum(rs.getInt("IDX"));
+				examdocsub.setName(rs.getString("NAME"));
+				examdocsub.setCategory1(rs.getString("CATEGORY1"));
+				examdocsub.setCategory2(rs.getString("CATEGORY2"));
+				examdocsub.setCategory3(rs.getString("CATEGORY3"));
+				
+				// Calculate rowspan
+	            String c1Value = examdocsub.getCategory1();
+	            if (rowspanMapC1.containsKey(c1Value)) {
+	                int count = rowspanMapC1.get(c1Value);
+	                rowspanMapC1.put(c1Value, count + 1);
+	            } else {
+	                rowspanMapC1.put(c1Value, 1);
+	            }
+	            
+	         // Calculate rowspan
+	            String c2Value = examdocsub.getCategory2();
+	            if (rowspanMapC2.containsKey(c2Value)) {
+	                int count = rowspanMapC2.get(c2Value);
+	                rowspanMapC2.put(c2Value, count + 1);
+	            } else {
+	                rowspanMapC2.put(c2Value, 1);
+	            }
+	            
+	         // Check if we should merge rows based on conditions
+	            if (prevExamdocsub != null && prevExamdocsub.getCategory1().equals(examdocsub.getCategory1())) {
+	                // Check idx continuity condition (difference should be 1)
+	                if (examdocsub.getNum() - prevExamdocsub.getNum() == 1) {
+	                    prevExamdocsub.setRowspanC1(prevExamdocsub.getRowspanC1() + 1);
+	                    prevExamdocsub.setRowspanC2(prevExamdocsub.getRowspanC2() + 1);
+	                    continue; // Skip adding the current examdocsub to list
+	                }
+	            }
+	            
+	            ExamDocSub.add(examdocsub);
+	            prevExamdocsub = examdocsub;
+
+			}
+			
+			// Set rowspan value for each testVO
+	        for (examDocVO examdocsub : ExamDocSub) {
+	            examdocsub.setRowspanC1(rowspanMapC1.get(examdocsub.getCategory1()));
+	            examdocsub.setRowspanC2(rowspanMapC2.get(examdocsub.getCategory2()));
+
+	            // Only the first occurrence should have the actual rowspan value
+	            rowspanMapC1.put(examdocsub.getCategory1(), 0);
+                rowspanMapC2.put(examdocsub.getCategory2(), 0);
+
+	        }
+	        
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return ExamDocSub;
+	}
+}
+
+/*package kca.cbt.examDoc;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Repository;
+import com.springbook.biz.common.JDBCUtil;
+
+@Repository
 public class examDocDAO {
 
 	private Connection conn = null;
@@ -19,10 +116,13 @@ public class examDocDAO {
 	private ResultSet rs = null;
 
 	private final String EXAMDOC_LIST = "SELECT examplan.num, subject.name, subject.category1, subject.category2, subject.category3, examplan.diff, examplan.e_status, examplan.member_name, examplan.member_id, member.member_type FROM examplan INNER JOIN subject ON examplan.idx = subject.idx INNER JOIN member ON examplan.member_name = member.member_name order by examplan.idx ASC";
-
+		
 	public List<examDocVO> getExamDocList(examDocVO vo) {
 		System.out.println("===> JDBC로 getexamDocList() 기능 처리");
 		List<examDocVO> ExamDocList = new ArrayList<examDocVO>();
+	    Map<String, Integer> rowspanMapC1 = new HashMap<>();
+        Map<String, Integer> rowspanMapC2 = new HashMap<>();
+
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(EXAMDOC_LIST);
@@ -39,8 +139,39 @@ public class examDocDAO {
 				examdoc.setMember_name(rs.getString("member_name"));
 				examdoc.setMember_id(rs.getString("member_id"));
 				examdoc.setMember_type(rs.getString("member_type")); //
-				ExamDocList.add(examdoc);
+				
+				// Calculate rowspan
+	            String c1Value = examdoc.getCategory1();
+	            if (rowspanMapC1.containsKey(c1Value)) {
+	                int count = rowspanMapC1.get(c1Value);
+	                rowspanMapC1.put(c1Value, count + 1);
+	            } else {
+	                rowspanMapC1.put(c1Value, 1);
+	            }
+	            
+	         // Calculate rowspan
+	            String c2Value = examdoc.getCategory2();
+	            if (rowspanMapC2.containsKey(c2Value)) {
+	                int count = rowspanMapC2.get(c2Value);
+	                rowspanMapC2.put(c2Value, count + 1);
+	            } else {
+	                rowspanMapC2.put(c2Value, 1);
+	            }
+	            
+	            ExamDocList.add(examdoc);
 			}
+			
+			// Set rowspan value for each testVO
+	        for (examDocVO examdoc : ExamDocList) {
+	            examdoc.setRowspanC1(rowspanMapC1.get(examdoc.getCategory1()));
+	            examdoc.setRowspanC2(rowspanMapC2.get(examdoc.getCategory2()));
+
+	            // Only the first occurrence should have the actual rowspan value
+	            rowspanMapC1.put(examdoc.getCategory1(), 0);
+                rowspanMapC2.put(examdoc.getCategory2(), 0);
+
+	        }
+	        
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -77,113 +208,4 @@ public class examDocDAO {
 
 		return memberNames;
 	}
-}
-/*
- * package kca.cbt.examDoc;
- * 
- * import java.sql.Connection; import java.sql.PreparedStatement; import
- * java.sql.ResultSet; import java.util.ArrayList; import java.util.List;
- * 
- * import org.springframework.stereotype.Repository; import
- * com.springbook.biz.common.JDBCUtil;
- * 
- * @Repository("examdocDAO") public class examDocDAO {
- * 
- * private Connection conn = null; private PreparedStatement stmt = null;
- * private ResultSet rs = null;
- * 
- * private final String EXAMDOC_LIST =
- * "select examplan.num, subject.name, subject.category1, subject.category2, subject.category3, examplan.diff,examplan.e_status, examplan.member_name,examplan.member_id,member.member_type from examplan inner join subject on examplan.idx = subject.idx inner join member on examplan.member_name = member.member_name"
- * ;
- * 
- * public List<examDocVO> getExamDocList(examDocVO vo) {
- * System.out.println("===> JDBC로 getexamDocList() 기능 처리"); List<examDocVO>
- * ExamDocList = new ArrayList<examDocVO>(); try { conn =
- * JDBCUtil.getConnection(); stmt = conn.prepareStatement(EXAMDOC_LIST); rs =
- * stmt.executeQuery(); if (rs.next()) { examDocVO examdoc = new examDocVO();
- * examdoc.setNum(rs.getInt("NUM")); examdoc.setName(rs.getString("NAME"));
- * examdoc.setCategory1(rs.getString("CATEGORY1"));
- * examdoc.setCategory2(rs.getString("CATEGORY2"));
- * examdoc.setCategory3(rs.getString("CATEGORY3"));
- * examdoc.setDiff(rs.getString("DIFF"));
- * examdoc.setE_status(rs.getString("E_STATUS"));
- * examdoc.setMember_name(rs.getString("MEMBER_NAME"));
- * examdoc.setMember_id(rs.getString("MEMBER_ID"));
- * examdoc.setMember_type(rs.getString("MEMBER_TYPE"));
- * examdoc.setIdx(rs.getInt("IDX")); ExamDocList.add(examdoc); } } catch
- * (Exception e) { e.printStackTrace(); } finally { JDBCUtil.close(rs, stmt,
- * conn); } return ExamDocList; } }
- */
-//private final String EXAMDOC_GET = "select * from examplan where num=? and diff=? and member_name=? and member_id=? and idx=? and status=?";
-// private final String EXAMDOC_LIST = "select * from examplan order by
-// num";//num에 해당하는 값 모두 가져옴
-// private final String EXAMDOCSUB_GET = "select * from subject where idx=?";
-// private final String EXAMDOCMEM_GET = "select * from member where
-// member_name=? and member_type";
-// private final String EXAMDOCSUB_GET = "select subject.category1,
-// subject.category2, subject.category3 from subject inner join examplan on
-// subject.idx = examplan.idx;";
-
-/*
- * public examDocVO getExamDoc(examDocVO vo) {
- * System.out.println("===> JDBC로 getexamDoc() 기능 처리"); examDocVO examdoc =
- * null; try { conn = JDBCUtil.getConnection();
- * System.out.println("DB Connection established"); stmt =
- * conn.prepareStatement(EXAMDOC_LIST); rs = stmt.executeQuery(); if (rs.next())
- * { examdoc = new examDocVO(); examdoc.setNum(rs.getInt("NUM"));
- * examdoc.setName(rs.getString("NAME"));
- * examdoc.setCategory1(rs.getString("CATEGORY1"));
- * examdoc.setCategory2(rs.getString("CATEGORY2"));
- * examdoc.setCategory3(rs.getString("CATEGORY3"));
- * examdoc.setDiff(rs.getString("DIFF"));
- * examdoc.setE_status(rs.getString("E_STATUS"));
- * examdoc.setMember_name(rs.getString("MEMBER_NAME"));
- * examdoc.setMember_id(rs.getString("MEMBER_ID"));
- * examdoc.setMember_type(rs.getString("MEMBER_TYPE")); } } catch (Exception e)
- * { e.printStackTrace(); } finally { JDBCUtil.close(rs, stmt, conn); } return
- * examdoc; }
- */
-
-/*
- * public examDocVO getExamDoc(examDocVO vo) {
- * System.out.println("===> JDBC로 getExamDoc() 기능 처리"); examDocVO examdoc =
- * null; try { conn = JDBCUtil.getConnection(); stmt =
- * conn.prepareStatement(EXAMDOC_GET); stmt.setInt(1, vo.getNum());
- * stmt.setString(2, vo.getDiff()); stmt.setString(3, vo.getMemeber_name());
- * stmt.setInt(4, vo.getIdx()); stmt.setString(5, vo.getStatus()); rs =
- * stmt.executeQuery();
- * 
- * if (rs.next()) { examdoc = new examDocVO(); examdoc.setNum(rs.getInt("NUM"));
- * examdoc.setDiff(rs.getString("DIFF"));
- * examdoc.setMemeber_name(rs.getString("MEMBER_NAME"));
- * examdoc.setIdx(rs.getInt("IDX")); examdoc.setStatus(rs.getString("STATUS"));
- * } } catch (Exception e) { e.printStackTrace(); } finally { JDBCUtil.close(rs,
- * stmt, conn); } return examdoc; }
- */
-
-/*
- * public List<examDocVO> getExamDocList(examDocVO vo) {
- * System.out.println("===> JDBC로 getexamDocList() 기능 처리"); List<examDocVO>
- * ExamDocList = new ArrayList<examDocVO>(); try { conn =
- * JDBCUtil.getConnection(); stmt = conn.prepareStatement(EXAMDOC_LIST); rs =
- * stmt.executeQuery(); while (rs.next()) { examDocVO examdoc = new examDocVO();
- * examdoc.setNum(rs.getInt("NUM")); examdoc.setDiff(rs.getString("DIFF"));
- * examdoc.setMember_name(rs.getString("MEMBER_NAME"));
- * examdoc.setMember_id(rs.getString("MEMBER_ID"));
- * examdoc.setIdx(rs.getInt("IDX"));
- * examdoc.setE_status(rs.getString("E_STATUS"));
- * 
- * // Subject 테이블에서 category1, category2, category3 가져오기 subStmt =
- * conn.prepareStatement(EXAMDOCSUB_GET); //subStmt.setInt(1, examdoc.getIdx());
- * subRs = subStmt.executeQuery();
- * 
- * if (subRs.next()) { System.out.println("category write~!!!");
- * examdoc.setCategory1(subRs.getString("category1"));
- * examdoc.setCategory2(subRs.getString("category2"));
- * examdoc.setCategory3(subRs.getString("category3")); } subRs.close();
- * subStmt.close();
- * 
- * ExamDocList.add(examdoc); } } catch (Exception e) { e.printStackTrace(); }
- * finally { JDBCUtil.close(subRs, subStmt, conn); JDBCUtil.close(rs, stmt,
- * conn); } return ExamDocList; }
- */
+}*/

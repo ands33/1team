@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface examDocService {
 
-	List<examDocVO> getExamDocList(examDocVO vo);
+	//List<examDocVO> getExamDocList(examDocVO vo);
+	
+	List<examDocVO> getExamDocSub(examDocVO vo);
 	
 }
-
-//public examDocVO getExamDoc(examDocVO vo);
