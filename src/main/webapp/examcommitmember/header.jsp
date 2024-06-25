@@ -129,6 +129,17 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
       form.action = "../../../biz/getBinaryClass.do";
       form.submit();
    }
+    const form = document.getElementById('headerForm');
+    form.action = "../../../biz/getSubtrahendList.do";
+    form.submit();
+}
+
+function getBinaryClass() {
+    const form = document.getElementById('headerForm');
+    form.action = "../../../biz/getBinaryClass.do";
+    form.submit();
+}
+
 </script>
 <link
    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -140,61 +151,41 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <base href="${pageContext.request.contextPath}/">
 </head>
-<body>
-   <form id="headerForm" method="post">
-      <input type="hidden" name="member_id" value="${member.member_id}">
-      <!-- <div class="header-container d-flex align-items-center p-3">
-        <div class="header-left">
-            <a href="https://counselors.or.kr/"><img src="./img/kca_logo_short.jpg" alt="KCA Logo"></a>
-        </div>
-        <div class="header-links ml-3">
-            <a href="https://counselors.or.kr/">한국상담학회</a> <span> · </span> <a href="https://counselors.or.kr/">
-            <img src="./img/kca_house.png" alt="KCA Logo">인트로</a>
-        </div>
-        <div class="header-right ml-auto d-flex align-items-center">
-            <a href="#">상담이론과 실제A</a> <span class="mx-2"></span> <a href="#">로그아웃</a> <span class="mx-2"></span> <a href="#">마이페이지</a>
-        </div>
-    </div> -->
-      <div class="header-container d-flex align-items-center p-3">
-         <div class="header-left">
-            <a href="https://counselors.or.kr/"> <img
-               src="${pageContext.request.contextPath}/examcommitmember/img/kca_logo_short.jpg"
-               alt="KCA Logo">
-            </a>
-         </div>
-         <div class="header-links ml-3">
-            <a href="https://counselors.or.kr/">한국상담학회</a> <span> · </span> <a
-               href="https://counselors.or.kr/"> <img
-               src="${pageContext.request.contextPath}/examcommitmember/img/kca_house.png"
-               alt="KCA Logo">인트로
-            </a>
-         </div>
-         <div class="header-right ml-auto d-flex align-items-center">
-            ${member.member_name} 이름표시 <a href="#">${member.subject_name}</a> <span
-               class="mx-2"></span> <a href="#">로그아웃</a> <span class="mx-2"></span>
-            <a href="#">마이페이지</a>
-         </div>
-      </div>
-      <br>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-         <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               <ul class="navbar-nav me-auto mb-2 justify-content-around w-50">
-                  <li class="nav-item"><a class="nav-link" href="../#">출제
-                        계획서</a></li>
-                  <li class="nav-item"><a class="nav-link"
-                     href="javascript:getExamPlanList();">출제</a></li>
-                  <li class="nav-item"><a class="nav-link"
-                     href="javascript:getSubtrahendList();">검토</a></li>
-                  <!-- 아래부터 수정한부분.. 자바스크립트까지 -->
-                  <li class="nav-item"><a class="nav-link"
-                     href="javascript:getBinaryClass();">출제 이원분류표</a></li>
-                  <li class="nav-item"><a class="nav-link" href="../#">선제
-                        이원분류표</a></li>
-               </ul>
+ <form id="headerForm" method="post">
+        <input type="hidden" name="member_id" value="${member.member_id}">
+        <div class="header-container d-flex align-items-center p-3">
+            <div class="header-left">
+                <a href="https://counselors.or.kr/">
+                    <img src="${pageContext.request.contextPath}/examcommitmember/img/kcalogo.png" alt="KCA Logo">
+                </a>
             </div>
-         </div>
-      </nav>
-   </form>
+            <div class="header-links ml-3">
+                <a href="https://counselors.or.kr/"><span class="mx-2"></span> 한국상담학회</a> <span> · </span> 
+                <a href="https://counselors.or.kr/">
+                    <img src="${pageContext.request.contextPath}/examcommitmember/img/kca_house.png" alt="KCA Logo">인트로
+                </a>
+            </div>
+            <div class="header-right ml-auto d-flex align-items-center">
+                <b>${member.member_name}</b> <span class="mx-1"></span> 님 <span class="mx-2"></span> 
+                ${member.subject_name} <span class="mx-2"></span> 
+                <a href="#">로그아웃</a> <span class="mx-2"></span>
+                <a href="#">마이페이지</a>
+            </div>
+        </div>
+    </form>
+    <br>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 justify-content-around w-50"><span class="mx-1.5"></span>  
+                    <li class="nav-item"><a class="nav-link" href="../#">출제 계획서</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:getExamPlanList();">출제</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:getSubtrahendList();">검토</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:getBinaryClass();">출제 이원분류표</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../#">선제 이원분류표</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </body>
 </html>

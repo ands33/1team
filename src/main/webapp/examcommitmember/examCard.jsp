@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 <meta charset="EUC-KR">
-<title>문항카드 - 1급 고급상담이론과 실제</title>
+<title>문항카드 - ${test.grade}급 ${test.name}</title>
 <style>
 bn {
 	border: none; /* 테두리 제거 */
@@ -119,6 +119,7 @@ th, td {
 
 	function validateFields() {
 		// 예시: 모든 필수 입력란이 채워져 있는지 확인하는 함수
+		var exam_type = document.getElementsByName("exam_type")[0].value;
 		var question = document.getElementsByName("question")[0].value;
 		var option1 = document.getElementsByName("option1")[0].value;
 		var option2 = document.getElementsByName("option2")[0].value;
@@ -133,6 +134,12 @@ th, td {
 		var page = document.getElementsByName("page")[0].value;
 		var createDate = document.getElementsByName("createDate")[0].value;
 		var aff = document.getElementsByName("aff")[0].value;
+		
+		if (exam_type === "") {
+			alert("문제타입을 체크하세요.");
+			document.getElementsByName("exam_type")[0].focus();
+			return false;
+		}
 
 		if (question === "") {
 			alert("문제를 입력하세요.");
@@ -235,10 +242,15 @@ th, td {
 				<h2 class="title">한국상담학회 검정 시험문제</h2>
 				<table>
 					<tr>
+						<th colspan="1">문제 타입</th>
+						<td colspan="1"><input type="radio" name="exam_type" value="문항제작"
+							${test.exam_type == '문항제작' ? 'checked' : ''}>문항제작&nbsp; <input
+							type="radio" name="exam_type" value="기출문제"
+							${test.exam_type == '기출문제' ? 'checked' : ''}>기출문제</td>
 						<td style="border: none;"></td>
-						<td style="border: none;"></td>
-						<th colspan="2">관리번호</th>
-						<td colspan="4">
+
+						<th colspan="1">관리번호</th>
+						<td colspan="2">
 							<!-- 여기에 관리번호를 입력해 주세요. 비워놨습니다 -->
 						</td>
 					</tr>
@@ -292,18 +304,19 @@ th, td {
 				<table>
 					<tr>
 						<th colspan="1" class="answer">정답</th>
-						<td colspan="5">&nbsp; <input type="checkbox" name="answer"
+						<td colspan="5">&nbsp; <input type="radio" name="answer"
 							value="1" ${test.answer == 1 ? 'checked' : ''}>①&nbsp; <input
-							type="checkbox" name="answer" value="2"
+							type="radio" name="answer" value="2"
 							${test.answer == 2 ? 'checked' : ''}>② &nbsp; <input
-							type="checkbox" name="answer" value="3"
+							type="radio" name="answer" value="3"
 							${test.answer == 3 ? 'checked' : ''}>③ &nbsp; <input
-							type="checkbox" name="answer" value="4"
+							type="radio" name="answer" value="4"
 							${test.answer == 4 ? 'checked' : ''}>④&nbsp; <input
-							type="checkbox" name="answer" value="5"
+							type="radio" name="answer" value="5"
 							${test.answer == 5 ? 'checked' : ''}>⑤
 						</td>
 					</tr>
+
 					<tr>
 						<th colspan="1" class="answer">정답해설</th>
 						<td colspan="5"><textarea name="answerEx"

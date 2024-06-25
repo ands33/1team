@@ -33,6 +33,8 @@ public class ExamPlanDAO {
 	private final String SUBTRAHEND_LIST = "select * from examplan where e_status='제출(검토대기)' AND submember_id=? order by num";
 	private final String REVIEW_GET = "select review from test where num=?";
 	private final String COM_EXAMPLAN_LIST = "select * from examplan where member_id=? and e_status = '제출(완료)' order by num";
+	private final String BINARY_LIST = "select * from examplan where member_id=? or submember_id=? order by idx";
+	private final String BINARY_TEST = "select exam_type, behavioral, answer, reference from test where num=?";
 
 	// 글 목록 조회
 	public List<ExamPlanVO> getExamPlanList(ExamPlanVO vo) {
@@ -177,23 +179,60 @@ public class ExamPlanDAO {
 			}
 			return subtrahendList;
 		}
+		
+		// 이원분류표 조회
+		public List<ExamPlanVO> getBinaryClass(ExamPlanVO vo) {
+			System.out.println("getBinaryClass 실행");
+			List<ExamPlanVO> binaryClassList = new ArrayList<ExamPlanVO>();
+			try {
+				conn = JDBCUtil.getConnection();
+				stmt = conn.prepareStatement(BINARY_LIST);
+				System.out.println(vo.getMember_id());
+				stmt.setString(1, vo.getMember_id());
+				stmt.setString(2, vo.getMember_id());
+				rs = stmt.executeQuery();
+				while (rs.next()) {
 
-	/*
-	 * // 의뢰서에서 쓸 한가지 의뢰 가져오기 public TestVO getTest(TestVO vo) {
-	 * System.out.println("===> JDBC로 getBoard() 기능 처리"); TestVO test= null; try {
-	 * conn = JDBCUtil.getConnection(); stmt = conn.prepareStatement(TEST_GET);
-	 * stmt.setInt(1, vo.getTest_num()); rs = stmt.executeQuery(); if (rs.next()) {
-	 * test = new TestVO(); test.setTest_num(rs.getInt("TEST_NUM"));
-	 * test.setSubject(rs.getString("SUBJECT"));
-	 * test.setTest_type(rs.getString("TEST_TYPE"));
-	 * test.setStatus(rs.getString("STATUS"));
-	 * test.setRequestDate(rs.getDate("REQUESTDATE"));
-	 * test.setComRequestDate(rs.getDate("COMREQUESTDATE"));
-	 * test.setCurSituation(rs.getInt("CURSITUATION"));
-	 * test.setE_name(rs.getString("E_NAME"));
-	 * test.setSelMethod(rs.getString("SELMETHOD")); } } catch (Exception e) {
-	 * e.printStackTrace(); } finally { JDBCUtil.close(rs, stmt, conn); } return
-	 * test; }
-	 */
+					stmt1 = conn.prepareStatement(SUBJECT_GET);
+					stmt1.setInt(1, rs.getInt("IDX"));
+					rs1 = stmt1.executeQuery();
+					
+					stmt2 = conn.prepareStatement(BINARY_TEST);
+					stmt2.setInt(1, rs.getInt("NUM"));
+					rs2 = stmt2.executeQuery();
+
+					ExamPlanVO binaryClass = new ExamPlanVO();
+					binaryClass.setNum(rs.getInt("NUM"));
+					binaryClass.setDiff(rs.getString("DIFF"));
+					binaryClass.setMember_name(rs.getString("MEMBER_NAME"));
+					binaryClass.setMember_id(rs.getString("MEMBER_ID"));
+					binaryClass.setIdx(rs.getInt("IDX"));
+					binaryClass.setE_status(rs.getString("E_STATUS"));
+					binaryClass.setSubmember_name(rs.getString("SUBMEMBER_NAME"));
+					binaryClass.setSubmember_id(rs.getString("SUBMEMBER_ID"));
+					if (rs1.next()) {
+						binaryClass.setName(rs1.getString("NAME"));
+						binaryClass.setCategory1(rs1.getString("CATEGORY1"));
+						binaryClass.setCategory2(rs1.getString("CATEGORY2"));
+						binaryClass.setCategory3(rs1.getString("CATEGORY3"));
+					}
+					if (rs2.next()) {
+						// select exam_type, behavioral, answer, reference from test where num=?
+						binaryClass.setExam_type(rs2.getString("EXAM_TYPE"));
+						binaryClass.setBehavioral(rs2.getString("BEHAVIORAL"));
+						binaryClass.setAnswer(rs2.getInt("ANSWER"));
+					}
+					System.out.println(binaryClass);
+					binaryClassList.add(binaryClass);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(rs2, stmt2, conn);
+				JDBCUtil.close(rs1, stmt1, conn);
+				JDBCUtil.close(rs, stmt, conn);
+			}
+			return binaryClassList;
+		}
 
 }

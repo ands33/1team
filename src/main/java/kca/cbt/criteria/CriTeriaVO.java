@@ -1,6 +1,6 @@
-package kca.cbt.view.criteria;
+package kca.cbt.criteria;
 
-public class CriTeriaVO {
+public class CriteriaVO {
     private int id;
     private String name;
     private String category1;
@@ -8,7 +8,6 @@ public class CriTeriaVO {
     private String category3;
     private int grade;
 
-    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -55,5 +54,11 @@ public class CriTeriaVO {
 
     public void setGrade(int grade) {
         this.grade = grade;
+    }
+
+    @Override
+    public String toString() {
+        return "CriteriaVO [id=" + id + ", name=" + name + ", category1=" + category1 + ", category2=" + category2 + 
+               ", category3=" + category3 + ", grade=" + grade + "]";
     }
 }
