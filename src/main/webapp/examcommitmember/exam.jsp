@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<link rel="icon" href="./img/favicon-32x32.png">
 <title>출제</title>
 <style>
 /* Common Styles */
@@ -255,8 +256,7 @@ th, td {
 								<!-- 제출(검토대기)일 때, 버튼 비활성화 -->
 								<button type="submit" name="action" value="approve"
 									class="button-approve"
-									style="background-color: ${examPlan.e_status == '출제중' ? '#198754' : '#A5AAA3'};
-                   width: 60px;"
+									style="background-color: ${examPlan.e_status == '출제중' ? '#198754' : '#A5AAA3'}; width: 60px;"
 									<c:if test='${examPlan.e_status == "제출(검토대기)"}'>disabled</c:if>>
 									출제</button>
 							</form>

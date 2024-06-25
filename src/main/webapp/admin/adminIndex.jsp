@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<link rel="icon" href="./img/favicon-32x32.png">
 
 <title>관리자 페이지</title>
 <title>출제 문항 카드</title>
@@ -153,7 +154,7 @@ function openMemberPopup(memberId, statusIndex) {
 </head>
 <body>
 <%@ include file="adminheader.jsp"%>
-		<h4>관리자 로그인됨</h4>
+		<h2>관리자 로그인</h2>
 		<div class="button-container">
 			<input type="text" placeholder="YYYY년 MM월 DD일">
 			<button class="custom-button" onclick="fetchData()">

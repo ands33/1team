@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<link rel="icon" href="./img/favicon-16x16.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>헤더</title>
 <style>

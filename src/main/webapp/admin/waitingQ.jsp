@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<link rel="icon" href="./img/favicon-32x32.png">
 <title>Insert title here</title>
 <style>
 table {

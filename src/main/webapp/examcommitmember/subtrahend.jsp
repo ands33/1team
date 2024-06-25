@@ -7,8 +7,8 @@
 <head>
 <link rel="icon" type="favicon.ico" type="image/x-icon">
 <meta charset="EUC-KR">
-<title>검토의뢰 목록</title>
-
+<link rel="icon" href="./img/favicon-32x32.png">
+<title>검토</title>
 <style>
 body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
 	i, ul, ol, li, button {
@@ -33,7 +33,7 @@ th, td {
 }
 
 th {
-	background-color: #fff;
+	background-color: #F8F9FA;
 }
 
 .container {
@@ -46,20 +46,21 @@ th {
 	align-items: center;
 }
 
-.header h3 {
-	margin: 0;
+.button-approve {
+	background-color: #0D6EFD;
+	color: white;
 }
 </style>
 </head>
-<%@ include file="header.jsp"%>
 <body>
+	<%@ include file="header.jsp"%>
 	<div class="container">
-		<div class="header">
-			<!-- <h3>검토</h3>
-			<h4>검토의뢰 목록</h4> -->
-		</div>
-		<table>
-			<thead>
+		<div class="header"></div>
+		<h2>
+			<b><u>검토</u></b>
+		</h2>
+		<table class="table table-bordered">
+			<thead class="table-light">
 				<tr align="center">
 					<th>의뢰 번호</th>
 					<th>분류 코드</th>
@@ -86,12 +87,10 @@ th {
 						<td>${subtrahend.member_name}</td>
 						<td>${subtrahend.e_status}</td>
 						<td>
-
 							<form action="subtrahend.do" method="post">
 								<input type="hidden" name="num" value="${subtrahend.num}" />
 								<button type="submit" name="action" value="approve">검토</button>
 							</form>
-
 						</td>
 					</tr>
 				</c:forEach>

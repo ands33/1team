@@ -5,6 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="EUC-KR">
+<link rel="icon" href="./img/favicon-16x16.png">
 <title>이원분류표(선제)</title>
 <style>
 body {

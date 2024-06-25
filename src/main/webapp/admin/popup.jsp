@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Member Info</title>
+<link rel="icon" href="./img/favicon-32x32.png">
+<title>위원정보</title>
 <style>
 body {
     font-family: "Montserrat", "Noto Sans KR", sans-serif;

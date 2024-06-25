@@ -4,6 +4,7 @@
 <html lang="ko">
 <head>
 <meta charset="EUC-KR">
+<link rel="icon" href="./img/favicon-16x16.png">
 <title>문항카드 - ${test.grade}급 ${test.name}</title>
 <style>
 bn {

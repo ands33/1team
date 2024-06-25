@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<link rel="icon" href="./img/favicon-16x16.png">
 <title>출제계획서</title>
 </head>
 <body>
