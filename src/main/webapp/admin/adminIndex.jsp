@@ -96,7 +96,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 </script>
 </head>
 <body>
-<%@ include file="header.jsp"%>
+<%@ include file="adminheader.jsp"%>
    <h2>출제 문항 카드</h2>
    <div class="button-container">
       <input type="text" placeholder="출제기간: YYYY MM DD ~ YYYY MM DD">
