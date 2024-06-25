@@ -7,6 +7,16 @@
 <meta charset="EUC-KR">
 <title>출제 문항 카드</title>
 <style>
+body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
+   i, ul, ol, li, button {
+   font-family: "Montserrat", "Noto Sans KR", sans-serif;
+   font-size: 15px;
+   letter-spacing: -0.05em;
+   line-height: 1.6em;
+   list-style: none;
+   color: #333;
+}
+
 body {
    font-family: Arial, sans-serif;
    padding: 20px;
@@ -86,11 +96,10 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 </script>
 </head>
 <body>
-
+<%@ include file="header.jsp"%>
    <h2>출제 문항 카드</h2>
-
    <div class="button-container">
-      <input type="text" placeholder="출제기간: 년 월 일 ~ 년 월 일">
+      <input type="text" placeholder="출제기간: YYYY MM DD ~ YYYY MM DD">
       <form action="${pageContext.request.contextPath}/getMemberList.do"
          method="get">
          <button type="submit">회원목록</button>

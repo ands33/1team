@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,6 @@ body {
     background: #FFF;
     height: 100vh;
     font-size: 15px;
-    font-family: 'Roboto', sans-serif;
 }
 
 /* Áö¿ì¸é ¤¸µÊ */
