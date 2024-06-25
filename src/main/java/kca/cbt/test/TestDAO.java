@@ -23,12 +23,12 @@ public class TestDAO {
 	private PreparedStatement stmt2 = null;
 	private ResultSet rs2 = null;
 
-	private final String EXAMPLAN_GET = "SELECT * FROM examplan WHERE num=?";
+	private final String EXAMPLAN_GET = "SELECT * FROM examplan WHERE num=?`";
 	private final String TEST_GET = "select * from test where num=?";
 	private final String TEST_CREATE = "insert into test(idx, diff, writtenname, member_id, num, reviewer) values(?,?,?,?,?,?)";
 	private final String TEST_UPDATE = "update test set behavioral=?, question=?, option1=?, option2=?, option3=?,"
 			+ "option4=?, option5=?, answer=?, answerex=?, questionback=?, reference=?, authoryear=?, page=?, createdate=?,"
-			+ "aff=?, e_status=? where num=?";
+			+ "aff=?, e_status=?, exam_type=? where num=?";
 	private final String TEST_SEND = "update test set e_status=? where num=?";
 	private final String SUBJECT_GET = "select * from subject where idx=?";
 
@@ -117,6 +117,7 @@ public class TestDAO {
 				test.setMember_id(rs.getString("MEMBER_ID"));
 				test.setReviewer(rs.getString("REVIEWER"));
 				test.setReview(rs.getString("REVIEW"));
+				test.setExam_type(rs.getString("EXAM_TYPE"));
 			}
 
 			stmt1 = conn.prepareStatement(SUBJECT_GET);
@@ -163,7 +164,8 @@ public class TestDAO {
 			stmt.setString(14, vo.getCreateDate()); // 변환된 sqlDate 사용
 			stmt.setString(15, vo.getAff());
 			stmt.setString(16, "출제중");
-			stmt.setInt(17, vo.getNum());
+			stmt.setString(17, vo.getExam_type());
+			stmt.setInt(18, vo.getNum());
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
