@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>출제기준</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="criTeria.css">
+    <link rel="stylesheet" href="criteria.css">
 </head>
 <body>
     <div class="header-container">
@@ -101,6 +101,6 @@
             }
         %>
     </table>
-    <script src="criTeria.js"></script>
+    <script src="criteria.js"></script>
 </body>
 </html>
