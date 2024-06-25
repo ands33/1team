@@ -123,6 +123,13 @@ function getSubtrahendList() {
     form.action = "../../../biz/getSubtrahendList.do";
     form.submit();
 }
+
+function getBinaryClass() {
+    const form = document.getElementById('headerForm');
+    form.action = "../../../biz/getBinaryClass.do";
+    form.submit();
+}
+
 </script>
 <link
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -158,7 +165,7 @@ function getSubtrahendList() {
     </div>
     <div class="header-right ml-auto d-flex align-items-center">
     ${member.member_name} 이름표시
-        <a href="#">상담이론과 실제A</a> <span class="mx-2"></span> <a href="#">로그아웃</a> <span class="mx-2"></span> <a href="#">마이페이지</a>
+        <a href="#">${member.subject_name}</a> <span class="mx-2"></span> <a href="#">로그아웃</a> <span class="mx-2"></span> <a href="#">마이페이지</a>
     </div>
 </div>
     <br>
@@ -169,7 +176,9 @@ function getSubtrahendList() {
                     <li class="nav-item"><a class="nav-link" href="../#">출제 계획서</a></li>
                     <li class="nav-item"><a class="nav-link" href="javascript:getExamPlanList();">출제</a></li>
                     <li class="nav-item"><a class="nav-link" href="javascript:getSubtrahendList();">검토</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../#">출제 이원분류표</a></li>
+                    <!-- 아래부터 수정한부분.. 자바스크립트까지 -->
+                    <li class="nav-item"><a class="nav-link" href="javascript:getBinaryClass();">출제 이원분류표</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../#">선제 이원분류표</a></li>
                 </ul>
             </div>
         </div>
