@@ -23,7 +23,7 @@ public class TestDAO {
 	private PreparedStatement stmt2 = null;
 	private ResultSet rs2 = null;
 
-	private final String EXAMPLAN_GET = "SELECT * FROM examplan WHERE num=?`";
+	private final String EXAMPLAN_GET = "SELECT * FROM examplan WHERE num=?";
 	private final String TEST_GET = "select * from test where num=?";
 	private final String TEST_CREATE = "insert into test(idx, diff, writtenname, member_id, num, reviewer) values(?,?,?,?,?,?)";
 	private final String TEST_UPDATE = "update test set behavioral=?, question=?, option1=?, option2=?, option3=?,"
@@ -37,6 +37,8 @@ public class TestDAO {
 		try {
 			conn = JDBCUtil.getConnection(); // test db 가르킴
 			stmt = conn.prepareStatement(TEST_CREATE);
+			System.out.println("실행되는지 확인");
+			System.out.println("getNum출력" + vo.getNum());
 
 			stmt2 = conn.prepareStatement(TEST_GET);
 			stmt2.setInt(1, vo.getNum());
