@@ -13,6 +13,12 @@ public class ExamPlanVO {
 	private String category3;
 	private String review;
 	private String reviewer;
+	private String exam_type;
+	private String behavioral;
+	private int answer;
+	private String reference;
+	private String submember_name;
+	private String submember_id;
 
 	public int getNum() {
 		return num;
@@ -93,7 +99,7 @@ public class ExamPlanVO {
 	public void setCategory3(String category3) {
 		this.category3 = category3;
 	}
-	
+
 	public String getReview() {
 		return review;
 	}
@@ -110,9 +116,59 @@ public class ExamPlanVO {
 		this.reviewer = reviewer;
 	}
 
+	public String getExam_type() {
+		return exam_type;
+	}
+
+	public void setExam_type(String exam_type) {
+		this.exam_type = exam_type;
+	}
+
+	public String getBehavioral() {
+		return behavioral;
+	}
+
+	public void setBehavioral(String behavioral) {
+		this.behavioral = behavioral;
+	}
+
+	public int getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(int answer) {
+		this.answer = answer;
+	}
+
+	public String getReference() {
+		return reference;
+	}
+
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
+
+	public String getSubmember_name() {
+		return submember_name;
+	}
+
+	public void setSubmember_name(String submember_name) {
+		this.submember_name = submember_name;
+	}
+
+	public String getSubmember_id() {
+		return submember_id;
+	}
+
+	public void setSubmember_id(String submember_id) {
+		this.submember_id = submember_id;
+	}
+
+
 	// . 앞의 숫자만 추출하여 "1-2" 형식의 문자열을 반환하는 메서드
 	public String getCategoryNumbers() {
-		return extractNumberBeforeDot(category1) + "-" + extractNumberBeforeDot(category2) + "-" + extractNumberBeforeDot(category3);
+		return extractNumberBeforeDot(category1) + "-" + extractNumberBeforeDot(category2) + "-"
+				+ extractNumberBeforeDot(category3);
 	}
 
 	// 문자열에서 . 앞의 숫자만 추출하는 헬퍼 메서드

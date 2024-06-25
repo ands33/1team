@@ -78,6 +78,12 @@ function getSubtrahendList() {
     form.action = "../../../biz/getSubtrahendList.do";
     form.submit();
 }
+
+function getBinaryClass() {
+    const form = document.getElementById('indexForm');
+    form.action = "../../../biz/getBinaryClass.do";
+    form.submit();
+}
 </script>
 <link
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -116,7 +122,7 @@ function getSubtrahendList() {
         <br>
         <div class="flex-container">
             <div>
-                <a href="binaryClass.jsp"><img src="./img/이.png" alt="이"></a>
+                <a href="javascript:getBinaryClass()";><img src="./img/이.png" alt="이"></a>
             </div>
             <div>
                 <a href="preBinaryClass.jsp"><img src="./img/선제.png" alt="선제"></a>
