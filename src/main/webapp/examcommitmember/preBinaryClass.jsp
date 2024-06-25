@@ -7,67 +7,83 @@
     <meta charset="EUC-KR">
     <title>이원분류표(선제)</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-            margin-bottom: 20px;
-        }
-        th, td {
-            border: 1px solid black;
-            text-align: left;
-            padding: 5px;
-            word-wrap: break-word;
-        }
-        .header {
-            background-color: #d9ead3;
-            font-size: 24px;
-        }
-        .sub-header {
-            background-color: #ffffff;
-        }
-        .highlight {
-            background-color: #f0f0f0;
-        }
-        .rotate {
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-            white-space: nowrap;
-        }
-        .bottom-table {
-            width: auto;
-            border: none;
-            margin-top: 10px;
-        }
-        .bottom-table th, .bottom-table td {
-            border: 1px solid black;
-        }
-        
-        .tc{
-           text-align: center;
-        }
-        
-        
-    </style>
+body {
+	background: #F8F9FB;
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+	padding: 20px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+	margin-bottom: 20px;
+}
+
+th {
+	white-space: nowrap; /* 넘침 처리 방지 */
+	padding: 10px; /* 셀 안 여백 */
+	font-weight: bold; /* 굵은 글씨 */
+	font-size: 14px; /* 글씨 크기 */
+	font-weight: bold;
+}
+
+th, td {
+	border: 1px solid black;
+	text-align: left;
+	padding: 8px;
+	text-align: left;
+	word-wrap: break-word;
+}
+
+.header {
+	background-color: #d9ead3;
+	font-size: 24px;
+}
+
+.sub-header {
+	background-color: #ffffff;
+}
+
+.highlight {
+	background-color: #f0f0f0;
+}
+
+.rotate {
+	writing-mode: vertical-rl;
+	transform: rotate(180deg);
+	white-space: nowrap;
+}
+
+.bottom-table {
+	width: auto;
+	border: none;
+	margin-top: 10px;
+}
+
+.bottom-table th, .bottom-table td {
+	border: 1px solid black;
+}
+
+.tc {
+	text-align: center;
+}
+</style>
 </head>
 <body>
+<form>
 <h1 style="text-align:center">이원분류표 (선제)</h1>
     <table>
        <tr>
        <th colspan="9">급수</th>
        <td colspan="15">1급</td>
        </tr>
-       
         <tr>
             <th colspan="9" class="sub-header">과목명</th>
             <td colspan="15">고급상담이론과 실제</td>
         </tr>
         </table>
-        
         <table>
         <tr>
             <th rowspan="2" colspan="2">최종문항번호</th>
@@ -583,8 +599,6 @@
  
 <br>   
 <h3>◎ 예상정답률 분포 및 기대 점수</h3>
-
-
     <table>
         <tr>
             <th style="text-align:center"colspan="3" class="highlight">난이도</th>
@@ -601,8 +615,6 @@
             <td class="tc"colspan="3">( 70 ) / 100</td>
         </tr>
     </table>
-
-
 예상정답률 분포에 기초 [(상×0.5)+(중×0.75)+(하×1.0)] 공식을 적용하여 과목별 기대점수를 산출
 <br><br><br>
 <br>
@@ -735,7 +747,7 @@
             <td class="tc"colspan="3"></td>
         </tr>
     </table>
-
 <p style="text-align:center">[선제완료]</p>
+</form>
 </body>
 </html>

@@ -13,6 +13,6 @@ public class getMemberListController {
     @RequestMapping(value = "getMemberList.do")
     public String getMemberList(MemberVO vo, MemberDAO memberDAO, Model model) {
         model.addAttribute("memberList", memberDAO.getMemberList(vo));
-        return "admin/adminIndex.jsp";
+        return "admin/memberlist.jsp";
     }
 }

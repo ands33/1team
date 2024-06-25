@@ -14,7 +14,7 @@ public class Exam_subjectDAO {
     private ResultSet rs = null;
     
     // SQL 명령어
-    private final String E_List = "select s.subject_code, s.name, m.member_id from subject s join member m on s.subject_code = m.subject_code where m.member_id = ?";
+    private final String E_List = "select s.grade, s.subject_code, s.name, m.member_id from subject s join member m on s.subject_code = m.subject_code where m.member_id = ?";
     
     // 출제 문항 카드 리스트
     public List<Exam_subjectVO> getEList(String memberId){
@@ -28,6 +28,7 @@ public class Exam_subjectDAO {
             while (rs.next()) {
                 Exam_subjectVO exam_subject = new Exam_subjectVO();
                 exam_subject.setMember_id(rs.getString("member_id")); // 조인된 결과에서 member_id 가져오기
+                exam_subject.setSubject_code(rs.getInt("grade"));
                 exam_subject.setSubject_code(rs.getInt("subject_code"));
                 exam_subject.setName(rs.getString("name"));
                 EList.add(exam_subject);

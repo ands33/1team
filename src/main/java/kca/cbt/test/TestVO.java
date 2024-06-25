@@ -1,6 +1,5 @@
 package kca.cbt.test;
 
-
 public class TestVO {
 	private int num;
 	private int idx;
@@ -30,6 +29,9 @@ public class TestVO {
 	private String writtenName;
 	private String examName;
 	private String member_id;
+	private String reviewer;
+	private String review;
+	private String exam_type;
 
 	public int getNum() {
 		return num;
@@ -238,8 +240,6 @@ public class TestVO {
 	public void setExamName(String examName) {
 		this.examName = examName;
 	}
-	
-	
 
 	public String getMember_id() {
 		return member_id;
@@ -248,14 +248,37 @@ public class TestVO {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	
-	
+
 	public String getWrittenName() {
 		return writtenName;
 	}
 
 	public void setWrittenName(String writtenName) {
 		this.writtenName = writtenName;
+	}
+
+	public String getReviewer() {
+		return reviewer;
+	}
+
+	public void setReviewer(String reviewer) {
+		this.reviewer = reviewer;
+	}
+
+	public String getReview() {
+		return review;
+	}
+
+	public void setReview(String review) {
+		this.review = review;
+	}
+
+	public String getExam_type() {
+		return exam_type;
+	}
+
+	public void setExam_type(String exam_type) {
+		this.exam_type = exam_type;
 	}
 
 	// . 앞의 숫자만 추출하여 "1-2" 형식의 문자열을 반환하는 메서드
@@ -275,6 +298,74 @@ public class TestVO {
 		return ""; // .가 없는 경우 빈 문자열 반환
 	}
 
+	public String getSubQuestion() {
+		if (question != null) {
+			return question.replace("\n", "<br>");
+		}
+		return question;
+	}
+
+	public String getSubQuestionBack() {
+		if (questionBack != null) {
+			return questionBack.replace("\n", "<br>");
+		}
+		return questionBack;
+	}
+
+	public String getSubReference() {
+		if (reference != null) {
+			return reference.replace("\n", "<br>");
+		}
+		return reference;
+	}
+
+	public String getSubAuthorYear() {
+		if (authorYear != null) {
+			return authorYear.replace("\n", "<br>");
+		}
+		return authorYear;
+	}
+
+	public String getSubPage() {
+		if (page != null) {
+			return page.replace("\n", "<br>");
+		}
+		return page;
+	}
+
+	public String getSubAnswerEx() {
+		if (answerEx != null) {
+			return answerEx.replace("\n", "<br>");
+		}
+		return answerEx;
+	}
+
+	public String getSubAnswer() {
+		if (answer == 1) {
+			return "①";
+		}
+
+		if (answer == 2) {
+			return "②";
+		}
+
+		if (answer == 3) {
+			return "③";
+		}
+
+		if (answer == 4) {
+			return "④";
+		}
+
+		if (answer == 5) {
+			return "⑤";
+		}
+
+		else {
+			return "유효하지 않은 값입니다";
+		}
+	}
+
 	@Override
 	public String toString() {
 		return "TestVO [num=" + num + ", idx=" + idx + ", grade=" + grade + ", behavioral=" + behavioral + ", diff="
@@ -282,8 +373,8 @@ public class TestVO {
 				+ category3 + ", question=" + question + ", option1=" + option1 + ", option2=" + option2 + ", option3="
 				+ option3 + ", option4=" + option4 + ", option5=" + option5 + ", answer=" + answer + ", answerEx="
 				+ answerEx + ", corrRate=" + corrRate + ", questionBack=" + questionBack + ", reference=" + reference
-				+ ", authorYear=" + authorYear + ", page=" + page + ", status=" + e_status + ", createDate=" + createDate
-				+ ", aff=" + aff + ", examName=" + examName + "]";
+				+ ", authorYear=" + authorYear + ", page=" + page + ", status=" + e_status + ", createDate="
+				+ createDate + ", aff=" + aff + ", examName=" + examName + "]";
 	}
 
 }

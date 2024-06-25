@@ -4,8 +4,16 @@ public class Exam_subjectVO {
 	
 	private String member_id;
 	private int subject_code;
+	private int grade;
 	private String name;
 	
+	
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
 	public String getName() {
 		return name;
 	}
@@ -26,8 +34,11 @@ public class Exam_subjectVO {
 	}
 	@Override
 	public String toString() {
-		return "Exam_subjectVO [member_id=" + member_id + ", subject_code=" + subject_code + ", name=" + name + "]";
+		return "Exam_subjectVO [member_id=" + member_id + ", subject_code=" + subject_code + ", grade=" + grade
+				+ ", name=" + name + "]";
 	}
+	
+	
 	
 	
 	

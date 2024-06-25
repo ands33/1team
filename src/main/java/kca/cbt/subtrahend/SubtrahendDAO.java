@@ -3,12 +3,12 @@ package kca.cbt.subtrahend;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import com.springbook.biz.common.JDBCUtil;
+
+import kca.cbt.test.TestVO;
 
 @Repository("subtrahendDAO")
 public class SubtrahendDAO {
@@ -18,48 +18,55 @@ public class SubtrahendDAO {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 	
-	private PreparedStatement stmt1 = null;
-	private ResultSet rs1 = null;
-
-	private final String SUBTRAHEND_LIST = "select * from examplan where e_status='제출(감수대기)' order by num";
-	private final String SUBJECT_GET = "select * from subject where idx=?";
+	private final String REVIEW_UPDATE = "update test set review=? where num=?";
+	private final String RE_EXAM = "update test set e_status=? where num=?";
+	private final String TEST_SEND = "update test set e_status=? where num=?";
 	
-	// 글 목록 조회
-		public List<SubtrahendVO> getSubtrahendList(SubtrahendVO vo) {
-			List<SubtrahendVO> subtrahendList = new ArrayList<SubtrahendVO>();
-			try {
-				conn = JDBCUtil.getConnection();
-				stmt = conn.prepareStatement(SUBTRAHEND_LIST);
-				rs = stmt.executeQuery();
-				while (rs.next()) {
-
-					stmt1 = conn.prepareStatement(SUBJECT_GET);
-					stmt1.setInt(1, rs.getInt("IDX"));
-					rs1 = stmt1.executeQuery();
-
-					SubtrahendVO subtrahend = new SubtrahendVO();
-					subtrahend.setNum(rs.getInt("NUM"));
-					subtrahend.setDiff(rs.getString("DIFF"));
-					subtrahend.setMember_name(rs.getString("MEMBER_NAME"));
-					subtrahend.setMember_id(rs.getString("MEMBER_ID"));
-					subtrahend.setIdx(rs.getInt("IDX"));
-					subtrahend.setE_status(rs.getString("E_STATUS"));
-					if (rs1.next()) {
-						subtrahend.setName(rs1.getString("NAME"));
-						subtrahend.setCategory1(rs1.getString("CATEGORY1"));
-						subtrahend.setCategory2(rs1.getString("CATEGORY2"));
-						subtrahend.setCategory3(rs1.getString("CATEGORY3"));
-					}
-
-					subtrahendList.add(subtrahend);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				JDBCUtil.close(rs1, stmt1, conn);
-				JDBCUtil.close(rs, stmt, conn);
-			}
-			return subtrahendList;
+	public void updateReview(SubtrahendVO vo) {
+		System.out.println("updateReview() 처리");
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(REVIEW_UPDATE);
+			stmt.setString(1, vo.getReview());
+			stmt.setInt(2, vo.getNum());
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
 		}
+	}
+	
+	public void reExam(SubtrahendVO vo) {
+		System.out.println("reExam() 처리");
+		try {
+			conn = JDBCUtil.getConnection();
+			// update test set e_status=? where num=?
+			stmt = conn.prepareStatement(RE_EXAM);
+			stmt.setString(1, "재출제요청");
+			stmt.setInt(2, vo.getNum());
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+	}
+	
+	public void testComplete(SubtrahendVO vo) {
+		System.out.println("testComplete() 처리");
+		try {
+			conn = JDBCUtil.getConnection();
+			// update test set e_status=? where num=?
+			stmt = conn.prepareStatement(TEST_SEND);
+			stmt.setString(1, "제출(완료)");
+			stmt.setInt(2, vo.getNum());
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+	}
 
 }
