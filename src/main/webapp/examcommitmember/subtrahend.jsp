@@ -10,8 +10,7 @@
 <link rel="icon" href="./img/favicon-32x32.png">
 <title>검토</title>
 <style>
-body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
-	i, ul, ol, li, button {
+body, table, input, select, textarea, div, a, p, span, strong, b, i, ul, ol, li, button {
 	font-family: "Montserrat", "Noto Sans KR", sans-serif;
 	font-size: 15px;
 	letter-spacing: -0.05em;
@@ -20,83 +19,8 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
 	color: #333;
 }
 
-table {
-	width: 100%;
-	border-collapse: collapse;
-	margin-top: 20px;
-}
-
 th, td {
-	border: 1px solid #333;
-	padding: 8px;
-	text-align: center;
-}
-
-th {
-	background-color: #F8F9FA;
-}
-
-.container {
-	margin: 20px;
-}
-
-.header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.button-approve {
-	background-color: #0D6EFD;
-	color: white;
-}
-
-/* 지우면 ㅈ됨 */
-.navbar {
-    border-top: 1px solid #D8D9DA;
-    border-bottom: 1px solid #F5F5F5;
-    background: #FFF;
-    width: 100%;
-    height: 50px;
-    justify-content: center;
-    margin-left: 30px;
-    position: relative;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-/* 네비게이션 링크 - 지우면 안됨*/
-.navbar-nav .nav-link {
-    text-decoration: none;
-    color: black;
-    position: relative;
-    font-weight: bold;
-    font-size: 15px;
-}
-
-/* 하단 테두리 초기 상태 - 지우면 ㅈ됨 */
-.navbar-nav .nav-link::after {
-    content: ''; /* 콘텐츠 추가 */
-    display: block; /* 블록 레벨 요소로 변경 */
-    width: 0; /* 너비 0으로 설정하여 초기에 숨김 */
-    height: 3px; /* 높이 2px */
-    background: #DB402E; /* 배경 색상 */
-    position: absolute;
-    left: 0; /* 왼쪽 0 */
-    bottom: -9.5px; /* 아래쪽 -9.5px */
-    opacity: 0; /* 초기에 숨김 */
-}
-
-/* 호버 시 테두리 효과 */
-.navbar-nav .nav-link:hover::after {
-    width: 100%; /* 호버 시 너비 100%로 확장 */
-    opacity: 1; /* 호버 시 보이게 함 */
-}
-
-.nav-item:hover {
-    color: #6B6D70;
-	width: 100%; /* 호버 시 너비 100%로 확장 */
-	opacity: 1; /* 호버 시 보이게 함 */
+	width: 150px;
 }
 
 /* header-link의 밑줄 제거 */
@@ -114,7 +38,6 @@ body {
     background: #FFF;
     height: 100vh;
     font-size: 15px;
-    font-family: 'Roboto', sans-serif;
 }
 
 /* 지우면 ㅈ됨 */
@@ -161,7 +84,6 @@ body {
 
 .nav-item:hover {
     color: #6B6D70;
-	width: 100%; /* 호버 시 너비 100%로 확장 */
 	opacity: 1; /* 호버 시 보이게 함 */
 }
 
@@ -170,15 +92,6 @@ body {
 	padding: 20px 10px;
 	background: #fff;
 	z-index: 1;
-}
-
-body, table, th, td, input, select, textarea, div, a, p, span, strong, b, i, ul, ol, li, button {
-	font-family: "Montserrat", "Noto Sans KR", sans-serif;
-	font-size: 15px;
-	letter-spacing: -0.05em;
-	line-height: 1.6em;
-	list-style: none;
-	color: #333;
 }
 
 /* header-link의 밑줄 제거 */
@@ -202,6 +115,7 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b, i, ul,
 .nav-item:hover {
 	color: #6B6D70;
 }
+
 </style>
 </head>
 <body>
