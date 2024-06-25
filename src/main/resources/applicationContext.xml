@@ -65,9 +65,6 @@
    <bean id="criteriaController" class="kca.cbt.view.criteria.CriteriaController">
       <property name="criteriaService" ref="criteriaService" />
    </bean>
-   
-   <mvc:resources mapping="/criteria/**" location="/criteria/" />
-      
 
 
 </beans>

@@ -95,20 +95,15 @@ th {
 		document.getElementById("reviewForm").action = "updateReview.do";
 		document.getElementById("reviewForm").submit();
 	}
-	
+
 	function validateAndSubmitReExam() {
 		document.getElementById("reviewForm").action = "reExam.do";
 		document.getElementById("reviewForm").submit();
 	}
 
 	function validateAndSubmitComplete() {
-		// 여기서 유효성 검사를 수행하고 조건에 따라 제출 여부 결정
-		var allFieldsValid = validateFields(); // 예시 함수, 실제로 유효성 검사 함수를 호출하여 구현
-		if (allFieldsValid) {
-			document.getElementById("reviewForm").action = "testComplete.do";
-			document.getElementById("reviewForm").submit();
-		} else {
-		}
+		document.getElementById("reviewForm").action = "testComplete.do";
+		document.getElementById("reviewForm").submit();
 	}
 </script>
 </head>
@@ -210,16 +205,18 @@ th {
 					</tr>
 					<tr>
 						<td class="answer">검토자</td>
-						<td><input type="text" name="review" value="${test.review}" oninput="limitByteLength(this, 300)"
-							style="width: 100%;"></td>
+						<td><input type="text" name="review" value="${test.review}"
+							oninput="limitByteLength(this, 300)" style="width: 100%;"></td>
 						<td style="text-align: center;">${test.reviewer}</td>
 					</tr>
 				</table>
 				<input type="hidden" name="num" value="${test.num}"> <input
-					type="button" value="임시저장" onclick="validateAndSubmitUpdateReview()">
-				<input type="button" value="검토완료"
-					onclick="validateAndSubmitComplete()"> <input type="button"
-					value="재출제요청" onclick="validateAndSubmitReExam()">
+					type="hidden" name="member_id" value="${member.member_id}">
+				<input type="button" value="임시저장"
+					onclick="validateAndSubmitUpdateReview()"> <input
+					type="button" value="검토완료" onclick="validateAndSubmitComplete()">
+				<input type="button" value="재출제요청"
+					onclick="validateAndSubmitReExam()">
 			</form>
 		</div>
 	</div>
