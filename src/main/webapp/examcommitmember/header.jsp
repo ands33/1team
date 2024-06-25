@@ -168,8 +168,6 @@ function getBinaryClass() {
         <a href="#">${member.subject_name}</a> <span class="mx-2"></span> <a href="#">로그아웃</a> <span class="mx-2"></span> <a href="#">마이페이지</a>
     </div>
 </div>
-    
-    
     <br>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
