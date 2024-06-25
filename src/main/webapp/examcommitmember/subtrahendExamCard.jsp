@@ -9,6 +9,7 @@
 <html lang="ko">
 <head>
 <meta charset="EUC-KR">
+<link rel="icon" href="./img/favicon-16x16.png">
 <title>문항 카드 - 1급 고급상담이론과 실제</title>
 <style>
 bn {

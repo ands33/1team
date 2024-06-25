@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<link rel="icon" href="./img/favicon-16x16.png">
 <title>이원분류표(출제)</title>
 <style>
 .header-links a {
@@ -359,9 +360,6 @@ td:nth-last-child(3) {
 							</tr>
 						</c:if>
 					</c:forEach>
-
-
-
 				</tbody>
 				<tfoot>
 					<tr class="tbt">

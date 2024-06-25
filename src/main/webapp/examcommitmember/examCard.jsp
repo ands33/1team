@@ -4,6 +4,7 @@
 <html lang="ko">
 <head>
 <meta charset="EUC-KR">
+<link rel="icon" href="./img/favicon-16x16.png">
 <title>문항카드 - ${test.grade}급 ${test.name}</title>
 <style>
 bn {
@@ -28,14 +29,24 @@ table {
 	margin-bottom: 20px;
 }
 
-th, td {
-	border: 1px solid #000;
-	padding: 8px;
-	text-align: left;
+th {
+	white-space: nowrap; /* 넘침 처리 방지 */
+	padding: 10px; /* 셀 안 여백 */
+	font-size: 15px; /* 글씨 크기 */
+	font-weight: bold;
+	background-color: #f2f2f2;
+	text-align: center;
 }
 
-th {
-	background-color: #f4f4f4;
+.answer {
+	background-color: #f2f2f2;
+}
+
+th, td {
+	border: 1px solid black;
+	text-align: left;
+	padding: 8px;
+	word-wrap: break-word;
 }
 
 .title {

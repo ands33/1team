@@ -3,6 +3,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="./img/favicon-16x16.png">
 <title>출제이원분류표</title>
 <style>
 body {

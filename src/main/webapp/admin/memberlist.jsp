@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<link rel="icon" href="./img/favicon-32x32.png">
 <title>회원 목록</title>
 <style>
 body, table, th, td, {
