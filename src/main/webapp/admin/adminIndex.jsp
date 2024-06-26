@@ -88,8 +88,12 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 </head>
 <body>
 <%@ include file="adminheader.jsp"%>
+<<<<<<< HEAD
 <br>
 <h3><b><u>출제 문항카드</u></b></h3>
+=======
+   <h2>출제 문항 카드</h2>
+>>>>>>> d747e2488337ad4a35f81e99754a56997377001a
    <div class="button-container">
       <input type="text" placeholder="출제기간: YYYY MM DD ~ YYYY MM DD">
       <form action="${pageContext.request.contextPath}/getMemberList.do"

@@ -105,7 +105,7 @@ function getBinaryClass() {
 <body>
     <div id="header" class="header-container d-flex align-items-center p-3">
         <div class="header-left">
-            <a href=""><img src="./img/kca_logo_short.jpg" alt="KCA Logo"></a>
+            <a href=""><img src="./img/kcalogo.png" alt="KCA Logo"></a>
         </div>
         <div class="header-links ml-3">
             <a href="https://counselors.or.kr/">한국상담학회</a> <span> · </span> <a
