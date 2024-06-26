@@ -1,5 +1,6 @@
 package kca.cbt.login;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -18,4 +19,6 @@ public interface MemberService {
 	
 	// 특정 과목 코드와 출제위원 타입에 따른 출제위원 목록 조회
 	public List<MemberVO> getMembersBySubjectAndType(int subjectCode, String memberType);
+	
+	public void updateMembersByPeriod(Date startDate, Date endDate);
 }

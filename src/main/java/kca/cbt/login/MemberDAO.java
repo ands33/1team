@@ -1,11 +1,13 @@
 package kca.cbt.login;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import kca.cbt.JDBCUtil;
 
 public class MemberDAO {
@@ -30,7 +32,8 @@ public class MemberDAO {
 	private final String MEMBER_A_GET = "select member_name from member where subject_code=? and member_type='A'";
 	private final String MEMBER_B_GET = "select member_name from member where subject_code=? and member_type='B'";
 	private final String MEMBER_QMEMBER = "select * from member where member_type = ? and subject_code = ?";
-
+	private final String MEMBER_UPDATE_BY_PERIOD = "UPDATE member SET start_date=?, end_date=? WHERE member_id != 'admin'";
+	
 	// Member 정보 get
 	public MemberVO getMember(MemberVO vo) {
 		MemberVO member = null;
@@ -214,4 +217,37 @@ public class MemberDAO {
 		}
 		return members;
 	}
+	
+	 public int updateMembersByPeriod(String startDate, String endDate) {
+	        System.out.println("===> JDBC로 updateMembersByPeriod() 기능 처리");
+	        System.out.println("New Start Date: " + startDate);
+	        System.out.println("New End Date: " + endDate);
+
+	        int rowsAffected = 0;
+	        Connection conn = null;
+	        PreparedStatement stmt = null;
+
+	        try {
+	            conn = JDBCUtil.getConnection();
+	            stmt = conn.prepareStatement(MEMBER_UPDATE_BY_PERIOD);
+	            stmt.setDate(1, Date.valueOf(startDate));
+	            stmt.setDate(2, Date.valueOf(endDate));
+
+	            System.out.println("Executing SQL: " + stmt.toString());
+
+	            rowsAffected = stmt.executeUpdate();
+	            System.out.println("Rows affected: " + rowsAffected);
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	            JDBCUtil.close(stmt, conn);
+	        }
+
+	        return rowsAffected;
+	    }
+
+
+	
+
 }
