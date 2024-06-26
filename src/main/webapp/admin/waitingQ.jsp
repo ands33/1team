@@ -21,9 +21,16 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
+button {
+    width: 53px;
+    height: 27px;
+    font-size: 13px !important;
+    margin: 1px;
+}
 </style>
 </head>
 <body>
+<%@ include file="adminheader.jsp"%>
     <%
         Map<Integer, String> subjectMap = (Map<Integer, String>) request.getAttribute("subjectMap");
         Map<Integer, Map<String, List<MemberVO>>> subjectMemberMap = (Map<Integer, Map<String, List<MemberVO>>>) request.getAttribute("subjectMemberMap");
@@ -35,8 +42,6 @@ th {
             <th rowspan="2">교시</th>
             <th rowspan="2">과목명</th>
             <th colspan="2">출제위원</th>
-            <th rowspan="2">문항카드</th>
-            <th rowspan="2">시험지</th>
             <th rowspan="2">출제계획 및 이원분류표</th>
             <th rowspan="2">선제이원분류표</th>
             <th rowspan="2">문항검토결과표</th>
@@ -71,11 +76,18 @@ th {
                     }
                 %>
             </td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_11 != null && !membersA_11.isEmpty() ? membersA_11.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_11 != null && !membersB_11.isEmpty() ? membersB_11.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_11 != null && !membersA_11.isEmpty() ? membersA_11.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_11 != null && !membersB_11.isEmpty() ? membersB_11.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_11 != null && !membersA_11.isEmpty() ? membersA_11.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersA_11 != null && !membersA_11.isEmpty() ? membersA_11.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_11 != null && !membersB_11.isEmpty() ? membersB_11.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_11 != null && !membersA_11.isEmpty() ? membersA_11.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_11 != null && !membersB_11.isEmpty() ? membersB_11.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_11 != null && !membersA_11.isEmpty() ? membersA_11.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersB_11 != null && !membersB_11.isEmpty() ? membersB_11.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
         </tr>
         
         <!-- 두 번째 과목 -->
@@ -101,11 +113,18 @@ th {
                     }
                 %>
             </td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_12 != null && !membersA_12.isEmpty() ? membersA_12.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_12 != null && !membersB_12.isEmpty() ? membersB_12.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_12 != null && !membersA_12.isEmpty() ? membersA_12.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_12 != null && !membersB_12.isEmpty() ? membersB_12.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_12 != null && !membersA_12.isEmpty() ? membersA_12.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersA_12 != null && !membersA_12.isEmpty() ? membersA_12.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_12 != null && !membersB_12.isEmpty() ? membersB_12.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_12 != null && !membersA_12.isEmpty() ? membersA_12.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_12 != null && !membersB_12.isEmpty() ? membersB_12.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_12 != null && !membersA_12.isEmpty() ? membersA_12.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersB_12 != null && !membersB_12.isEmpty() ? membersB_12.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
         </tr>
 
         <!-- 세 번째 과목 -->
@@ -131,11 +150,18 @@ th {
                     }
                 %>
             </td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_13 != null && !membersA_13.isEmpty() ? membersA_13.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_13 != null && !membersB_13.isEmpty() ? membersB_13.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_13 != null && !membersA_13.isEmpty() ? membersA_13.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_13 != null && !membersB_13.isEmpty() ? membersB_13.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_13 != null && !membersA_13.isEmpty() ? membersA_13.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersA_13 != null && !membersA_13.isEmpty() ? membersA_13.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_13 != null && !membersB_13.isEmpty() ? membersB_13.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_13 != null && !membersA_13.isEmpty() ? membersA_13.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_13 != null && !membersB_13.isEmpty() ? membersB_13.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_13 != null && !membersA_13.isEmpty() ? membersA_13.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersB_13 != null && !membersB_13.isEmpty() ? membersB_13.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
         </tr>
 
         <!-- 네 번째 과목 -->
@@ -162,11 +188,18 @@ th {
                     }
                 %>
             </td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_14 != null && !membersA_14.isEmpty() ? membersA_14.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_14 != null && !membersB_14.isEmpty() ? membersB_14.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_14 != null && !membersA_14.isEmpty() ? membersA_14.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_14 != null && !membersB_14.isEmpty() ? membersB_14.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_14 != null && !membersA_14.isEmpty() ? membersA_14.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersA_14 != null && !membersA_14.isEmpty() ? membersA_14.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_14 != null && !membersB_14.isEmpty() ? membersB_14.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_14 != null && !membersA_14.isEmpty() ? membersA_14.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_14 != null && !membersB_14.isEmpty() ? membersB_14.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_14 != null && !membersA_14.isEmpty() ? membersA_14.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersB_14 != null && !membersB_14.isEmpty() ? membersB_14.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
         </tr>
         
         <!-- 다섯 번째 과목 -->
@@ -192,11 +225,18 @@ th {
                     }
                 %>
             </td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_15 != null && !membersA_15.isEmpty() ? membersA_15.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_15 != null && !membersB_15.isEmpty() ? membersB_15.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_15 != null && !membersA_15.isEmpty() ? membersA_15.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_15 != null && !membersB_15.isEmpty() ? membersB_15.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_15 != null && !membersA_15.isEmpty() ? membersA_15.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersA_15 != null && !membersA_15.isEmpty() ? membersA_15.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_15 != null && !membersB_15.isEmpty() ? membersB_15.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_15 != null && !membersA_15.isEmpty() ? membersA_15.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_15 != null && !membersB_15.isEmpty() ? membersB_15.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_15 != null && !membersA_15.isEmpty() ? membersA_15.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersB_15 != null && !membersB_15.isEmpty() ? membersB_15.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
         </tr>
         
         <!-- 여섯 번째 과목 -->
@@ -222,17 +262,61 @@ th {
                     }
                 %>
             </td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_16 != null && !membersA_16.isEmpty() ? membersA_16.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_16 != null && !membersB_16.isEmpty() ? membersB_16.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_16 != null && !membersA_16.isEmpty() ? membersA_16.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_16 != null && !membersB_16.isEmpty() ? membersB_16.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_16 != null && !membersA_16.isEmpty() ? membersA_16.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersA_16 != null && !membersA_16.isEmpty() ? membersA_16.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_16 != null && !membersB_16.isEmpty() ? membersB_16.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_16 != null && !membersA_16.isEmpty() ? membersA_16.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_16 != null && !membersB_16.isEmpty() ? membersB_16.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_16 != null && !membersA_16.isEmpty() ? membersA_16.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersB_16 != null && !membersB_16.isEmpty() ? membersB_16.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
         </tr>
 
         <!-- 일곱 번째 과목 -->
         <tr>
             <td rowspan="7">2급</td>
             <td rowspan="3">1교시</td>
+            <td><%= subjectMap.get(24) %></td>
+            <td>
+                <%
+                    List<MemberVO> membersA_24 = subjectMemberMap.get(24).get("A");
+                    if (membersA_24 != null) {
+                        for (MemberVO member : membersA_24) {
+                            out.print(member.getMember_name() + "<br/>");
+                        }
+                    }
+                %>
+            </td>
+            <td>
+                <%
+                    List<MemberVO> membersB_24 = subjectMemberMap.get(24).get("B");
+                    if (membersB_24 != null) {
+                        for (MemberVO member : membersB_24) {
+                            out.print(member.getMember_name() + "<br/>");
+                        }
+                    }
+                %>
+            </td>
+            <td>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersA_24 != null && !membersA_24.isEmpty() ? membersA_24.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_24 != null && !membersB_24.isEmpty() ? membersB_24.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_24 != null && !membersA_24.isEmpty() ? membersA_24.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_24 != null && !membersB_24.isEmpty() ? membersB_24.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_24 != null && !membersA_24.isEmpty() ? membersA_24.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersB_24 != null && !membersB_24.isEmpty() ? membersB_24.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+        </tr>
+        
+        <!-- 여덟 번째 과목 -->
+        <tr>
             <td><%= subjectMap.get(21) %></td>
             <td>
                 <%
@@ -254,41 +338,18 @@ th {
                     }
                 %>
             </td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_21 != null && !membersA_21.isEmpty() ? membersA_21.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_21 != null && !membersB_21.isEmpty() ? membersB_21.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_21 != null && !membersA_21.isEmpty() ? membersA_21.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_21 != null && !membersB_21.isEmpty() ? membersB_21.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_21 != null && !membersA_21.isEmpty() ? membersA_21.get(0).getMember_id() : "" %>">클릭</a></td>
-        </tr>
-        
-        <!-- 여덟 번째 과목 -->
-        <tr>
-            <td><%= subjectMap.get(22) %></td>
             <td>
-                <%
-                    List<MemberVO> membersA_22 = subjectMemberMap.get(22).get("A");
-                    if (membersA_22 != null) {
-                        for (MemberVO member : membersA_22) {
-                            out.print(member.getMember_name() + "<br/>");
-                        }
-                    }
-                %>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersA_21 != null && !membersA_21.isEmpty() ? membersA_21.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_21 != null && !membersB_21.isEmpty() ? membersB_21.get(0).getMember_id() : "" %>'">B위원</button>
             </td>
             <td>
-                <%
-                    List<MemberVO> membersB_22 = subjectMemberMap.get(22).get("B");
-                    if (membersB_22 != null) {
-                        for (MemberVO member : membersB_22) {
-                            out.print(member.getMember_name() + "<br/>");
-                        }
-                    }
-                %>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_21 != null && !membersA_21.isEmpty() ? membersA_21.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_21 != null && !membersB_21.isEmpty() ? membersB_21.get(0).getMember_id() : "" %>'">B위원</button>
             </td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_22 != null && !membersA_22.isEmpty() ? membersA_22.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_22 != null && !membersB_22.isEmpty() ? membersB_22.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_22 != null && !membersA_22.isEmpty() ? membersA_22.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_22 != null && !membersB_22.isEmpty() ? membersB_22.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_22 != null && !membersA_22.isEmpty() ? membersA_22.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_21 != null && !membersA_21.isEmpty() ? membersA_21.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersB_21 != null && !membersB_21.isEmpty() ? membersB_21.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
         </tr>
 
         <!-- 아홉 번째 과목 -->
@@ -314,22 +375,29 @@ th {
                     }
                 %>
             </td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_23 != null && !membersA_23.isEmpty() ? membersA_23.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_23 != null && !membersB_23.isEmpty() ? membersB_23.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_23 != null && !membersA_23.isEmpty() ? membersA_23.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_23 != null && !membersB_23.isEmpty() ? membersB_23.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_23 != null && !membersA_23.isEmpty() ? membersA_23.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersA_23 != null && !membersA_23.isEmpty() ? membersA_23.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_23 != null && !membersB_23.isEmpty() ? membersB_23.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_23 != null && !membersA_23.isEmpty() ? membersA_23.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_23 != null && !membersB_23.isEmpty() ? membersB_23.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_23 != null && !membersA_23.isEmpty() ? membersA_23.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersB_23 != null && !membersB_23.isEmpty() ? membersB_23.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
         </tr>
 
         <!-- 열 번째 과목 -->
         <tr>
             <td rowspan="4">2교시</td>
-            <td><%= subjectMap.get(24) %></td>
+            <td><%= subjectMap.get(22) %></td>
             <td>
                 <%
-                    List<MemberVO> membersA_24 = subjectMemberMap.get(24).get("A");
-                    if (membersA_24 != null) {
-                        for (MemberVO member : membersA_24) {
+                    List<MemberVO> membersA_22 = subjectMemberMap.get(22).get("A");
+                    if (membersA_22 != null) {
+                        for (MemberVO member : membersA_22) {
                             out.print(member.getMember_name() + "<br/>");
                         }
                     }
@@ -337,19 +405,26 @@ th {
             </td>
             <td>
                 <%
-                    List<MemberVO> membersB_24 = subjectMemberMap.get(24).get("B");
-                    if (membersB_24 != null) {
-                        for (MemberVO member : membersB_24) {
+                    List<MemberVO> membersB_22 = subjectMemberMap.get(22).get("B");
+                    if (membersB_22 != null) {
+                        for (MemberVO member : membersB_22) {
                             out.print(member.getMember_name() + "<br/>");
                         }
                     }
                 %>
             </td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_24 != null && !membersA_24.isEmpty() ? membersA_24.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_24 != null && !membersB_24.isEmpty() ? membersB_24.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_24 != null && !membersA_24.isEmpty() ? membersA_24.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_24 != null && !membersB_24.isEmpty() ? membersB_24.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_24 != null && !membersA_24.isEmpty() ? membersA_24.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersA_22 != null && !membersA_22.isEmpty() ? membersA_22.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_22 != null && !membersB_22.isEmpty() ? membersB_22.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_22 != null && !membersA_22.isEmpty() ? membersA_22.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_22 != null && !membersB_22.isEmpty() ? membersB_22.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_22 != null && !membersA_22.isEmpty() ? membersA_22.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersB_22 != null && !membersB_22.isEmpty() ? membersB_22.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
         </tr>
         
         <!-- 열한 번째 과목 -->
@@ -375,11 +450,18 @@ th {
                     }
                 %>
             </td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_25 != null && !membersA_25.isEmpty() ? membersA_25.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_25 != null && !membersB_25.isEmpty() ? membersB_25.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_25 != null && !membersA_25.isEmpty() ? membersA_25.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_25 != null && !membersB_25.isEmpty() ? membersB_25.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_25 != null && !membersA_25.isEmpty() ? membersA_25.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersA_25 != null && !membersA_25.isEmpty() ? membersA_25.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_25 != null && !membersB_25.isEmpty() ? membersB_25.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_25 != null && !membersA_25.isEmpty() ? membersA_25.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_25 != null && !membersB_25.isEmpty() ? membersB_25.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_25 != null && !membersA_25.isEmpty() ? membersA_25.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersB_25 != null && !membersB_25.isEmpty() ? membersB_25.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
         </tr>
 
         <!-- 열두 번째 과목 -->
@@ -405,11 +487,18 @@ th {
                     }
                 %>
             </td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_26 != null && !membersA_26.isEmpty() ? membersA_26.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_26 != null && !membersB_26.isEmpty() ? membersB_26.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_26 != null && !membersA_26.isEmpty() ? membersA_26.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_26 != null && !membersB_26.isEmpty() ? membersB_26.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_26 != null && !membersA_26.isEmpty() ? membersA_26.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersA_26 != null && !membersA_26.isEmpty() ? membersA_26.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_26 != null && !membersB_26.isEmpty() ? membersB_26.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_26 != null && !membersA_26.isEmpty() ? membersA_26.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_26 != null && !membersB_26.isEmpty() ? membersB_26.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_26 != null && !membersA_26.isEmpty() ? membersA_26.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersB_26 != null && !membersB_26.isEmpty() ? membersB_26.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
         </tr>
         
         <!-- 열세 번째 과목 -->
@@ -435,11 +524,18 @@ th {
                     }
                 %>
             </td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_27 != null && !membersA_27.isEmpty() ? membersA_27.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_27 != null && !membersB_27.isEmpty() ? membersB_27.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_27 != null && !membersA_27.isEmpty() ? membersA_27.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_27 != null && !membersB_27.isEmpty() ? membersB_27.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_27 != null && !membersA_27.isEmpty() ? membersA_27.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersA_27 != null && !membersA_27.isEmpty() ? membersA_27.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_27 != null && !membersB_27.isEmpty() ? membersB_27.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_27 != null && !membersA_27.isEmpty() ? membersA_27.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_27 != null && !membersB_27.isEmpty() ? membersB_27.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
+            <td>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_27 != null && !membersA_27.isEmpty() ? membersA_27.get(0).getMember_id() : "" %>'">A위원</button>
+                <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersB_27 != null && !membersB_27.isEmpty() ? membersB_27.get(0).getMember_id() : "" %>'">B위원</button>
+            </td>
         </tr>
     </table>
 
