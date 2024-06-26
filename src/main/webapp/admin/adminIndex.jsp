@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=euc-kr"
-   pageEncoding="euc-kr"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+   pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-<meta charset="euc-kr">
-<title>이름 목록 이동</title>
+<meta charset="EUC-KR">
+<title>회원 정보 목록</title>
 <style>
 body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
    i, ul, ol, li, button {
@@ -46,11 +46,11 @@ h3 {
    align-items: center;
    justify-content: flex-end;
    margin-bottom: 20px;
-   height: 20px;
+   height: 15px;
 }
 
 .button-container input {
-   width: 300px;
+   width: 150px;
    margin-right: 10px;
    padding: 10px;
    box-sizing: border-box;
@@ -80,6 +80,7 @@ button {
 
 </style>
 <script>
+
 function openMemberPopup(memberId, statusIndex) {
     var url = 'admin/popup.jsp?memberId=' + memberId + '&statusIndex=' + statusIndex;
     var name = 'memberPopup';
@@ -95,40 +96,48 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 }
 </script>
 </head>
+
 <body>
+
 <%@ include file="adminheader.jsp"%>
+<br>
+<br>
    <div class="button-container">
-      <input type="text" placeholder="날짜: YYYY MM DD ~ YYYY MM DD">
+             <form action="${pageContext.request.contextPath}/updateMembersByPeriod.do" method="post">
+            <input type="text" name="startDate" placeholder="시작 날짜 입력: YYYY-MM-DD" style="width: 150px;">
+            <input type="text" name="endDate" placeholder="종료 날짜 입력: YYYY-MM-DD" style="width: 150px;">
+            <input type="submit" value="Update Members" style="width: 150px;">
+        </form>
       <form action="${pageContext.request.contextPath}/getMemberList.do"
          method="get">
-         <button type="submit">이름 목록</button>
+         <button type="submit">위원 목록</button>
       </form>
-      <button type="button" onclick="location.href='${pageContext.request.contextPath}/exportToExcel.do'">엑셀로 내보내기</button>
+      <button type="button" onclick="location.href='${pageContext.request.contextPath}/exportToExcel.do'">엑셀 다운</button>
    </div>
 
    <table class="header-table">
       <tr>
-         <th colspan="5">이름 항목</th>
-         <th colspan="3">기타 정보</th>
-         <th>메모</th>
+         <th colspan="5">회원 정보</th>
+         <th colspan="3">로그인 정보</th>
+         <th>관리</th>
       </tr>
       <tr>
-         <th>순번</th>
-         <th>구분</th>
+         <th>급수</th>
+         <th>과목</th>
+         <th>과목명</th>
+         <th>과목삭제</th>
+         <th>과목코드</th>
+         <th>ID</th>
+         <th>PW</th>
+         <th>유형</th>
          <th>이름</th>
-         <th>아이디</th>
-         <th>비밀번호</th>
-         <th>역할</th>
-         <th>상태</th>
-         <th>삭제</th>
-         <th>비고</th>
       </tr>
       <c:forEach var="member" items="${memberList}" varStatus="status">
          <c:choose>
             <c:when test="${status.index == 0}">
                <tr>
-                  <td rowspan="12">1</td>
-                  <td rowspan="6">1구분</td>
+                  <td rowspan="12">1급</td>
+                  <td rowspan="6">1교시<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
                      <td>[삭제]</td>
@@ -267,7 +276,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
             </c:when>
             <c:when test="${status.index == 6}">
                <tr>
-                  <td rowspan="6">2구분</td>
+                  <td rowspan="6">2급<br>
+                  </td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
                      <td>[삭제]</td>
@@ -406,8 +416,9 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
             </c:when>
             <c:when test="${status.index == 12}">
                <tr>
-                  <td rowspan="14">2구분</td>
-                  <td rowspan="6">1구분</td>
+                  <td rowspan="14">2급</td>
+                  <td rowspan="6">1교시<br>
+                  </td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
                      <td>[삭제]</td>
@@ -546,7 +557,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
             </c:when>
             <c:when test="${status.index == 18}">
                <tr>
-                  <td rowspan="8">2구분</td>
+                  <td rowspan="8">2급<br>
+                  </td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
                      <td>[삭제]</td>
@@ -732,5 +744,6 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
          </c:choose>
       </c:forEach>
    </table>
+
 </body>
 </html>
