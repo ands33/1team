@@ -100,7 +100,8 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
          method="get">
          <button type="submit">회원목록</button>
       </form>
-      <button type="button" onclick="location.href='excel_export.jsp'">엑셀파일출력</button>
+      <button type="button" onclick="location.href='${pageContext.request.contextPath}/exportToExcel.do'">엑셀 파일 출력</button>
+
    </div>
 
    <table class="header-table">
