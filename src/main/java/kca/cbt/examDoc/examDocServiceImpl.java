@@ -1,24 +1,22 @@
 package kca.cbt.examDoc;
 
-//import java.util.List;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("examDocService")
+@Service
 public class examDocServiceImpl implements examDocService {
 	
 	@Autowired
 	private examDocDAO examdocDAO;
 	
-	/*
-	public List<examDocVO> getExamDocList(examDocVO vo){
-		return examdocDAO.getExamDocList(vo);
+	public List<examDocVO> getExamDocSub(examDocVO vo){
+		return examdocDAO.getExamDocSub(vo);
 	}
-	*/
 	
-	public examDocVO getExamDoc(examDocVO vo) {
-		return examdocDAO.getExamDoc(vo);
+	public List<examDocVO> getExamDocSubGroup(examDocVO vo){
+		return examdocDAO.getExamDocSubGroup(vo);
 	}
 	
 }
