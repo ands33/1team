@@ -33,8 +33,8 @@ public class ExamPlanDAO {
 	private final String SUBTRAHEND_LIST = "select * from examplan where e_status='제출(검토대기)' AND submember_id=? order by num";
 	private final String REVIEW_GET = "select review from test where num=?";
 	private final String COM_EXAMPLAN_LIST = "select * from examplan where member_id=? and e_status = '제출(완료)' order by num";
-	private final String BINARY_LIST = "select * from examplan where member_id=? or submember_id=? order by idx";
-	private final String BINARY_TEST = "select exam_type, behavioral, answer, reference from test where num=?";
+	private final String BINARY_LIST = "select * from examplan where member_id=? or submember_id=? order by member_id, idx";
+	private final String BINARY_TEST = "select exam_type, behavioral, answer, reference, review from test where num=?";
 
 	// 글 목록 조회
 	public List<ExamPlanVO> getExamPlanList(ExamPlanVO vo) {
@@ -222,6 +222,7 @@ public class ExamPlanDAO {
 						binaryClass.setBehavioral(rs2.getString("BEHAVIORAL"));
 						binaryClass.setAnswer(rs2.getInt("ANSWER"));
 						binaryClass.setReference(rs2.getString("REFERENCE"));
+						binaryClass.setReview(rs2.getString("REVIEW"));
 					}
 					System.out.println(binaryClass);
 					binaryClassList.add(binaryClass);

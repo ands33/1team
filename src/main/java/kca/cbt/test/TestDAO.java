@@ -84,6 +84,7 @@ public class TestDAO {
 	public TestVO getTest(TestVO vo) {
 		TestVO test = null;
 		try {
+			System.out.println("gettest의 getNum"+vo.getNum());
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(TEST_GET);
 			stmt.setInt(1, vo.getNum());
@@ -123,7 +124,7 @@ public class TestDAO {
 			}
 
 			stmt1 = conn.prepareStatement(SUBJECT_GET);
-			stmt1.setInt(1, rs.getInt("IDX"));
+			stmt1.setInt(1, test.getIdx());
 			rs1 = stmt1.executeQuery();
 
 			if (rs1.next()) {

@@ -67,45 +67,10 @@ th {
 }
 </style>
 <script>
-	function getByteLength(str) {
-		var byteLength = 0;
-		for (var i = 0; i < str.length; i++) {
-			var charCode = str.charCodeAt(i);
-			if (charCode <= 0x007F) {
-				byteLength += 1;
-			} else if (charCode <= 0x07FF) {
-				byteLength += 2;
-			} else if (charCode <= 0xFFFF) {
-				byteLength += 2;
-			} else {
-				byteLength += 4;
-			}
-		}
-		return byteLength;
-	}
-
-	function limitByteLength(element, maxBytes) {
-		var value = element.value;
-		while (getByteLength(value) > maxBytes) {
-			value = value.substring(0, value.length - 1);
-		}
-		element.value = value;
-	}
-
-	function validateAndSubmitUpdateReview() {
-		document.getElementById("reviewForm").action = "updateReview.do";
-		document.getElementById("reviewForm").submit();
-	}
-
-	function validateAndSubmitReExam() {
-		document.getElementById("reviewForm").action = "reExam.do";
-		document.getElementById("reviewForm").submit();
-	}
-
-	function validateAndSubmitComplete() {
-		document.getElementById("reviewForm").action = "testComplete.do";
-		document.getElementById("reviewForm").submit();
-	}
+function getBinaryClass() {
+	document.getElementById("reviewForm").action = "getBinaryClass.do";
+	document.getElementById("reviewForm").submit();
+}
 </script>
 </head>
 <%@ include file="header.jsp"%>
@@ -198,26 +163,10 @@ th {
 					</tr>
 				</table>
 
-				<table>
-					<tr>
-						<td class="answer">구분</td>
-						<td class="answer">검토의견</td>
-						<td class="answer">성명</td>
-					</tr>
-					<tr>
-						<td class="answer">검토자</td>
-						<td><input type="text" name="review" value="${test.review}"
-							oninput="limitByteLength(this, 300)" style="width: 100%;"></td>
-						<td style="text-align: center;">${test.reviewer}</td>
-					</tr>
-				</table>
 				<input type="hidden" name="num" value="${test.num}"> <input
 					type="hidden" name="member_id" value="${member.member_id}">
-				<input type="button" value="임시저장"
-					onclick="validateAndSubmitUpdateReview()"> <input
-					type="button" value="검토완료" onclick="validateAndSubmitComplete()">
-				<input type="button" value="재출제요청"
-					onclick="validateAndSubmitReExam()">
+				<input type="button" value="목록으로"
+					onclick="getBinaryClass()">
 			</form>
 		</div>
 	</div>
