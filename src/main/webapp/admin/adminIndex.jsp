@@ -104,7 +104,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 <br>
    <div class="button-container">
              <form action="${pageContext.request.contextPath}/updateMembersByPeriod.do" method="post">
-<input type="date" name="startDate" placeholder="시작 날짜 입력: YYYY-MM-DD" style="width: 150px;">
+            <input type="date" name="startDate" placeholder="시작 날짜 입력: YYYY-MM-DD" style="width: 150px;">
 			<input type="date" name="endDate" placeholder="종료 날짜 입력: YYYY-MM-DD" style="width: 150px;">
             <input type="submit" value="Update Members" style="width: 150px;">
         </form>
