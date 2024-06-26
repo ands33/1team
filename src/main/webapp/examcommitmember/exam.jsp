@@ -105,8 +105,8 @@ td {
 
 /* Re-submission box */
 .resubmit-box {
-	width: 100px;
-	height: 50px;
+	width: 70px;
+	height: 40px;
 	border: 1px solid #333;
 	display: flex;
 	align-items: center;
@@ -119,7 +119,7 @@ td {
 	content: attr(data-review);
 	display: none;
 	position: absolute;
-	top: 60px;
+	top: -70px;
 	left: 0;
 	background-color: #fff;
 	border: 1px solid #333;
@@ -206,7 +206,6 @@ th, td {
 	crossorigin="anonymous">
 </head>
 <body>
-<body>
 	<%@ include file="header.jsp"%>
 	<div class="container mt-4">
 		<h2>
@@ -225,8 +224,8 @@ th, td {
 					<th>소분류</th>
 					<th>난이도</th>
 					<th>출제위원</th>
-					<th>유형</th>
 					<th>상태</th>
+					<th>출제</th>
 					<th>검토의견</th>
 				</tr>
 			</thead>
@@ -251,9 +250,9 @@ th, td {
 								<!-- 제출(검토대기)일 때, 버튼 비활성화 -->
 								<button type="submit" name="action" value="approve"
 									class="button-approve"
-									style="background-color: ${examPlan.e_status == '출제중' ? '#198754' : '#A5AAA3'};
+									style="background-color: ${examPlan.e_status == '미개봉' || examPlan.e_status == '출제중' ? '#198754' : '#A5AAA3'};
                    width: 60px;"
-									<c:if test='${examPlan.e_status == "검토대기"}'>disabled</c:if>>
+									<c:if test='${examPlan.e_status == "제출(검토대기)"}'>disabled</c:if>>
 
 									출제</button>
 							</form>
@@ -284,8 +283,8 @@ th, td {
 					<th>소분류</th>
 					<th>난이도</th>
 					<th>출제위원</th>
-					<th>유형</th>
 					<th>상태</th>
+					<th>수정(검토 재필요)</th>
 					<th>검토의견</th>
 				</tr>
 			</thead>
@@ -306,13 +305,13 @@ th, td {
 							<form action="createTest.do" method="post">
 								<input type="hidden" name="num" value="${comExamPlan.num}" /> <input
 									type="hidden" name="e_status" value="출제중" />
-								<button type="submit" name="action" value="approve">수정(검토
-									재필요)</button>
+								<button type="submit" name="action" value="approve">수정</button>
 							</form>
 						</td>
 						<!-- 마우스 오버 이벤트 추가 -->
 						<td>
 							<div class="resubmit-box" data-review="${comExamPlan.review}">검토의견</div>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

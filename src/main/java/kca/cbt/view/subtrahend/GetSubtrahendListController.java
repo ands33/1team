@@ -25,5 +25,12 @@ public class GetSubtrahendListController {
 		mav.setViewName("examcommitmember/subtrahendExamCard.jsp"); // View 정보 저장
 		return mav;
 	}
+	
+	@RequestMapping("/getReadExamCard.do")
+	public ModelAndView getReadExamCard(TestVO vo, TestDAO testDAO, ModelAndView mav) {
+		mav.addObject("test",testDAO.getTest(vo)); // Model 정보 저장
+		mav.setViewName("examcommitmember/readExamCard.jsp"); // View 정보 저장
+		return mav;
+	}
 
 }
