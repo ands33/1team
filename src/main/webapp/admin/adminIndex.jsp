@@ -73,7 +73,7 @@ select {
 }
 
 button {
-   width: 60px;
+   width: 85px;
    height: 30px;
 }
 </style>
@@ -82,7 +82,7 @@ button {
 function openMemberPopup(memberId, statusIndex) {
     var url = 'admin/popup.jsp?memberId=' + memberId + '&statusIndex=' + statusIndex;
     var name = 'memberPopup';
-    var specs = 'width=600,height=400,scrollbars=yes';
+    var specs = 'width=200,height=160,scrollbars=yes';
     window.open(url, name, specs);
 }
 
@@ -97,14 +97,13 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 </head>
 <body>
 <%@ include file="adminheader.jsp"%>
-   <h2>출제 문항 카드</h2>
    <div class="button-container">
       <input type="text" placeholder="출제기간: YYYY MM DD ~ YYYY MM DD">
       <form action="${pageContext.request.contextPath}/getMemberList.do"
          method="get">
          <button type="submit">회원목록</button>
       </form>
-      <button type="button" onclick="location.href='${pageContext.request.contextPath}/exportToExcel.do'">엑셀 파일 출력</button>
+      <button type="button" onclick="location.href='${pageContext.request.contextPath}/exportToExcel.do'">엑셀 출력</button>
 
    </div>
 
@@ -122,7 +121,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
          <th>과목코드</th>
          <th>ID</th>
          <th>PW</th>
-         <th>A + B / A</th>
+         <th>유형</th>
          <th>이름</th>
       </tr>
       <c:forEach var="member" items="${memberList}" varStatus="status">

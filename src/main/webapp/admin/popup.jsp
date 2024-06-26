@@ -11,29 +11,31 @@
 body {
     font-family: "Montserrat", "Noto Sans KR", sans-serif;
     padding: 20px;
+    font-size: 20px; /* 전체 글자 크기 확대 */
 }
 
 option {
-	font-size: 15px;
+    font-size: 23px; /* 옵션 글자 크기 확대 */
 }
-
 
 h2 {
     text-align: center;
     padding: 10px;
     font-family: "Montserrat", "Noto Sans KR", sans-serif;
+    font-size: 24px; /* 헤더 글자 크기 확대 */
 }
 
 select {
     width: 548px;
     height: 150px;
+    font-size: 23px; /* 선택 상자 글자 크기 확대 */
 }
 
 button {
-	width: 80px;
-	height: 40px;
-	font-size: 15px;
-	bold: auto;
+    width: 80px;
+    height: 40px;
+    font-size: 20px; /* 버튼 글자 크기 확대 */
+    font-weight: bold; /* 버튼 글자 굵게 */
 }
 </style>
 <script>
@@ -73,7 +75,7 @@ function submitFormAndClose() {
         </select>
     </div>
     <input type="hidden" name="member_id" value="${param.memberId}" />
-    <button type="button" onclick="submitFormAndClose()">Submit</button>
+    <button type="button" onclick="submitFormAndClose()">확인</button>
 </form>
 
 </body>
