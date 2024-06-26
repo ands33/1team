@@ -31,6 +31,8 @@ button {
 </head>
 <body>
 <%@ include file="adminheader.jsp"%>
+<br>
+<br>
     <%
         Map<Integer, String> subjectMap = (Map<Integer, String>) request.getAttribute("subjectMap");
         Map<Integer, Map<String, List<MemberVO>>> subjectMemberMap = (Map<Integer, Map<String, List<MemberVO>>>) request.getAttribute("subjectMemberMap");
