@@ -49,7 +49,6 @@ body {
     font-size: 14px;
 }
 
-
 /* 네비게이션 링크 - 지우면 안됨*/
 .navbar-nav .nav-link {
     text-decoration: none;
@@ -57,8 +56,6 @@ body {
     position: relative;
     font-weight: bold;
     font-size: 15px;
-    display: inline-block; /* 추가: inline-block으로 설정 */
-    line-height: 50px; /*추가한 코드*/
 }
 
 /* 하단 테두리 초기 상태 - 지우면 ㅈ됨 */
@@ -70,10 +67,9 @@ body {
     background: #DB402E; /* 배경 색상 */
     position: absolute;
     left: 0; /* 왼쪽 0 */
-    bottom: 5px; /* 아래쪽 -9.5px */
+    bottom: -9.5px; /* 아래쪽 -9.5px */
     opacity: 0; /* 초기에 숨김 */
 }
-
 
 /* 호버 시 테두리 효과 */
 .navbar-nav .nav-link:hover::after {
@@ -116,6 +112,35 @@ body {
 }
 
 </style>
+
+<script>
+
+function getExamDocSub() {
+    const form = document.getElementById('headerForm');
+    form.action = "../../../biz/getExamDocList.do";
+    form.submit();
+}
+
+function getExamPlanList() {
+    const form = document.getElementById('headerForm');
+    form.action = "../../../biz/getExamPlanList.do";
+    form.submit();
+}
+
+function getSubtrahendList() {
+    const form = document.getElementById('headerForm');
+    form.action = "../../../biz/getSubtrahendList.do";
+    form.submit();
+}
+
+function getBinaryClass() {
+    const form = document.getElementById('headerForm');
+    form.action = "../../../biz/getBinaryClass.do";
+    form.submit();
+}
+
+</script>
+
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -145,8 +170,10 @@ body {
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 justify-content-around w-50"><span class="mx-1"></span>  
-                    <li class="nav-item"><a class="nav-link" href="../#">출제 계획서</a></li>
+                <ul class="navbar-nav me-auto mb-2 justify-content-around w-50"><span class="mx-1"></span>
+                <li class="nav-item"><a class="nav-link" href="../#"><span class="mx-3.5"></span>출제
+                계획서</a></li>
+                	<li class="nav-item"><a class="nav-link" href="javascript:getExamDocSub();">출제 계획서</a></li>
                     <li class="nav-item"><a class="nav-link" href="javascript:getExamPlanList();">출제</a></li>
                     <li class="nav-item"><a class="nav-link" href="javascript:getSubtrahendList();">검토</a></li>
                     <li class="nav-item"><a class="nav-link" href="javascript:getBinaryClass();">출제 이원분류표</a></li>
@@ -155,25 +182,6 @@ body {
             </div>
         </div>
     </nav>
-<script>
-   function getExamPlanList() {
-      const form = document.getElementById('headerForm');
-      form.action = "../../../biz/getExamPlanList.do";
-      form.submit();
-   }
-
-   function getSubtrahendList() {
-      const form = document.getElementById('headerForm');
-      form.action = "../../../biz/getSubtrahendList.do";
-      form.submit();
-   }
-
-   function getBinaryClass() {
-      const form = document.getElementById('headerForm');
-      form.action = "../../../biz/getBinaryClass.do";
-      form.submit();
-   }
-</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

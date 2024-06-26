@@ -10,6 +10,7 @@
 <link rel="icon" href="./img/favicon-32x32.png">
 <title>검토</title>
 <style>
+<<<<<<< HEAD
 
 body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
     i, ul, ol, li, button {
@@ -19,6 +20,19 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
     line-height: 1.6em;
     list-style: none;
     color: #333;
+=======
+body, table, input, select, textarea, div, a, p, span, strong, b, i, ul, ol, li, button {
+	font-family: "Montserrat", "Noto Sans KR", sans-serif;
+	font-size: 15px;
+	letter-spacing: -0.05em;
+	line-height: 1.6em;
+	list-style: none;
+	color: #333;
+}
+
+th, td {
+	width: 150px;
+>>>>>>> d747e2488337ad4a35f81e99754a56997377001a
 }
 
 /* header-link의 밑줄 제거 */
@@ -36,7 +50,6 @@ body {
     background: #FFF;
     height: 100vh;
     font-size: 15px;
-    font-family: 'Roboto', sans-serif;
 }
 
 /* 지우면 ㅈ됨 */
@@ -85,6 +98,7 @@ body {
 
 .nav-item:hover {
     color: #6B6D70;
+<<<<<<< HEAD
     opacity: 1; /* 호버 시 보이게 함 */
 }
 
@@ -125,6 +139,27 @@ th {
     padding: 20px 10px;
     background: #fff;
     z-index: 1;
+=======
+	opacity: 1; /* 호버 시 보이게 함 */
+}
+
+#header {
+	width: 100%;
+	padding: 20px 10px;
+	background: #fff;
+	z-index: 1;
+}
+
+/* header-link의 밑줄 제거 */
+.header-links a {
+	text-decoration: none;
+	color: #000;
+}
+
+/* 로고 오른쪽 상담학회 집 인트로 글씨 호버 */
+.header-links a:hover {
+	color: #D8402A;
+>>>>>>> d747e2488337ad4a35f81e99754a56997377001a
 }
 
 .header-left img {
@@ -134,6 +169,13 @@ th {
     margin-left: 100px;
 }
 
+<<<<<<< HEAD
+=======
+.nav-item:hover {
+	color: #6B6D70;
+}
+
+>>>>>>> d747e2488337ad4a35f81e99754a56997377001a
 </style>
 </head>
 <body>

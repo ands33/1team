@@ -163,7 +163,7 @@ function getBinaryClass() {
             <div class="header-right ml-auto d-flex align-items-center">
                 <b>${member.member_name}</b> <span class="mx-1"></span> 님 <span class="mx-2"></span> 
                 ${member.subject_name} <span class="mx-2"></span> 
-                <a href="#">로그아웃</a> <span class="mx-2"></span>
+                <a href="${pageContext.request.contextPath}/login/login.jsp">로그아웃</a> <span class="mx-2"></span>
                 <a href="#">마이페이지</a>
             </div>
         </div>
@@ -173,8 +173,8 @@ function getBinaryClass() {
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 justify-content-around w-50"><span class="mx-1.5"></span>  
-                    <li class="nav-item"><a class="nav-link" href="../#">설정</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../#">문항입고 대기</a></li>
+                    <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/IndexMemberList.do">설정</a></li>
+                    <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/getMembersBySubjectAndType.do">문항입고 대기</a></li>
                 </ul>
             </div>
         </div>

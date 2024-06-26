@@ -24,6 +24,7 @@ th {
 </style>
 </head>
 <body>
+<%@ include file="adminheader.jsp"%>
     <%
         Map<Integer, String> subjectMap = (Map<Integer, String>) request.getAttribute("subjectMap");
         Map<Integer, Map<String, List<MemberVO>>> subjectMemberMap = (Map<Integer, Map<String, List<MemberVO>>>) request.getAttribute("subjectMemberMap");
@@ -233,6 +234,36 @@ th {
         <tr>
             <td rowspan="7">2급</td>
             <td rowspan="3">1교시</td>
+            <td><%= subjectMap.get(24) %></td>
+            <td>
+                <%
+                    List<MemberVO> membersA_24 = subjectMemberMap.get(24).get("A");
+                    if (membersA_24 != null) {
+                        for (MemberVO member : membersA_24) {
+                            out.print(member.getMember_name() + "<br/>");
+                        }
+                    }
+                %>
+            </td>
+            <td>
+                <%
+                    List<MemberVO> membersB_24 = subjectMemberMap.get(24).get("B");
+                    if (membersB_24 != null) {
+                        for (MemberVO member : membersB_24) {
+                            out.print(member.getMember_name() + "<br/>");
+                        }
+                    }
+                %>
+            </td>
+            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_21 != null && !membersA_21.isEmpty() ? membersA_21.get(0).getMember_id() : "" %>">클릭</a> --%></td>
+            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_21 != null && !membersB_21.isEmpty() ? membersB_21.get(0).getMember_id() : "" %>">클릭</a> --%></td>
+            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_24 != null && !membersA_24.isEmpty() ? membersA_24.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_24 != null && !membersB_24.isEmpty() ? membersB_24.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_24 != null && !membersA_24.isEmpty() ? membersA_24.get(0).getMember_id() : "" %>">클릭</a></td>
+        </tr>
+        
+        <!-- 여덟 번째 과목 -->
+        <tr>
             <td><%= subjectMap.get(21) %></td>
             <td>
                 <%
@@ -254,41 +285,11 @@ th {
                     }
                 %>
             </td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_21 != null && !membersA_21.isEmpty() ? membersA_21.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_21 != null && !membersB_21.isEmpty() ? membersB_21.get(0).getMember_id() : "" %>">클릭</a> --%></td>
+            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_22 != null && !membersA_22.isEmpty() ? membersA_22.get(0).getMember_id() : "" %>">클릭</a> --%></td>
+            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_22 != null && !membersB_22.isEmpty() ? membersB_22.get(0).getMember_id() : "" %>">클릭</a> --%></td>
             <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_21 != null && !membersA_21.isEmpty() ? membersA_21.get(0).getMember_id() : "" %>">클릭</a></td>
             <td><a href="getBinaryWaiting.do?member_id=<%= membersB_21 != null && !membersB_21.isEmpty() ? membersB_21.get(0).getMember_id() : "" %>">클릭</a></td>
             <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_21 != null && !membersA_21.isEmpty() ? membersA_21.get(0).getMember_id() : "" %>">클릭</a></td>
-        </tr>
-        
-        <!-- 여덟 번째 과목 -->
-        <tr>
-            <td><%= subjectMap.get(22) %></td>
-            <td>
-                <%
-                    List<MemberVO> membersA_22 = subjectMemberMap.get(22).get("A");
-                    if (membersA_22 != null) {
-                        for (MemberVO member : membersA_22) {
-                            out.print(member.getMember_name() + "<br/>");
-                        }
-                    }
-                %>
-            </td>
-            <td>
-                <%
-                    List<MemberVO> membersB_22 = subjectMemberMap.get(22).get("B");
-                    if (membersB_22 != null) {
-                        for (MemberVO member : membersB_22) {
-                            out.print(member.getMember_name() + "<br/>");
-                        }
-                    }
-                %>
-            </td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_22 != null && !membersA_22.isEmpty() ? membersA_22.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_22 != null && !membersB_22.isEmpty() ? membersB_22.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_22 != null && !membersA_22.isEmpty() ? membersA_22.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_22 != null && !membersB_22.isEmpty() ? membersB_22.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_22 != null && !membersA_22.isEmpty() ? membersA_22.get(0).getMember_id() : "" %>">클릭</a></td>
         </tr>
 
         <!-- 아홉 번째 과목 -->
@@ -324,12 +325,12 @@ th {
         <!-- 열 번째 과목 -->
         <tr>
             <td rowspan="4">2교시</td>
-            <td><%= subjectMap.get(24) %></td>
+            <td><%= subjectMap.get(22) %></td>
             <td>
                 <%
-                    List<MemberVO> membersA_24 = subjectMemberMap.get(24).get("A");
-                    if (membersA_24 != null) {
-                        for (MemberVO member : membersA_24) {
+                    List<MemberVO> membersA_22 = subjectMemberMap.get(22).get("A");
+                    if (membersA_22 != null) {
+                        for (MemberVO member : membersA_22) {
                             out.print(member.getMember_name() + "<br/>");
                         }
                     }
@@ -337,9 +338,9 @@ th {
             </td>
             <td>
                 <%
-                    List<MemberVO> membersB_24 = subjectMemberMap.get(24).get("B");
-                    if (membersB_24 != null) {
-                        for (MemberVO member : membersB_24) {
+                    List<MemberVO> membersB_22 = subjectMemberMap.get(22).get("B");
+                    if (membersB_22 != null) {
+                        for (MemberVO member : membersB_22) {
                             out.print(member.getMember_name() + "<br/>");
                         }
                     }
@@ -347,9 +348,9 @@ th {
             </td>
             <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersA_24 != null && !membersA_24.isEmpty() ? membersA_24.get(0).getMember_id() : "" %>">클릭</a> --%></td>
             <td><%-- <a href="getBinaryWaiting.do?member_id=<%= membersB_24 != null && !membersB_24.isEmpty() ? membersB_24.get(0).getMember_id() : "" %>">클릭</a> --%></td>
-            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_24 != null && !membersA_24.isEmpty() ? membersA_24.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_24 != null && !membersB_24.isEmpty() ? membersB_24.get(0).getMember_id() : "" %>">클릭</a></td>
-            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_24 != null && !membersA_24.isEmpty() ? membersA_24.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td><a href="getWaitingExamPlanList.do?member_id=<%= membersA_22 != null && !membersA_22.isEmpty() ? membersA_22.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td><a href="getBinaryWaiting.do?member_id=<%= membersB_22 != null && !membersB_22.isEmpty() ? membersB_22.get(0).getMember_id() : "" %>">클릭</a></td>
+            <td><a href="getWaitingSubtrahendList.do?member_id=<%= membersA_22 != null && !membersA_22.isEmpty() ? membersA_22.get(0).getMember_id() : "" %>">클릭</a></td>
         </tr>
         
         <!-- 열한 번째 과목 -->
