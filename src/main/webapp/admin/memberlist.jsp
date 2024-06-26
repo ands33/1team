@@ -54,13 +54,11 @@ th {
 </head>
 <body>
     <h2>회원 목록</h2>
-     <form action="${pageContext.request.contextPath}/IndexMemberList.do" method="get">
-        <button type="submit">회원목록</button>
-    </form>
     
     <form method="post" action="${pageContext.request.contextPath}/updateMember.do">
     <div class="button-container">
             <button type="submit">일괄 수정</button>
+            <button type="button" onclick="location.href='${pageContext.request.contextPath}/IndexMemberList.do'" method="get">설정화면</button>
         </div>
         <table>
             <thead>
