@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="./img/favicon-32x32.png">
 <base href="${pageContext.request.contextPath}/">
-<title>Çì´õ</title>
+<title>í—¤ë”</title>
 <style>
 body, table, th, td, input, select, textarea, div, a, p, span, strong, b, i, ul, ol, li, button {
 	font-family: "Montserrat", "Noto Sans KR", sans-serif;
@@ -18,13 +18,13 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b, i, ul,
 	color: #333;
 }
 
-/* header-linkÀÇ ¹ØÁÙ Á¦°Å */
+/* header-linkì˜ ë°‘ì¤„ ì œê±° */
 .header-links a {
     text-decoration: none;
     color: black;
 }
 
-/* ·Î°í ¿ìÃø ±Û¾¾ È£¹ö : ÇÑ±¹»ó´ãÇĞÈ¸ */
+/* ë¡œê³  ìš°ì¸¡ ê¸€ì”¨ í˜¸ë²„ : í•œêµ­ìƒë‹´í•™íšŒ */
 .header-links a:hover {
     color: #D8402A;
 }
@@ -35,7 +35,7 @@ body {
     font-size: 15px;
 }
 
-/* Áö¿ì¸é ¤¸µÊ */
+/* ì§€ìš°ë©´ ã…ˆë¨ */
 .navbar {
     border-top: 1px solid #D8D9DA;
     border-bottom: 1px solid #F5F5F5;
@@ -49,7 +49,7 @@ body {
     font-size: 14px;
 }
 
-/* ³×ºñ°ÔÀÌ¼Ç ¸µÅ© - Áö¿ì¸é ¾ÈµÊ*/
+/* ë„¤ë¹„ê²Œì´ì…˜ ë§í¬ - ì§€ìš°ë©´ ì•ˆë¨*/
 .navbar-nav .nav-link {
     text-decoration: none;
     color: black;
@@ -58,28 +58,28 @@ body {
     font-size: 15px;
 }
 
-/* ÇÏ´Ü Å×µÎ¸® ÃÊ±â »óÅÂ - Áö¿ì¸é ¤¸µÊ */
+/* í•˜ë‹¨ í…Œë‘ë¦¬ ì´ˆê¸° ìƒíƒœ - ì§€ìš°ë©´ ã…ˆë¨ */
 .navbar-nav .nav-link::after {
-    content: ''; /* ÄÜÅÙÃ÷ Ãß°¡ */
-    display: block; /* ºí·Ï ·¹º§ ¿ä¼Ò·Î º¯°æ */
-    width: 0; /* ³Êºñ 0À¸·Î ¼³Á¤ÇÏ¿© ÃÊ±â¿¡ ¼û±è */
-    height: 3px; /* ³ôÀÌ 2px */
-    background: #DB402E; /* ¹è°æ »ö»ó */
+    content: ''; /* ì½˜í…ì¸  ì¶”ê°€ */
+    display: block; /* ë¸”ë¡ ë ˆë²¨ ìš”ì†Œë¡œ ë³€ê²½ */
+    width: 0; /* ë„ˆë¹„ 0ìœ¼ë¡œ ì„¤ì •í•˜ì—¬ ì´ˆê¸°ì— ìˆ¨ê¹€ */
+    height: 3px; /* ë†’ì´ 2px */
+    background: #DB402E; /* ë°°ê²½ ìƒ‰ìƒ */
     position: absolute;
-    left: 0; /* ¿ŞÂÊ 0 */
-    bottom: -9.5px; /* ¾Æ·¡ÂÊ -9.5px */
-    opacity: 0; /* ÃÊ±â¿¡ ¼û±è */
+    left: 0; /* ì™¼ìª½ 0 */
+    bottom: -9.5px; /* ì•„ë˜ìª½ -9.5px */
+    opacity: 0; /* ì´ˆê¸°ì— ìˆ¨ê¹€ */
 }
 
-/* È£¹ö ½Ã Å×µÎ¸® È¿°ú */
+/* í˜¸ë²„ ì‹œ í…Œë‘ë¦¬ íš¨ê³¼ */
 .navbar-nav .nav-link:hover::after {
-    width: 100%; /* È£¹ö ½Ã ³Êºñ 100%·Î È®Àå */
-    opacity: 1; /* È£¹ö ½Ã º¸ÀÌ°Ô ÇÔ */
+    width: 100%; /* í˜¸ë²„ ì‹œ ë„ˆë¹„ 100%ë¡œ í™•ì¥ */
+    opacity: 1; /* í˜¸ë²„ ì‹œ ë³´ì´ê²Œ í•¨ */
 }
 
 .nav-item:hover {
     color: #6B6D70;
-	opacity: 1; /* È£¹ö ½Ã º¸ÀÌ°Ô ÇÔ */
+	opacity: 1; /* í˜¸ë²„ ì‹œ ë³´ì´ê²Œ í•¨ */
 }
 
 #header {
@@ -89,13 +89,13 @@ body {
 	z-index: 1;
 }
 
-/* header-linkÀÇ ¹ØÁÙ Á¦°Å */
+/* header-linkì˜ ë°‘ì¤„ ì œê±° */
 .header-links a {
 	text-decoration: none;
 	color: #000;
 }
 
-/* ·Î°í ¿À¸¥ÂÊ »ó´ãÇĞÈ¸ Áı ÀÎÆ®·Î ±Û¾¾ È£¹ö */
+/* ë¡œê³  ì˜¤ë¥¸ìª½ ìƒë‹´í•™íšŒ ì§‘ ì¸íŠ¸ë¡œ ê¸€ì”¨ í˜¸ë²„ */
 .header-links a:hover {
 	color: #D8402A;
 }
@@ -108,7 +108,33 @@ body {
 }
 
 .nav-item:hover {
-	color: #6B6D70;
+   color: #6B6D70;
+}
+</style>
+<script>
+
+function getExamDocSub() {
+    const form = document.getElementById('headerForm');
+    form.action = "../../../biz/getExamDocList.do";
+    form.submit();
+}
+
+function getExamPlanList() {
+    const form = document.getElementById('headerForm');
+    form.action = "../../../biz/getExamPlanList.do";
+    form.submit();
+}
+
+function getSubtrahendList() {
+    const form = document.getElementById('headerForm');
+    form.action = "../../../biz/getSubtrahendList.do";
+    form.submit();
+}
+
+function getBinaryClass() {
+    const form = document.getElementById('headerForm');
+    form.action = "../../../biz/getBinaryClass.do";
+    form.submit();
 }
 
 </style>
@@ -124,16 +150,16 @@ body {
                 </a>
             </div>
             <div class="header-links ml-3">
-                <a href="https://counselors.or.kr/"><span class="mx-2"></span> ÇÑ±¹»ó´ãÇĞÈ¸</a> <span> ¡¤ </span> 
+                <a href="https://counselors.or.kr/"><span class="mx-2"></span> í•œêµ­ìƒë‹´í•™íšŒ</a> <span> Â· </span> 
                 <a href="https://counselors.or.kr/">
-                    <img src="${pageContext.request.contextPath}/examcommitmember/img/kca_house.png" alt="KCA Logo">ÀÎÆ®·Î
+                    <img src="${pageContext.request.contextPath}/examcommitmember/img/kca_house.png" alt="KCA Logo">ì¸íŠ¸ë¡œ
                 </a>
             </div>
             <div class="header-right ml-auto d-flex align-items-center">
-                <b>${member.member_name}</b> <span class="mx-1"></span> ´Ô <span class="mx-2"></span> 
+                <b>${member.member_name}</b> <span class="mx-1"></span> ë‹˜ <span class="mx-2"></span> 
                 ${member.subject_name} <span class="mx-2"></span> 
-                <a href="#">·Î±×¾Æ¿ô</a> <span class="mx-2"></span>
-                <a href="#">¸¶ÀÌÆäÀÌÁö</a>
+                <a href="#">ë¡œê·¸ì•„ì›ƒ</a> <span class="mx-2"></span>
+                <a href="#">ë§ˆì´í˜ì´ì§€</a>
             </div>
         </div>
     </form>
@@ -141,12 +167,12 @@ body {
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 justify-content-around w-50"><span class="mx-1"></span>  
-                    <li class="nav-item"><a class="nav-link" href="../#">ÃâÁ¦ °èÈ¹¼­</a></li>
-                    <li class="nav-item"><a class="nav-link" href="javascript:getExamPlanList();">ÃâÁ¦</a></li>
-                    <li class="nav-item"><a class="nav-link" href="javascript:getSubtrahendList();">°ËÅä</a></li>
-                    <li class="nav-item"><a class="nav-link" href="javascript:getBinaryClass();">ÃâÁ¦ ÀÌ¿øºĞ·ùÇ¥</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../#">¼±Á¦ ÀÌ¿øºĞ·ùÇ¥</a></li>
+                <ul class="navbar-nav me-auto mb-2 justify-content-around w-50"><span class="mx-1"></span>
+                    <li class="nav-item"><a class="nav-link" href="javascript:getExamDocSub();">ì¶œì œ ê³„íšì„œ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:getExamPlanList();">ì¶œì œ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:getSubtrahendList();">ê²€í† </a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:getBinaryClass();">ì¶œì œ ì´ì›ë¶„ë¥˜í‘œ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../#">ì„ ì œ ì´ì›ë¶„ë¥˜í‘œ</a></li>
                 </ul>
             </div>
         </div>
