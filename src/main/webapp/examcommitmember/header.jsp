@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,12 +10,12 @@
 <title>헤더</title>
 <style>
 body, table, th, td, input, select, textarea, div, a, p, span, strong, b, i, ul, ol, li, button {
-	font-family: "Montserrat", "Noto Sans KR", sans-serif;
-	font-size: 15px;
-	letter-spacing: -0.05em;
-	line-height: 1.6em;
-	list-style: none;
-	color: #333;
+   font-family: "Montserrat", "Noto Sans KR", sans-serif;
+   font-size: 15px;
+   letter-spacing: -0.05em;
+   line-height: 1.6em;
+   list-style: none;
+   color: #333;
 }
 
 /* header-link의 밑줄 제거 */
@@ -32,7 +33,6 @@ body {
     background: #FFF;
     height: 100vh;
     font-size: 15px;
-    font-family: 'Roboto', sans-serif;
 }
 
 /* 지우면 ㅈ됨 */
@@ -49,6 +49,7 @@ body {
     font-size: 14px;
 }
 
+
 /* 네비게이션 링크 - 지우면 안됨*/
 .navbar-nav .nav-link {
     text-decoration: none;
@@ -56,6 +57,8 @@ body {
     position: relative;
     font-weight: bold;
     font-size: 15px;
+    display: inline-block; /* 추가: inline-block으로 설정 */
+    line-height: 50px; /*추가한 코드*/
 }
 
 /* 하단 테두리 초기 상태 - 지우면 ㅈ됨 */
@@ -67,9 +70,10 @@ body {
     background: #DB402E; /* 배경 색상 */
     position: absolute;
     left: 0; /* 왼쪽 0 */
-    bottom: -9.5px; /* 아래쪽 -9.5px */
+    bottom: 5px; /* 아래쪽 -9.5px */
     opacity: 0; /* 초기에 숨김 */
 }
+
 
 /* 호버 시 테두리 효과 */
 .navbar-nav .nav-link:hover::after {
@@ -79,36 +83,36 @@ body {
 
 .nav-item:hover {
     color: #6B6D70;
-	opacity: 1; /* 호버 시 보이게 함 */
+   opacity: 1; /* 호버 시 보이게 함 */
 }
 
 #header {
-	width: 100%;
-	padding: 20px 10px;
-	background: #fff;
-	z-index: 1;
+   width: 100%;
+   padding: 20px 10px;
+   background: #fff;
+   z-index: 1;
 }
 
 /* header-link의 밑줄 제거 */
 .header-links a {
-	text-decoration: none;
-	color: #000;
+   text-decoration: none;
+   color: #000;
 }
 
 /* 로고 오른쪽 상담학회 집 인트로 글씨 호버 */
 .header-links a:hover {
-	color: #D8402A;
+   color: #D8402A;
 }
 
 .header-left img {
-	width: 250px;
-	height: auto;
-	padding-top: 20px;
-	margin-left: 100px;
+   width: 250px;
+   height: auto;
+   padding-top: 20px;
+   margin-left: 100px;
 }
 
 .nav-item:hover {
-	color: #6B6D70;
+   color: #6B6D70;
 }
 
 </style>
@@ -152,23 +156,23 @@ body {
         </div>
     </nav>
 <script>
-	function getExamPlanList() {
-		const form = document.getElementById('headerForm');
-		form.action = "../../../biz/getExamPlanList.do";
-		form.submit();
-	}
+   function getExamPlanList() {
+      const form = document.getElementById('headerForm');
+      form.action = "../../../biz/getExamPlanList.do";
+      form.submit();
+   }
 
-	function getSubtrahendList() {
-		const form = document.getElementById('headerForm');
-		form.action = "../../../biz/getSubtrahendList.do";
-		form.submit();
-	}
+   function getSubtrahendList() {
+      const form = document.getElementById('headerForm');
+      form.action = "../../../biz/getSubtrahendList.do";
+      form.submit();
+   }
 
-	function getBinaryClass() {
-		const form = document.getElementById('headerForm');
-		form.action = "../../../biz/getBinaryClass.do";
-		form.submit();
-	}
+   function getBinaryClass() {
+      const form = document.getElementById('headerForm');
+      form.action = "../../../biz/getBinaryClass.do";
+      form.submit();
+   }
 </script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
