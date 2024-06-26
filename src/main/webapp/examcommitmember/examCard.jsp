@@ -17,14 +17,15 @@ body {
 }
 
 .container {
-	width: 1000px;
+	width: 700px; /* 컨테이너 너비를 800px로 조정 */
 	margin: auto;
 	padding: 20px;
 	border: 1px solid #000;
 }
 
 table {
-	width: 100%;
+	margin: 0 auto;
+	width: 80%;
 	border-collapse: collapse;
 	margin-bottom: 20px;
 }
@@ -53,6 +54,8 @@ th, td {
 	text-align: center;
 	font-weight: bold;
 	background-color: #f4f4f4;
+	width: 80%;
+	margin: 0 auto;
 }
 
 .subtitle {
@@ -70,6 +73,24 @@ th, td {
 	text-align: center;
 	font-weight: bold;
 }
+
+.button-container {
+	text-align: right;
+	margin-right: 110px; /* 왼쪽에 여백 추가 */
+}
+
+.radio-label {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 15px; /* 필요한 경우 좌우 간격 조절 */
+    vertical-align: top;
+    line-height: 1.5; /* 필요한 경우 텍스트 라인의 높이 조절 */
+}
+
+.radio-label input {
+    margin-top: 5px; /* 라디오 버튼을 약간 위로 이동 */
+}
+
 </style>
 <script>
 	function updateBehavioral() {
@@ -135,7 +156,7 @@ th, td {
 		var page = document.getElementsByName("page")[0].value;
 		var createDate = document.getElementsByName("createDate")[0].value;
 		var aff = document.getElementsByName("aff")[0].value;
-		
+
 		if (exam_type === "") {
 			alert("문제타입을 체크하세요.");
 			document.getElementsByName("exam_type")[0].focus();
@@ -237,16 +258,21 @@ th, td {
 </head>
 <%@ include file="header.jsp"%>
 <body>
+	<br>
+	<br>
+	<br>
 	<div class="container">
 		<div class="details">
 			<form id="testForm" method="post">
+				<br>
 				<h2 class="title">한국상담학회 검정 시험문제</h2>
+				<br>
 				<table>
 					<tr>
 						<th colspan="1">문제 타입</th>
-						<td colspan="1"><input type="radio" name="exam_type" value="문항제작"
-							${test.exam_type == '문항제작' ? 'checked' : ''}>문항제작&nbsp; <input
-							type="radio" name="exam_type" value="기출문제"
+						<td colspan="1"><input type="radio" name="exam_type"
+							value="문항제작" ${test.exam_type == '문항제작' ? 'checked' : ''}>문항제작&nbsp;
+							<input type="radio" name="exam_type" value="기출문제"
 							${test.exam_type == '기출문제' ? 'checked' : ''}>기출문제</td>
 						<td style="border: none;"></td>
 
@@ -266,7 +292,7 @@ th, td {
 								<option value="적용" ${test.behavioral == '적용' ? 'selected' : ''}>적용</option>
 						</select></td>
 						<th>난이도</th>
-						<td style="text-align: center;">${test.diff}</td>
+						<td style="text-align: center;" colspan="5">${test.diff}</td>
 					</tr>
 					<tr>
 						<th>과목명</th>
@@ -277,46 +303,41 @@ th, td {
 				</table>
 				<table>
 					<tr>
-						<td colspan="6">[문 제] <br> <textarea name="question"
+						<td colspan="6">&nbsp;&nbsp; [문 제] <br> <textarea name="question"
 								style="height: 150px; width: 100%;"
 								oninput="limitByteLength(this, 500)">${test.question}</textarea>
-							<br> <br> [선택지] <br> <br>
+							<br> <br> &nbsp;&nbsp; [선택지] <br> <br>
 							<ol>
-								<li><input type="text" name="option1"
+								<li>①.&nbsp; <input type="text" name="option1"
 									value="${test.option1}" style="width: 90%;"
 									oninput="limitByteLength(this, 300)"></li>
-								<li><input type="text" name="option2"
+								<li>②.&nbsp; <input type="text" name="option2"
 									value="${test.option2}" style="width: 90%;"
 									oninput="limitByteLength(this, 300)"></li>
-								<li><input type="text" name="option3"
+								<li>③.&nbsp; <input type="text" name="option3"
 									value="${test.option3}" style="width: 90%;"
 									oninput="limitByteLength(this, 300)"></li>
-								<li><input type="text" name="option4"
+								<li>④.&nbsp; <input type="text" name="option4"
 									value="${test.option4}" style="width: 90%;"
 									oninput="limitByteLength(this, 300)"></li>
-								<li><input type="text" name="option5"
+								<li>⑤.&nbsp; <input type="text" name="option5"
 									value="${test.option5}" style="width: 90%;"
 									oninput="limitByteLength(this, 300)"></li>
 							</ol>
 						</td>
 					</tr>
 				</table>
-
 				<table>
 					<tr>
-						<th colspan="1" class="answer">정답</th>
-						<td colspan="5">&nbsp; <input type="radio" name="answer"
-							value="1" ${test.answer == 1 ? 'checked' : ''}>①&nbsp; <input
-							type="radio" name="answer" value="2"
-							${test.answer == 2 ? 'checked' : ''}>② &nbsp; <input
-							type="radio" name="answer" value="3"
-							${test.answer == 3 ? 'checked' : ''}>③ &nbsp; <input
-							type="radio" name="answer" value="4"
-							${test.answer == 4 ? 'checked' : ''}>④&nbsp; <input
-							type="radio" name="answer" value="5"
-							${test.answer == 5 ? 'checked' : ''}>⑤
-						</td>
-					</tr>
+    <th colspan="1" class="answer">정답</th>
+    <td colspan="5">&nbsp;&nbsp;
+        <label class="radio-label">①.&nbsp; <input type="radio" name="answer" value="1" ${test.answer == 1 ? 'checked' : ''}></label>
+        <label class="radio-label">②.&nbsp; <input type="radio" name="answer" value="2" ${test.answer == 2 ? 'checked' : ''}></label>
+        <label class="radio-label">③.&nbsp; <input type="radio" name="answer" value="3" ${test.answer == 3 ? 'checked' : ''}></label>
+        <label class="radio-label">④.&nbsp; <input type="radio" name="answer" value="4" ${test.answer == 4 ? 'checked' : ''}></label>
+        <label class="radio-label">⑤.&nbsp; <input type="radio" name="answer" value="5" ${test.answer == 5 ? 'checked' : ''}></label>
+    </td>
+</tr>
 
 					<tr>
 						<th colspan="1" class="answer">정답해설</th>
@@ -362,14 +383,16 @@ th, td {
 						<td><input type="text" name="aff" value="${test.aff}"
 							style="width: 100%;"></td>
 						<td style="text-align: center;">${test.writtenName}</td>
-						<td></td>
+						<td style="text-align: center;"></td>
 					</tr>
 				</table>
-				<input type="hidden" name="num" value="${test.num}"> <input
-					type="hidden" name="member_id" value="${member.member_id}">
-				<input type="button" value="수정하기 (updateTest.do)"
-					onclick="validateAndSubmitUpdate()"> <input type="button"
-					value="전송하기 (sendTest.do)" onclick="validateAndSubmitSend()">
+				<div class="button-container">
+					<input type="hidden" name="num" value="${test.num}"> <input
+						type="hidden" name="member_id" value="${member.member_id}">
+					<input type="button" value="수정하기 (updateTest.do)"
+						onclick="validateAndSubmitUpdate()"> <input type="button"
+						value="전송하기 (sendTest.do)" onclick="validateAndSubmitSend()">
+				</div>
 			</form>
 		</div>
 	</div>
