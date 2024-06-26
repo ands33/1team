@@ -31,11 +31,12 @@ public class WaitingController {
 		return "admin/adminexam.jsp";
 	}
     
+	// 문항검토
 	@RequestMapping("/getWaitingSubtrahendList.do") /* O */
 	public String getWaitingSubtrahendList(@RequestParam("member_id") String memberId, ExamPlanVO vo, ExamPlanDAO examPlanDAO, Model model) {
     	vo.setMember_id(memberId);
     	model.addAttribute("subtrahendList", examPlanDAO.getSubtrahendList(vo));
-		return "examcommitmember/subtrahend.jsp";
+		return "admin/subtrahend.jsp";
 	}
     
 }
