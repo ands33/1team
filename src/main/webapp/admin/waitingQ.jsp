@@ -15,7 +15,7 @@ table {
 }
 th, td {
     border: 1px solid black;
-    text-align: center;
+    text-align: center !important;
     padding: 8px;
 }
 th {
