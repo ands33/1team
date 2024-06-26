@@ -28,7 +28,7 @@ public class WaitingController {
 		vo.setMember_id(memberId);
 		model.addAttribute("examPlanList", examPlanDAO.getExamPlanList(vo));
 		model.addAttribute("comExamPlanList", examPlanDAO.getComExamPlanList(vo));
-		return "admin/exam.jsp";
+		return "admin/adminexam.jsp";
 	}
     
 	@RequestMapping("/getWaitingSubtrahendList.do") /* O */

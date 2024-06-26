@@ -9,7 +9,8 @@
 <link rel="icon" href="./img/favicon-32x32.png">
 <title>출제</title>
 <style>
-body, table, th, td, input, select, textarea, div, a, p, span, strong, b, i, ul, ol, li, button {
+body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
+	i, ul, ol, li, button {
 	font-family: "Montserrat", "Noto Sans KR", sans-serif;
 	font-size: 15px;
 	letter-spacing: -0.05em;
@@ -19,23 +20,26 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b, i, ul,
 
 th {
 	white-space: nowrap;
-    border: 1px solid black;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 14px;
-    border-top: 1px solid #DB402E; /* 추가할 border-top 속성 */
+	border: 1px solid black;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 14px;
+	border-top: 1px solid #DB402E; /* 추가할 border-top 속성 */
 }
 
 table-light {
 	white-space: nowrap;
-    border: 1px solid black;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 14px;
-    border-top: 1px solid #DB402E; /* 추가할 border-top 속성 */
+	border: 1px solid black;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 14px;
+	border-top: 1px solid #DB402E; /* 추가할 border-top 속성 */
 }
 
 td {
+	border: 1px solid black;
+	padding: 8px;
+	text-align: left;
 	border: 1px solid black;
 	padding: 8px;
 	text-align: left;
@@ -71,10 +75,6 @@ td {
 	color: black;
 	padding: 10px 20px;
 	position: relative;
-}
-
-.navbar-nav .nav-link:hover {
-	color: #DB402E;
 }
 
 .navbar-nav .nav-link::after {
@@ -198,7 +198,6 @@ th, td {
 	padding: 10px;
 	text-align: center;
 }
-
 </style>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -255,7 +254,7 @@ th, td {
 									style="background-color: ${examPlan.e_status == '출제중' ? '#198754' : '#A5AAA3'};
                    width: 60px;"
 									<c:if test='${examPlan.e_status == "검토대기"}'>disabled</c:if>>
-									
+
 									출제</button>
 							</form>
 						</td>
