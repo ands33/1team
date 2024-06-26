@@ -46,11 +46,11 @@ h3 {
    align-items: center;
    justify-content: flex-end;
    margin-bottom: 20px;
-   height: 20px;
+   height: 15px;
 }
 
 .button-container input {
-   width: 300px;
+   width: 150px;
    margin-right: 10px;
    padding: 10px;
    box-sizing: border-box;
@@ -96,10 +96,18 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 }
 </script>
 </head>
+
 <body>
+
 <%@ include file="adminheader.jsp"%>
+<br>
+<br>
    <div class="button-container">
-      <input type="text" placeholder="날짜 입력: YYYY MM DD ~ YYYY MM DD">
+             <form action="${pageContext.request.contextPath}/updateMembersByPeriod.do" method="post">
+            <input type="date" name="startDate" placeholder="시작 날짜 입력: YYYY-MM-DD" style="width: 150px;">
+			<input type="date" name="endDate" placeholder="종료 날짜 입력: YYYY-MM-DD" style="width: 150px;">
+            <input type="submit" value="Update Members" style="width: 150px;">
+        </form>
       <form action="${pageContext.request.contextPath}/getMemberList.do"
          method="get">
          <button type="submit">위원 목록</button>
