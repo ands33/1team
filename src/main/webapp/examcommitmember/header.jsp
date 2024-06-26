@@ -7,9 +7,87 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="./img/favicon-32x32.png">
 <base href="${pageContext.request.contextPath}/">
-<title>í—¤ë”</title>
+<title>Çì´õ</title>
 <style>
-body, table, th, td, input, select, textarea, div, a, p, span, strong, b, i, ul, ol, li, button {
+.header-links a {
+	text-decoration: none;
+	color: #000;
+}
+
+/* ÇÑ±¹»ó´ãÇĞÈ¸ ±Û¾¾ È£¹ö :  */
+.header-links a:hover {
+	color: #D8402A;
+	text-decoration: none;
+}
+
+body {
+   background: #FFF;
+   height: 100vh;
+   font-size: 15px;
+   font-family: 'Roboto', sans-serif;
+}
+
+/* Áö¿ì¸é ¤¸µÊ */
+.navbar {
+   border-top: 1px solid #D8D9DA;
+   border-bottom: 1px solid #F5F5F5;
+   background: #FFF;
+   width: 100%;
+   height: 50px;
+   justify-content: center;
+   margin-left: 30px;
+   position: relative;
+   font-weight: bold;
+   font-size: 14px;
+}
+
+/* ³×ºñ°ÔÀÌ¼Ç ¸µÅ© - Áö¿ì¸é ¾ÈµÊ*/
+.navbar-nav .nav-link {
+   text-decoration: none;
+   color: black;
+   position: relative;
+   font-weight: bold;
+   font-size: 15px;
+}
+
+/* ÇÏ´Ü Å×µÎ¸® ÃÊ±â »óÅÂ - Áö¿ì¸é ¤¸µÊ */
+.navbar-nav .nav-link::after {
+   content: ''; /* ÄÜÅÙÃ÷ Ãß°¡ */
+   display: block; /* ºí·Ï ·¹º§ ¿ä¼Ò·Î º¯°æ */
+   width: 0; /* ³Êºñ 0À¸·Î ¼³Á¤ÇÏ¿© ÃÊ±â¿¡ ¼û±è */
+   height: 3px; /* ³ôÀÌ 2px */
+   background: #DB402E; /* ¹è°æ »ö»ó */
+   position: absolute;
+   left: 0; /* ¿ŞÂÊ 0 */
+   bottom: -9.5px; /* ¾Æ·¡ÂÊ -9.5px */
+   opacity: 0; /* ÃÊ±â¿¡ ¼û±è */
+}
+
+/* È£¹ö ½Ã Å×µÎ¸® È¿°ú */
+.navbar-nav .nav-link:hover::after {
+   width: 100%; /* È£¹ö ½Ã ³Êºñ 100%·Î È®Àå */
+   opacity: 1; /* È£¹ö ½Ã º¸ÀÌ°Ô ÇÔ */
+}
+
+.nav-item:hover {
+	color: #6B6D70;
+	opacity: 1; /* È£¹ö ½Ã º¸ÀÌ°Ô ÇÔ */
+}
+
+/* ¿ìÃø Çì´õ ¹ØÁÙ Á¦°Å */
+.header-links2 a {
+	text-decoration: none;
+	color: #000;
+}
+
+.header-links2 a:hover {
+	color: #D8402A;
+	text-decoration: none;
+}
+
+
+body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
+   i, ul, ol, li, button {
    font-family: "Montserrat", "Noto Sans KR", sans-serif;
    font-size: 15px;
    letter-spacing: -0.05em;
@@ -18,84 +96,13 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b, i, ul,
    color: #333;
 }
 
-/* header-linkì˜ ë°‘ì¤„ ì œê±° */
-.header-links a {
-    text-decoration: none;
-    color: black;
-}
-
-/* ë¡œê³  ìš°ì¸¡ ê¸€ì”¨ í˜¸ë²„ : í•œêµ­ìƒë‹´í•™íšŒ */
-.header-links a:hover {
-    color: #D8402A;
-}
-
-body {
-    background: #FFF;
-    height: 100vh;
-    font-size: 15px;
-}
-
-/* ì§€ìš°ë©´ ã…ˆë¨ */
-.navbar {
-    border-top: 1px solid #D8D9DA;
-    border-bottom: 1px solid #F5F5F5;
-    background: #FFF;
-    width: 100%;
-    height: 50px;
-    justify-content: center;
-    margin-left: 30px;
-    position: relative;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-/* ë„¤ë¹„ê²Œì´ì…˜ ë§í¬ - ì§€ìš°ë©´ ì•ˆë¨*/
-.navbar-nav .nav-link {
-    text-decoration: none;
-    color: black;
-    position: relative;
-    font-weight: bold;
-    font-size: 15px;
-}
-
-/* í•˜ë‹¨ í…Œë‘ë¦¬ ì´ˆê¸° ìƒíƒœ - ì§€ìš°ë©´ ã…ˆë¨ */
-.navbar-nav .nav-link::after {
-    content: ''; /* ì½˜í…ì¸  ì¶”ê°€ */
-    display: block; /* ë¸”ë¡ ë ˆë²¨ ìš”ì†Œë¡œ ë³€ê²½ */
-    width: 0; /* ë„ˆë¹„ 0ìœ¼ë¡œ ì„¤ì •í•˜ì—¬ ì´ˆê¸°ì— ìˆ¨ê¹€ */
-    height: 3px; /* ë†’ì´ 2px */
-    background: #DB402E; /* ë°°ê²½ ìƒ‰ìƒ */
-    position: absolute;
-    left: 0; /* ì™¼ìª½ 0 */
-    bottom: -9.5px; /* ì•„ë˜ìª½ -9.5px */
-    opacity: 0; /* ì´ˆê¸°ì— ìˆ¨ê¹€ */
-}
-
-/* í˜¸ë²„ ì‹œ í…Œë‘ë¦¬ íš¨ê³¼ */
-.navbar-nav .nav-link:hover::after {
-    width: 100%; /* í˜¸ë²„ ì‹œ ë„ˆë¹„ 100%ë¡œ í™•ì¥ */
-    opacity: 1; /* í˜¸ë²„ ì‹œ ë³´ì´ê²Œ í•¨ */
-}
-
-.nav-item:hover {
-    color: #6B6D70;
-   opacity: 1; /* í˜¸ë²„ ì‹œ ë³´ì´ê²Œ í•¨ */
-}
-
-#header {
-   width: 100%;
-   padding: 20px 10px;
-   background: #fff;
-   z-index: 1;
-}
-
-/* header-linkì˜ ë°‘ì¤„ ì œê±° */
+/* header-linkÀÇ ¹ØÁÙ Á¦°Å */
 .header-links a {
    text-decoration: none;
    color: #000;
 }
 
-/* ë¡œê³  ì˜¤ë¥¸ìª½ ìƒë‹´í•™íšŒ ì§‘ ì¸íŠ¸ë¡œ ê¸€ì”¨ í˜¸ë²„ */
+/* ·Î°í ¿À¸¥ÂÊ »ó´ãÇĞÈ¸ Áı ÀÎÆ®·Î ±Û¾¾ È£¹ö */
 .header-links a:hover {
    color: #D8402A;
 }
@@ -106,41 +113,7 @@ body {
    padding-top: 20px;
    margin-left: 100px;
 }
-
-.nav-item:hover {
-   color: #6B6D70;
-}
-
 </style>
-
-<script>
-
-function getExamDocSub() {
-    const form = document.getElementById('headerForm');
-    form.action = "../../../biz/getExamDocList.do";
-    form.submit();
-}
-
-function getExamPlanList() {
-    const form = document.getElementById('headerForm');
-    form.action = "../../../biz/getExamPlanList.do";
-    form.submit();
-}
-
-function getSubtrahendList() {
-    const form = document.getElementById('headerForm');
-    form.action = "../../../biz/getSubtrahendList.do";
-    form.submit();
-}
-
-function getBinaryClass() {
-    const form = document.getElementById('headerForm');
-    form.action = "../../../biz/getBinaryClass.do";
-    form.submit();
-}
-
-</script>
-
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -153,37 +126,62 @@ function getBinaryClass() {
                 </a>
             </div>
             <div class="header-links ml-3">
-                <a href="https://counselors.or.kr/"><span class="mx-2"></span> í•œêµ­ìƒë‹´í•™íšŒ</a> <span> Â· </span> 
+                <a href="https://counselors.or.kr/"><span class="mx-2"></span> ÇÑ±¹»ó´ãÇĞÈ¸</a> <span> ¡¤ </span> 
                 <a href="https://counselors.or.kr/">
-                    <img src="${pageContext.request.contextPath}/examcommitmember/img/kca_house.png" alt="KCA Logo">ì¸íŠ¸ë¡œ
+                    <img src="${pageContext.request.contextPath}/examcommitmember/img/kca_house.png" alt="KCA Logo">ÀÎÆ®·Î
                 </a>
             </div>
-            <div class="header-right ml-auto d-flex align-items-center">
-                <b>${member.member_name}</b> <span class="mx-1"></span> ë‹˜ <span class="mx-2"></span> 
+            <div class="header-links2 ml-auto d-flex align-items-center">
+                <b>${member.member_name}</b> <span class="mx-1"></span> ´Ô <span class="mx-2"></span> 
                 ${member.subject_name} <span class="mx-2"></span> 
-                <a href="#">ë¡œê·¸ì•„ì›ƒ</a> <span class="mx-2"></span>
-                <a href="#">ë§ˆì´í˜ì´ì§€</a>
+                <a href="#">·Î±×¾Æ¿ô</a> <span class="mx-2"></span>
+                <a href="#">¸¶ÀÌÆäÀÌÁö</a>
             </div>
         </div>
     </form>
     <br>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 justify-content-around w-50"><span class="mx-1"></span>
-                <li class="nav-item"><a class="nav-link" href="../#"><span class="mx-3.5"></span>ì¶œì œ
-                ê³„íšì„œ</a></li>
-                	<li class="nav-item"><a class="nav-link" href="javascript:getExamDocSub();">ì¶œì œ ê³„íšì„œ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="javascript:getExamPlanList();">ì¶œì œ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="javascript:getSubtrahendList();">ê²€í† </a></li>
-                    <li class="nav-item"><a class="nav-link" href="javascript:getBinaryClass();">ì¶œì œ ì´ì›ë¶„ë¥˜í‘œ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../#">ì„ ì œ ì´ì›ë¶„ë¥˜í‘œ</a></li>
-                </ul>
-            </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="justify-content: flex-start;">
+    <span class="mx-1"></span>
+    <div class="container-fluid" style="padding-left: 0;">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <span class="mx-4"></span>
+            <ul class="navbar-nav me-auto mb-2" style="justify-content: flex-start; width: auto; margin-left: 1rem;">
+                <li class="nav-item" style="margin-right: 2rem;"><a class="nav-link" href="../#">ÃâÁ¦ °èÈ¹¼­</a></li>
+                <li class="nav-item" style="margin-right: 2rem;"><a class="nav-link" href="javascript:getExamPlanList();">ÃâÁ¦</a></li>
+                <li class="nav-item" style="margin-right: 2rem;"><a class="nav-link" href="javascript:getSubtrahendList();">°ËÅä</a></li>
+                <li class="nav-item" style="margin-right: 2rem;"><a class="nav-link" href="javascript:getBinaryClass();">ÃâÁ¦ ÀÌ¿øºĞ·ùÇ¥</a></li>
+                <li class="nav-item" style="margin-right: 2rem;"><a class="nav-link" href="../#">¼±Á¦ ÀÌ¿øºĞ·ùÇ¥</a></li>
+            </ul>
         </div>
-    </nav>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </div>
+</nav>
+    <script>
+    function getExamDocSub() {
+        const form = document.getElementById('headerForm');
+        form.action = "../../../biz/getExamDocList.do";
+        form.submit();
+    }
+
+    function getExamPlanList() {
+        const form = document.getElementById('headerForm');
+        form.action = "../../../biz/getExamPlanList.do";
+        form.submit();
+    }
+
+    function getSubtrahendList() {
+        const form = document.getElementById('headerForm');
+        form.action = "../../../biz/getSubtrahendList.do";
+        form.submit();
+    }
+
+    function getBinaryClass() {
+        const form = document.getElementById('headerForm');
+        form.action = "../../../biz/getBinaryClass.do";
+        form.submit();
+    }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

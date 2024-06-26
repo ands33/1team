@@ -9,102 +9,96 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>헤더</title>
 <style>
-/* header-link의 밑줄 제거 */
-.header-links a {
-   text-decoration: none;
-   color: black;
-}
-
-/* 로고 우측 글씨 호버 : 한국상담학회 */
-.header-links a:hover {
-   color: #D8402A;
+/* 공통 스타일 */
+body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
+i, ul, ol, li, button {
+    font-family: "Montserrat", "Noto Sans KR", sans-serif;
+    font-size: 15px;
+    letter-spacing: -0.05em;
+    line-height: 1.6em;
+    color: #333;
+    list-style: none;
 }
 
 body {
-   background: #FFF;
-   height: 100vh;
-   font-size: 15px;
-   font-family: 'Roboto', sans-serif;
+    background: #FFF;
+    height: 100vh;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
 }
 
-/* 지우면 ㅈ됨 */
+/* 링크 스타일 */
+.header-links a,
+.header-links2 a {
+    text-decoration: none;
+    color: #000;
+}
+
+.header-links a:hover,
+.header-links2 a:hover {
+    color: #D8402A;
+    text-decoration: none;
+}
+
+/* 네비게이션 바 */
 .navbar {
-   border-top: 1px solid #D8D9DA;
-   border-bottom: 1px solid #F5F5F5;
-   background: #FFF;
-   width: 100%;
-   height: 50px;
-   justify-content: center;
-   margin-left: 30px;
-   position: relative;
-   font-weight: bold;
-   font-size: 14px;
+    border-top: 1px solid #D8D9DA;
+    border-bottom: 1px solid #F5F5F5;
+    background: #FFF;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    margin-left: 30px;
+    position: relative;
+    font-weight: bold;
+    font-size: 14px;
 }
 
-/* 네비게이션 링크 - 지우면 안됨*/
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0px;
+    list-style: none;
+}
+
 .navbar-nav .nav-link {
-   text-decoration: none;
-   color: black;
-   position: relative;
-   font-weight: bold;
-   font-size: 15px;
+    text-decoration: none;
+    color: black;
+    position: relative;
+    font-weight: bold;
+    font-size: 15px;
 }
 
-/* 하단 테두리 초기 상태 - 지우면 ㅈ됨 */
 .navbar-nav .nav-link::after {
-   content: ''; /* 콘텐츠 추가 */
-   display: block; /* 블록 레벨 요소로 변경 */
-   width: 0; /* 너비 0으로 설정하여 초기에 숨김 */
-   height: 3px; /* 높이 2px */
-   background: #DB402E; /* 배경 색상 */
-   position: absolute;
-   left: 0; /* 왼쪽 0 */
-   bottom: -9.5px; /* 아래쪽 -9.5px */
-   opacity: 0; /* 초기에 숨김 */
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background: #DB402E;
+    position: absolute;
+    left: 0;
+    bottom: -9.5px;
+    opacity: 0;
 }
 
-/* 호버 시 테두리 효과 */
 .navbar-nav .nav-link:hover::after {
-   width: 100%; /* 호버 시 너비 100%로 확장 */
-   opacity: 1; /* 호버 시 보이게 함 */
+    width: 100%;
+    opacity: 1;
 }
 
 .nav-item:hover {
-   color: #6B6D70;
+    color: #6B6D70;
 }
 
-
-body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
-   i, ul, ol, li, button {
-   font-family: "Montserrat", "Noto Sans KR", sans-serif;
-   font-size: 15px;
-   letter-spacing: -0.05em;
-   line-height: 1.6em;
-   list-style: none;
-   color: #333;
-}
-
-/* header-link의 밑줄 제거 */
-.header-links a {
-   text-decoration: none;
-   color: #000;
-}
-
-/* 로고 오른쪽 상담학회 집 인트로 글씨 호버 */
-.header-links a:hover {
-   color: #D8402A;
-}
-
+/* 로고 */
 .header-left img {
-   width: 250px;
-   height: auto;
-   padding-top: 20px;
-   margin-left: 100px;
+    width: 250px;
+    height: auto;
+    padding-top: 20px;
+    margin-left: 100px;
 }
 
-.nav-item:hover {
-   color: #6B6D70;
-}
 </style>
 <script>
    function getExamPlanList() {
