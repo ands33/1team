@@ -18,12 +18,12 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
 }
 
 body {
-   font-family: Arial, sans-serif;
    padding: 20px;
 }
 
-h2 {
-   text-align: center;
+h3 {
+   text-align: left;
+   margin-left: 20px;
 }
 
 .header-table, .main-table {
@@ -46,6 +46,7 @@ h2 {
    align-items: center;
    justify-content: flex-end;
    margin-bottom: 20px;
+   height: 20px;
 }
 
 .button-container input {
@@ -57,7 +58,7 @@ h2 {
 
 .button-container button, .button-container form {
    display: inline-block;
-   margin-left: 10px;
+   margin-left: 5px;
 }
 
 .select-container {
@@ -66,16 +67,6 @@ h2 {
    align-items: center;
 }
 
-select {
-   width: 190px;
-   height: 100px;
-   margin-bottom: 10px;
-}
-
-button {
-   width: 60px;
-   height: 30px;
-}
 </style>
 <script>
 
@@ -96,8 +87,9 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 </script>
 </head>
 <body>
-<%@ include file="header.jsp"%>
-   <h2>출제 문항 카드</h2>
+<%@ include file="adminheader.jsp"%>
+<br>
+<h3><b><u>출제 문항카드</u></b></h3>
    <div class="button-container">
       <input type="text" placeholder="출제기간: YYYY MM DD ~ YYYY MM DD">
       <form action="${pageContext.request.contextPath}/getMemberList.do"
