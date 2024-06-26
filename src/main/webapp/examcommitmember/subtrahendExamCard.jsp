@@ -10,7 +10,7 @@
 <head>
 <meta charset="EUC-KR">
 <link rel="icon" href="./img/favicon-16x16.png">
-<title>문항 카드 - 1급 고급상담이론과 실제</title>
+<title>문항카드 - 1급 고급상담이론과 실제</title>
 <style>
 bn {
 	border: none; /* 테두리 제거 */
@@ -19,7 +19,7 @@ bn {
 
 body {
 	font-family: Arial, sans-serif;
-}
+
 
 .container {
 	width: 1000px;
