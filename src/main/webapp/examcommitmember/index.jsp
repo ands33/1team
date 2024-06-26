@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
+<link rel="icon" href="./img/favicon-16x16.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>메인화면</title>
 <style>
@@ -22,6 +23,18 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
     line-height: 1.6em;
     list-style: none;
     color: #333;
+}
+
+.navbar-nav .nav-link::after {
+    content: ''; /* 콘텐츠 추가 */
+    display: block; /* 블록 레벨 요소로 변경 */
+    width: 0; /* 너비 0으로 설정하여 초기에 숨김 */
+    height: 3px; /* 높이 2px */
+    background: #DB402E; /* 배경 색상 */
+    position: absolute;
+    left: 0; /* 왼쪽 0 */
+    bottom: -9.5px; /* 아래쪽 -9.5px */
+    opacity: 0; /* 초기에 숨김 */
 }
 
 /* header-link의 밑줄 제거 */
@@ -46,7 +59,7 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
     color: #6B6D70;
 }
 
-/* Flexbox container for centering */
+/* 지우면 안됨 */
 .flex-container {
     display: flex;
     justify-content: center;
@@ -102,7 +115,7 @@ function getBinaryClass() {
         </div>
         <div class="header-links ml-auto d-flex align-items-center">
             <div>
-                <a>${member.member_name}님 안녕하세요.</a>
+                <a><b>${member.member_name}</b>님<span class="mx-1"></span> </a>
             </div>
             <span class="mx-2"></span> <a href="#">로그아웃</a> <span class="mx-2"></span>
             <a href="#">마이페이지</a>

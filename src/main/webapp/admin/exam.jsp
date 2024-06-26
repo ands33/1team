@@ -319,7 +319,7 @@ th, td {
 		crossorigin="anonymous">
 </head> --%>
 <body>
-	<%@ include file="header.jsp"%>
+		<%@ include file="adminheader.jsp"%>
 	<div class="container mt-4">
 		<h2>
 			<b><u>출제에 필요한 문제</b></u>

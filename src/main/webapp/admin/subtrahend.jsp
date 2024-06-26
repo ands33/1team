@@ -119,7 +119,7 @@ body {
 </style>
 </head>
 <body>
-	<%@ include file="header.jsp"%>
+	<%@ include file="adminheader.jsp"%>
 	<div class="container">
 		<div class="header"></div>
 		<h2>

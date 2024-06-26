@@ -5,6 +5,8 @@
 <link rel="stylesheet" href="login.css">
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="./img/favicon-32x32.png">
+
 <title>Login</title>
 <style>
 [class*="entypo="]:before {
@@ -14,8 +16,8 @@
 *,
 *:before,
 *:after {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+    moz-box-sizing: border-box;
+    webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -102,13 +104,12 @@ button.submit:hover {
     width: 280px;
     height: auto;
 }
-
 </style>
 </head>
 <body>
     <div class="login-container">
         <div class="logo-container">
-           <img src="./img/kca_logo_short.jpg">
+           <img src="./img/kcalogo.png">
         </div>
         <form action="${pageContext.request.contextPath}/login.do" method="post">
             <h2><span class="entypo-login"><i class="fa fa-sign-in"></i></span> Login</h2>

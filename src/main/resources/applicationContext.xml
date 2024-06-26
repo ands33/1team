@@ -55,16 +55,4 @@
    <bean id="exam_subjectDAO"
       class="kca.cbt.exam_subjects.Exam_subjectDAO" />
       
-      <!-- CriteriaService와 CriteriaDAO 빈 설정 -->
-   <bean id="criteriaService" class="kca.cbt.criteria.CriteriaServiceImpl">
-      <property name="criteriaDAO" ref="criteriaDAO" />
-   </bean>
-   <bean id="criteriaDAO" class="kca.cbt.criteria.CriteriaDAO" />
-
-   <!-- CriteriaController 빈 설정 -->
-   <bean id="criteriaController" class="kca.cbt.view.criteria.CriteriaController">
-      <property name="criteriaService" ref="criteriaService" />
-   </bean>
-
-
 </beans>
