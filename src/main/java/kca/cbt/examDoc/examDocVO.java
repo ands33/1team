@@ -13,8 +13,7 @@ public class examDocVO {
 	private String member_type;
 	private int idx;
 	private String categoryNumbers;
-	private int rowspanC1;
-	private int rowspanC2;
+	private String subject_code;
 
 	public int getNum() {
 		return num;
@@ -104,20 +103,12 @@ public class examDocVO {
 		this.idx = idx;
 	}
 
-	public int getRowspanC1() {
-		return rowspanC1;
+	public String getSubject_code() {
+		return subject_code;
 	}
 
-	public void setRowspanC1(int rowspanC1) {
-		this.rowspanC1 = rowspanC1;
-	}
-
-	public int getRowspanC2() {
-		return rowspanC2;
-	}
-
-	public void setRowspanC2(int rowspanC2) {
-		this.rowspanC2 = rowspanC2;
+	public void setSubject_code(String subject_code) {
+		this.subject_code = subject_code;
 	}
 
 	@Override

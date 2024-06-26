@@ -112,6 +112,13 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
 }
 </style>
 <script>
+
+function getExamDocSub() {
+    const form = document.getElementById('headerForm');
+    form.action = "../../../biz/getExamDocList.do";
+    form.submit();
+}
+
 function getExamPlanList() {
     const form = document.getElementById('headerForm');
     form.action = "../../../biz/getExamPlanList.do";
@@ -173,7 +180,7 @@ function getBinaryClass() {
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 justify-content-around w-50">
-                    <li class="nav-item"><a class="nav-link" href="../#">출제 계획서</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:getExamDocSub();">출제 계획서</a></li>
                     <li class="nav-item"><a class="nav-link" href="javascript:getExamPlanList();">출제</a></li>
                     <li class="nav-item"><a class="nav-link" href="javascript:getSubtrahendList();">검토</a></li>
                     <!-- 아래부터 수정한부분.. 자바스크립트까지 -->

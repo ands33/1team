@@ -67,6 +67,7 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
 }
 </style>
 <script>
+
 function getExamPlanList() {
     const form = document.getElementById('indexForm');
     form.action = "../../../biz/getExamPlanList.do";
