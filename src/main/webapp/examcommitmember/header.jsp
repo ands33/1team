@@ -10,12 +10,12 @@
 <title>헤더</title>
 <style>
 body, table, th, td, input, select, textarea, div, a, p, span, strong, b, i, ul, ol, li, button {
-	font-family: "Montserrat", "Noto Sans KR", sans-serif;
-	font-size: 15px;
-	letter-spacing: -0.05em;
-	line-height: 1.6em;
-	list-style: none;
-	color: #333;
+   font-family: "Montserrat", "Noto Sans KR", sans-serif;
+   font-size: 15px;
+   letter-spacing: -0.05em;
+   line-height: 1.6em;
+   list-style: none;
+   color: #333;
 }
 
 /* header-link의 밑줄 제거 */
@@ -79,38 +79,40 @@ body {
 
 .nav-item:hover {
     color: #6B6D70;
-	opacity: 1; /* 호버 시 보이게 함 */
+   opacity: 1; /* 호버 시 보이게 함 */
 }
 
 #header {
-	width: 100%;
-	padding: 20px 10px;
-	background: #fff;
-	z-index: 1;
+   width: 100%;
+   padding: 20px 10px;
+   background: #fff;
+   z-index: 1;
 }
 
 /* header-link의 밑줄 제거 */
 .header-links a {
-	text-decoration: none;
-	color: #000;
+   text-decoration: none;
+   color: #000;
 }
 
 /* 로고 오른쪽 상담학회 집 인트로 글씨 호버 */
 .header-links a:hover {
-	color: #D8402A;
+   color: #D8402A;
 }
 
 .header-left img {
-	width: 250px;
-	height: auto;
-	padding-top: 20px;
-	margin-left: 100px;
+   width: 250px;
+   height: auto;
+   padding-top: 20px;
+   margin-left: 100px;
 }
 
 .nav-item:hover {
    color: #6B6D70;
 }
+
 </style>
+
 <script>
 
 function getExamDocSub() {
@@ -137,7 +139,8 @@ function getBinaryClass() {
     form.submit();
 }
 
-</style>
+</script>
+
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -168,7 +171,9 @@ function getBinaryClass() {
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 justify-content-around w-50"><span class="mx-1"></span>
-                    <li class="nav-item"><a class="nav-link" href="javascript:getExamDocSub();">출제 계획서</a></li>
+                <li class="nav-item"><a class="nav-link" href="../#"><span class="mx-3.5"></span>출제
+                계획서</a></li>
+                	<li class="nav-item"><a class="nav-link" href="javascript:getExamDocSub();">출제 계획서</a></li>
                     <li class="nav-item"><a class="nav-link" href="javascript:getExamPlanList();">출제</a></li>
                     <li class="nav-item"><a class="nav-link" href="javascript:getSubtrahendList();">검토</a></li>
                     <li class="nav-item"><a class="nav-link" href="javascript:getBinaryClass();">출제 이원분류표</a></li>
@@ -177,25 +182,6 @@ function getBinaryClass() {
             </div>
         </div>
     </nav>
-<script>
-	function getExamPlanList() {
-		const form = document.getElementById('headerForm');
-		form.action = "../../../biz/getExamPlanList.do";
-		form.submit();
-	}
-
-	function getSubtrahendList() {
-		const form = document.getElementById('headerForm');
-		form.action = "../../../biz/getSubtrahendList.do";
-		form.submit();
-	}
-
-	function getBinaryClass() {
-		const form = document.getElementById('headerForm');
-		form.action = "../../../biz/getBinaryClass.do";
-		form.submit();
-	}
-</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
