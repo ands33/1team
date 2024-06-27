@@ -128,16 +128,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
    <table class="header-table">
       <tr>
-         <th colspan="5">회원 정보</th>
-         <th colspan="3">로그인 정보</th>
-         <th>기타</th>
+         <th colspan="5">출제과목</th>
+         <th colspan="4">출제위원 정보</th>
       </tr>
       <tr>
-         <th>학년</th>
-         <th>반</th>
-         <th>번호</th>
-         <th>이름</th>
-         <th>성별</th>
+         <th>급수</th>
+         <th>교시</th>
+         <th>과목명</th>
+         <th>과목삭제</th>
+         <th>과목코드</th>
          <th>ID</th>
          <th>PW</th>
          <th>회원 타입</th>
@@ -147,8 +146,8 @@ document.addEventListener("DOMContentLoaded", function() {
          <c:choose>
             <c:when test="${status.index == 0}">
                <tr>
-                  <td rowspan="12">1학년</td>
-                  <td rowspan="6">1반<br></td>
+                  <td rowspan="12">1급</td>
+                  <td rowspan="6">1교시<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
                      <td>[없음]</td>
@@ -257,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function() {
             </c:when>
             <c:when test="${status.index == 6}">
                <tr>
-                  <td rowspan="6">2학년<br></td>
+                  <td rowspan="6">2교시<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
                      <td>[없음]</td>
@@ -366,8 +365,8 @@ document.addEventListener("DOMContentLoaded", function() {
             </c:when>
             <c:when test="${status.index == 12}">
                <tr>
-                  <td rowspan="14">2학년</td>
-                  <td rowspan="6">1반<br></td>
+                  <td rowspan="14">2급</td>
+                  <td rowspan="6">1교시<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
                      <td>[없음]</td>
@@ -476,7 +475,7 @@ document.addEventListener("DOMContentLoaded", function() {
             </c:when>
             <c:when test="${status.index == 18}">
                <tr>
-                  <td rowspan="8">2학년<br></td>
+                  <td rowspan="8">2교시<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
                      <td>[없음]</td>

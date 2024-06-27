@@ -41,9 +41,10 @@ button {
 <script>
 function submitFormAndClose() {
     document.getElementById("memberForm").submit();
-    
-    window.opener.location.reload(); // ¸ÞÀÎ Ã¢ »õ·Î°íÄ§
-    window.close(); // ÆË¾÷ Ã¢ ´Ý±â
+    setTimeout(function() {
+        window.opener.location.reload(); // ¸ÞÀÎ Ã¢ »õ·Î°íÄ§
+        window.close(); // ÆË¾÷ Ã¢ ´Ý±â
+    }, 1000); // 1ÃÊ ÈÄ Ã¢ ´Ý±â
 }
 </script>
 </head>
