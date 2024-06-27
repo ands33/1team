@@ -49,6 +49,7 @@ public class MemberDAO {
 				member.setMember_name(rs.getString("MEMBER_NAME"));
 				member.setMember_type(rs.getString("MEMBER_TYPE"));
 				member.setSubject_code(rs.getInt("SUBJECT_CODE"));
+				member.setAff(rs.getString("AFF"));
 			}
 			stmt1 = conn.prepareStatement(SUBJECT_NAME_GET);
 			stmt1.setInt(1, member.getSubject_code());

@@ -10,6 +10,16 @@ public class MemberVO {
 	private String subject_name;
 	private String memberA;
 	private String memberB;
+	private String aff;
+	
+
+	public String getAff() {
+		return aff;
+	}
+
+	public void setAff(String aff) {
+		this.aff = aff;
+	}
 
 	public String getMember_id() {
 		return member_id;

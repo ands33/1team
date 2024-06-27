@@ -31,5 +31,19 @@ public class GetExamPlanListController {
 		model.addAttribute("memberAB", memberDAO.getMemberAB(mvo));
 		return "examcommitmember/binaryClass.jsp";
 	}
+	
+	@RequestMapping("/getPreBinaryClass.do")
+	public String getPreBinatyClass(ExamPlanVO vo, ExamPlanDAO examPlanDAO, MemberVO mvo, MemberDAO memberDAO, Model model) {
+		model.addAttribute("preBinaryClassList", examPlanDAO.getPreBinaryClass(vo));
+		model.addAttribute("memberAB", memberDAO.getMemberAB(mvo));
+		return "examcommitmember/preBinaryClass.jsp";
+	}
+	
+	
+	@RequestMapping("/getInsertForm.do")
+	public String getInsertForm(ExamPlanVO vo, ExamPlanDAO examPlanDAO, MemberVO mvo, MemberDAO memberDAO, Model model) {
+		model.addAttribute("getInsertExamList", examPlanDAO.getInsertExamList(vo));
+		return "examcommitmember/getInsertForm.jsp";
+	}
 
 }
