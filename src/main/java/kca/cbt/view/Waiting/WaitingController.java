@@ -23,7 +23,7 @@ public class WaitingController {
         return "admin/binaryClass.jsp";
     }
     
-	@RequestMapping("/getWaitingExamPlanList.do")
+	@RequestMapping("/getWaitingExamPlanList.do")/* O */
 	public String getExamPlanList(@RequestParam("member_id") String memberId, ExamPlanVO vo, ExamPlanDAO examPlanDAO, Model model) {
 		vo.setMember_id(memberId);
 		model.addAttribute("examPlanList", examPlanDAO.getExamPlanList(vo));
@@ -31,12 +31,23 @@ public class WaitingController {
 		return "admin/adminexam.jsp";
 	}
     
-	// 문항검토
-	@RequestMapping("/getWaitingSubtrahendList.do") /* O */
-	public String getWaitingSubtrahendList(@RequestParam("member_id") String memberId, ExamPlanVO vo, ExamPlanDAO examPlanDAO, Model model) {
-    	vo.setMember_id(memberId);
-    	model.addAttribute("subtrahendList", examPlanDAO.getSubtrahendList(vo));
-		return "admin/subtrahend.jsp";
+	/*
+	 * // 문항검토
+	 * 
+	 * @RequestMapping("/getWaitingSubtrahendList.do") public String
+	 * getWaitingSubtrahendList(@RequestParam("member_id") String memberId,
+	 * ExamPlanVO vo, ExamPlanDAO examPlanDAO, Model model) {
+	 * vo.setMember_id(memberId); model.addAttribute("subtrahendList",
+	 * examPlanDAO.getSubtrahendList(vo)); return "admin/subtrahend.jsp"; }
+	 */
+	
+	// 선제
+	@RequestMapping("/getWaitingPreBinaryClass.do")
+	public String getPreBinatyClass(@RequestParam("member_id") String memberId,ExamPlanVO vo, ExamPlanDAO examPlanDAO, MemberVO mvo, MemberDAO memberDAO, Model model) {
+		vo.setMember_id(memberId);
+		model.addAttribute("preBinaryClassList", examPlanDAO.getPreBinaryClass(vo));
+		model.addAttribute("memberAB", memberDAO.getMemberAB(mvo));
+		return "admin/preBinaryClass.jsp";
 	}
     
 }
