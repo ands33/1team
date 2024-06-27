@@ -155,7 +155,6 @@ th, td {
 		var authorYear = document.getElementsByName("authorYear")[0].value;
 		var page = document.getElementsByName("page")[0].value;
 		var createDate = document.getElementsByName("createDate")[0].value;
-		var aff = document.getElementsByName("aff")[0].value;
 
 		if (exam_type === "") {
 			alert("문제타입을 체크하세요.");
@@ -383,9 +382,11 @@ th, td {
 				<div class="button-container">
 					<input type="hidden" name="num" value="${test.num}"> <input
 						type="hidden" name="member_id" value="${member.member_id}">
-					<input type="button" value="수정하기 (updateTest.do)"
+						<input
+						type="hidden" name="aff" value="${member.aff}">
+					<input type="button" value="수정하기"
 						onclick="validateAndSubmitUpdate()"> <input type="button"
-						value="전송하기 (sendTest.do)" onclick="validateAndSubmitSend()">
+						value="전송하기" onclick="validateAndSubmitSend()">
 				</div>
 			</form>
 		</div>
