@@ -32,6 +32,17 @@ public class TestVO {
 	private String reviewer;
 	private String review;
 	private String exam_type;
+	private int t_num;
+	
+	
+
+	public int getT_num() {
+		return t_num;
+	}
+
+	public void setT_num(int t_num) {
+		this.t_num = t_num;
+	}
 
 	public int getNum() {
 		return num;

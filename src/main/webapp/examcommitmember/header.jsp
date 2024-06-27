@@ -150,7 +150,7 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
                 <li class="nav-item" style="margin-right: 2rem;"><a class="nav-link" href="javascript:getExamPlanList();">출제</a></li>
                 <li class="nav-item" style="margin-right: 2rem;"><a class="nav-link" href="javascript:getSubtrahendList();">검토</a></li>
                 <li class="nav-item" style="margin-right: 2rem;"><a class="nav-link" href="javascript:getBinaryClass();">출제 이원분류표</a></li>
-                <li class="nav-item" style="margin-right: 2rem;"><a class="nav-link" href="../#">선제 이원분류표</a></li>
+                <li class="nav-item" style="margin-right: 2rem;"><a class="nav-link" href="javascript:getPreBinaryClass();">선제 이원분류표</a></li>
             </ul>
         </div>
     </div>
@@ -177,6 +177,12 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
     function getBinaryClass() {
         const form = document.getElementById('headerForm');
         form.action = "../../../biz/getBinaryClass.do";
+        form.submit();
+    }
+    
+    function getPreBinaryClass() {
+        const form = document.getElementById('headerForm');
+        form.action = "../../../biz/getPreBinaryClass.do";
         form.submit();
     }
     </script>

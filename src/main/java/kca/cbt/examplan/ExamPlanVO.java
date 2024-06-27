@@ -19,6 +19,33 @@ public class ExamPlanVO {
 	private String reference;
 	private String submember_name;
 	private String submember_id;
+	private String subject_code;
+	private int t_num;
+	private String question;
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	public int getT_num() {
+		return t_num;
+	}
+
+	public void setT_num(int t_num) {
+		this.t_num = t_num;
+	}
+
+	public String getSubject_code() {
+		return subject_code;
+	}
+
+	public void setSubject_code(String subject_code) {
+		this.subject_code = subject_code;
+	}
 
 	public int getNum() {
 		return num;
@@ -164,7 +191,6 @@ public class ExamPlanVO {
 		this.submember_id = submember_id;
 	}
 
-
 	// . 앞의 숫자만 추출하여 "1-2" 형식의 문자열을 반환하는 메서드
 	public String getCategoryNumbers() {
 		return extractNumberBeforeDot(category1) + "-" + extractNumberBeforeDot(category2) + "-"
@@ -181,7 +207,23 @@ public class ExamPlanVO {
 		}
 		return ""; // .가 없는 경우 빈 문자열 반환
 	}
+	
+	public String getShortQuestion() {
+	    if (question != null && question.length() > 20) {
+	        return question.substring(0, 20);
+	    }
+	    return question;
+	}
 
+	public String getSubReference() {
+		if (reference != null) {
+			return reference.replace("\n", "<br>");
+		}
+		return reference;
+	}
+	
+	
+	
 	@Override
 	public String toString() {
 		return "ExamPlanVO [num=" + num + ", diff=" + diff + ", member_name=" + member_name + ", member_id=" + member_id

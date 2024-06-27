@@ -53,4 +53,11 @@ public class GetTestController {
 		examPlanDAO.updateStatus(evo);
 		return "getExamPlanList.do";
 	}
+	
+	@RequestMapping("/insertData.do")
+	public String insertData(TestVO vo, TestDAO testDAO) {
+		testDAO.insertT_num(vo);
+		return "getPreBinaryClass.do";
+	}
+
 }
