@@ -7,6 +7,7 @@
 <meta charset="EUC-KR">
 <title>회원 정보 목록</title>
 <style>
+/* 기존 스타일 생략 */
 body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
    i, ul, ol, li, button {
    font-family: "Montserrat", "Noto Sans KR", sans-serif;
@@ -78,22 +79,34 @@ button {
    height: 30px;
 }
 
+.error-message {
+   color: red;
+   font-weight: bold;
+   margin-top: 10px;
+}
+
 </style>
 <script>
-
 function openMemberPopup(memberId, statusIndex) {
-    var url = 'admin/popup.jsp?memberId=' + memberId + '&statusIndex=' + statusIndex;
+    var url = '${pageContext.request.contextPath}/admin/popup.jsp?memberId=' + memberId + '&statusIndex=' + statusIndex;
     var name = 'memberPopup';
-    var specs = 'width=200,height=160,scrollbars=yes';
+    var specs = 'width=600,height=400,scrollbars=yes';
     window.open(url, name, specs);
 }
 
-function setSubjects(rowIdx, subjects, subjectCodes) {
-    for (var i = 0; i < subjects.length; i++) {
-        document.getElementById("subjectName" + rowIdx + "_" + i).innerText = subjects[i] || '';
-        document.getElementById("subjectCode" + rowIdx + "_" + i).innerText = subjectCodes[i] || '';
-    }
-}
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("updateForm").addEventListener("submit", function(event) {
+        var startDate = document.getElementById("startDate").value;
+        var endDate = document.getElementById("endDate").value;
+
+        if (new Date(startDate) > new Date(endDate)) {
+            event.preventDefault();
+            document.getElementById("error-message").innerText = "시작 날짜는 종료 날짜보다 클 수 없습니다.";
+        } else {
+            document.getElementById("error-message").innerText = "";
+        }
+    });
+});
 </script>
 </head>
 
@@ -102,14 +115,14 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 <%@ include file="adminheader.jsp"%>
 <br>
 <br>
-   <div class="button-container">
-             <form action="${pageContext.request.contextPath}/updateMembersByPeriod.do" method="post">
-            <input type="date" name="startDate" placeholder="시작 날짜 입력: YYYY-MM-DD" style="width: 150px;">
-			<input type="date" name="endDate" placeholder="종료 날짜 입력: YYYY-MM-DD" style="width: 150px;">
+    <div class="button-container">
+        <form id="updateForm" action="${pageContext.request.contextPath}/updateMembersByPeriod.do" method="post">
+            <input type="date" id="startDate" name="startDate" placeholder="시작 날짜 입력: YYYY-MM-DD" style="width: 150px;">
+            <input type="date" id="endDate" name="endDate" placeholder="종료 날짜 입력: YYYY-MM-DD" style="width: 150px;">
             <input type="submit" value="Update Members" style="width: 150px;">
         </form>
-      <form action="${pageContext.request.contextPath}/getMemberList.do"
-         method="get">
+        <div id="error-message" class="error-message"></div>
+      <form action="${pageContext.request.contextPath}/getMemberList.do" method="get">
          <button type="submit">위원 목록</button>
       </form>
       <button type="button" onclick="location.href='${pageContext.request.contextPath}/exportToExcel.do'">엑셀 다운</button>
@@ -119,28 +132,28 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
       <tr>
          <th colspan="5">회원 정보</th>
          <th colspan="3">로그인 정보</th>
-         <th>관리</th>
+         <th>비고</th>
       </tr>
       <tr>
-         <th>급수</th>
-         <th>과목</th>
-         <th>과목명</th>
-         <th>과목삭제</th>
-         <th>과목코드</th>
+         <th>구분</th>
+         <th>부서</th>
+         <th>부서명</th>
+         <th>부서코드</th>
+         <th>부서직위</th>
          <th>ID</th>
          <th>PW</th>
-         <th>유형</th>
+         <th>타입</th>
          <th>이름</th>
       </tr>
       <c:forEach var="member" items="${memberList}" varStatus="status">
          <c:choose>
             <c:when test="${status.index == 0}">
                <tr>
-                  <td rowspan="12">1급</td>
-                  <td rowspan="6">1교시<br></td>
+                  <td rowspan="12">1구분</td>
+                  <td rowspan="6">1부서<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -163,7 +176,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -186,7 +199,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -209,7 +222,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -232,7 +245,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -255,7 +268,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -276,11 +289,11 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
             </c:when>
             <c:when test="${status.index == 6}">
                <tr>
-                  <td rowspan="6">2급<br>
+                  <td rowspan="6">2구분<br>
                   </td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -303,7 +316,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -326,7 +339,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -349,7 +362,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -372,7 +385,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -395,7 +408,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -416,12 +429,12 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
             </c:when>
             <c:when test="${status.index == 12}">
                <tr>
-                  <td rowspan="14">2급</td>
-                  <td rowspan="6">1교시<br>
+                  <td rowspan="14">2구분</td>
+                  <td rowspan="6">1부서<br>
                   </td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -444,7 +457,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -467,7 +480,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -490,7 +503,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -513,7 +526,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -536,7 +549,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -557,11 +570,11 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
             </c:when>
             <c:when test="${status.index == 18}">
                <tr>
-                  <td rowspan="8">2급<br>
+                  <td rowspan="8">2구분<br>
                   </td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -584,7 +597,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -607,7 +620,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -630,7 +643,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -653,7 +666,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -676,7 +689,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -699,7 +712,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -722,7 +735,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[삭제]</td>
+                     <td>[없음]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
