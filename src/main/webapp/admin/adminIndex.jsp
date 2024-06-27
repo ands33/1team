@@ -5,8 +5,9 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>ÌöåÏõê Ï†ïÎ≥¥ Î™©Î°ù</title>
+<title>»∏ø¯ ¡§∫∏ ∏Ò∑œ</title>
 <style>
+/* ±‚¡∏ Ω∫≈∏¿œ ª˝∑´ */
 body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
    i, ul, ol, li, button {
    font-family: "Montserrat", "Noto Sans KR", sans-serif;
@@ -78,22 +79,34 @@ button {
    height: 30px;
 }
 
+.error-message {
+   color: red;
+   font-weight: bold;
+   margin-top: 10px;
+}
+
 </style>
 <script>
-
 function openMemberPopup(memberId, statusIndex) {
-    var url = 'admin/popup.jsp?memberId=' + memberId + '&statusIndex=' + statusIndex;
+    var url = '${pageContext.request.contextPath}/admin/popup.jsp?memberId=' + memberId + '&statusIndex=' + statusIndex;
     var name = 'memberPopup';
-    var specs = 'width=200,height=160,scrollbars=yes';
+    var specs = 'width=600,height=400,scrollbars=yes';
     window.open(url, name, specs);
 }
 
-function setSubjects(rowIdx, subjects, subjectCodes) {
-    for (var i = 0; i < subjects.length; i++) {
-        document.getElementById("subjectName" + rowIdx + "_" + i).innerText = subjects[i] || '';
-        document.getElementById("subjectCode" + rowIdx + "_" + i).innerText = subjectCodes[i] || '';
-    }
-}
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("updateForm").addEventListener("submit", function(event) {
+        var startDate = document.getElementById("startDate").value;
+        var endDate = document.getElementById("endDate").value;
+
+        if (new Date(startDate) > new Date(endDate)) {
+            event.preventDefault();
+            document.getElementById("error-message").innerText = "Ω√¿€ ≥Ø¬•¥¬ ¡æ∑· ≥Ø¬•∫∏¥Ÿ ≈¨ ºˆ æ¯Ω¿¥œ¥Ÿ.";
+        } else {
+            document.getElementById("error-message").innerText = "";
+        }
+    });
+});
 </script>
 </head>
 
@@ -102,45 +115,45 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
 <%@ include file="adminheader.jsp"%>
 <br>
 <br>
-   <div class="button-container">
-             <form action="${pageContext.request.contextPath}/updateMembersByPeriod.do" method="post">
-<input type="date" name="startDate" placeholder="ÏãúÏûë ÎÇ†Ïßú ÏûÖÎ†•: YYYY-MM-DD" style="width: 150px;">
-			<input type="date" name="endDate" placeholder="Ï¢ÖÎ£å ÎÇ†Ïßú ÏûÖÎ†•: YYYY-MM-DD" style="width: 150px;">
+    <div class="button-container">
+        <form id="updateForm" action="${pageContext.request.contextPath}/updateMembersByPeriod.do" method="post">
+            <input type="date" id="startDate" name="startDate" placeholder="Ω√¿€ ≥Ø¬• ¿‘∑¬: YYYY-MM-DD" style="width: 150px;">
+            <input type="date" id="endDate" name="endDate" placeholder="¡æ∑· ≥Ø¬• ¿‘∑¬: YYYY-MM-DD" style="width: 150px;">
             <input type="submit" value="Update Members" style="width: 150px;">
         </form>
-      <form action="${pageContext.request.contextPath}/getMemberList.do"
-         method="get">
-         <button type="submit">ÏúÑÏõê Î™©Î°ù</button>
+        <div id="error-message" class="error-message"></div>
+      <form action="${pageContext.request.contextPath}/getMemberList.do" method="get">
+         <button type="submit">¿ßø¯ ∏Ò∑œ</button>
       </form>
-      <button type="button" onclick="location.href='${pageContext.request.contextPath}/exportToExcel.do'">ÏóëÏÖÄ Îã§Ïö¥</button>
+      <button type="button" onclick="location.href='${pageContext.request.contextPath}/exportToExcel.do'">ø¢ºø ¥ŸøÓ</button>
    </div>
 
    <table class="header-table">
       <tr>
-         <th colspan="5">ÌöåÏõê Ï†ïÎ≥¥</th>
-         <th colspan="3">Î°úÍ∑∏Ïù∏ Ï†ïÎ≥¥</th>
-         <th>Í¥ÄÎ¶¨</th>
+         <th colspan="5">»∏ø¯ ¡§∫∏</th>
+         <th colspan="3">∑Œ±◊¿Œ ¡§∫∏</th>
+         <th>∫Ò∞Ì</th>
       </tr>
       <tr>
-         <th>Í∏âÏàò</th>
-         <th>Í≥ºÎ™©</th>
-         <th>Í≥ºÎ™©Î™Ö</th>
-         <th>Í≥ºÎ™©ÏÇ≠Ï†ú</th>
-         <th>Í≥ºÎ™©ÏΩîÎìú</th>
+         <th>±∏∫–</th>
+         <th>∫Œº≠</th>
+         <th>∫Œº≠∏Ì</th>
+         <th>∫Œº≠ƒ⁄µÂ</th>
+         <th>∫Œº≠¡˜¿ß</th>
          <th>ID</th>
          <th>PW</th>
-         <th>Ïú†Ìòï</th>
-         <th>Ïù¥Î¶Ñ</th>
+         <th>≈∏¿‘</th>
+         <th>¿Ã∏ß</th>
       </tr>
       <c:forEach var="member" items="${memberList}" varStatus="status">
          <c:choose>
             <c:when test="${status.index == 0}">
                <tr>
-                  <td rowspan="12">1Í∏â</td>
-                  <td rowspan="6">1ÍµêÏãú<br></td>
+                  <td rowspan="12">1±∏∫–</td>
+                  <td rowspan="6">1∫Œº≠<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -148,7 +161,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -163,7 +176,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -171,7 +184,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -186,7 +199,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -194,7 +207,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -209,7 +222,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -217,7 +230,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -232,7 +245,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -240,7 +253,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -255,7 +268,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -263,7 +276,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -276,11 +289,11 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
             </c:when>
             <c:when test="${status.index == 6}">
                <tr>
-                  <td rowspan="6">2Í∏â<br>
+                  <td rowspan="6">2±∏∫–<br>
                   </td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -288,7 +301,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -303,7 +316,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -311,7 +324,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -326,7 +339,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -334,7 +347,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -349,7 +362,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -357,7 +370,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -372,7 +385,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -380,7 +393,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -395,7 +408,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -403,7 +416,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -416,12 +429,12 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
             </c:when>
             <c:when test="${status.index == 12}">
                <tr>
-                  <td rowspan="14">2Í∏â</td>
-                  <td rowspan="6">1ÍµêÏãú<br>
+                  <td rowspan="14">2±∏∫–</td>
+                  <td rowspan="6">1∫Œº≠<br>
                   </td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -429,7 +442,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -444,7 +457,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -452,7 +465,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -467,7 +480,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -475,7 +488,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -490,7 +503,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -498,7 +511,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -513,7 +526,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -521,7 +534,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -536,7 +549,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -544,7 +557,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -557,11 +570,11 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
             </c:when>
             <c:when test="${status.index == 18}">
                <tr>
-                  <td rowspan="8">2Í∏â<br>
+                  <td rowspan="8">2±∏∫–<br>
                   </td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -569,7 +582,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -584,7 +597,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -592,7 +605,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -607,7 +620,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -615,7 +628,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -630,7 +643,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -638,7 +651,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -653,7 +666,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -661,7 +674,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -676,7 +689,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -684,7 +697,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -699,7 +712,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -707,7 +720,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -722,7 +735,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -730,7 +743,7 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>

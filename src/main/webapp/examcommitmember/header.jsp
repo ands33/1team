@@ -134,7 +134,7 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
             <div class="header-links2 ml-auto d-flex align-items-center">
                 <b>${member.member_name}</b> <span class="mx-1"></span> 님 <span class="mx-2"></span> 
                 ${member.subject_name} <span class="mx-2"></span> 
-                <a href="#">로그아웃</a> <span class="mx-2"></span>
+                <a href="${pageContext.request.contextPath}/login/login.jsp">로그아웃</a> <span class="mx-2"></span>
                 <a href="#">마이페이지</a>
             </div>
         </div>
