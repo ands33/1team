@@ -98,6 +98,12 @@ function getBinaryClass() {
     form.action = "../../../biz/getBinaryClass.do";
     form.submit();
 }
+
+function getPreBinaryClass() {
+    const form = document.getElementById('indexForm');
+    form.action = "../../../biz/getPreBinaryClass.do";
+    form.submit();
+}
 </script>
 <link
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -136,10 +142,10 @@ function getBinaryClass() {
         <br>
         <div class="flex-container">
             <div>
-                <a href="javascript:getBinaryClass()";><img src="./img/이.png" alt="이"></a>
+                <a href="javascript:getBinaryClass();"><img src="./img/이.png" alt="이"></a>
             </div>
             <div>
-                <a href="preBinaryClass.jsp"><img src="./img/선제.png" alt="선제"></a>
+                <a href="javascript:getPreBinaryClass();"><img src="./img/선제.png" alt="선제"></a>
             </div>
         </div>
     </form>

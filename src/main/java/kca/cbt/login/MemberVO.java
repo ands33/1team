@@ -12,10 +12,17 @@ public class MemberVO {
 	private String subject_name;
 	private String memberA;
 	private String memberB;
+	private String aff;
 	private Date start_date;
 	private Date end_date;
-	
-	
+
+	public String getAff() {
+		return aff;
+	}
+
+	public void setAff(String aff) {
+		this.aff = aff;
+	}
 
 	public Date getStart_date() {
 		return start_date;
@@ -80,8 +87,7 @@ public class MemberVO {
 	public void setSubject_name(String subject_name) {
 		this.subject_name = subject_name;
 	}
-	
-	
+
 	public String getMemberA() {
 		return memberA;
 	}
@@ -104,9 +110,5 @@ public class MemberVO {
 				+ member_type + ", subject_code=" + subject_code + ", subject_name=" + subject_name + ", memberA="
 				+ memberA + ", memberB=" + memberB + ", start_date=" + start_date + ", end_date=" + end_date + "]";
 	}
-
-	
-
-	
 
 }

@@ -307,7 +307,7 @@ td:nth-last-child(3) {
 						<td>${binaryClass.answer == 3 ? '③' : ''}</td>
 						<td>${binaryClass.answer == 4 ? '④' : ''}</td>
 						<td>${binaryClass.answer == 5 ? '⑤' : ''}</td>
-						<td>${binaryClass.reference}</td>
+						<td>${binaryClass.subReference}</td>
 						<td><c:choose>
 								<c:when test="${binaryClass.e_status == '미개봉'}">작성전</c:when>
 								<c:when

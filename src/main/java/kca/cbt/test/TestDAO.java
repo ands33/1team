@@ -25,20 +25,20 @@ public class TestDAO {
 
 	private final String EXAMPLAN_GET = "SELECT * FROM examplan WHERE num=?";
 	private final String TEST_GET = "select * from test where num=?";
-	private final String TEST_CREATE = "insert into test(idx, diff, writtenname, member_id, num, reviewer) values(?,?,?,?,?,?)";
+	private final String TEST_CREATE = "insert into test(idx, diff, writtenname, member_id, num, reviewer, aff) values(?,?,?,?,?,?,?)";
 	private final String TEST_UPDATE = "update test set behavioral=?, question=?, option1=?, option2=?, option3=?,"
 			+ "option4=?, option5=?, answer=?, answerex=?, questionback=?, reference=?, authoryear=?, page=?, createdate=?,"
 			+ "aff=?, e_status=?, exam_type=? where num=?";
 	private final String TEST_SEND = "update test set e_status=? where num=?";
 	private final String SUBJECT_GET = "select * from subject where idx=?";
+	private final String DISTINCT_T_NUM = "UPDATE test SET t_num = NULL WHERE num IN (SELECT t.num FROM test t JOIN subject s ON t.idx = s.idx JOIN member m ON s.subject_code = m.subject_code WHERE m.member_id = ? AND t.t_num = ?)";
+	private final String UPDATE_T_NUM = "update test set t_num=? where num=?";
 
 	// 문제 생성
 	public void createTest(TestVO vo) {
 		try {
 			conn = JDBCUtil.getConnection(); // test db 가르킴
 			stmt = conn.prepareStatement(TEST_CREATE);
-			System.out.println("실행되는지 확인");
-			System.out.println("getNum출력" + vo.getNum());
 
 			stmt2 = conn.prepareStatement(TEST_GET);
 			stmt2.setInt(1, vo.getNum());
@@ -65,6 +65,7 @@ public class TestDAO {
 				stmt.setString(4, test.getMember_id()); // 4번 ?
 				stmt.setInt(5, test.getNum()); // 5번 ?
 				stmt.setString(6, test.getReviewer()); // 6번 ?
+				stmt.setString(7, vo.getAff());
 				stmt.executeUpdate();
 			} else {
 				System.out.println("num값 존재");
@@ -189,6 +190,32 @@ public class TestDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+	}
+	
+	public void insertT_num(TestVO vo) {
+		System.out.println("insertT_num() 처리");
+		try {
+			conn = JDBCUtil.getConnection();
+
+			System.out.println(vo.getMember_id());
+			System.out.println(vo.getT_num());
+			System.out.println(vo.getNum());
+			stmt = conn.prepareStatement(DISTINCT_T_NUM);
+			stmt.setString(1, vo.getMember_id());
+			stmt.setInt(2, vo.getT_num());
+			stmt.executeUpdate();
+			
+			stmt1 = conn.prepareStatement(UPDATE_T_NUM);
+			stmt1.setInt(1, vo.getT_num());
+			stmt1.setInt(2, vo.getNum());
+			
+			stmt1.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt1, conn);
 			JDBCUtil.close(stmt, conn);
 		}
 	}

@@ -119,8 +119,9 @@ td {
 	content: attr(data-review);
 	display: none;
 	position: absolute;
-	top: -70px;
-	left: 0;
+	width: 130px;
+	top: 0;
+	left: -50px;
 	background-color: #fff;
 	border: 1px solid #333;
 	padding: 5px;
@@ -209,7 +210,7 @@ th, td {
 	<%@ include file="header.jsp"%>
 	<div class="container mt-4">
 		<h2>
-			<b><u>출제에 필요한 문제</b></u>
+			<b><u>출제 중인 문제</b></u>
 		</h2>
 		<div class="header"></div>
 		<br>
@@ -246,6 +247,8 @@ th, td {
 							<form action="createTest.do" method="post">
 								<input type="hidden" name="num" value="${examPlan.num}" /> <input
 									type="hidden" name="e_status" value="출제중" />
+									<input
+									type="hidden" name="aff" value="${member.aff}" />
 
 								<!-- 제출(검토대기)일 때, 버튼 비활성화 -->
 								<button type="submit" name="action" value="approve"

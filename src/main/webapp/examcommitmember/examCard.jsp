@@ -247,11 +247,6 @@ th, td {
 			return false;
 		}
 
-		if (aff === "") {
-			alert("소속을 입력하세요.");
-			document.getElementsByName("aff")[0].focus();
-			return false;
-		}
 		return true;
 	}
 </script>
@@ -380,8 +375,7 @@ th, td {
 						<td><input type="text" name="createDate"
 							value="${test.createDate}" placeholder="yyyy-mm-dd"
 							style="width: 100%;"></td>
-						<td><input type="text" name="aff" value="${test.aff}"
-							style="width: 100%;"></td>
+						<td style="text-align: center;">${test.aff}</td>
 						<td style="text-align: center;">${test.writtenName}</td>
 						<td style="text-align: center;"></td>
 					</tr>
