@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>»∏ø¯ ¡§∫∏ ∏Ò∑œ</title>
+<title>ÌöåÏõê Ï†ïÎ≥¥ Î™©Î°ù</title>
 <style>
-/* ±‚¡∏ Ω∫≈∏¿œ ª˝∑´ */
+/* Í∏∞Ï°¥ Ïä§ÌÉÄÏùº ÏÉùÎûµ */
 body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
    i, ul, ol, li, button {
    font-family: "Montserrat", "Noto Sans KR", sans-serif;
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (new Date(startDate) > new Date(endDate)) {
             event.preventDefault();
-            document.getElementById("error-message").innerText = "Ω√¿€ ≥Ø¬•¥¬ ¡æ∑· ≥Ø¬•∫∏¥Ÿ ≈¨ ºˆ æ¯Ω¿¥œ¥Ÿ.";
+            document.getElementById("error-message").innerText = "ÏãúÏûë ÎÇ†ÏßúÎäî Ï¢ÖÎ£å ÎÇ†ÏßúÎ≥¥Îã§ ÌÅ¥ Ïàò ÏóÜÏäµÎãàÎã§.";
         } else {
             document.getElementById("error-message").innerText = "";
         }
@@ -117,43 +117,43 @@ document.addEventListener("DOMContentLoaded", function() {
 <br>
     <div class="button-container">
         <form id="updateForm" action="${pageContext.request.contextPath}/updateMembersByPeriod.do" method="post">
-            <input type="date" id="startDate" name="startDate" placeholder="Ω√¿€ ≥Ø¬• ¿‘∑¬: YYYY-MM-DD" style="width: 150px;">
-            <input type="date" id="endDate" name="endDate" placeholder="¡æ∑· ≥Ø¬• ¿‘∑¬: YYYY-MM-DD" style="width: 150px;">
+            <input type="date" id="startDate" name="startDate" placeholder="ÏãúÏûë ÎÇ†Ïßú ÏûÖÎ†•: YYYY-MM-DD" style="width: 150px;">
+            <input type="date" id="endDate" name="endDate" placeholder="Ï¢ÖÎ£å ÎÇ†Ïßú ÏûÖÎ†•: YYYY-MM-DD" style="width: 150px;">
             <input type="submit" value="Update Members" style="width: 150px;">
         </form>
         <div id="error-message" class="error-message"></div>
       <form action="${pageContext.request.contextPath}/getMemberList.do" method="get">
-         <button type="submit">¿ßø¯ ∏Ò∑œ</button>
+         <button type="submit">ÏúÑÏõê Î™©Î°ù</button>
       </form>
-      <button type="button" onclick="location.href='${pageContext.request.contextPath}/exportToExcel.do'">ø¢ºø ¥ŸøÓ</button>
+      <button type="button" onclick="location.href='${pageContext.request.contextPath}/exportToExcel.do'">ÏóëÏÖÄ Îã§Ïö¥</button>
    </div>
 
    <table class="header-table">
       <tr>
-         <th colspan="5">»∏ø¯ ¡§∫∏</th>
-         <th colspan="3">∑Œ±◊¿Œ ¡§∫∏</th>
-         <th>∫Ò∞Ì</th>
+         <th colspan="5">ÌöåÏõê Ï†ïÎ≥¥</th>
+         <th colspan="3">Î°úÍ∑∏Ïù∏ Ï†ïÎ≥¥</th>
+         <th>ÎπÑÍ≥†</th>
       </tr>
       <tr>
-         <th>±∏∫–</th>
-         <th>∫Œº≠</th>
-         <th>∫Œº≠∏Ì</th>
-         <th>∫Œº≠ƒ⁄µÂ</th>
-         <th>∫Œº≠¡˜¿ß</th>
+         <th>Íµ¨Î∂Ñ</th>
+         <th>Î∂ÄÏÑú</th>
+         <th>Î∂ÄÏÑúÎ™Ö</th>
+         <th>Î∂ÄÏÑúÏΩîÎìú</th>
+         <th>Î∂ÄÏÑúÏßÅÏúÑ</th>
          <th>ID</th>
          <th>PW</th>
-         <th>≈∏¿‘</th>
-         <th>¿Ã∏ß</th>
+         <th>ÌÉÄÏûÖ</th>
+         <th>Ïù¥Î¶Ñ</th>
       </tr>
       <c:forEach var="member" items="${memberList}" varStatus="status">
          <c:choose>
             <c:when test="${status.index == 0}">
                <tr>
-                  <td rowspan="12">1±∏∫–</td>
-                  <td rowspan="6">1∫Œº≠<br></td>
+                  <td rowspan="12">1Íµ¨Î∂Ñ</td>
+                  <td rowspan="6">1Î∂ÄÏÑú<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -289,11 +289,11 @@ document.addEventListener("DOMContentLoaded", function() {
             </c:when>
             <c:when test="${status.index == 6}">
                <tr>
-                  <td rowspan="6">2±∏∫–<br>
+                  <td rowspan="6">2Íµ¨Î∂Ñ<br>
                   </td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -316,7 +316,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -324,7 +324,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -339,7 +339,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -347,7 +347,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -362,7 +362,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -370,7 +370,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -385,7 +385,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -393,7 +393,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -408,7 +408,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -416,7 +416,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -429,12 +429,12 @@ document.addEventListener("DOMContentLoaded", function() {
             </c:when>
             <c:when test="${status.index == 12}">
                <tr>
-                  <td rowspan="14">2±∏∫–</td>
-                  <td rowspan="6">1∫Œº≠<br>
+                  <td rowspan="14">2Íµ¨Î∂Ñ</td>
+                  <td rowspan="6">1Î∂ÄÏÑú<br>
                   </td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -442,7 +442,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -457,7 +457,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -465,7 +465,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -480,7 +480,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -488,7 +488,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -503,7 +503,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -511,7 +511,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -526,7 +526,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -534,7 +534,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -549,7 +549,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -557,7 +557,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -570,11 +570,11 @@ document.addEventListener("DOMContentLoaded", function() {
             </c:when>
             <c:when test="${status.index == 18}">
                <tr>
-                  <td rowspan="8">2±∏∫–<br>
+                  <td rowspan="8">2Íµ¨Î∂Ñ<br>
                   </td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -582,7 +582,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -597,7 +597,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -605,7 +605,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -620,7 +620,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -628,7 +628,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -643,7 +643,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -651,7 +651,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -666,7 +666,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -674,7 +674,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -689,7 +689,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -697,7 +697,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -712,7 +712,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -720,7 +720,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
@@ -735,7 +735,7 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[æ¯¿Ω]</td>
+                     <td>[ÏóÜÏùå]</td>
                      <td></td>
                   </c:if>
                   <c:forEach var="subjectCode"
@@ -743,7 +743,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      varStatus="subStatus">
                      <td id="subjectName${status.index}_${subStatus.index}"><c:out
                            value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
                      <td id="subjectCode${status.index}_${subStatus.index}"><c:out
                            value="${subjectCode}" /></td>
                   </c:forEach>
