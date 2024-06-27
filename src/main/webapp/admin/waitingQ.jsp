@@ -83,8 +83,7 @@ button {
                 <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_11 != null && !membersB_11.isEmpty() ? membersB_11.get(0).getMember_id() : "" %>'">B위원</button>
             </td>
             <td>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_11 != null && !membersA_11.isEmpty() ? membersA_11.get(0).getMember_id() : "" %>'">A위원</button>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_11 != null && !membersB_11.isEmpty() ? membersB_11.get(0).getMember_id() : "" %>'">B위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_11 != null && !membersA_11.isEmpty() ? membersA_11.get(0).getMember_id() : "" %>'">선제</button>
             </td>
             <td>
                 <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_11 != null && !membersA_11.isEmpty() ? membersA_11.get(0).getMember_id() : "" %>'">A위원</button>
@@ -120,8 +119,7 @@ button {
                 <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_12 != null && !membersB_12.isEmpty() ? membersB_12.get(0).getMember_id() : "" %>'">B위원</button>
             </td>
             <td>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_12 != null && !membersA_12.isEmpty() ? membersA_12.get(0).getMember_id() : "" %>'">A위원</button>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_12 != null && !membersB_12.isEmpty() ? membersB_12.get(0).getMember_id() : "" %>'">B위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_12 != null && !membersA_12.isEmpty() ? membersA_12.get(0).getMember_id() : "" %>'">선제</button>
             </td>
             <td>
                 <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_12 != null && !membersA_12.isEmpty() ? membersA_12.get(0).getMember_id() : "" %>'">A위원</button>
@@ -157,8 +155,7 @@ button {
                 <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_13 != null && !membersB_13.isEmpty() ? membersB_13.get(0).getMember_id() : "" %>'">B위원</button>
             </td>
             <td>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_13 != null && !membersA_13.isEmpty() ? membersA_13.get(0).getMember_id() : "" %>'">A위원</button>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_13 != null && !membersB_13.isEmpty() ? membersB_13.get(0).getMember_id() : "" %>'">B위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_13 != null && !membersA_13.isEmpty() ? membersA_13.get(0).getMember_id() : "" %>'">선제</button>
             </td>
             <td>
                 <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_13 != null && !membersA_13.isEmpty() ? membersA_13.get(0).getMember_id() : "" %>'">A위원</button>
@@ -195,8 +192,7 @@ button {
                 <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_14 != null && !membersB_14.isEmpty() ? membersB_14.get(0).getMember_id() : "" %>'">B위원</button>
             </td>
             <td>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_14 != null && !membersA_14.isEmpty() ? membersA_14.get(0).getMember_id() : "" %>'">A위원</button>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_14 != null && !membersB_14.isEmpty() ? membersB_14.get(0).getMember_id() : "" %>'">B위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_14 != null && !membersA_14.isEmpty() ? membersA_14.get(0).getMember_id() : "" %>'">선제</button>
             </td>
             <td>
                 <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_14 != null && !membersA_14.isEmpty() ? membersA_14.get(0).getMember_id() : "" %>'">A위원</button>
@@ -232,8 +228,7 @@ button {
                 <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_15 != null && !membersB_15.isEmpty() ? membersB_15.get(0).getMember_id() : "" %>'">B위원</button>
             </td>
             <td>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_15 != null && !membersA_15.isEmpty() ? membersA_15.get(0).getMember_id() : "" %>'">A위원</button>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_15 != null && !membersB_15.isEmpty() ? membersB_15.get(0).getMember_id() : "" %>'">B위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_15 != null && !membersA_15.isEmpty() ? membersA_15.get(0).getMember_id() : "" %>'">선제</button>
             </td>
             <td>
                 <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_15 != null && !membersA_15.isEmpty() ? membersA_15.get(0).getMember_id() : "" %>'">A위원</button>
@@ -269,8 +264,7 @@ button {
                 <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_16 != null && !membersB_16.isEmpty() ? membersB_16.get(0).getMember_id() : "" %>'">B위원</button>
             </td>
             <td>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_16 != null && !membersA_16.isEmpty() ? membersA_16.get(0).getMember_id() : "" %>'">A위원</button>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_16 != null && !membersB_16.isEmpty() ? membersB_16.get(0).getMember_id() : "" %>'">B위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_16 != null && !membersA_16.isEmpty() ? membersA_16.get(0).getMember_id() : "" %>'">선제</button>
             </td>
             <td>
                 <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_16 != null && !membersA_16.isEmpty() ? membersA_16.get(0).getMember_id() : "" %>'">A위원</button>
@@ -308,8 +302,7 @@ button {
                 <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_24 != null && !membersB_24.isEmpty() ? membersB_24.get(0).getMember_id() : "" %>'">B위원</button>
             </td>
             <td>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_24 != null && !membersA_24.isEmpty() ? membersA_24.get(0).getMember_id() : "" %>'">A위원</button>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_24 != null && !membersB_24.isEmpty() ? membersB_24.get(0).getMember_id() : "" %>'">B위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_24 != null && !membersA_24.isEmpty() ? membersA_24.get(0).getMember_id() : "" %>'">선제</button>
             </td>
             <td>
                 <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_24 != null && !membersA_24.isEmpty() ? membersA_24.get(0).getMember_id() : "" %>'">A위원</button>
@@ -345,8 +338,7 @@ button {
                 <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_21 != null && !membersB_21.isEmpty() ? membersB_21.get(0).getMember_id() : "" %>'">B위원</button>
             </td>
             <td>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_21 != null && !membersA_21.isEmpty() ? membersA_21.get(0).getMember_id() : "" %>'">A위원</button>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_21 != null && !membersB_21.isEmpty() ? membersB_21.get(0).getMember_id() : "" %>'">B위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_21 != null && !membersA_21.isEmpty() ? membersA_21.get(0).getMember_id() : "" %>'">선제</button>
             </td>
             <td>
                 <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_21 != null && !membersA_21.isEmpty() ? membersA_21.get(0).getMember_id() : "" %>'">A위원</button>
@@ -382,8 +374,7 @@ button {
                 <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_23 != null && !membersB_23.isEmpty() ? membersB_23.get(0).getMember_id() : "" %>'">B위원</button>
             </td>
             <td>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_23 != null && !membersA_23.isEmpty() ? membersA_23.get(0).getMember_id() : "" %>'">A위원</button>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_23 != null && !membersB_23.isEmpty() ? membersB_23.get(0).getMember_id() : "" %>'">B위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_23 != null && !membersA_23.isEmpty() ? membersA_23.get(0).getMember_id() : "" %>'">선제</button>
             </td>
             <td>
                 <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_23 != null && !membersA_23.isEmpty() ? membersA_23.get(0).getMember_id() : "" %>'">A위원</button>
@@ -420,8 +411,7 @@ button {
                 <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_22 != null && !membersB_22.isEmpty() ? membersB_22.get(0).getMember_id() : "" %>'">B위원</button>
             </td>
             <td>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_22 != null && !membersA_22.isEmpty() ? membersA_22.get(0).getMember_id() : "" %>'">A위원</button>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_22 != null && !membersB_22.isEmpty() ? membersB_22.get(0).getMember_id() : "" %>'">B위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_22 != null && !membersA_22.isEmpty() ? membersA_22.get(0).getMember_id() : "" %>'">선제</button>
             </td>
             <td>
                 <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_22 != null && !membersA_22.isEmpty() ? membersA_22.get(0).getMember_id() : "" %>'">A위원</button>
@@ -457,8 +447,7 @@ button {
                 <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_25 != null && !membersB_25.isEmpty() ? membersB_25.get(0).getMember_id() : "" %>'">B위원</button>
             </td>
             <td>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_25 != null && !membersA_25.isEmpty() ? membersA_25.get(0).getMember_id() : "" %>'">A위원</button>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_25 != null && !membersB_25.isEmpty() ? membersB_25.get(0).getMember_id() : "" %>'">B위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_25 != null && !membersA_25.isEmpty() ? membersA_25.get(0).getMember_id() : "" %>'">선제</button>
             </td>
             <td>
                 <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_25 != null && !membersA_25.isEmpty() ? membersA_25.get(0).getMember_id() : "" %>'">A위원</button>
@@ -494,8 +483,7 @@ button {
                 <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_26 != null && !membersB_26.isEmpty() ? membersB_26.get(0).getMember_id() : "" %>'">B위원</button>
             </td>
             <td>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_26 != null && !membersA_26.isEmpty() ? membersA_26.get(0).getMember_id() : "" %>'">A위원</button>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_26 != null && !membersB_26.isEmpty() ? membersB_26.get(0).getMember_id() : "" %>'">B위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_26 != null && !membersA_26.isEmpty() ? membersA_26.get(0).getMember_id() : "" %>'">선제</button>
             </td>
             <td>
                 <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_26 != null && !membersA_26.isEmpty() ? membersA_26.get(0).getMember_id() : "" %>'">A위원</button>
@@ -531,8 +519,7 @@ button {
                 <button onclick="location.href='getWaitingExamPlanList.do?member_id=<%= membersB_27 != null && !membersB_27.isEmpty() ? membersB_27.get(0).getMember_id() : "" %>'">B위원</button>
             </td>
             <td>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_27 != null && !membersA_27.isEmpty() ? membersA_27.get(0).getMember_id() : "" %>'">A위원</button>
-                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersB_27 != null && !membersB_27.isEmpty() ? membersB_27.get(0).getMember_id() : "" %>'">B위원</button>
+                <button onclick="location.href='getBinaryWaiting.do?member_id=<%= membersA_27 != null && !membersA_27.isEmpty() ? membersA_27.get(0).getMember_id() : "" %>'">선제</button>
             </td>
             <td>
                 <button onclick="location.href='getWaitingSubtrahendList.do?member_id=<%= membersA_27 != null && !membersA_27.isEmpty() ? membersA_27.get(0).getMember_id() : "" %>'">A위원</button>

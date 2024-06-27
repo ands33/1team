@@ -1,15 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-   pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>íšŒì› ì •ë³´ ëª©ë¡</title>
+<title>È¸¿ø Á¤º¸ ¸ñ·Ï</title>
 <style>
-/* ê¸°ì¡´ ìŠ¤íƒ€ì¼ ìƒëµ */
-body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
-   i, ul, ol, li, button {
+/* ½ºÅ¸ÀÏ ¼³Á¤ */
+body, table, th, td, input, select, textarea, div, a, p, span, strong, b, i, ul, ol, li, button {
    font-family: "Montserrat", "Noto Sans KR", sans-serif;
    font-size: 15px;
    letter-spacing: -0.05em;
@@ -101,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (new Date(startDate) > new Date(endDate)) {
             event.preventDefault();
-            document.getElementById("error-message").innerText = "ì‹œì‘ ë‚ ì§œëŠ” ì¢…ë£Œ ë‚ ì§œë³´ë‹¤ í´ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.";
+            document.getElementById("error-message").innerText = "½ÃÀÛ ³¯Â¥°¡ Á¾·á ³¯Â¥º¸´Ù Å¬ ¼ö ¾ø½À´Ï´Ù.";
         } else {
             document.getElementById("error-message").innerText = "";
         }
@@ -117,56 +115,51 @@ document.addEventListener("DOMContentLoaded", function() {
 <br>
     <div class="button-container">
         <form id="updateForm" action="${pageContext.request.contextPath}/updateMembersByPeriod.do" method="post">
-            <input type="date" id="startDate" name="startDate" placeholder="ì‹œì‘ ë‚ ì§œ ì…ë ¥: YYYY-MM-DD" style="width: 150px;">
-            <input type="date" id="endDate" name="endDate" placeholder="ì¢…ë£Œ ë‚ ì§œ ì…ë ¥: YYYY-MM-DD" style="width: 150px;">
-            <input type="submit" value="Update Members" style="width: 150px;">
+            <input type="date" id="startDate" name="startDate" placeholder="½ÃÀÛ ³¯Â¥ ÀÔ·Â: YYYY-MM-DD" style="width: 150px;">
+            <input type="date" id="endDate" name="endDate" placeholder="Á¾·á ³¯Â¥ ÀÔ·Â: YYYY-MM-DD" style="width: 150px;">
+            <input type="submit" value="È¸¿ø ÃâÁ¦ ±â°£" style="width: 150px;">
         </form>
         <div id="error-message" class="error-message"></div>
       <form action="${pageContext.request.contextPath}/getMemberList.do" method="get">
-         <button type="submit">ìœ„ì› ëª©ë¡</button>
+         <button type="submit">È¸¿ø ¸ñ·Ï</button>
       </form>
-      <button type="button" onclick="location.href='${pageContext.request.contextPath}/exportToExcel.do'">ì—‘ì…€ ë‹¤ìš´</button>
+      <button type="button" onclick="location.href='${pageContext.request.contextPath}/exportToExcel.do'">¿¢¼¿ ´Ù¿î</button>
    </div>
 
    <table class="header-table">
       <tr>
-         <th colspan="5">íšŒì› ì •ë³´</th>
-         <th colspan="3">ë¡œê·¸ì¸ ì •ë³´</th>
-         <th>ë¹„ê³ </th>
+         <th colspan="5">È¸¿ø Á¤º¸</th>
+         <th colspan="3">·Î±×ÀÎ Á¤º¸</th>
+         <th>±âÅ¸</th>
       </tr>
       <tr>
-         <th>êµ¬ë¶„</th>
-         <th>ë¶€ì„œ</th>
-         <th>ë¶€ì„œëª…</th>
-         <th>ë¶€ì„œì½”ë“œ</th>
-         <th>ë¶€ì„œì§ìœ„</th>
+         <th>ÇĞ³â</th>
+         <th>¹İ</th>
+         <th>¹øÈ£</th>
+         <th>ÀÌ¸§</th>
+         <th>¼ºº°</th>
          <th>ID</th>
          <th>PW</th>
-         <th>íƒ€ì…</th>
-         <th>ì´ë¦„</th>
+         <th>È¸¿ø Å¸ÀÔ</th>
+         <th>ÀÌ¸§</th>
       </tr>
       <c:forEach var="member" items="${memberList}" varStatus="status">
          <c:choose>
             <c:when test="${status.index == 0}">
                <tr>
-                  <td rowspan="12">1êµ¬ë¶„</td>
-                  <td rowspan="6">1ë¶€ì„œ<br></td>
+                  <td rowspan="12">1ÇĞ³â</td>
+                  <td rowspan="6">1¹İ<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -176,20 +169,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -199,20 +187,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -222,20 +205,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -245,20 +223,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -268,20 +241,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -289,24 +257,18 @@ document.addEventListener("DOMContentLoaded", function() {
             </c:when>
             <c:when test="${status.index == 6}">
                <tr>
-                  <td rowspan="6">2êµ¬ë¶„<br>
-                  </td>
+                  <td rowspan="6">2ÇĞ³â<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -316,20 +278,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -339,20 +296,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -362,20 +314,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -385,20 +332,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -408,20 +350,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -429,25 +366,19 @@ document.addEventListener("DOMContentLoaded", function() {
             </c:when>
             <c:when test="${status.index == 12}">
                <tr>
-                  <td rowspan="14">2êµ¬ë¶„</td>
-                  <td rowspan="6">1ë¶€ì„œ<br>
-                  </td>
+                  <td rowspan="14">2ÇĞ³â</td>
+                  <td rowspan="6">1¹İ<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -457,20 +388,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -480,20 +406,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -503,20 +424,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -526,20 +442,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -549,20 +460,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -570,24 +476,18 @@ document.addEventListener("DOMContentLoaded", function() {
             </c:when>
             <c:when test="${status.index == 18}">
                <tr>
-                  <td rowspan="8">2êµ¬ë¶„<br>
-                  </td>
+                  <td rowspan="8">2ÇĞ³â<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -597,20 +497,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -620,20 +515,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -643,20 +533,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -666,20 +551,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -689,20 +569,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -712,20 +587,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -735,20 +605,15 @@ document.addEventListener("DOMContentLoaded", function() {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ì—†ìŒ]</td>
+                     <td>[¾øÀ½]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ì‚­ì œ]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[»èÁ¦]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
