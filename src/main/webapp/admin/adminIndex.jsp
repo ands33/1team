@@ -1,14 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-   pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Ï∂úÏ†ú Î¨∏Ìï≠ Ïπ¥Îìú</title>
+<title>»∏ø¯ ¡§∫∏ ∏Ò∑œ</title>
 <style>
-body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
-   i, ul, ol, li, button {
+/* Ω∫≈∏¿œ º≥¡§ */
+body, table, th, td, input, select, textarea, div, a, p, span, strong, b, i, ul, ol, li, button {
    font-family: "Montserrat", "Noto Sans KR", sans-serif;
    font-size: 15px;
    letter-spacing: -0.05em;
@@ -46,11 +45,11 @@ h3 {
    align-items: center;
    justify-content: flex-end;
    margin-bottom: 20px;
-   height: 20px;
+   height: 15px;
 }
 
 .button-container input {
-   width: 300px;
+   width: 150px;
    margin-right: 10px;
    padding: 10px;
    box-sizing: border-box;
@@ -67,7 +66,6 @@ h3 {
    align-items: center;
 }
 
-
 select {
    width: 190px;
    height: 100px;
@@ -79,76 +77,88 @@ button {
    height: 30px;
 }
 
+.error-message {
+   color: red;
+   font-weight: bold;
+   margin-top: 10px;
+}
+
 </style>
 <script>
-
 function openMemberPopup(memberId, statusIndex) {
-    var url = 'admin/popup.jsp?memberId=' + memberId + '&statusIndex=' + statusIndex;
+    var url = '${pageContext.request.contextPath}/admin/popup.jsp?memberId=' + memberId + '&statusIndex=' + statusIndex;
     var name = 'memberPopup';
-    var specs = 'width=200,height=160,scrollbars=yes';
+    var specs = 'width=600,height=400,scrollbars=yes';
     window.open(url, name, specs);
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("updateForm").addEventListener("submit", function(event) {
+        var startDate = document.getElementById("startDate").value;
+        var endDate = document.getElementById("endDate").value;
 
-function setSubjects(rowIdx, subjects, subjectCodes) {
-    for (var i = 0; i < subjects.length; i++) {
-        document.getElementById("subjectName" + rowIdx + "_" + i).innerText = subjects[i] || '';
-        document.getElementById("subjectCode" + rowIdx + "_" + i).innerText = subjectCodes[i] || '';
-    }
-}
+        if (new Date(startDate) > new Date(endDate)) {
+            event.preventDefault();
+            document.getElementById("error-message").innerText = "Ω√¿€ ≥Ø¬•∞° ¡æ∑· ≥Ø¬•∫∏¥Ÿ ≈¨ ºˆ æ¯Ω¿¥œ¥Ÿ.";
+        } else {
+            document.getElementById("error-message").innerText = "";
+        }
+    });
+});
 </script>
 </head>
-<body>
-<%@ include file="adminheader.jsp"%>
-   <div class="button-container">
-      <input type="text" placeholder="Ï∂úÏ†úÍ∏∞Í∞Ñ: YYYY MM DD ~ YYYY MM DD">
-      <form action="${pageContext.request.contextPath}/getMemberList.do"
-         method="get">
-         <button type="submit">ÌöåÏõêÎ™©Î°ù</button>
-      </form>
-      <button type="button" onclick="location.href='${pageContext.request.contextPath}/exportToExcel.do'">ÏóëÏÖÄ Ï∂úÎ†•</button>
 
+<body>
+
+<%@ include file="adminheader.jsp"%>
+<br>
+<br>
+    <div class="button-container">
+        <form id="updateForm" action="${pageContext.request.contextPath}/updateMembersByPeriod.do" method="post">
+            <input type="date" id="startDate" name="startDate" placeholder="Ω√¿€ ≥Ø¬• ¿‘∑¬: YYYY-MM-DD" style="width: 150px;">
+            <input type="date" id="endDate" name="endDate" placeholder="¡æ∑· ≥Ø¬• ¿‘∑¬: YYYY-MM-DD" style="width: 150px;">
+            <input type="submit" value="»∏ø¯ √‚¡¶ ±‚∞£" style="width: 150px;">
+        </form>
+        <div id="error-message" class="error-message"></div>
+      <form action="${pageContext.request.contextPath}/getMemberList.do" method="get">
+         <button type="submit">»∏ø¯ ∏Ò∑œ</button>
+      </form>
+      <button type="button" onclick="location.href='${pageContext.request.contextPath}/exportToExcel.do'">ø¢ºø ¥ŸøÓ</button>
    </div>
 
    <table class="header-table">
       <tr>
-         <th colspan="5">Ï∂úÏ†úÍ≥ºÎ™©</th>
-         <th colspan="3">ÏÇ¨Ïö©Í≥ÑÏ†ï ÏÑ†ÌÉù</th>
-         <th>Ï∂úÏ†úÏúÑÏõê Ï†ïÎ≥¥</th>
+         <th colspan="5">√‚¡¶∞˙∏Ò</th>
+         <th colspan="4">√‚¡¶¿ßø¯ ¡§∫∏</th>
       </tr>
       <tr>
-         <th>Í∏âÏàò</th>
-         <th>ÍµêÏãú</th>
-         <th>Í≥ºÎ™©Î™Ö</th>
-         <th>Í≥ºÎ™©ÏÇ≠Ï†ú</th>
-         <th>Í≥ºÎ™©ÏΩîÎìú</th>
+         <th>±ﬁºˆ</th>
+         <th>±≥Ω√</th>
+         <th>∞˙∏Ò∏Ì</th>
+         <th>∞˙∏ÒªË¡¶</th>
+         <th>∞˙∏Òƒ⁄µÂ</th>
          <th>ID</th>
          <th>PW</th>
-         <th>Ïú†Ìòï</th>
-         <th>Ïù¥Î¶Ñ</th>
+         <th>»∏ø¯ ≈∏¿‘</th>
+         <th>¿Ã∏ß</th>
       </tr>
       <c:forEach var="member" items="${memberList}" varStatus="status">
          <c:choose>
             <c:when test="${status.index == 0}">
                <tr>
-                  <td rowspan="12">1Í∏â</td>
-                  <td rowspan="6">1ÍµêÏãú<br></td>
+                  <td rowspan="12">1±ﬁ</td>
+                  <td rowspan="6">1±≥Ω√<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -158,20 +168,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -181,20 +186,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -204,20 +204,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -227,20 +222,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -250,20 +240,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -271,24 +256,18 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
             </c:when>
             <c:when test="${status.index == 6}">
                <tr>
-                  <td rowspan="6">2ÍµêÏãú<br>
-                  </td>
+                  <td rowspan="6">2±≥Ω√<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -298,20 +277,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -321,20 +295,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -344,20 +313,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -367,20 +331,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -390,20 +349,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -411,26 +365,19 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
             </c:when>
             <c:when test="${status.index == 12}">
                <tr>
-                  <td rowspan="14">2Í∏â</td>
-                  <td rowspan="6">1ÍµêÏãú<br>
-
-                  </td>
+                  <td rowspan="14">2±ﬁ</td>
+                  <td rowspan="6">1±≥Ω√<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -440,20 +387,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -463,20 +405,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -486,20 +423,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -509,20 +441,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -532,20 +459,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -553,24 +475,18 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
             </c:when>
             <c:when test="${status.index == 18}">
                <tr>
-                  <td rowspan="8">2ÍµêÏãú<br>
-                  </td>
+                  <td rowspan="8">2±≥Ω√<br></td>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -580,20 +496,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -603,20 +514,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -626,20 +532,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -649,20 +550,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -672,20 +568,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -695,20 +586,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>
@@ -718,20 +604,15 @@ function setSubjects(rowIdx, subjects, subjectCodes) {
                <tr>
                   <c:if test="${empty subjectData[member.member_id]}">
                      <td></td>
-                     <td>[ÏÇ≠Ï†ú]</td>
+                     <td>[æ¯¿Ω]</td>
                      <td></td>
                   </c:if>
-                  <c:forEach var="subjectCode"
-                     items="${subjectData[member.member_id].keySet()}"
-                     varStatus="subStatus">
-                     <td id="subjectName${status.index}_${subStatus.index}"><c:out
-                           value="${subjectData[member.member_id][subjectCode]}" /></td>
-                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ÏÇ≠Ï†ú]</a></td>
-                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out
-                           value="${subjectCode}" /></td>
+                  <c:forEach var="subjectCode" items="${subjectData[member.member_id].keySet()}" varStatus="subStatus">
+                     <td id="subjectName${status.index}_${subStatus.index}"><c:out value="${subjectData[member.member_id][subjectCode]}" /></td>
+                     <td><a href="${pageContext.request.contextPath}/deleteSubjectMember.do?memberId=${member.member_id}">[ªË¡¶]</a></td>
+                     <td id="subjectCode${status.index}_${subStatus.index}"><c:out value="${subjectCode}" /></td>
                   </c:forEach>
-                  <td><a href="javascript:void(0);"
-                     onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
+                  <td><a href="javascript:void(0);" onclick="openMemberPopup('${member.member_id}', '${status.index}');">${member.member_id}</a></td>
                   <td>${member.pw}</td>
                   <td>${member.member_type}</td>
                   <td>${member.member_name}</td>

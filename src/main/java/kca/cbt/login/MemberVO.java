@@ -1,5 +1,7 @@
 package kca.cbt.login;
 
+import java.sql.Date;
+
 public class MemberVO {
 
 	private String member_id;
@@ -11,7 +13,8 @@ public class MemberVO {
 	private String memberA;
 	private String memberB;
 	private String aff;
-	
+	private Date start_date;
+	private Date end_date;
 
 	public String getAff() {
 		return aff;
@@ -19,6 +22,22 @@ public class MemberVO {
 
 	public void setAff(String aff) {
 		this.aff = aff;
+	}
+
+	public Date getStart_date() {
+		return start_date;
+	}
+
+	public void setStart_date(Date start_date) {
+		this.start_date = start_date;
+	}
+
+	public Date getEnd_date() {
+		return end_date;
+	}
+
+	public void setEnd_date(Date end_date) {
+		this.end_date = end_date;
 	}
 
 	public String getMember_id() {
@@ -68,8 +87,7 @@ public class MemberVO {
 	public void setSubject_name(String subject_name) {
 		this.subject_name = subject_name;
 	}
-	
-	
+
 	public String getMemberA() {
 		return memberA;
 	}
@@ -89,7 +107,8 @@ public class MemberVO {
 	@Override
 	public String toString() {
 		return "MemberVO [member_id=" + member_id + ", pw=" + pw + ", member_name=" + member_name + ", member_type="
-				+ member_type + ", subject_code=" + subject_code + "]";
+				+ member_type + ", subject_code=" + subject_code + ", subject_name=" + subject_name + ", memberA="
+				+ memberA + ", memberB=" + memberB + ", start_date=" + start_date + ", end_date=" + end_date + "]";
 	}
 
 }
