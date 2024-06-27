@@ -66,6 +66,7 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
    height: auto;
    max-height: 200px; /* Example: limit image height */
 }
+
 </style>
 <link
    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -74,17 +75,16 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
 <body>
    <div id="header" class="header-container d-flex align-items-center p-3">
       <div class="header-left">
-         <a href=""><img src="./img/kcalogo.png" alt="KCA Logo"></a>
+         <a href=""><img src="./img/kcalogo.png" alt="KCA Logo">&nbsp;&nbsp; </a>
       </div>
       <div class="header-links ml-3">
-         <a href="https://counselors.or.kr/">한국상담학회</a> <span> · </span> <a
+         <a href="https://counselors.or.kr/">한국상담학회&nbsp;&nbsp;  </a> <span> · &nbsp;</span> <a
             href="https://counselors.or.kr/"><img src="./img/kca_house.png"
             alt="KCA Logo">인트로</a>
       </div>
       <div class="header-links ml-auto d-flex align-items-center">
-         <div>
-            <a>${member.member_name}님 안녕하세요.</a>
-         </div>
+         <b>${member.member_name}</b> <span class="mx-1"></span> 님 <span class="mx-2"></span> 
+                ${member.subject_name} <span class="mx-2"></span> 
          <span class="mx-2"></span> <a href="${pageContext.request.contextPath}/login/login.jsp">로그아웃</a> <span class="mx-2"></span>
          <a href="#">마이페이지</a>
       </div>

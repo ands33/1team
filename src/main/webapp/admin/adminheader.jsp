@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-   pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 
 <!DOCTYPE html>
 <html>
@@ -9,24 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>헤더</title>
 <style>
-body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
-   i, ul, ol, li, button {
-   font-family: "Montserrat", "Noto Sans KR", sans-serif;
-   font-size: 15px;
-   letter-spacing: -0.05em;
-   line-height: 1.6em;
-   list-style: none;
-   color: #333;
-}
-
-body {
-   background: #FFF;
-   height: 100vh;
-   font-size: 15px;
-   font-family: 'Roboto', sans-serif;
-}
-
-/* header-link의 밑줄 제거 */
 .header-links a {
    text-decoration: none;
    color: #000;
@@ -36,6 +18,13 @@ body {
 .header-links a:hover {
    color: #D8402A;
    text-decoration: none;
+}
+
+body {
+   background: #FFF;
+   height: 100vh;
+   font-size: 15px;
+   font-family: 'Roboto', sans-serif;
 }
 
 /* 지우면 ㅈ됨 */
@@ -89,12 +78,33 @@ body {
 .header-links2 a {
    text-decoration: none;
    color: #000;
+   
+}
+
+.header-links2 a:hover {
+   color: #D8402A;
+   text-decoration: none;
 }
 
 
+body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
+   i, ul, ol, li, button {
+   font-family: "Montserrat", "Noto Sans KR", sans-serif;
+   font-size: 15px;
+   letter-spacing: -0.05em;
+   line-height: 1.6em;
+   list-style: none;
+   color: #333;
+}
+
+/* header-link의 밑줄 제거 */
+.header-links a {
+   text-decoration: none;
+   color: #000;
+}
 
 /* 로고 오른쪽 상담학회 집 인트로 글씨 호버 */
-.header-links2 a:hover {
+.header-links a:hover {
    color: #D8402A;
 }
 
@@ -105,6 +115,41 @@ body {
    margin-left: 100px;
 }
 
+/* 로고 오른쪽 상담학회 집 인트로 글씨 호버 */
+.header-links2 a:hover {
+	color: #D8402A;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 2rem;
+    white-space: nowrap;
+}
+
+.header-links {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.header-links2 {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px; /* 좌우 여백 추가 */
+    flex-wrap: wrap; /* 내용이 화면을 벗어나지 않도록 줄 바꿈 허용 */
+}
 
 </style>
 <script>
@@ -138,47 +183,53 @@ function getBinaryClass() {
 
 </script>
 <link
-   href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-   rel="stylesheet">
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script
-   src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script
-   src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <base href="${pageContext.request.contextPath}/">
 </head>
- <form id="headerForm" method="post">
-        <input type="hidden" name="member_id" value="${member.member_id}">
-        <div class="header-container d-flex align-items-center p-3">
-            <div class="header-left">
-                <a href="https://counselors.or.kr/">
-                    <img src="${pageContext.request.contextPath}/examcommitmember/img/kcalogo.png" alt="KCA Logo">
-                </a>
-            </div>
-            <div class="header-links ml-3">
-                <a href="https://counselors.or.kr/"><span class="mx-2"></span> 한국상담학회</a> <span> · </span> 
-                <a href="https://counselors.or.kr/">
-                    <img src="${pageContext.request.contextPath}/examcommitmember/img/kca_house.png" alt="KCA Logo">인트로
-                </a>
-            </div>
-            <div class="header-links2 ml-auto d-flex align-items-center">
-                <b>${member.member_name}</b> <span class="mx-1"></span> 님 <span class="mx-2"></span> 
-                ${member.subject_name} <span class="mx-2"></span> 
-                <a href="${pageContext.request.contextPath}/login/login.jsp">로그아웃</a> <span class="mx-2"></span>
-                <a href="#">마이페이지</a>
-            </div>
-        </div>
-    </form>
-    <br>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 justify-content-around w-50"><span class="mx-1"></span>  
-                    <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/IndexMemberList.do">설정</a></li>
-                    <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/getMembersBySubjectAndType.do">문항입고 대기</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<form id="headerForm" method="post">
+	<input type="hidden" name="member_id" value="${member.member_id}">
+	<div class="header-container d-flex align-items-center p-3 flex-wrap">
+		<div class="header-left">
+			<a href="https://counselors.or.kr/"> <img
+				src="${pageContext.request.contextPath}/examcommitmember/img/kcalogo.png"
+				alt="KCA Logo">
+			</a>
+		</div>
+		<div class="header-links ml-3">
+			<a href="https://counselors.or.kr/"><span class="mx-2"></span>
+				한국상담학회 &nbsp;&nbsp;</a> <span> · &nbsp;</span> <a href="https://counselors.or.kr/"> <img
+				src="${pageContext.request.contextPath}/examcommitmember/img/kca_house.png"
+				alt="KCA Logo">인트로
+			</a>
+		</div>
+		<div class="header-links2 ml-auto d-flex align-items-center">
+			<b>${member.member_name}</b>&nbsp;님 <span class="mx-1"></span><span
+				class="mx-2"></span> ${member.subject_name} <span class="mx-2"></span>
+			<a href="${pageContext.request.contextPath}/login/login.jsp">로그아웃</a>
+			<span class="mx-2"></span> <a href="#">마이페이지</a>
+		</div>
+	</div>
+</form>
+<br>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 justify-content-start w-50">
+				<span class="mx-1"></span>
+				<li class="nav-item"><a class="nav-link"
+					href="${pageContext.request.contextPath}/IndexMemberList.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;설정&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="${pageContext.request.contextPath}/getMembersBySubjectAndType.do">문항입고
+						대기</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
 </body>
 </html>

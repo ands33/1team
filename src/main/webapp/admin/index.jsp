@@ -13,6 +13,10 @@
    padding: 20px 10px;
    background: #fff;
    z-index: 1;
+   display: flex;
+   align-items: center;
+   justify-content: space-between; /* 좌우 정렬 */
+   flex-wrap: nowrap; /* 반응형 줄바꿈 방지 */
 }
 
 body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
@@ -29,6 +33,7 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
 .header-links a {
    text-decoration: none;
    color: #000;
+   white-space: nowrap; /* 글자 줄바꿈 방지 */
 }
 
 /* 로고 오른쪽 상담학회 집 인트로 글씨 호버 */
@@ -40,7 +45,7 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
    width: 250px;
    height: auto;
    padding-top: 20px;
-   margin-left: 100px;
+   margin-left: 20px;
 }
 
 .nav-item:hover {
@@ -76,16 +81,17 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
       <div class="header-left">
          <a href=""><img src="./img/kca_logo_short.jpg" alt="KCA Logo"></a>
       </div>
-      <div class="header-links ml-3">
-         <a href="https://counselors.or.kr/">한국상담학회</a> <span> · </span> <a
-            href="https://counselors.or.kr/"><img src="./img/kca_house.png"
-            alt="KCA Logo">인트로</a>
+      <div class="header-links d-flex align-items-center ml-3">
+         <a href="https://counselors.or.kr/">한국상담학회 &nbsp; &nbsp;</a> <span> ·&nbsp; &nbsp; </span> 
+         <a href="https://counselors.or.kr/"><img src="./img/kca_house.png" alt="KCA Logo">인트로</a>
       </div>
       <div class="header-links ml-auto d-flex align-items-center">
          <div>
-            <a>${examPlan.name}님 안녕하세요.</a>
+            <a>${examPlan.name}</a>
          </div>
-         <span class="mx-2"></span> <a href="#">로그아웃</a> <span class="mx-2"></span>
+         <span class="mx-2"></span>
+         <a href="#">로그아웃</a>
+         <span class="mx-2"></span>
          <a href="#">마이페이지</a>
       </div>
    </div>
@@ -93,12 +99,10 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
    <br>
    <div class="flex-container">
       <div>
-         <a href="${pageContext.request.contextPath}/IndexMemberList.do"><img src="./img/설.png"
-            alt="설정"></a>
+         <a href="${pageContext.request.contextPath}/IndexMemberList.do"><img src="./img/설.png" alt="설정"></a>
       </div>
       <div>
-         <a href="${pageContext.request.contextPath}/getMembersBySubjectAndType.do"><img
-            src="./img/문.png" alt="문항입고대기"></a>
+         <a href="${pageContext.request.contextPath}/getMembersBySubjectAndType.do"><img src="./img/문.png" alt="문항입고대기"></a>
       </div>
    </div>
    <br>

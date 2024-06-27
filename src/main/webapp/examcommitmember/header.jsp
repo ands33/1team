@@ -122,11 +122,11 @@ body, table, th, td, input, select, textarea, div, a, p, span, strong, b,
         <div class="header-container d-flex align-items-center p-3">
             <div class="header-left">
                 <a href="https://counselors.or.kr/">
-                    <img src="${pageContext.request.contextPath}/examcommitmember/img/kcalogo.png" alt="KCA Logo">
+                    <img src="${pageContext.request.contextPath}/examcommitmember/img/kcalogo.png" alt="KCA Logo">&nbsp;&nbsp;
                 </a>
             </div>
             <div class="header-links ml-3">
-                <a href="https://counselors.or.kr/"><span class="mx-2"></span> 한국상담학회</a> <span> · </span> 
+                <a href="https://counselors.or.kr/"><span class="mx-2"></span> 한국상담학회&nbsp;&nbsp; </a> <span> ·&nbsp; </span> 
                 <a href="https://counselors.or.kr/">
                     <img src="${pageContext.request.contextPath}/examcommitmember/img/kca_house.png" alt="KCA Logo">인트로
                 </a>

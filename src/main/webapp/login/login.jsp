@@ -71,8 +71,7 @@ input:focus {
     color: #e74c3c;
 }
 
-.inputUserIcon,
-.inputPassIcon {
+.inputUserIcon, .inputPassIcon {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
